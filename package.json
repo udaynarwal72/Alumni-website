@@ -1,5 +1,5 @@
 {
-  "name": "Alumni-website",
+  "name": "alumni-website",
   "private": true,
   "scripts": {
     "build": "turbo build",
