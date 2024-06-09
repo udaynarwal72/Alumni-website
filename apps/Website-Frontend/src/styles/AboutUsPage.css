@@ -1,0 +1,38 @@
+/* src/AboutUsPage.css */
+
+.about-us-page {
+  font-family: Arial, sans-serif;
+}
+
+.about-section,
+.mission-section,
+.vision-section,
+.history-section {
+  padding: 20px;
+}
+
+.about-section h1 {
+  margin-bottom: 20px;
+}
+
+.mission-section h2,
+.vision-section h2,
+.history-section h2 {
+  margin-bottom: 10px;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .about-section,
+  .mission-section,
+  .vision-section,
+  .history-section {
+    padding: 10px;
+  }
+}

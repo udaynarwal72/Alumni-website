@@ -1,0 +1,143 @@
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 20px 0;
+  /* Decreased padding to reduce height */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  /* Added flex-wrap to make it mobile responsive */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col-md-12 {
+  flex: 1;
+  margin: 0 15px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+  /* Added margin to separate logo from quick links */
+}
+
+.logo img {
+  width: 50px;
+  /* Decreased logo size to reduce height */
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.logo h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.logo p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.quick-links,
+.opening-hours {
+  text-align: left;
+  margin-bottom: 20px;
+  /* Added margin to separate sections */
+}
+
+.quick-links h3,
+.opening-hours h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.quick-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-links li {
+  margin-bottom: 10px;
+}
+
+.quick-links li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.quick-links li a:hover {
+  color: #f0f0f0;
+}
+
+.opening-hours.hours {
+  margin-bottom: 10px;
+}
+
+.opening-hours.hours i {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.opening-hours.hours p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.copyright p {
+  font-size: 12px;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px 0;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .logo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .quick-links,
+  .opening-hours {
+    margin-bottom: 10px;
+  }
+
+  .quick-links ul {
+    padding: 0 10px;
+  }
+
+  .quick-links li {
+    margin-bottom: 5px;
+  }
+
+  .opening-hours.hours {
+    margin-bottom: 5px;
+  }
+
+  .copyright {
+    margin-top: 10px;
+  }
+
+  .copyright p {
+    font-size: 10px;
+  }
+}
