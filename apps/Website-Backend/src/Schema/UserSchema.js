@@ -7,6 +7,8 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true,
+        lowercase: true,
+        trim: true,
     },
     first_name: {
         type: String,
@@ -48,10 +50,11 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true,
+        lowercase: true,
     },
     password: {
         type: String,
-        required: true,
+        required: [true, 'Password is required'],
     },
     phone_number: {
         type: Number,
@@ -84,19 +87,19 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Comment',
     }],
-    likes: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Like',
-    }],
-    dislikes: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Dislike',
-    }],
-    notifications: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Notification',
-    }],
-});
+    // likes: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Like',
+    // }],
+    // dislikes: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Dislike',
+    // }],
+    // notifications: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Notification',
+    // }],
+}, { timestamps: true });
 
 // Export the model
 const User = mongoose.model('User', UserSchema);

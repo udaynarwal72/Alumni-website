@@ -1,29 +1,23 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const app = express();
 const mongoose = require('mongoose');
-const { default: router } = require('./src/routes');
 require('dotenv').config();
+const router = require('./src/routes'); // Ensure correct import
+const { default: connectDB } = require('./src/db');
+
+const app = express();
 const port = 3000;
 
-// Middleware to parse JSON bodies
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 // Cookie parser middleware
-app.use(cookieParser());
+app.use("/", router);
 
-// Define a simple route
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
-app.use(router)
-
-//mongoose connect 
+// Mongoose connect
 mongoose.connect(process.env.DATABASE_URL)
-  .then(() => console.log('Connected to MongoDB'))
+  .then(() => {
+    console.log('Connected to MongoDB');
+    app.listen(port, () => {
+      console.log(`Server is running on PORT: ${port}`);
+    });
+  })
   .catch((error) => console.log(error));
 
-// Start the server and run the main function
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});

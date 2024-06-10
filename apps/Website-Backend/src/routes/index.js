@@ -1,8 +1,14 @@
-import {Router} from "express";
+const express = require('express')
+const UserRouter = require('./UserRoutes')
+const BlogRoutes = require('./BlogRoutes')
+const AdminRoutes = require('./AdminRoutes')
 
-const router = Router();
+const router = express.Router();
 
 //making routes
-app.user('/api/v1/user',);
+router.use('/api/v1/user', UserRouter);
+router.use('/api/v1/blog', BlogRoutes);
+router.use('api/v1/admin', AdminRoutes);
 
-export default router;
+
+module.exports = router;
