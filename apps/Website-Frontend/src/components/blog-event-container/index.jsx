@@ -44,11 +44,6 @@ const BlogAndEventSection = () => {
             <img src="https://via.placeholder.com/100" alt="Event Poster" />
           </div>
         </div>
-        <div className="event">
-          <div className="event-poster">
-            <img src="https://via.placeholder.com/100" alt="Event Poster" />
-          </div>
-        </div>
       </div>
     </div>
   );

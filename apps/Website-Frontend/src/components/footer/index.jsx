@@ -1,54 +1,24 @@
 import React from 'react';
-import './Footer.css';
+import './Footer.css'; // Importing CSS file for styling
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            <div className="logo">
-              <img src="/logo.svg" alt="Logo" />
-              <h2>LOGO</h2>
-              <p>Illuminate Your Brilliance: Showcase Your Talent</p>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <div className="quick-links">
-              <h3>Quick Link</h3>
-              <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/menu">Menu</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="opening-hours">
-              <h3>Opening Hours</h3>
-              <div className="hours">
-                <i className="far fa-clock"></i>
-                <p>Sunday to Wednesday</p>
-                <p>9AM - 10.30PM</p>
-              </div>
-              <div className="hours">
-                <i className="far fa-clock"></i>
-                <p>Thursday, Friday, Saturday</p>
-                <p>9AM - 12.30AM</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <div className="copyright">
-              <p>Copyright © 2024 Mehfil</p>
-              <p>Powered by Mehfil</p>
-            </div>
-          </div>
-        </div>
+      <div className="footer-logo">
+        <img src="https://via.placeholder.com/100x100" alt="Logo" />
+      </div>
+      <div className="footer-location">
+        <h3>Our Location</h3>
+        <p>NIT Kurukshetra</p>
+        <p>Kurukshetra, Haryana, India - 136119</p>
+      </div>
+      <div className="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
       </div>
     </footer>
   );

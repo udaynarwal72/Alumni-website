@@ -13,6 +13,8 @@ const NavBar = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
+  const isSignedIn = false;
+
   return (
     <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
       <div className="logo">
@@ -34,11 +36,21 @@ const NavBar = () => {
           <img src="https://img.icons8.com/material-outlined/24/000000/user.png" alt="profile" />
           {dropdownOpen && (
             <div className="dropdown-menu">
-              <a href="#profile">Profile</a>
-              <a href="#notifications">Notifications</a>
-              <a href="#logout">Log out</a>
+              {isSignedIn ? (
+                <>
+                  <a href="#profile">Profile</a>
+                  <a href="#notifications">Notifications</a>
+                  <a href="#logout">Log out</a>
+                </>
+              ) : (
+                <>
+                  <a href="/login">Log in</a>
+                  <a href="/signup">Sign up</a>
+                </>
+              )}
             </div>
           )}
+
         </div>
         <div className="hamburger-menu" onClick={handleMenuToggle}>
           <span></span>

@@ -11,6 +11,8 @@ import './index.css';
 import HeaderProvider from './context/HeaderProvider';
 import AboutUsPage from './pages/AboutUs';
 import ContactUsPage from './pages/ContactUs';
+import LoginPage from './components/Signin/Login';
+import SignupPage from './components/signup';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +24,16 @@ const router = createBrowserRouter([
     element: <AboutUsPage />,
   },
   {
-    path:'/contactus',
-    element:<ContactUsPage/>,
+    path: '/contactus',
+    element: <ContactUsPage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />
+  },
+  {
+    path:'/signup',
+    element:<SignupPage/>
   }
 ]);
 
