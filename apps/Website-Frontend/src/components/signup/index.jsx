@@ -63,7 +63,7 @@ function SignupPage() {
                     console.log(data);
                     if (data.success && data.results.length > 0) {
                         const stateAndCity = data.results[0].csc.split(', ');
-                        setSelectedState(stateAndCity[1]); // Assuming the state is the second element
+                        setStates(stateAndCity[1]); // Assuming the state is the second element
                         setCities([stateAndCity[0]]); // Assuming the city is the first element
                     }
                 } catch (error) {
@@ -101,7 +101,7 @@ function SignupPage() {
                         <div className="input-group">
                             <label htmlFor="country">Country</label>
                             <select id="country" name="country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)} required>
-                                <option value="">Select Country</option>
+                                <option value="">Joining Country</option>
                                 {fetchedCountries.map((country) => (
                                     <option key={country} value={country}>{country}</option>
                                 ))}
@@ -110,7 +110,7 @@ function SignupPage() {
                         <div className="input-group">
                             <label htmlFor="state">State</label>
                             <select id="state" name="state" value={selectedState} onChange={(e) => setSelectedState(e.target.value)} required>
-                                <option value="">Select State</option>
+                                <option value="">Joining State</option>
                                 {states.map((state) => (
                                     <option key={state} value={state}>{state}</option>
                                 ))}
@@ -119,7 +119,7 @@ function SignupPage() {
                         <div className="input-group">
                             <label htmlFor="city">City</label>
                             <select id="city" name="city" required>
-                                <option value="">Select City</option>
+                                <option value="">Joining City</option>
                                 {cities.map((city) => (
                                     <option key={city} value={city}>{city}</option>
                                 ))}
