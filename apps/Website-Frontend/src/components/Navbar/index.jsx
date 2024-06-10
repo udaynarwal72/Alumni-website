@@ -25,6 +25,7 @@ const NavBar = () => {
           <li><a href="/">Home</a></li>
           <li><a href="about">About Us</a></li>
           <li><a href="contactus">Contact Us</a></li>
+          <li><a href="hire">Hire</a></li>
         </ul>
         <div className="search-bar">
           <input type="text" placeholder="Search..." />

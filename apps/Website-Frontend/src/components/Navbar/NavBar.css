@@ -1,220 +1,217 @@
 /* src/NavBar.css */
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo a {
-    font-size: 1.5em;
-    color: white;
-    text-decoration: none;
+  font-size: 1.5em;
+  color: white;
+  text-decoration: none;
 }
 
 .menu-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
 }
 
 .nav-links li {
-    display: inline;
+  display: inline;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-    padding: 8px 15px;
-    transition: background 0.3s, color 0.3s;
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 8px 15px;
+  transition: background 0.3s, color 0.3s;
 }
 
 .nav-links a:hover {
-    background: #555;
-    border-radius: 5px;
+  background: #555;
+  border-radius: 5px;
 }
 
 .search-bar {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .search-bar input {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 20px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 20px;
 }
 
 .search-bar button {
-    padding: 8px;
-    border-radius: 50%;
-    margin-left: 10px;
-    border: 1px solid #ccc;
-    background-color: #555;
-    color: white;
-    cursor: pointer;
-    outline: none;
+  padding: 8px;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  outline: none;
 }
 
 .search-bar button:hover {
-    background-color: #777;
+  background-color: #777;
 }
 
 .notifications a {
-    color: white;
-    font-size: 1.5em;
-    text-decoration: none;
-    padding: 8px;
-    transition: color 0.3s;
+  color: white;
+  font-size: 1.5em;
+  text-decoration: none;
+  padding: 8px;
+  transition: color 0.3s;
 }
 
 .notifications a:hover {
-    color: #aaa;
+  color: #aaa;
 }
 
 .hamburger-menu {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .hamburger-menu span {
-    height: 3px;
-    width: 25px;
-    background: white;
-    margin: 4px;
-    border-radius: 5px;
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px;
+  border-radius: 5px;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: #333;
-    }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #333;
+  }
 
-    .nav-links li {
-        margin: 10px 0;
-    }
+  .nav-links li {
+    margin: 10px 0;
+  }
 
-    .hamburger-menu {
-        display: flex;
-    }
+  .hamburger-menu {
+    display: flex;
+  }
 
-    .search-bar {
-        display: none;
-    }
+  .search-bar {
+    display: none;
+  }
 
-    .notifications {
-        display: none;
-    }
+  .notifications {
+    display: none;
+  }
 }
 
 /* Show the nav links when the hamburger menu is clicked */
 .navbar.open .nav-links {
-    display: flex;
+  display: flex;
 }
 
 .profile-section {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .profile-section img {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    right: 0;
-    top: 30px;
-    background-color: #444;
-    border: 1px solid #333;
-    border-radius: 5px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dropdown-menu a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    transition: background 0.3s;
-  }
-  
-  .dropdown-menu a:hover {
-    background: #555;
-  }
-  
-  .hamburger-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-section img {
+  width: 24px;
+  height: 24px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background-color: #444;
+  border: 1px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background: #555;
+}
+
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger-menu span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px;
+  border-radius: 5px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .nav-links {
     display: none;
     flex-direction: column;
-    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #333;
   }
-  
-  .hamburger-menu span {
-    height: 3px;
-    width: 25px;
-    background: white;
-    margin: 4px;
-    border-radius: 5px;
+
+  .nav-links li {
+    margin: 10px 0;
   }
-  
-  /* Mobile responsiveness */
-  @media (max-width: 768px) {
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      text-align: center;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      background-color: #333;
-    }
-  
-    .nav-links li {
-      margin: 10px 0;
-    }
-  
-    .hamburger-menu {
-      display: flex;
-    }
-  
-    .search-bar {
-      display: none;
-    }
-  
-    .profile-section {
-      display: none;
-    }
+
+  .hamburger-menu {
+    display: flex;
   }
+
+  .search-bar {
+    display: none;
+  }
+
+  .profile-section {
+    display: none;
+  }
+}

@@ -3,7 +3,7 @@ import './signup.css';
 import Footer from '../footer';
 import NavBar from '../Navbar'
 
-const branches = ['Computer Science', 'Electronics and Communication', 'Information Technology', 'Mechanical', 'Electrical', 'Civil','Production and Industrial Engineering','Mathematics and Computing','Industrial Internet of Things','Other'];
+const branches = ['Computer Science', 'Electronics and Communication', 'Information Technology', 'Mechanical', 'Electrical', 'Civil', 'Production and Industrial Engineering', 'Mathematics and Computing', 'Industrial Internet of Things', 'Other'];
 
 function SignupPage() {
     const [selectedCountry, setSelectedCountry] = useState('');
@@ -60,6 +60,7 @@ function SignupPage() {
                         `https://ccsapi.up.railway.app/api/v1/search-db?search=${selectedCountry}&limit=10&offSet=10`
                     );
                     const data = await response.json();
+                    console.log(data);
                     if (data.success && data.results.length > 0) {
                         const stateAndCity = data.results[0].csc.split(', ');
                         setSelectedState(stateAndCity[1]); // Assuming the state is the second element

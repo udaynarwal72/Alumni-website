@@ -13,6 +13,7 @@ import AboutUsPage from './pages/AboutUs';
 import ContactUsPage from './pages/ContactUs';
 import LoginPage from './components/Signin/Login';
 import SignupPage from './components/signup';
+import HiringPage from './pages/Hire';
 
 const router = createBrowserRouter([
   {
@@ -32,8 +33,12 @@ const router = createBrowserRouter([
     element: <LoginPage />
   },
   {
-    path:'/signup',
-    element:<SignupPage/>
+    path: '/signup',
+    element: <SignupPage />
+  },
+  {
+    path: '/hire',
+    element: <HiringPage />
   }
 ]);
 

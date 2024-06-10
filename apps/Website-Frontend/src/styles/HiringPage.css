@@ -1,0 +1,54 @@
+.parent-hiring-page{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hiring-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hiring-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .hiring-page form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .hiring-page label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .hiring-page input,
+  .hiring-page textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .hiring-page button {
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .hiring-page button:hover {
+    background-color: #218838;
+  }
+  
