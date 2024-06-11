@@ -12,7 +12,7 @@ const AboutUsPage = () => {
                     <section className="about-section">
                         <h1>About Us</h1>
                         <p>
-                            The Alumni Association of National Institute of Technology Kurukshetra (NITKKR) is dedicated to fostering a strong bond among its alumni and maintaining a lifelong connection with the institute.
+                             Alumni Association of National Institute of Technology Kurukshetra (NITKKR) is dedicated to fostering a strong bond among its alumni and maintaining a lifelong connection with the institute.
                         </p>
                         <p>
                             Our association aims to:
