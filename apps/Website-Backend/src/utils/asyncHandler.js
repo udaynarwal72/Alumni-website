@@ -3,11 +3,11 @@ const asyncHandler = (fn) => async (req, res, next) => {
         await fn(req, res, next)
     }
     catch (error) {
-        res.status(err.code || 500).json({
+        return res.status(err.code || 500).json({
             success: false,
             message: err.message,
         })
     }
 }
 
-export {asyncHandler}
+module.exports = asyncHandler

@@ -64,7 +64,7 @@ function SignupPage() {
             <div className="parent-signup-container">
                 <div className="signup-container">
                     <h1>Sign Up</h1>
-                    <form action="/signup" method="post">
+                    <form action="/" method="post">
                         <div className="input-group">
                             <label htmlFor="username">Username</label>
                             <input type="text" id="username" name="username" required />
