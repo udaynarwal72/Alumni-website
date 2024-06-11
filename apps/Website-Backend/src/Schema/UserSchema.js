@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { Schema } = mongoose;
+require('dotenv').config();
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     username: { type: String, required: true },
     avatar: { type: String, required: false },
     coverImage: { type: String, required: false },
@@ -43,20 +44,35 @@ const userSchema = new Schema({
     terms_accepted: { type: Boolean, default: false },
     certifications: [{ type: String }],
     awards: [{ type: String }],
-    badges: [{ type: String }]
+    badges: [{ type: String }],
+    refreshToken: {
+        type: String
+    },
 }, { timestamps: true });
 
+// Pre-save hook to hash the password before saving the user
 UserSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) return
-    this.password = bcrypt.hash(this.password, 10);
-    next();
-})
+    if (!this.isModified("password")) {
+        return next();
+    }
+    try {
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+        next();
+    } catch (err) {
+        next(err);
+    }
+});
 
+// Method to compare the password
 UserSchema.methods.isPasswordCorrect = async function (password) {
-    return await bcrypt.compare(password, this.password)
-}
+    const isMatch = await bcrypt.compare(password, this.password);
+    return isMatch;
+};
 
-UserSchema.methods.generateExcessToken = function (token) {
+
+
+UserSchema.methods.generateAccessToken = function () {
     return jwt.sign(
         {
             _id: this._id,
@@ -67,9 +83,11 @@ UserSchema.methods.generateExcessToken = function (token) {
         {
             expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
-    )
-}
-UserSchema.methods.generateExcessToken = function (token) {
+    );
+};
+
+// Generate refresh token
+UserSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
             _id: this._id,
@@ -81,10 +99,6 @@ UserSchema.methods.generateExcessToken = function (token) {
     )
 }
 
-UserSchema.methods.generateRefreshToken = function (token) {
-    return
-}
-
 // Export the model
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('mmUser', UserSchema);
 module.exports = User;
