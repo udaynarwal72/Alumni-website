@@ -3,13 +3,17 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const router = require('./src/routes'); // Ensure correct import
-const { default: connectDB } = require('./src/db');
 
 const app = express();
 const port = 3000;
 
-// Cookie parser middleware
-app.use("/", router);
+app.use(express.json({ limit: "20kb" }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.use(cookieParser());
+
+// Use router middleware
+app.use(router);
 
 // Mongoose connect
 mongoose.connect(process.env.DATABASE_URL)
@@ -20,4 +24,3 @@ mongoose.connect(process.env.DATABASE_URL)
     });
   })
   .catch((error) => console.log(error));
-

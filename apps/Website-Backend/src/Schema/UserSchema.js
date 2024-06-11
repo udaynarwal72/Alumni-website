@@ -3,103 +3,47 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { Schema } = mongoose;
 
-const UserSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-        lowercase: true,
-        trim: true,
-    },
-    first_name: {
-        type: String,
-        required: true,
-    },
-    last_name: {
-        type: String,
-        required: true,
-    },
-    joining_batch: {
-        type: Number,
-        default: new Date().getFullYear(),
-    },
-    country: {
-        type: String,
-        required: true,
-    },
-    state: {
-        type: String,
-        required: true,
-    },
-    city: {
-        type: String,
-        required: true,
-    },
-    address: {
-        type: String,
-        required: true,
-    },
-    branch: {
-        type: String,
-        required: true,
-    },
-    organisation: {
-        type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        lowercase: true,
-    },
-    password: {
-        type: String,
-        required: [true, 'Password is required'],
-    },
-    phone_number: {
-        type: Number,
-        required: true,
-    },
-    dob: {
-        type: Date,
-        required: true,
-    },
-    profile_picture: {
-        type: String,
-    },
-    is_admin: {
-        type: Boolean,
-        default: false,
-    },
-    verified: {
-        type: Boolean,
-        default: false,
-    },
-    valid_user: {
-        type: Boolean,
-        default: false,
-    },
-    blogs: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Blog',
-    }],
-    comments: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Comment',
-    }],
-    // likes: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Like',
-    // }],
-    // dislikes: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Dislike',
-    // }],
-    // notifications: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Notification',
-    // }],
+const userSchema = new Schema({
+    username: { type: String, required: true },
+    avatar: { type: String, required: false },
+    coverImage: { type: String, required: false },
+    first_name: { type: String, required: true },
+    last_name: { type: String, required: true },
+    joining_batch: { type: String },
+    country: { type: String },
+    state: { type: String },
+    city: { type: String },
+    address: { type: String },
+    branch: { type: String },
+    organisation: { type: String },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    phone_number: { type: String },
+    dob: { type: Date },
+    profile_picture: { type: String },
+    is_admin: { type: Boolean, default: false },
+    verified: { type: Boolean, default: false },
+    valid_user: { type: Boolean, default: true },
+    blogs: [{ type: Schema.Types.ObjectId, ref: 'Blog' }],
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+    likes: [{ type: Schema.Types.ObjectId, ref: 'Like' }],
+    linkedin_profile: { type: String },
+    twitter_handle: { type: String },
+    facebook_profile: { type: String },
+    instagram_handle: { type: String },
+    job_title: { type: String },
+    department: { type: String },
+    work_experience: { type: String },
+    skills: [{ type: String }],
+    time_zone: { type: String },
+    bookmarks: [{ type: Schema.Types.ObjectId, ref: 'Blog' }],
+    hobbies: [{ type: String }],
+    profile_views: { type: Number, default: 0 },
+    verification_status: { type: String, enum: ['pending', 'verified', 'rejected'], default: 'pending' },
+    terms_accepted: { type: Boolean, default: false },
+    certifications: [{ type: String }],
+    awards: [{ type: String }],
+    badges: [{ type: String }]
 }, { timestamps: true });
 
 UserSchema.pre("save", async function (next) {
@@ -136,6 +80,7 @@ UserSchema.methods.generateExcessToken = function (token) {
         }
     )
 }
+
 UserSchema.methods.generateRefreshToken = function (token) {
     return
 }
