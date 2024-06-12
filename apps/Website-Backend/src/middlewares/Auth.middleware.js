@@ -1,8 +1,9 @@
-const ApiError = require("../utils/ApiError");
+import ApiError from "../utils/ApiError.js";
 // const asyncHandler = require('../../utils/asyncHandler');
-const jwt = require('jsonwebtoken');
-const User = require('../Schema/UserSchema');
-const AsyncHandler = require("../utils/AsyncHandle");
+import jsonwebtoken from 'jsonwebtoken';
+const { sign, decode, verify } = jsonwebtoken;
+import AsyncHandler from "../utils/AsyncHandle.js";
+import User from "../Schema/UserSchema.js";
 
 
 const verifyJWT = AsyncHandler(async (req, res, next) => {
@@ -12,7 +13,7 @@ const verifyJWT = AsyncHandler(async (req, res, next) => {
         if (!token) {
             throw new ApiResponse(401, "Unauthorized request");
         }
-        const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+        const decodedToken = verify(token, process.env.ACCESS_TOKEN_SECRET)
         const user = await User.findById(decodedToken?._id).select("-password -refreshToken")
 
         if (!user) {
@@ -26,4 +27,4 @@ const verifyJWT = AsyncHandler(async (req, res, next) => {
     //Authorizatoin: Bearer <token>
 })
 
-module.exports = verifyJWT
+export default verifyJWT

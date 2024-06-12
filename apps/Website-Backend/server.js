@@ -1,16 +1,18 @@
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose');
-require('dotenv').config();
-const router = require('./src/routes'); // Ensure correct import
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import router from './src/routes/index.js'; // Ensure correct import
+import cors from 'cors';
+dotenv.config(); // Initialize dotenv
 
 const app = express();
 const port = 3000;
 
-app.use(express.json({ limit: "20kb" }));
+app.use(express.json({ limit: '20kb' }));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
 app.use(cookieParser());
+app.use(cors());
 
 // Use router middleware
 app.use(router);

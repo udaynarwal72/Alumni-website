@@ -1,7 +1,7 @@
-const express = require('express');
-const { Admin } = require('mongodb');
+import { Router } from 'express';
+import { Admin } from 'mongodb';
 
-const AdminRoutes = express.Router();
+const AdminRoutes = Router();
 
 AdminRoutes.get('/',)
 AdminRoutes.post('/',)
@@ -18,4 +18,4 @@ AdminRoutes.delete('/:adminId/delete',)
 
 
 
-module.exports = AdminRoutes;
+export default AdminRoutes;

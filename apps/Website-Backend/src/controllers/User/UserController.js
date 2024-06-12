@@ -1,9 +1,10 @@
-const AsyncHandler = require('../../utils/AsyncHandle');
-const ApiError = require('../../utils/ApiError.js');
-const User = require('../../Schema/UserSchema.js');
-const uploadOnCloudinary = require("../../utils/Cloudinary.js");
-const ApiResponse = require('../../utils/ApiResponse.js');
-const jwt = require('jsonwebtoken')
+import AsyncHandler from '../../utils/AsyncHandle.js';
+import ApiError from '../../utils/ApiError.js';
+import uploadOnCloudinary from "../../utils/Cloudinary.js";
+import ApiResponse from '../../utils/ApiResponse.js';
+import jsonwebtoken from 'jsonwebtoken';
+const { sign, decode, verify } = jsonwebtoken;
+import User from '../../Schema/UserSchema.js';
 const userSignUpController = async (req, res) => {
     // Extract user details from frontend
     const {
@@ -102,8 +103,6 @@ const userSignUpController = async (req, res) => {
     )
 };
 
-// controllers/User/LoginController.js
-
 const generateAccessAndRefreshTokens = async (userId) => {
     try {
         const user = await User.findById(userId);
@@ -170,7 +169,7 @@ const refreshAccessToken = AsyncHandler(async (req, res) => {
         throw new ApiError(401, "unauthrized request");
     }
     try {
-        const decodedToken = jwt.verify(
+        const decodedToken = verify(
             incomingRefreshToken,
             process.env.REFRESH_TOKEN_SECRET
         )
@@ -225,19 +224,13 @@ const changeCurrentPassword = AsyncHandler(async (req, res) => {
         .json(new ApiResponse(200, {}, "Password Changed succesfully"))
 })
 
-const getCurrentUser = AsyncHandler(async(req, res => {
-    return res
-        .status(200)
-        .json(200, req.user, "current user fetched successfully")
-}))
-
 const updateAccoutDetails = AsyncHandler(async (req, res) => {
     const { fullName, email } = req.body
 
     if (!fullName || !email) {
         throw new ApiError(400, "All fields are required");
     }
-    const user = User.findByIdAndUpdate(
+    const user = User.findById(
         req.user?._id,
         {
             $set: {
@@ -283,4 +276,96 @@ const updateUserAvatar = AsyncHandler(async (req, res) => {
         .json(new ApiResponse(200, "Avatar updated succesfully"))
 })
 
-module.exports = { userLogin, logoutUser, userSignUpController, refreshAccessToken, updateAccoutDetails, updateUserAvatar };
+const updateUserCoverImage = AsyncHandler(async (req, res) => {
+    const coverImageLocalPath = req.file?.path
+
+    if (!coverImageLocalPath) {
+        throw new ApiError(400, "Cover Image file is missing")
+    }
+    const coverImage = await uploadOnCloudinary(coverImageLocalPath)
+
+    if (coverImage.url) {
+        throw new ApiError(400, "Error while uploading")
+    }
+    // const user = await User.findById(req.user?._id);
+
+    // user.avatar = avatar;
+    // user.save({ validateModifiedOnly: false })
+
+    //another method
+    const user = await User.findByIdAndUpdate(
+        req.user?._id,
+        {
+            $set: {
+                coverImage: coverImage.url
+            }
+        },
+        { new: true }
+    ).select("-password")
+    return res
+        .status(200)
+        .json(new ApiResponse(200, "Cover Image updated succesfully"))
+});
+
+const getUserDetails = AsyncHandler(async (req, res) => {
+    // console.log(req.user?.userId)
+    // console.log(req.params.userId)
+    const user = await User.findById(req.params.userId).select("-password")
+    
+    if(user){
+        console.log('user fetched successfully')
+    }
+    else{
+        console.log('user cannot be fetched')
+    }
+    return res
+        .status(200)
+        .json(new ApiResponse(200, user, "User details fetched successfully"))
+})
+
+const updateUserEmail = AsyncHandler(async (req, res) => {
+    const { email } = req.body;
+
+    if (!email) {
+        throw new ApiError(400, "Email is required");
+    }
+
+    const user = await User.findByIdAndUpdate(
+        req.user?._id,
+        {
+            $set: {
+                email: email
+            }
+        },
+        { new: true }
+    ).select("-password")
+    return res
+        .status(200)
+        .json(new ApiResponse(200, user, "Email updated successfully"))
+});
+
+const updateUserFirstNameandLast = AsyncHandler(async (req, res) => {
+    const { first_name, last_name } = req.body;
+
+    if (!first_name) {
+        throw new ApiError(400, "First Name is required");
+    }
+
+    const user = await User.findByIdAndUpdate(
+        req.user?._id,
+        {
+            $set: {
+                first_name: first_name,
+                last_name: last_name
+            }
+        },
+        { new: true }
+    ).select("-password")
+    return res
+        .status(200)
+        .json(new ApiResponse(200, user, "First Name updated successfully"))
+})
+
+
+
+export { userLogin, logoutUser, userSignUpController, refreshAccessToken, updateAccoutDetails, updateUserAvatar, changeCurrentPassword, getUserDetails, updateUserCoverImage };

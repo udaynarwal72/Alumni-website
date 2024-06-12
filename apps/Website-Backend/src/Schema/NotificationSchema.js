@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import { Schema as _Schema, model } from 'mongoose';
 
-const Schema = mongoose.Schema;
+const Schema = _Schema;
 
 const notificationSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
@@ -8,4 +8,4 @@ const notificationSchema = new Schema({
     read: { type: Boolean, default: false }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Notification', notificationSchema);
+export default model('Notification', notificationSchema);

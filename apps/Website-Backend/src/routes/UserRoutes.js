@@ -1,9 +1,10 @@
-const express = require('express');
-const upload = require('../middlewares/Multer.middleware');
-const verifyJWT = require('../middlewares/Auth.middleware');
-const { userSignUpController, userLogin, logoutUser, refreshAccessToken } = require('../controllers/User/UserController');
+import { Router } from 'express';
+// import { fields } from '../middlewares/Multer.middleware.js';
+import verifyJWT from '../middlewares/Auth.middleware.js';
+import { userSignUpController, userLogin, refreshAccessToken ,logoutUser, getUserDetails} from '../controllers/User/UserController.js';
+import { upload } from '../middlewares/Multer.middleware.js';
 
-const UserRouter = express.Router();
+const UserRouter = Router();
 
 // Check all required imports
 // console.log({
@@ -26,8 +27,8 @@ UserRouter.post('/login', userLogin); // Ensure this is defined
 UserRouter.post('/logout', verifyJWT, logoutUser); // Ensure verifyJWT and logoutUser are defined
 UserRouter.post('/refresh-token').post(refreshAccessToken);
 // Other routes with placeholders for controllers
+UserRouter.get('/profile/:userId',getUserDetails);
 UserRouter.put('/profile/:userId', (req, res) => res.send('Update profile'));
-UserRouter.get('/profile/:userId', (req, res) => res.send('Get profile'));
 UserRouter.get('/profile/:userId/likes', (req, res) => res.send('Get likes'));
 UserRouter.get('/profile/:userId/comments', (req, res) => res.send('Get comments'));
 UserRouter.get('/profile/:userId/bookmarks', (req, res) => res.send('Get bookmarks'));
@@ -38,4 +39,4 @@ UserRouter.get('/profile/:userId/notifications', (req, res) => res.send('Get not
 UserRouter.get('/profile/:userId/notifications/:notificationId', (req, res) => res.send('Get notification'));
 UserRouter.delete('/profile/:userId/notifications/:notificationId', (req, res) => res.send('Delete notification'));
 
-module.exports = UserRouter;
+export default UserRouter;

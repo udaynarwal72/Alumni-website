@@ -1,10 +1,11 @@
-const express = require('express')
+import { Router } from 'express';
+import { createBlog, blogDelete } from '../controllers/Blog/BlogController.js';
 
-const BlogRoutes = express.Router();
+const BlogRoutes = Router();
 
-BlogRoutes.get('/bulk',)
-BlogRoutes.post('/',)
-BlogRoutes.delete('/:blogId',)
+BlogRoutes.get('/bulk')
+BlogRoutes.post('/',createBlog);
+BlogRoutes.delete('/:blogId',blogDelete)
 BlogRoutes.put('/:blogId',)
 
-module.exports = BlogRoutes;
+export default BlogRoutes;

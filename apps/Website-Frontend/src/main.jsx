@@ -14,6 +14,7 @@ import ContactUsPage from './pages/ContactUs';
 import LoginPage from './components/Signin/Login';
 import SignupPage from './components/signup';
 import HiringPage from './pages/Hire';
+import UserProfile from './pages/UserProfileSection';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: '/hire',
     element: <HiringPage />
+  },
+  {
+    path: '/profilesection',
+    element: <UserProfile />
   }
 ]);
 

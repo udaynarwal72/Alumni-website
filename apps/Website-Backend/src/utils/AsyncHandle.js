@@ -9,4 +9,4 @@ const AsyncHandler = (fn) => async (req, res, next) => {
         })
     }
 }
-module.exports = AsyncHandler;
+export default AsyncHandler;

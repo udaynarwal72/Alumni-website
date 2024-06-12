@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import { Schema as _Schema, model } from 'mongoose';
 
-const Schema = mongoose.Schema;
+const Schema = _Schema;
 
 const blogSchema = new Schema({
     title: { type: String, required: true },
@@ -15,4 +15,6 @@ const blogSchema = new Schema({
     target_people: [{ type: String }]
 }, { timestamps: true });
 
-module.exports = mongoose.model('Blog', blogSchema);
+const Blog = model('Blog', blogSchema);
+
+export default Blog;
