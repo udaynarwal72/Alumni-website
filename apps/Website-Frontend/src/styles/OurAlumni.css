@@ -1,3 +1,43 @@
-.parent-ourAlumni{
-    height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+body {
+    background-color: #F9F5EB;
+}
+
+.Parent {
+    height: 100%;
+    padding: 30px 30px;
+}
+
+.Parent h1 {
+    font-family: "DM Sans", sans-serif;
+
+}
+.heading{
+    display: flex;
+    padding:12px
+}
+
+.heading button{
+    background-color: white;
+    padding:12px 18px;
+    border-radius:8px ;
+    color: #C5291D;
+    border-color: #C5291D;
+    border-width: 1px;
+    cursor: pointer;
+    border-style:groove;
+    row-gap: 12px;
+}
+.heading div{
+    margin-right: 20px;
+    word-wrap: normal;
+}
+.heading button:hover{
+    background-color: #C5291D;
+    color: white;
+}
+.card-holder{
+    display: flex;
+    flex-wrap: wrap;
 }
