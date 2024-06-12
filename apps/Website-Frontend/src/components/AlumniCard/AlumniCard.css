@@ -9,9 +9,10 @@
     display: flex;
     flex-direction: column;
     transition: all .2s;
+    border: 2px solid #C5291D;
 }
 .card:hover{
-    box-shadow: 2px 12px 20px #e4cac9;
+    box-shadow: 2px 12px 20px #cb8985;
     cursor: pointer;
     transform:translateY(-5px);
 }
@@ -54,6 +55,25 @@
 
 .details div :first-child {
     color: #C5291D;
+}
+@media (max-width: 600px) {
+    .card {
+        width: 100%;
+        margin: 0 10px;
+    }
+
+    .name h1 {
+        font-size: 1.2em;
+    }
+
+    .profile-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .details {
+        font-size: 0.9em;
+    }
 }
 
 
