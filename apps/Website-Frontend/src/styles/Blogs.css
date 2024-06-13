@@ -1,8 +1,5 @@
-.Parent{
+.Parent-blog{
     height:100%;
-}
-
-body{
     background-color: #FFFFFF;
     animation: fadeIn 1s ease-in-out;
 }

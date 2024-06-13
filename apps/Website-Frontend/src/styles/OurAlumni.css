@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
-body {
-    background-color: #F9F5EB;
-}
-
 .Parent {
     height: 100%;
     padding: 30px 30px;
+    background-color: #F9F5EB;
 }
+/* body{
+    background-color: #F9F5EB;
+} */
 
 .Parent h1 {
     font-family: "DM Sans", sans-serif;
