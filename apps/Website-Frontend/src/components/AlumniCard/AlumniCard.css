@@ -6,8 +6,17 @@
     text-align: center;
     background: #ffffff;
     padding: 0;
-    /* margin-top: -600px; */
+    display: flex;
+    flex-direction: column;
+    transition: all .2s;
+    border: 2px solid #C5291D;
 }
+.card:hover{
+    box-shadow: 2px 12px 20px #cb8985;
+    cursor: pointer;
+    transform:translateY(-5px);
+}
+
 
 .card-header {
     background: linear-gradient(to bottom, #e4cac9, #ffffff);
@@ -47,14 +56,25 @@
 .details div :first-child {
     color: #C5291D;
 }
+@media (max-width: 600px) {
+    .card {
+        width: 100%;
+        margin: 0 10px;
+    }
 
-/* .box1,.box2{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 12px;
+    .name h1 {
+        font-size: 1.2em;
+    }
+
+    .profile-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .details {
+        font-size: 0.9em;
+    }
 }
-.container{
-    padding:12px;
-} */
+
+
+

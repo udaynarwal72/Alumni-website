@@ -41,3 +41,22 @@ body {
     display: flex;
     flex-wrap: wrap;
 }
+@media (max-width: 400px) {
+
+    .heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .heading button {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        text-align: center;
+    }
+
+    .heading div {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
