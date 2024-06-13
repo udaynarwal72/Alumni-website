@@ -16,6 +16,8 @@ import SignupPage from './components/signup';
 import HiringPage from './pages/Hire';
 import UserProfile from './pages/UserProfileSection';
 import OurAlumni from './pages/OurAlumini';
+import Blogs from './pages/Blogs';
+
 
 const router = createBrowserRouter([
   {
@@ -49,7 +51,12 @@ const router = createBrowserRouter([
   {
     path: '/ouralumni',
     element: <OurAlumni />
+  },
+  {
+    path:'/blog',
+    element:<Blogs />
   }
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
