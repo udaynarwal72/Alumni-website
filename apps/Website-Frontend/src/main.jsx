@@ -17,6 +17,7 @@ import HiringPage from './pages/Hire';
 import UserProfile from './pages/UserProfileSection';
 import OurAlumni from './pages/OurAlumini';
 import Blogs from './pages/Blogs';
+import BlogCard from './components/BlogCard/BlogCard';
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path:'/blog',
     element:<Blogs />
+  },
+  {
+    path:'testblogcard',
+    element:<BlogCard />
   }
   
 ]);

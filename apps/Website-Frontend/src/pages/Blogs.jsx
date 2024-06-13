@@ -6,7 +6,7 @@ const Blogs = () => {
 	return (
 		<div>
 			<NavBar />
-			<div class="Parent">
+			<div class="Parent-blog">
 				<div className="root">
 					<div className="content">
 						<div>

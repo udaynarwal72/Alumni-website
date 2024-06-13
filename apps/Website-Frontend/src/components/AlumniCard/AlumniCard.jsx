@@ -2,6 +2,7 @@ import './AlumniCard.css';
 
 const AlumniCard = () => {
     return (
+        
         <div className='Parent'>
             <div className='card'>
                 <div className="card-header">
