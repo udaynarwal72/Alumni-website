@@ -5,18 +5,33 @@ import Footer from '../footer';
 import axios, { isCancel, AxiosError } from 'axios';
 
 function App() {
-    const makingUserLoggedIn = () => {
-        // Make user logged in
-
-    }
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     async function onHandleSubmit(e) {
         e.preventDefault();
         const user = { email, password }
-        const response = await axios.get('http://localhost:3000/api/v1/user/login', user)
+        const response = await axios.post('http://localhost:3000/api/v1/user/login', user)
         console.log(response)
-        // localStorage.setItem("token",response.data.data.accessToken)
+        localStorage.setItem("token", response.data.data.accessToken)
+        const notificationToken = localStorage.getItem("notification-token");
+        console.log('notification-token', notificationToken)
+        console.log('response.data.data.user._id', response.data.data.user._id)
+        localStorage.setItem('userid', response.data.data.user._id)
+        const userId = response.data.data.user._id;
+        fetch(`http://localhost:3000/api/v1/user/save-notification-token/${userId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ notification_token: notificationToken })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
     return (
         <>

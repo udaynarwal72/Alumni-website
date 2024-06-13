@@ -39,5 +39,5 @@ UserRouter.delete('/profile/:userId/delete', verifyJWT, deleteUserProfile);
 UserRouter.get('/profile/:userId/notifications', verifyJWT, getUserNotifications);
 UserRouter.get('/profile/:userId/notifications/:notificationId', verifyJWT, findNotificationById);
 UserRouter.delete('/profile/:userId/notifications/:notificationId', verifyJWT, deleteNotification);
-UserRouter.get('/save-notification-token', saveUserToken);
+UserRouter.post('/save-notification-token/:userId', saveUserToken);
 export default UserRouter;
