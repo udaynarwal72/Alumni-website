@@ -5,7 +5,7 @@ import {
     getAllCommentsByUserId,
     deleteCommentById,
     updateCommentById
-} from '../controllers/Comment/CommentController'; // Adjust the path as necessary
+} from '../controllers/Comment/CommentController.js'; // Adjust the path as necessary
 
 const CommentRoutes = express.Router();
 

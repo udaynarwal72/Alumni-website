@@ -1,18 +1,47 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import NavBar from '../components/Navbar'
 import ImageSlider from '../components/imageSlider'
 import BlogAndEventSection from '../components/blog-event-container'
 import Footer from '../components/footer'
+import { messaging } from '../firebase'
+import { getToken } from 'firebase/messaging'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  async function requestPermission() {
+    const permission = await Notification.requestPermission();
+    if (permission === "granted") {
+      const notificationToken = await getToken(messaging, { vapidKey: 'BFpkU0aqgNMz_UWl58wiPnML0h5b_DdiCpsPr8bHEDzJDZ2ISds31aK1-wHJkqikO31lEQ1Qrd97ltYjhhR1SxY' })
+      console.log('Token generated', notificationToken)
+      localStorage.setItem("notification-token", notificationToken);
+      fetch('http://localhost:3000/api/v1/user/save-notification-token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token: notificationToken })
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    } else if (permission === "denied") {
+      alert(`Sorry you won't get the latest update`);
+    }
+  }
+  useEffect(() => {
+    //request user for notification permission
+    requestPermission();
+  }, [])
   return (
     <>
-      <NavBar /> 
-      <ImageSlider/>
-      <BlogAndEventSection/>
-      <Footer/>
+      <NavBar />
+      <ImageSlider />
+      <BlogAndEventSection />
+      <Footer />
     </>
   )
 }

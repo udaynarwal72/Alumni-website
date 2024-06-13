@@ -1,7 +1,7 @@
-import Event from './path_to_your_event_model'; // Adjust the path as necessary
-import uploadOnCloudinary from './path_to_your_upload_function'; // Adjust the path as necessary
-import ApiResponse from './path_to_your_api_response_class'; // Adjust the path as necessary
-import ApiError from '../../utils/ApiError';
+import Event from '../../Schema/EventSchema.js'; // Adjust the path as necessary
+import uploadOnCloudinary from '../../utils/Cloudinary.js'; // Adjust the path as necessary
+import ApiResponse from '../../utils/ApiResponse.js'; // Adjust the path as necessary
+import ApiError from '../../utils/ApiError.js';
 
 const createEvent = async (req, res) => {
     try {

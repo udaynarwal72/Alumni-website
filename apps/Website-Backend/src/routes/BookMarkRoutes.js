@@ -1,11 +1,12 @@
 import { Router } from 'express';
-import { createBookmark, removeBookmark, getAllBookmarkedBlogs, getAllUsersWhoBookmarkedBlog } from '../controllers/Blog/BlogController';
-import verifyJWT from '../middlewares/Auth.middleware';
+import verifyJWT from '../middlewares/Auth.middleware.js';
+import { createBookMark } from '../controllers/Blog/BlogController.js';
+import { getAllBookmarkedBlogs, getAllUsersWhoBookmarkedBlog, removeBookmark } from '../controllers/BookMark/BookMarkController.js';
 
 const BookMarkRoutes = Router();
 
 // Route to create a bookmark
-BookMarkRoutes.post('/bookmark/:blogId', verifyJWT, createBookmark);
+BookMarkRoutes.post('/bookmark/:blogId', verifyJWT, createBookMark);
 BookMarkRoutes.delete('/bookmark/:blogId', verifyJWT, removeBookmark);
 BookMarkRoutes.get('/bookmarks', verifyJWT, getAllBookmarkedBlogs);
 BookMarkRoutes.get('/bookmarks/:blogId/users', verifyJWT, getAllUsersWhoBookmarkedBlog);

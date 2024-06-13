@@ -14,9 +14,9 @@ function App() {
     async function onHandleSubmit(e) {
         e.preventDefault();
         const user = { email, password }
-        const response = await axios.post('http://localhost:3000/api/v1/user/login', user)
-        console.log(response.data.data.accessToken)
-        localStorage.setItem("token",response.data.data.accessToken)
+        const response = await axios.get('http://localhost:3000/api/v1/user/login', user)
+        console.log(response)
+        // localStorage.setItem("token",response.data.data.accessToken)
     }
     return (
         <>

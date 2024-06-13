@@ -28,9 +28,6 @@ const UserSchema = new Schema({
     is_admin: { type: Boolean, default: false },
     verified: { type: Boolean, default: false },
     valid_user: { type: Boolean, default: true },
-    blogs: [{ type: Schema.Types.ObjectId, ref: 'Blog' }],
-    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
-    likes: [{ type: Schema.Types.ObjectId, ref: 'Like' }],
     linkedin_profile: { type: String },
     twitter_handle: { type: String },
     facebook_profile: { type: String },
@@ -40,7 +37,6 @@ const UserSchema = new Schema({
     work_experience: { type: String },
     skills: [{ type: String }],
     time_zone: { type: String },
-    bookmarks: [{ type: Schema.Types.ObjectId, ref: 'Blog' }],
     hobbies: [{ type: String }],
     profile_views: { type: Number, default: 0 },
     verification_status: { type: String, enum: ['pending', 'verified', 'rejected'], default: 'pending' },
@@ -48,7 +44,8 @@ const UserSchema = new Schema({
     certifications: [{ type: String }],
     awards: [{ type: String }],
     badges: [{ type: String }],
-    refreshToken: { type: String }
+    refreshToken: { type: String,},
+    notificationToken:{type:String,},
 }, { timestamps: true });
 
 // Pre-save hook to hash the password before saving the user
@@ -73,6 +70,7 @@ UserSchema.methods.isPasswordCorrect = async function (password) {
 
 // Method to generate access token
 UserSchema.methods.generateAccessToken = function () {
+    console.log('hi')
     return sign(
         {
             _id: this._id,

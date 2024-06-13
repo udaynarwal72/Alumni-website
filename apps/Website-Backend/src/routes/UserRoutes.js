@@ -3,6 +3,7 @@ import { Router } from 'express';
 import verifyJWT from '../middlewares/Auth.middleware.js';
 import { userSignUpController, userLogin, refreshAccessToken, logoutUser, getUserDetails, updateUserProfile, getUserlikedPost, getUserComments, changeCurrentPassword, deleteUserProfile, getUserBookMark, getUserNotifications, findNotificationById, deleteNotification, userForgotPasssword, changeNotloggedInUserPassword } from '../controllers/User/UserController.js';
 import { upload } from '../middlewares/Multer.middleware.js';
+import { saveUserToken } from '../controllers/User/UserNotification.js';
 
 const UserRouter = Router();
 
@@ -38,5 +39,5 @@ UserRouter.delete('/profile/:userId/delete', verifyJWT, deleteUserProfile);
 UserRouter.get('/profile/:userId/notifications', verifyJWT, getUserNotifications);
 UserRouter.get('/profile/:userId/notifications/:notificationId', verifyJWT, findNotificationById);
 UserRouter.delete('/profile/:userId/notifications/:notificationId', verifyJWT, deleteNotification);
-
+UserRouter.get('/save-notification-token', saveUserToken);
 export default UserRouter;

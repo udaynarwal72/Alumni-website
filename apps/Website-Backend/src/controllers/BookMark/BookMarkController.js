@@ -1,5 +1,5 @@
-import BookMark from "../../Schema/BookMarkSchema";
-import ApiResponse from "../../utils/ApiResponse";
+import BookMark from "../../Schema/BookMarkSchema.js";
+import ApiResponse from "../../utils/ApiResponse.js";
 
 const createBookmark = async (req, res) => {
     try {

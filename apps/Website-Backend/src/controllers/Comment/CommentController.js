@@ -1,4 +1,6 @@
-import Comment from "../../Schema/CommentSchema";
+import Comment from "../../Schema/CommentSchema.js";
+import ApiResponse from "../../utils/ApiResponse.js";
+import ApiError from "../../utils/ApiError.js";
 
 const createComment = async (req, res) => {
     const { blogId, text } = req.body;
