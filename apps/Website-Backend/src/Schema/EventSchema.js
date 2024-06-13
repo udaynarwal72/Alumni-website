@@ -18,14 +18,12 @@ const eventSchema = new Schema({
     description: { type: String, required: true },
     organizer: { type: String, required: true },
     event_type: { type: String, enum: ['conference', 'webinar', 'meetup', 'workshop', 'other'], default: 'other' },
-    confirm_apprrance: { type: String, require: false },
-    max_attendees: { type: Number },
     promotional_image: { type: String },
     hashtags: [{ type: String }],
     live_stream_link: { type: String },
     feedback_form_link: { type: String },
-    access_control: { type: String, enum: ['public', 'private', 'invite-only'], default: 'public' },
-    contacts: [{ type: String }],
 }, { timestamps: true });
 
-export default model('Event', eventSchema);
+const Event = model('Event', eventSchema);
+
+export default Event;

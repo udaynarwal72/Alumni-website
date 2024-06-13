@@ -5,11 +5,11 @@ const { sign, decode, verify } = jsonwebtoken;
 import AsyncHandler from "../utils/AsyncHandle.js";
 import User from "../Schema/UserSchema.js";
 
-
 const verifyJWT = AsyncHandler(async (req, res, next) => {
     try {
+        // console.log("user id",req.user._id)
         const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
-
+        console.log("token", token)
         if (!token) {
             throw new ApiResponse(401, "Unauthorized request");
         }

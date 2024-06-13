@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import axios, { isCancel, AxiosError } from 'axios';
 const UserProfile = () => {
     console.log('UserProfile component');
-    // const { userId } = useParams(); // Destructuring userId from the useParams return object
-    const userId = '6668b7e9cd97529c7052fcdc';
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -13,11 +10,10 @@ const UserProfile = () => {
     useEffect(() => {
         const fetchUserDetails = async () => {
             try {
-                console.log(userId);
-                console.log(`Fetching details for user ID: ${userId}`);
-                const response = await axios.get(`http://localhost:3000/api/v1/user/profile/${userId}`);
-                console.log('Response data:', response.data);
-                setUser(response.data.data); // Corrected line
+                // const cookies = getCookies
+                const header = localStorage.getItem("token")
+                const response = await axios.get('http://localhost:3000/api/v1/user/profilesection', { headers: { "Authorization": `Bearer ${header}`}});
+                setUser(response.data.data);
             } catch (err) {
                 console.error('Error fetching user details:', err);
                 setError(err);
@@ -27,7 +23,7 @@ const UserProfile = () => {
         };
 
         fetchUserDetails();
-    }, [userId]);
+    }, []); // Added dependency array here
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error loading user details: {error.message}</div>;

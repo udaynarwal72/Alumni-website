@@ -5,6 +5,69 @@ import ApiResponse from '../../utils/ApiResponse.js';
 import jsonwebtoken from 'jsonwebtoken';
 const { sign, decode, verify } = jsonwebtoken;
 import User from '../../Schema/UserSchema.js';
+import Liked from '../../Schema/LikeSchema.js';
+import BookMark from '../../Schema/BookMarkSchema.js';
+import Notification from '../../Schema/NotificationSchema.js';
+import nodemailer from 'nodemailer'
+import Comment from '../../Schema/CommentSchema.js';
+
+const refreshAccessToken = AsyncHandler(async (req, res) => {
+    const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
+
+    if (incomingRefreshToken) {
+        throw new ApiError(401, "unauthrized request");
+    }
+    try {
+        const decodedToken = verify(
+            incomingRefreshToken,
+            process.env.REFRESH_TOKEN_SECRET
+        )
+
+        const user = await User.findById(decodedToken?._id)
+        if (incomingRefreshToken) {
+            throw new ApiError(401, "unauthorized request");
+        }
+
+        if (incomingRefreshToken !== user?.refreshToken) {
+            throw new ApiError(401, "Refresh token in expired or used");
+        }
+
+        const options = {
+            httpOnly: true,
+            secure: true,
+        }
+
+        const { accessToken, newRefreshToken } = await generateAccessAndRefreshTokens(user._id);
+
+        return res
+            .status(200)
+            .cookie("accessToken", accessToken, options)
+            .cookie("refreshToken", newRefreshToken, options)
+            .json(
+                new ApiResponse(
+                    200,
+                    { accessToken, refreshToken: newRefreshToken },
+                    "Access token refreshed",
+                )
+            )
+    } catch (error) {
+        throw new ApiError(401, error?.message || "Invalid refresh token")
+    }
+});
+
+const generateAccessAndRefreshTokens = async (userId) => {
+    try {
+        const user = await User.findById(userId);
+        const accessToken = user.generateAccessToken();
+        const refreshToken = user.generateRefreshToken();
+        user.refreshToken = refreshToken;
+        await user.save({ validateBeforeSave: false });
+        return { accessToken, refreshToken };
+    } catch (error) {
+        throw new ApiError(500, "Something went wrong while generating refresh and access token");
+    }
+};
+
 const userSignUpController = async (req, res) => {
     // Extract user details from frontend
     const {
@@ -47,21 +110,10 @@ const userSignUpController = async (req, res) => {
         awards,
         badges,
     } = req.body;
-
+    console.log(req.body)
     if (username === "" && first_name === "" && email == "" && password == "") {
         throw new ApiError(400, "Required fields are empty")
     }
-
-    // const existedUser = await User.findOne({
-    //     $or: [{ username }, { email }]
-    // })
-
-    // if (existedUser) {
-    //     throw new ApiError(409, "User with email or username already exists");
-    // }
-
-    // const avatarLocalPath = req.files?.avatar[0]?.path;
-    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
     let coverImageLocalPath;
     if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
@@ -101,19 +153,6 @@ const userSignUpController = async (req, res) => {
     return res.status(201).json(
         new ApiResponse(200, createdUser, "User registered sucessfully")
     )
-};
-
-const generateAccessAndRefreshTokens = async (userId) => {
-    try {
-        const user = await User.findById(userId);
-        const accessToken = user.generateAccessToken();
-        const refreshToken = user.generateRefreshToken();
-        user.refreshToken = refreshToken;
-        await user.save({ validateBeforeSave: false });
-        return { accessToken, refreshToken };
-    } catch (error) {
-        throw new ApiError(500, "Something went wrong while generating refresh and access token");
-    }
 };
 
 const userLogin = AsyncHandler(async (req, res, next) => {
@@ -162,49 +201,21 @@ const logoutUser = AsyncHandler(async (req, res) => {
         .json(new ApiResponse(200, {}, "User logged out"));
 })
 
-const refreshAccessToken = AsyncHandler(async (req, res) => {
-    const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
-
-    if (incomingRefreshToken) {
-        throw new ApiError(401, "unauthrized request");
+const changeNotloggedInUserPassword = AsyncHandler(async (req, res) => {
+    const { userId, oldPassword, newPassword } = req.body
+    const user = await User.findById({
+        _id: userId
+    })
+    const isPasswordCorrect = await user.isPasswordCorrect(oldPassword);
+    if (!isPasswordCorrect) {
+        throw new ApiError(400, "Invalid old Password");
     }
-    try {
-        const decodedToken = verify(
-            incomingRefreshToken,
-            process.env.REFRESH_TOKEN_SECRET
-        )
-
-        const user = await User.findById(decodedToken?._id)
-        if (incomingRefreshToken) {
-            throw new ApiError(401, "unauthorized request");
-        }
-
-        if (incomingRefreshToken !== user?.refreshToken) {
-            throw new ApiError(401, "Refresh token in expired or used");
-        }
-
-        const options = {
-            httpOnly: true,
-            secure: true,
-        }
-
-        const { accessToken, newRefreshToken } = await generateAccessAndRefreshTokens(user._id);
-
-        return res
-            .status(200)
-            .cookie("accessToken", accessToken, options)
-            .cookie("refreshToken", newRefreshToken, options)
-            .json(
-                new ApiResponse(
-                    200,
-                    { accessToken, refreshToken: newRefreshToken },
-                    "Access token refreshed",
-                )
-            )
-    } catch (error) {
-        throw new ApiError(401, error?.message || "Invalid refresh token")
-    }
-});
+    user.password = newPassword;
+    await user.save({ validateBeforeSave: false })
+    return res
+        .status(200)
+        .json(new ApiResponse(200, {}, "Password Changed succesfully"))
+})
 
 const changeCurrentPassword = AsyncHandler(async (req, res) => {
     const { oldPassword, newPassword } = req.body;
@@ -222,27 +233,6 @@ const changeCurrentPassword = AsyncHandler(async (req, res) => {
     return res
         .status(200)
         .json(new ApiResponse(200, {}, "Password Changed succesfully"))
-})
-
-const updateAccoutDetails = AsyncHandler(async (req, res) => {
-    const { fullName, email } = req.body
-
-    if (!fullName || !email) {
-        throw new ApiError(400, "All fields are required");
-    }
-    const user = User.findById(
-        req.user?._id,
-        {
-            $set: {
-                fullName,
-                email: email
-            }
-        },
-        { new: true }
-    ).select("-password")
-    return res
-        .status(200)
-        .json(new ApiResponse(200, user, "Account details updated successfully"))
 })
 
 const updateUserAvatar = AsyncHandler(async (req, res) => {
@@ -308,64 +298,249 @@ const updateUserCoverImage = AsyncHandler(async (req, res) => {
 });
 
 const getUserDetails = AsyncHandler(async (req, res) => {
-    // console.log(req.user?.userId)
-    // console.log(req.params.userId)
-    const user = await User.findById(req.params.userId).select("-password")
-    
-    if(user){
-        console.log('user fetched successfully')
-    }
-    else{
-        console.log('user cannot be fetched')
-    }
-    return res
-        .status(200)
-        .json(new ApiResponse(200, user, "User details fetched successfully"))
-})
+    try {
+        console.log(req.user)
+        // console.log(`Fetching details for user ID: ${req.user._id}`);
+        //6668b7e9cd97529c7052fcdc
+        const user = await User.findById(req.user._id).select("-password");
 
-const updateUserEmail = AsyncHandler(async (req, res) => {
-    const { email } = req.body;
-
-    if (!email) {
-        throw new ApiError(400, "Email is required");
+        if (user) {
+            console.log('User fetched successfully');
+            return res.status(200).json(new ApiResponse(200, user, "User details fetched successfully"));
+        } else {
+            console.log('User cannot be fetched');
+            return res.status(404).json(new ApiResponse(404, null, "User not found"));
+        }
+    } catch (error) {
+        console.error('Error fetching user details:', error);
+        return res.status(500).json(new ApiResponse(500, null, "An error occurred while fetching user details"));
     }
-
-    const user = await User.findByIdAndUpdate(
-        req.user?._id,
-        {
-            $set: {
-                email: email
-            }
-        },
-        { new: true }
-    ).select("-password")
-    return res
-        .status(200)
-        .json(new ApiResponse(200, user, "Email updated successfully"))
 });
 
-const updateUserFirstNameandLast = AsyncHandler(async (req, res) => {
-    const { first_name, last_name } = req.body;
+const updateUserProfile = AsyncHandler(async (req, res) => {
+    try {
+        const { first_name, last_name, joining_batch, country, state, city, address, branch, organisation, phone_number, dob, linkedin_profile, twitter_handle, facebook_profile, instagram_handle, job_title, department, work_experience, skills, time_zone, hobbies, certifications, awards, badges } = req.body;
 
-    if (!first_name) {
-        throw new ApiError(400, "First Name is required");
+        if (!first_name) {
+            throw new ApiError(400, "First Name is required");
+        }
+
+        const user = await User.findByIdAndUpdate(
+            req.user?._id,
+            {
+                $set: {
+                    first_name: first_name,
+                    last_name: last_name,
+                    joining_batch: joining_batch,
+                    country: country,
+                    state: state,
+                    city: city,
+                    address: address,
+                    branch: branch,
+                    organisation: organisation,
+                    phone_number: phone_number,
+                    dob: dob,
+                    linkedin_profile: linkedin_profile,
+                    twitter_handle: twitter_handle,
+                    facebook_profile: facebook_profile,
+                    instagram_handle: instagram_handle,
+                    job_title: job_title,
+                    department: department,
+                    work_experience: work_experience,
+                    skills: skills,
+                    time_zone: time_zone,
+                    hobbies: hobbies,
+                    certifications: certifications,
+                    awards: awards,
+                    badges: badges
+                }
+            },
+            { new: true }
+        ).select("-password")
+        return res
+            .status(200)
+            .json(new ApiResponse(200, user, "Profile updated successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
     }
-
-    const user = await User.findByIdAndUpdate(
-        req.user?._id,
-        {
-            $set: {
-                first_name: first_name,
-                last_name: last_name
-            }
-        },
-        { new: true }
-    ).select("-password")
-    return res
-        .status(200)
-        .json(new ApiResponse(200, user, "First Name updated successfully"))
 })
 
+const getUserlikedPost = AsyncHandler(async (req, res) => {
+    try {
+        const LikedBlog = Liked.find({
+            user: req.user._id
+        });
+        return res.status(200).json(new ApiResponse(200, LikedBlog, "Liked Post fetched successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
 
+})
 
-export { userLogin, logoutUser, userSignUpController, refreshAccessToken, updateAccoutDetails, updateUserAvatar, changeCurrentPassword, getUserDetails, updateUserCoverImage };
+const getUserComments = AsyncHandler(async (req, res) => {
+    try {
+        const comments = Comment.find({
+            createdBy: req.user._id
+        })
+        return res.status(200).json(new ApiResponse(200, comments, "Comments fetched successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
+});
+
+const getUserBookMark = AsyncHandler(async (req, res) => {
+    try {
+        const bookmarks = BookMark.find({
+            user: req.user._id
+        })
+        return res.status(200).json(new ApiResponse(200, bookmarks, "Bookmarks fetched successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
+})
+
+const deleteUserProfile = AsyncHandler(async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.user._id)
+        return res.status(200).json(new ApiResponse(200, user, "User deleted successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
+})
+
+const getUserNotifications = (req, res) => {
+    try {
+        Notification.find({
+            user: req.user._id
+        })
+    } catch (error) {
+
+    }
+}
+
+const changeCurrentEmail = (req, res) => {
+    try {
+        const ChangedEmail = User.findByIdAndUpdate(
+            req.user._id,
+            {
+                $set: {
+                    email: req.body.email
+                }
+            },
+            { new: true }
+        ).select("-password")
+        return res.status(200).json(new ApiResponse(200, ChangedEmail, "Email changed successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
+}
+
+const findNotificationById = (req, res) => {
+    try {
+        const notification = Notification.findById(req.params.notificationId)
+        return res.status(200).json(new ApiResponse(200, notification, "Notification fetched successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
+}
+
+const deleteNotification = (req, res) => {
+    try {
+        Notification.findByIdAndDelete(req.params.notificationId)
+        return res.status(200).json(new ApiResponse(200, {}, "Notification deleted successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
+}
+
+const sendUserEmail = async (req, res) => {
+
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        host: 'smtp.ethereal.email',
+        port: 587,
+        secure: false,
+        auth: {
+            user: process.env.ADMIN_MAIL,
+            pass: process.env.ADMIN_PASSWORD,
+        }
+    });;
+    const parentuser = await User.find();
+
+    for (const user of parentuser) {
+        if (user.pushemail == true) {
+            let mailOptions = await transporter.sendMail({
+                from: {
+                    name: "Uday",
+                    address: process.env.ADMIN_MAIL
+                }, // sender address
+                to: user.email, // list of receivers
+                subject: "Welcome, to mathongo", // Subject line
+                text: `Hello, ${user.name}`,     // plain text body
+                html: ` Hello, ${user.name} Thankyou for signing up with your email ${user.email}. We have received your city as ${user.city}<br> Team Mathongo <a href="https://mathongoproject.vercel.app/unsubscribe/${user._id}">Unsubscribe</a>`, // html body
+            });
+        }
+    }
+    res.send("All email sent successfully");
+}
+
+const userForgotPasssword = async (req, res) => {
+    const { email } = req.body;
+    try {
+        const user = await User.findOne({
+            email: email
+        })
+        if (!user) {
+            throw new ApiError(404, "User not found")
+        }
+        let transporter = nodemailer.createTransport({
+            service: "gmail",
+            host: 'smtp.ethereal.email',
+            port: 587,
+            secure: false,
+            auth: {
+                user: process.env.ADMIN_MAIL,
+                pass: process.env.ADMIN_PASSWORD,
+            }
+        });;
+
+        let mailOptions = await transporter.sendMail({
+            from: {
+                name: "Uday",
+                address: process.env.ADMIN_MAIL
+            }, // sender address
+            to: user.email, // list of receivers
+            subject: "Change your password", // Subject line
+            text: `Hello, ${user.name}`,     // plain text body
+            html: ` Hello, ${user.name} Link to change your password ${user.email}.<a href="http://localhost:3000/api/v1/profile/settings/change-password">Change Password</a>`, // html body
+        });
+        // const token = user.pre();
+        await user.save({ validateBeforeSave: false })
+        return res.status(200).json(new ApiResponse(200, user, "Password reset token generated successfully"))
+    }
+    catch (error) {
+        throw new ApiError(500, error.message)
+    }
+}
+
+export {
+    userLogin,
+    logoutUser,
+    getUserComments,
+    userSignUpController,
+    getUserlikedPost,
+    refreshAccessToken,
+    updateUserProfile,
+    updateUserAvatar,
+    changeCurrentPassword,
+    getUserDetails,
+    updateUserCoverImage,
+    deleteUserProfile,
+    getUserNotifications,
+    changeCurrentEmail,
+    getUserBookMark,
+    findNotificationById,
+    deleteNotification,
+    userForgotPasssword,
+    changeNotloggedInUserPassword
+};

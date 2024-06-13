@@ -1,7 +1,7 @@
 import { Router } from 'express';
 // import { fields } from '../middlewares/Multer.middleware.js';
 import verifyJWT from '../middlewares/Auth.middleware.js';
-import { userSignUpController, userLogin, refreshAccessToken ,logoutUser, getUserDetails} from '../controllers/User/UserController.js';
+import { userSignUpController, userLogin, refreshAccessToken, logoutUser, getUserDetails, updateUserProfile, getUserlikedPost, getUserComments, changeCurrentPassword, deleteUserProfile, getUserBookMark, getUserNotifications, findNotificationById, deleteNotification, userForgotPasssword, changeNotloggedInUserPassword } from '../controllers/User/UserController.js';
 import { upload } from '../middlewares/Multer.middleware.js';
 
 const UserRouter = Router();
@@ -22,21 +22,21 @@ UserRouter.post('/signup', upload.fields([
 ]), userSignUpController); // Ensure this is defined
 
 UserRouter.post('/login', userLogin); // Ensure this is defined
-
 // Secured routes
-UserRouter.post('/logout', verifyJWT, logoutUser); // Ensure verifyJWT and logoutUser are defined
+UserRouter.get('/logout', verifyJWT, logoutUser); // Ensure verifyJWT and logoutUser are defined
 UserRouter.post('/refresh-token').post(refreshAccessToken);
 // Other routes with placeholders for controllers
-UserRouter.get('/profile/:userId',getUserDetails);
-UserRouter.put('/profile/:userId', (req, res) => res.send('Update profile'));
-UserRouter.get('/profile/:userId/likes', (req, res) => res.send('Get likes'));
-UserRouter.get('/profile/:userId/comments', (req, res) => res.send('Get comments'));
-UserRouter.get('/profile/:userId/bookmarks', (req, res) => res.send('Get bookmarks'));
-UserRouter.put('/profile/:userId/settings/change-password', (req, res) => res.send('Change password'));
-UserRouter.put('/profile/:userId/settings/change-email', (req, res) => res.send('Change email'));
-UserRouter.delete('/profile/:userId/delete', (req, res) => res.send('Delete profile'));
-UserRouter.get('/profile/:userId/notifications', (req, res) => res.send('Get notifications'));
-UserRouter.get('/profile/:userId/notifications/:notificationId', (req, res) => res.send('Get notification'));
-UserRouter.delete('/profile/:userId/notifications/:notificationId', (req, res) => res.send('Delete notification'));
+UserRouter.get('/profilesection', verifyJWT, getUserDetails);
+UserRouter.put('/profile/:userId', verifyJWT, updateUserProfile);
+UserRouter.post('/forgot-password', verifyJWT, userForgotPasssword);
+UserRouter.get('/profile/:userId/likedPost', verifyJWT, getUserlikedPost);
+UserRouter.get('/profile/:userId/comments', verifyJWT, getUserComments);
+UserRouter.get('/profile/:userId/bookmarks', verifyJWT, getUserBookMark);
+UserRouter.put('/profile/settings/:userID/change-password', changeNotloggedInUserPassword);
+UserRouter.put('/profile/change-password', verifyJWT, changeCurrentPassword);
+UserRouter.delete('/profile/:userId/delete', verifyJWT, deleteUserProfile);
+UserRouter.get('/profile/:userId/notifications', verifyJWT, getUserNotifications);
+UserRouter.get('/profile/:userId/notifications/:notificationId', verifyJWT, findNotificationById);
+UserRouter.delete('/profile/:userId/notifications/:notificationId', verifyJWT, deleteNotification);
 
 export default UserRouter;

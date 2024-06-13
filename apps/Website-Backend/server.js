@@ -9,7 +9,7 @@ dotenv.config(); // Initialize dotenv
 const app = express();
 const port = 3000;
 
-app.use(express.json({ limit: '20kb' }));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());

@@ -1,11 +1,23 @@
-import { Router } from 'express';
-import { createBlog, blogDelete } from '../controllers/Blog/BlogController.js';
+import { Router } from "express";
+import { commentOnBlog, createblog, deleteBlogById, getAllBlog, getBlogsByAuthor, getCommentsByBlogId, getSingleBlogById, likeBlog, searchBlogs, updateBlogById } from "../controllers/Blog/BlogController.js";
+import { upload } from "../middlewares/Multer.middleware.js";
+import verifyJWT from "../middlewares/Auth.middleware.js";
 
 const BlogRoutes = Router();
 
-BlogRoutes.get('/bulk')
-BlogRoutes.post('/',createBlog);
-BlogRoutes.delete('/:blogId',blogDelete)
-BlogRoutes.put('/:blogId',)
-
+// GET /api/v1/blog
+BlogRoutes.get("/bulk", getAllBlog);
+BlogRoutes.get("/single/:blogId", getSingleBlogById);
+BlogRoutes.post("/postblog", verifyJWT, upload.fields([
+    { name: 'blogImage', maxCount: 5 }
+]), createblog);
+BlogRoutes.put("/updateblog/:blogId", verifyJWT, upload.fields([
+    { name: 'blogImage', maxCount: 5 }
+]), updateBlogById);
+BlogRoutes.delete("/deleteblog/:blogId", verifyJWT, deleteBlogById);
+BlogRoutes.post("/like/:blogId", verifyJWT, likeBlog);
+BlogRoutes.post("/comment/:blogId", verifyJWT, commentOnBlog);
+BlogRoutes.get("/comments/:blogId", getCommentsByBlogId);
+BlogRoutes.get("/search", searchBlogs);
+BlogRoutes.get("/author/:authorId", getBlogsByAuthor);
 export default BlogRoutes;

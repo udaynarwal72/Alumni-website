@@ -3,8 +3,13 @@ import { Schema as _Schema, model } from 'mongoose';
 const Schema = _Schema;
 
 const likeSchema = new Schema({
-    count: { type: Number, default: 0 },
-    user: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    blog: { type: Schema.Types.ObjectId, ref: 'Blog', required: true }
 }, { timestamps: true });
 
-export default model('Like', likeSchema);
+// Creating a unique index to prevent duplicate likes by the same user on the same blog
+likeSchema.index({ user: 1, blog: 1 }, { unique: true });
+
+const Liked =  model('Like', likeSchema);
+
+export default Liked;
