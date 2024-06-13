@@ -1,4 +1,5 @@
 import "./BlogCard.css";
+import BlogSectionCard from "../Blog-section-card/BlogSectionCard";
 
 const BlogCard = () => {
 	return (
@@ -31,7 +32,9 @@ const BlogCard = () => {
                         </div>
 					</div>
 				</div>
+				
 			</div>
+			<BlogSectionCard />
 		</div>
 	);
 };
