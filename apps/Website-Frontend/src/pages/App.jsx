@@ -35,7 +35,7 @@ function App() {
 	}, []);
 	return (
 		<>
-			<NavBar />
+			<NavBar /> 
 			<Herosection />
 			<AlumniSlider />
 			<BlogSlider />
