@@ -18,7 +18,7 @@ const sendMessage = async () => {
     try {
         const registrationTokens = await getAllNotificationTokens();
         console.log('tokens', registrationTokens);
-        
+
         const message = {
             data: {
                 score: '850',

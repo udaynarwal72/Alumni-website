@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import "./NavBar.css"; // Importing CSS file for styling
 import { NavLink } from "react-router-dom";
+import ReactDOM from 'react-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+library.add(fas, faTwitter, faFontAwesome)
 
 const NavBar = () => {
 	const [showNavbar, setShowNavbar] = useState(false);
@@ -72,7 +78,8 @@ const NavBar = () => {
 					<img src="	https://casepl.in/wp-content/uploads/2024/05/reck-logo-in-white-colour-120x93.png"></img>
 				</div>
 				<div className="menu-icon" onClick={handleShowNavbar}>
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkNEBO2OUKQjP-RSbIZae3jIq76g3rMrn9vQ&s"></img>
+					{/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkNEBO2OUKQjP-RSbIZae3jIq76g3rMrn9vQ&s"></img> */}
+					<FontAwesomeIcon icon="fa-solid fa-bars" style={{color: "#ffffff",}} size="2xl"/>
 				</div>
 				<div className={`nav-elements ${showNavbar ? "active" : ""}`}>
 					<ul>

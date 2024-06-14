@@ -3,6 +3,7 @@
 .blog-and-event-section {
   display: flex;
   gap: 20px;
+
   margin: 20px;
 }
 

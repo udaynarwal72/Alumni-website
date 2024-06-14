@@ -21,9 +21,8 @@ const createblog = async (req, res) => {
             blog_body: blog_body,
             blogImage: uploadImageCloud?.url || "",
             tags: blog_tags,
-            blog_createdBy: req.user._id
+            blog_createdBy:req.user._id
         });
-
         return res.status(200).json(new ApiResponse(200, createdBlog, "Blog created successfully"));
     } catch (error) {
         return res.status(500).json(new ApiResponse(500, null, `Error creating blog: ${error.message}`));

@@ -6,6 +6,8 @@ import Footer from "../components/footer";
 import { messaging } from "../firebase";
 import { getToken } from "firebase/messaging";
 import { BrowserRouter } from "react-router-dom";
+import Herosection from "../components/HeroSection/HeroSection";
+import BlogSlider from "../components/BlogSlider/BlogSlider";
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -28,11 +30,10 @@ function App() {
 	}, []);
 	return (
 		<>
-			
-				<NavBar />
-			
+			<NavBar />
+			<Herosection />
+			<BlogSlider />
 			<ImageSlider />
-			<BlogAndEventSection />
 			<Footer />
 		</>
 	);

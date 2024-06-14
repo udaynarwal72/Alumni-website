@@ -32,9 +32,7 @@ const BlogCard = () => {
                         </div>
 					</div>
 				</div>
-				
 			</div>
-			<BlogSectionCard />
 		</div>
 	);
 };
