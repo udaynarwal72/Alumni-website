@@ -30,7 +30,7 @@ function App() {
 	}, []);
 	return (
 		<>
-			<NavBar params={user} />
+			<NavBar />
 			<Herosection />
 			<BlogSlider />
 			<ImageSlider />
