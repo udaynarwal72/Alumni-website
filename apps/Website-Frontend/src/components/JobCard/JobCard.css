@@ -115,29 +115,47 @@
   margin-right: 5px;
 }
 
-@media (max-width: 390px) {
-  .card {
+.job-logos span {
+  font-size: 0.8em;
+}
+
+.job-logos span:first-child {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .main-job-card {
     width: 100%;
-    padding: 15px;
+    margin: 0 10px;
   }
 
-  .card-header h1 {
+  .job-card-header h1 {
     font-size: 1.2em;
   }
 
-  .ux-designer {
-    font-size: 1em;
+  .job-card-header p {
+    font-size: 0.7em;
   }
 
-  .details p {
-    font-size: 0.8em;
+  .ux-designer {
+    font-size: 1.1em;
+  }
+
+  .time-posted {
+    font-size: 0.7em;
   }
 
   .skills span {
+    padding: 5px 8px;
     font-size: 0.8em;
   }
 
   .apply-link {
     font-size: 0.9em;
   }
+
+  .job-logos span {
+    font-size: 0.7em;
+  }
+  
 }
