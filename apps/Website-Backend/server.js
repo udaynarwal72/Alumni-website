@@ -18,7 +18,7 @@ app.use(cors());
 app.use(router);
 
 // Mongoose connect
-mongoose.connect(process.env.DATABASE_URL,{
+mongoose.connect("mongodb+srv://udaynarwal:udaynarwal@alumniwebsite.utpcccl.mongodb.net/?retryWrites=true&w=majority&appName=AlumniWebsite",{
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
