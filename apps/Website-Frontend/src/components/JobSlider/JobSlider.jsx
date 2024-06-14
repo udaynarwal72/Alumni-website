@@ -1,9 +1,10 @@
 import React from 'react';
 import Slider from 'react-slick';
-import './BlogSlider.css'; // Importing CSS file for styling
-import BlogCard from '../BlogCard/BlogCard';
+import './JobSlider.css'; // Importing CSS file for styling
+// import BlogCard from '../BlogCard/BlogCard';
+import JobCard from '../JobCard/JobCard'
 
-const BlogSlider = () => {
+const JobSlider = () => {
     const settings = {
         dots: true,
         infinite: true,
@@ -51,20 +52,20 @@ const BlogSlider = () => {
     return (
         <div className="image-slider">
             <Slider {...settings}>
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
+                <JobCard />
+                <JobCard />
+                <JobCard />
+                <JobCard />
+                <JobCard />
+                <JobCard />
+                <JobCard />
+                <JobCard />
             </Slider>
         </div>
     );
 };
 
-export default BlogSlider;
+export default JobSlider;
 
 //alumni slider
 //event card -->slider

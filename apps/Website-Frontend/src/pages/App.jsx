@@ -8,7 +8,12 @@ import { getToken } from "firebase/messaging";
 import { BrowserRouter } from "react-router-dom";
 import Herosection from "../components/HeroSection/HeroSection";
 import BlogSlider from "../components/BlogSlider/BlogSlider";
+import JobSlider from "../components/JobSlider/JobSlider";
+import AlumniSlider from "../components/AlumniSlider/AlumniSlider";
+import EventSlider from "../components/EventSlider/EventSlider";
 
+
+	
 function App() {
 	const [count, setCount] = useState(0);
 	async function requestPermission() {
@@ -32,8 +37,10 @@ function App() {
 		<>
 			<NavBar />
 			<Herosection />
+			<AlumniSlider />
 			<BlogSlider />
-			<ImageSlider />
+			<EventSlider />
+			<JobSlider />
 			<Footer />
 		</>
 	);
