@@ -1,34 +1,34 @@
 import './AlumniCard.css';
 
-const AlumniCard = () => {
+const AlumniCard = ({ alumnus }) => {
+    console.log('hi',alumnus)
     return (
-        
         <div className='Parent'>
             <div className='card'>
                 <div className="card-header">
-                    <img src="https://via.placeholder.com/150" className='profile-image'></img>
+                    <img src={profileImage || "https://via.placeholder.com/150"} alt={`${name}'s profile`} className='profile-image' />
                 </div>
                 <div className='name'>
-                    <h1>Pragati Bhargwan</h1>
+                    <h1>{username}</h1>
                 </div>
-                
                 <div className='details'>
-                    <div>Batch
-                        <div>1998-92</div>
+                    <div>
+                        Batch
+                        <div>{batch}</div>
                     </div>
-                    <div>Designation
-                        <div >Associate Manager</div>
+                    <div>
+                        Designation
+                        <div>{designation}</div>
                     </div>
-                    <div>Comapany
-                        <div>Zomato</div>
+                    <div>
+                        Company
+                        <div>{company}</div>
                     </div>
-                    <div>Location
-                        <div>Bengaluru</div>
+                    <div>
+                        Location
+                        <div>{location}</div>
                     </div>
-                
                 </div>
-                
-                
             </div>
         </div>
     );

@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
-import './AlumniSlider.css'
-import AlumniCard from '../AlumniCard/AlumniCard'
+import './AlumniSlider.css';
+import AlumniCard from '../AlumniCard/AlumniCard';
+import axios from 'axios';
+
 const AlumniSlider = () => {
+    const [alumni, setAlumni] = useState([]);
+
+    // useEffect(() => {
+    //     const fetchAlumni = async () => {
+    //         try {
+    //             const myresponse = await axios.get('http://localhost:3000/api/v1/user/findalumni');
+    //             if (Array.isArray(myresponse.data)) {
+    //                 setAlumni(myresponse.data); // Ensure the response is an array
+    //             } else {
+    //                 console.error("Unexpected response format:", response.data);
+    //             }
+    //             console.log(myresponse.data);
+    //         } catch (error) {
+    //             console.error("Error fetching alumni data:", error);
+    //         }
+    //     };
+
+    //     fetchAlumni();
+    // }, []);
+    // console.log(alumni);
     const settings = {
         dots: true,
         infinite: true,
@@ -36,28 +58,12 @@ const AlumniSlider = () => {
         ]
     };
 
-    const images = [
-        'https://via.placeholder.com/300x200?text=Image+1',
-        'https://via.placeholder.com/300x200?text=Image+2',
-        'https://via.placeholder.com/300x200?text=Image+3',
-        'https://via.placeholder.com/300x200?text=Image+4',
-        'https://via.placeholder.com/300x200?text=Image+5',
-        'https://via.placeholder.com/300x200?text=Image+6',
-        'https://via.placeholder.com/300x200?text=Image+7',
-        'https://via.placeholder.com/300x200?text=Image+8',
-    ];
-
     return (
         <div className="image-slider">
             <Slider {...settings}>
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
+                {alumni.map((alumnus, index) => (
+                    <AlumniCard key={index} alumnus={alumnus} /> // Ensure you pass the correct data to AlumniCard
+                ))}
             </Slider>
         </div>
     );

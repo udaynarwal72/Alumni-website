@@ -523,6 +523,31 @@ const userForgotPasssword = async (req, res) => {
     }
 }
 
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        return res.status(200).json(new ApiResponse(200, users, "Users fetched successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
+}
+
+const checkAuthentication = AsyncHandler(async (req, res) => {
+    if (req.user?._id) {
+        const user = await User.findById(req.user._id).select("-password");
+        if(user){
+            return res.status(200).json(new ApiResponse(200, { isLoggedIn: true }, "User is authenticated"));
+        }
+        else{
+            return res.status(401).json(new ApiResponse(401, { isLoggedIn: false }, "User is not authenticated"));
+        
+        }
+    }
+    else {
+        return res.status(401).json(new ApiResponse(401, { isLoggedIn: false }, "User is not authenticated"));
+    }
+})
+
 export {
     userLogin,
     logoutUser,
@@ -542,5 +567,7 @@ export {
     findNotificationById,
     deleteNotification,
     userForgotPasssword,
-    changeNotloggedInUserPassword
+    changeNotloggedInUserPassword,
+    getAllUsers,
+    checkAuthentication,
 };

@@ -19,6 +19,8 @@ import BlogCard from './components/BlogCard/BlogCard';
 import SignInPage from './pages/Signin';
 import SignupPage from './pages/Signup';
 
+import Userlogout from './helpers/Logout';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -57,10 +59,13 @@ const router = createBrowserRouter([
     element: <Blogs />
   },
   {
-    path:'testblogcard',
-    element:<BlogCard />
+    path: 'testblogcard',
+    element: <BlogCard />
+  },
+  {
+    path: '/logout',
+    element: <Userlogout />
   }
-
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
