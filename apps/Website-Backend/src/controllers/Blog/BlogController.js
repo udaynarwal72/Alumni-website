@@ -21,14 +21,13 @@ const createblog = async (req, res) => {
             blog_body: blog_body,
             blogImage: uploadImageCloud?.url || "",
             tags: blog_tags,
-            blog_createdBy:req.user._id
+            blog_createdBy: req.user._id
         });
         return res.status(200).json(new ApiResponse(200, createdBlog, "Blog created successfully"));
     } catch (error) {
         return res.status(500).json(new ApiResponse(500, null, `Error creating blog: ${error.message}`));
     }
 };
-
 // Get all blog posts
 const getAllBlog = async (req, res) => {
     try {
@@ -39,7 +38,6 @@ const getAllBlog = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error retrieving blogs: ${error.message}`));
     }
 };
-
 const updateBlogById = async (req, res) => {
     try {
         const { blogId } = req.params;
@@ -88,7 +86,6 @@ const getSingleBlogById = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error retrieving blog: ${error.message}`));
     }
 };
-
 const likeBlog = async (req, res) => {
     try {
         const { blogId } = req.params;
@@ -104,7 +101,6 @@ const likeBlog = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error liking blog: ${error.message}`));
     }
 }
-
 const commentOnBlog = async (req, res) => {
     try {
         const { blogId } = req.params;
@@ -134,7 +130,6 @@ const getCommentsByBlogId = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error retrieving comments: ${error.message}`));
     }
 }
-
 const searchBlogs = async (req, res) => {
     try {
         const { search } = req.query;
@@ -147,7 +142,6 @@ const searchBlogs = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error retrieving blogs: ${error.message}`));
     }
 }
-
 const getBlogsByAuthor = async (req, res) => {
     try {
         const { authorId } = req.params;
@@ -160,7 +154,6 @@ const getBlogsByAuthor = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error retrieving blogs: ${error.message}`));
     }
 }
-
 const getBlogsByTag = async (req, res) => {
     try {
         const { tag } = req.query;
@@ -171,7 +164,6 @@ const getBlogsByTag = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error retrieving blogs: ${error.message}`));
     }
 }
-
 const createBookMark = async (req, res) => {
     try {
         const { blogId } = req.params;

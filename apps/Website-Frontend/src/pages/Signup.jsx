@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './signup.css';
-import Footer from '../footer';
-import NavBar from '../Navbar';
-import dataCountry from '../../../../../src/countries.json';
-import dataState from '../../../../../src/states.json';
+import '../styles/SignUp.css';
+import NavBar from '../components/Navbar';
+import Footer from '../components/footer';
+import dataCountry from '../../../../src/countries.json';
+import dataState from '../../../../src/states.json';
 
 const branches = [
     'Computer Science', 'Electronics and Communication', 'Information Technology',

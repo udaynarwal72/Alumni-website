@@ -11,13 +11,13 @@ import './index.css';
 import HeaderProvider from './context/HeaderProvider';
 import AboutUsPage from './pages/AboutUs';
 import ContactUsPage from './pages/ContactUs';
-import LoginPage from './components/Signin/Login';
-import SignupPage from './components/signup';
 import HiringPage from './pages/Hire';
 import UserProfile from './pages/UserProfileSection';
 import OurAlumni from './pages/OurAlumini';
 import Blogs from './pages/Blogs';
 import BlogCard from './components/BlogCard/BlogCard';
+import SignInPage from './pages/Signin';
+import SignupPage from './pages/Signup';
 
 
 const router = createBrowserRouter([
@@ -34,8 +34,8 @@ const router = createBrowserRouter([
     element: <ContactUsPage />,
   },
   {
-    path: '/login',
-    element: <LoginPage />
+    path: '/signin',
+    element: <SignInPage />
   },
   {
     path: '/signup',
@@ -54,14 +54,14 @@ const router = createBrowserRouter([
     element: <OurAlumni />
   },
   {
-    path:'/blog',
-    element:<Blogs />
+    path: '/blog',
+    element: <Blogs />
   },
   {
-    path:'testblogcard',
-    element:<BlogCard />
+    path: 'testblogcard',
+    element: <BlogCard />
   }
-  
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
