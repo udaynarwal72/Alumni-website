@@ -1,0 +1,134 @@
+/* .job-card-parent{
+    background-color: #F9F5EB;
+    height:100vh;
+    padding:25px;
+} */
+.main-job-card {
+    background-color: #F9F5EB;
+    border: 1px solid #C5291D;
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .main-job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  
+  .job-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .job-card-header h1 {
+    font-size: 1.8em;
+    margin: 0;
+  }
+  
+  .job-card-header p {
+    font-size: 0.8em;
+    color: #6b7280;
+    margin-top: 20px;
+  }
+  
+  .ux-designer {
+    color: #C5291D;
+    font-size: 1.3em;
+    margin: 10px 0;
+    font-weight: 600;
+  }
+  
+  .time-posted {
+    color: #6b7280;
+    font-size: 0.8em;
+  }
+  
+  .job-card-details {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .row1,.row2{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .apply-link span{
+    color:#C5291D
+  }
+  
+
+  
+  .skills {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+  }
+  
+  .skills span {
+    background-color: #fff;
+    border: 1px solid #C5291D;
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: #C5291D;
+    font-size: 0.9em;
+  }
+  
+  .apply-link {
+    display: block;
+    margin-top: 20px;
+    color: #1d4ed8;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .apply-link:hover {
+    text-decoration: underline;
+  }
+  .second{
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .one-detail,.second-detail{
+    display: flex;
+    color:#6b7280;
+  }
+  .job-logos img{
+    width:8px;
+
+  }
+  .job-logos{
+    margin-right: 5px;
+  }
+  @media (max-width: 390px) {
+    .card {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    .card-header h1 {
+      font-size: 1.2em;
+    }
+  
+    .ux-designer {
+      font-size: 1em;
+    }
+  
+    .details p {
+      font-size: 0.8em;
+    }
+  
+    .skills span {
+      font-size: 0.8em;
+    }
+  
+    .apply-link {
+      font-size: 0.9em;
+    }
+  }

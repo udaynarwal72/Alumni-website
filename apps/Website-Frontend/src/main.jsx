@@ -19,7 +19,6 @@ import BlogCard from './components/BlogCard/BlogCard';
 import SignInPage from './pages/Signin';
 import SignupPage from './pages/Signup';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -58,8 +57,8 @@ const router = createBrowserRouter([
     element: <Blogs />
   },
   {
-    path: 'testblogcard',
-    element: <BlogCard />
+    path:'testblogcard',
+    element:<BlogCard />
   }
 
 ]);

@@ -4,7 +4,7 @@
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background: #ffffff;
+    /* background: #F9F5EB; */
     padding: 0;
     display: flex;
     flex-direction: column;
