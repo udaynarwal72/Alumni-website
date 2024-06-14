@@ -42,6 +42,7 @@ function App() {
 				<BlogSlider />
 				<EventSlider />
 				<JobSlider />
+				<ImageSlider/>
 			</div>
 				<Footer />
 		</>
