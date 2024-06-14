@@ -169,13 +169,14 @@
 }
 .img2 img{
     position: relative;
-    /* width: 100%; */
+    width: 100%;
     padding:24px;
     margin-top: 24px;
     justify-content: center;
     display: flex;
     object-fit: cover;
     transition: transform 0.3s ease;
+    
 }
 .img2 img:hover{
     transform: scale(1.05);
