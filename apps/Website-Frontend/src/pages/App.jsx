@@ -11,9 +11,9 @@ import BlogSlider from "../components/BlogSlider/BlogSlider";
 import JobSlider from "../components/JobSlider/JobSlider";
 import AlumniSlider from "../components/AlumniSlider/AlumniSlider";
 import EventSlider from "../components/EventSlider/EventSlider";
+import "../styles/App.css";
 
 
-	
 function App() {
 	const [count, setCount] = useState(0);
 	async function requestPermission() {
@@ -35,13 +35,15 @@ function App() {
 	}, []);
 	return (
 		<>
-			<NavBar /> 
-			<Herosection />
-			<AlumniSlider />
-			<BlogSlider />
-			<EventSlider />
-			<JobSlider />
-			<Footer />
+				<NavBar />
+			<div className="parent-container">
+				<Herosection />
+				<AlumniSlider />
+				<BlogSlider />
+				<EventSlider />
+				<JobSlider />
+			</div>
+				<Footer />
 		</>
 	);
 }

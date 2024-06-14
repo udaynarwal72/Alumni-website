@@ -28,7 +28,8 @@ body {
 
 .Main-blog-card {
     /* padding: 25px 12px; */
-    width: 350px;
+    width: 25rem;
+    margin: 20px;
     display: flex;
     justify-content: center;
 }
@@ -39,7 +40,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease;
-    width: 350px;
+    width: 25rem;
     margin: 15px;
     position: relative;
     z-index: 1;
@@ -119,4 +120,38 @@ body {
 .aut-desc span:first-child{
     color: black;
     font-weight: 700;
+}
+
+@media screen and (max-width: 600px) {
+    .Main-blog-card {
+        width: 100%;
+        margin: 0 10px;
+    }
+
+    .card-title {
+        font-size: 1.2em;
+    }
+
+    /* .card-image img {
+        width: 80px;
+        height: 80px;
+    } */
+
+    .card-desc {
+        font-size: 0.9em;
+    }
+    .card-footer{
+        padding: 5px;
+    }
+    .aut-desc div{
+        padding:1px 5px;
+    }
+    .aut-desc span{
+        font-size: 0.8em;
+        padding: 3px;
+    }
+    .aut-desc span:first-child{
+        font-size: 0.9em;
+    }
+    
 }
