@@ -9,8 +9,8 @@ const ImageSlider = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-    // autoplay: true,
-    // autoplaySpeed: 5000 autoplay image,
+    autoplay: true,
+    autoplaySpeed: 5000,
     responsive: [
       {
         breakpoint: 1024,
