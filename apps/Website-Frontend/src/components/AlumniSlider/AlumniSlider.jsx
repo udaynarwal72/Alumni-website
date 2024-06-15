@@ -61,9 +61,14 @@ const AlumniSlider = () => {
     return (
         <div className="image-slider">
             <Slider {...settings}>
-                {alumni.map((alumnus, index) => (
-                    <AlumniCard key={index} alumnus={alumnus} /> // Ensure you pass the correct data to AlumniCard
-                ))}
+                <AlumniCard />
+                <AlumniCard />
+                <AlumniCard />
+                <AlumniCard />
+                <AlumniCard />
+                <AlumniCard />
+                <AlumniCard />
+                <AlumniCard />
             </Slider>
         </div>
     );

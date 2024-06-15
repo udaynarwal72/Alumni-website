@@ -1,13 +1,13 @@
-const Herosection = () => {
-    return (
-        <div className='hero-container'>
-            <h1>ADVENTURE AWAITS</h1>
-            <p>What are you waiting for?</p>
-            <div className='hero-btns'>
-                <h1>Hi</h1>
-            </div>
-        </div>
-    );
-}
+import "./HeroSection.css";
 
-export default Herosection
+const Herosection = () => {
+	return (
+		<div className="hero-container">
+			<div className="hero-main">
+				
+			</div>
+		</div>
+	);
+};
+
+export default Herosection;

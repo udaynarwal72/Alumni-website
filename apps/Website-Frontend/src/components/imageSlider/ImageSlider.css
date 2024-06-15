@@ -52,7 +52,7 @@
 
 .slick-prev:hover,
 .slick-next:hover {
-  background-color: #F9F5EB; /* Darker on hover */
+  background-color: #f9f2eb; /* Darker on hover */
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 4px 8px #F9F5EB; /* Subtle shadow on hover */
 }

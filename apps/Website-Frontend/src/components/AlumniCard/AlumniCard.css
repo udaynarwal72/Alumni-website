@@ -1,35 +1,36 @@
 .card {
-    width: 344px;
+    width: 100%;
+    max-width: 20rem; /* Reduced the max-width */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    /* background: #F9F5EB; */
     padding: 0;
-    height: 395px;
+    height: auto; /* Set height to auto */
     display: flex;
     flex-direction: column;
-    transition: all .2s;
+    transition: all 0.2s;
     border: 2px solid #C5291D;
-}
-.card:hover{
-    box-shadow: 2px 12px 20px #cb8985;
-    cursor: pointer;
-    transform:translateY(-5px);
+    margin: auto;
 }
 
+.card:hover {
+    box-shadow: 2px 12px 20px #cb8985;
+    cursor: pointer;
+    transform: translateY(-5px);
+}
 
 .card-header {
     background: linear-gradient(to bottom, #e4cac9, #ffffff);
-    padding: 20px;
+    padding: 1rem; /* Reduced padding */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .profile-image {
-    width: 120px;
-    height: 120px;
+    width: 6rem; /* Reduced width */
+    height: 6rem; /* Reduced height */
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid #C5291D;
@@ -37,9 +38,9 @@
 }
 
 .name h1 {
-    font-size: 25px;
+    font-size: 1.25rem; /* Reduced font-size */
     color: #C5291D;
-    margin-bottom: 25px;
+    margin-bottom: 1.25rem; /* Reduced margin-bottom */
     font-weight: 500;
 }
 
@@ -47,16 +48,16 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-
 }
 
 .details div {
-    padding: 10px 12px;
+    padding: 8px 10px; /* Reduced padding */
 }
 
-.details div :first-child {
+.details div:first-child {
     color: #C5291D;
 }
+
 @media (max-width: 600px) {
     .card {
         width: 100%;
@@ -68,8 +69,8 @@
     }
 
     .profile-image {
-        width: 80px;
-        height: 80px;
+        width: 4.5rem; /* Further reduced width */
+        height: 4.5rem; /* Further reduced height */
     }
 
     .details {
@@ -77,5 +78,21 @@
     }
 }
 
+@media (min-width: 601px) and (max-width: 1024px) {
+    .card {
+        max-width: 18rem; /* Reduced max-width */
+    }
 
+    .name h1 {
+        font-size: 1.1em; /* Reduced font-size */
+    }
 
+    .profile-image {
+        width: 5.5rem; /* Reduced width */
+        height: 5.5rem; /* Reduced height */
+    }
+
+    .details {
+        font-size: 0.95em;
+    }
+}

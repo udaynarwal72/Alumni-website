@@ -22,7 +22,7 @@
 .slick-next {
  width: 40px;
  height: 40px;
- background-color: #F9F5EB; /* Semi-transparent background */
+ background-color: #C5291D; /* Semi-transparent background */
  border: none;
  border-radius: 50%;
  display: flex;
@@ -37,22 +37,24 @@
 
 .slick-prev {
  left: 10px;
+ background-color: #C5291D;
 }
 
 .slick-next {
  right: 10px;
+ background-color: #C5291D;
 }
 
 .slick-prev:before,
 .slick-next:before {
  font-family: 'slick';
  font-size: 20px;
- color: #F9F5EB;
+ color: #C5291D;
 }
 
 .slick-prev:hover,
 .slick-next:hover {
- background-color: #F9F5EB; /* Darker on hover */
+ background-color:#C5291D; /* Darker on hover */
  transform: translateY(-50%) scale(1.1);
  box-shadow: 0 4px 8px #F9F5EB; /* Subtle shadow on hover */
 }
