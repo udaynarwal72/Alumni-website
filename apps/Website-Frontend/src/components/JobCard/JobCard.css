@@ -1,24 +1,27 @@
 /* JobCard.css */
 
 .job-card-parent {
-  background-color: #F9F5EB;
+  
   padding: 2%;
 }
 
 .main-job-card {
-  background-color: #F9F5EB;
+  background-color:#faf1da;
+  ;
   border: 0.1em solid #C5291D;
   border-radius: 0.75em;
-  padding: 2%;
-  width: 90%;
-  max-width: 20em;
+  padding: 1em; /* Adjusted padding for a smaller card */
+  width: 100%;
+  max-width: 25em; /* Increased max-width for a wider card */
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1em auto; /* Center the card and give some margin */
 }
 
 .main-job-card:hover {
   transform: translateY(-0.3em);
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  cursor:pointer;
 }
 
 .job-card-header {
@@ -29,26 +32,26 @@
 }
 
 .job-card-header h1 {
-  font-size: 1.5em;
+  font-size: 1.2em; /* Adjusted font-size */
   margin: 0;
 }
 
 .job-card-header p {
-  font-size: 0.8em;
+  font-size: 0.75em;
   color: #6b7280;
   margin-top: 0.5em;
 }
 
 .ux-designer {
   color: #C5291D;
-  font-size: 1.3em;
+  font-size: 1em; /* Adjusted font-size */
   margin: 0.5em 0;
   font-weight: 600;
 }
 
 .time-posted {
   color: #6b7280;
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 
 .job-card-details {
@@ -72,6 +75,7 @@
   display: flex;
   gap: 0.5em;
   margin: 1em 0;
+  flex-wrap: wrap;
 }
 
 .skills span {
@@ -80,15 +84,19 @@
   border-radius: 1.25em;
   padding: 0.25em 0.5em;
   color: #C5291D;
-  font-size: 0.9em;
+  font-size: 0.8em; /* Adjusted font-size */
 }
 
 .apply-link {
   display: block;
-  margin-top: 1em;
+  margin-top: 0.5em; /* Reduced margin-top for better alignment */
   color: #1d4ed8;
   text-decoration: none;
   font-weight: bold;
+  font-size: 0.8em; /* Adjusted font-size */
+  overflow: hidden; /* Ensures link stays within card */
+  white-space: nowrap; /* Prevents link from wrapping */
+  text-overflow: ellipsis; /* Adds ellipsis if link exceeds width */
 }
 
 .apply-link:hover {
@@ -115,7 +123,7 @@
 }
 
 .job-logos span {
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 
 .job-logos span:first-child {
@@ -125,11 +133,12 @@
 @media screen and (max-width: 600px) {
   .main-job-card {
     width: 95%;
-    margin: 0 2.5%;
+    margin: 1em auto;
+    padding: 0.75em; /* Further reduced padding for smaller screens */
   }
 
   .job-card-header h1 {
-    font-size: 1.2em;
+    font-size: 1em; /* Adjusted font-size */
   }
 
   .job-card-header p {
@@ -137,7 +146,7 @@
   }
 
   .ux-designer {
-    font-size: 1.1em;
+    font-size: 0.9em; /* Adjusted font-size */
   }
 
   .time-posted {
@@ -146,11 +155,11 @@
 
   .skills span {
     padding: 0.25em 0.5em;
-    font-size: 0.8em;
+    font-size: 0.7em; /* Adjusted font-size */
   }
 
   .apply-link {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 
   .job-logos span {

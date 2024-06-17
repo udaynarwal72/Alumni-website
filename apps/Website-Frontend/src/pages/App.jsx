@@ -13,7 +13,6 @@ import AlumniSlider from "../components/AlumniSlider/AlumniSlider";
 import EventSlider from "../components/EventSlider/EventSlider";
 import "../styles/App.css";
 
-
 function App() {
 	const [count, setCount] = useState(0);
 	async function requestPermission() {
@@ -34,18 +33,60 @@ function App() {
 		requestPermission();
 	}, []);
 	return (
-		<>
-				<NavBar />
+		<div style={{ backgroundColor: "#F9F5EB", minHeight: "100vh" }}>
+			<NavBar />
 			<div className="parent-container">
 				<Herosection />
+				<div className="-first heading">
+					<div className="first-heading-content">
+						<button>Our Alumnis</button>
+						<div>
+							<h1>Connect Your Batchmates</h1>
+						</div>
+					</div>
+				</div>
+
 				<AlumniSlider />
+				<div className="alumni-end">
+					<div className="view-all-button">
+						<button className="view-all">View All</button>
+					</div>
+				</div>
+				<hr className="home"></hr>
+				<div className="second-heading">
+					<div className="second-heading-content">
+						<button>Blogs</button>
+						<div>
+							<h1>Alumnis Write..</h1>
+						</div>
+					</div>
+				</div>
 				<BlogSlider />
+				<hr className="home"></hr>
+				<div className="second-heading">
+					<div className="second-heading-content">
+						<button>Events</button>
+						<div>
+							<h1>The Alumnis Meet</h1>
+						</div>
+					</div>
+				</div>
 				<EventSlider />
+				<hr className="home"></hr>
+				<div className="second-heading">
+					<div className="second-heading-content">
+						<button>Jobs</button>
+						<div>
+							<h1>Job Section</h1>
+						</div>
+					</div>
+				</div>
 				<JobSlider />
-				<ImageSlider/>
+				{/* <ImageSlider /> */}
 			</div>
-				<Footer />
-		</>
+
+			<Footer />
+		</div>
 	);
 }
 
