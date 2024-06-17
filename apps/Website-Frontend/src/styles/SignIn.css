@@ -1,69 +1,188 @@
 .parent-login-container {
     display: flex;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 800px;
+    
+}
+.left-panel {
+    background-color: #C5291D;
+    color: #fff;
+    padding: 40px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+}
+.card-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.card-image-container img{
+    max-width: 80%;
+    height: auto;
+}
+.parent-login{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #F9F5EB;
+}
+.left-panel .verification h2 {
     margin: 0;
-    background-color: #f0f0f0;
+    font-size: 30px;
+    font-weight: bold;
+    color:#F9F5EB
 }
 
-.login-container {
-    background: #ffffff;
+.left-panel .verification p {
+    margin-top: 10px;
+    font-size: 16px;
+    color:#F9F5EB
+}
+.right-panel {
     padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #faf1da;
 }
 
-.login-container h1 {
+.right-panel h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+    color:#C5291D
+}
+
+.right-panel p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #666;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.login-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.remember-forgot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     margin-bottom: 20px;
 }
-
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
+.remember-forgot a {
+    text-decoration: none;
+    color: #1a73e8;
+    font-size: 14px;
+    margin-bottom: 12px;
 }
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.input-group input {
-    width: 100%;
+.login-button {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
+    background-color: #C5291D;
+    color: #F9F5EB;
     border: none;
-    border-radius: 4px;
-    color: white;
+    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
 }
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.forgot-password {
-    margin-top: 15px;
-}
-
-.forgot-password a {
-    color: #007BFF;
+.right-panel a {
+    color: #1a73e8;
     text-decoration: none;
+    font-size: 14px;
 }
 
-.forgot-password a:hover {
+.right-panel a:hover {
     text-decoration: underline;
 }
+.Dont{
+    color:#C5291D;
+}
+@media (max-width: 768px) {
+    .parent-login-container {
+        flex-direction: column;
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .left-panel, .right-panel {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .left-panel {
+        padding: 20px;
+    }
+
+    .left-panel .verification {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .right-panel h2 {
+        font-size: 24px;
+    }
+
+    .right-panel p {
+        font-size: 14px;
+    }
+
+    .login-form input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .login-button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .right-panel h2 {
+        font-size: 20px;
+    }
+
+    .right-panel p {
+        font-size: 12px;
+    }
+
+    .login-form input {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .login-button{
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    
+}
+
+

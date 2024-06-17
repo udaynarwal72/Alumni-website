@@ -4,6 +4,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #e4c679;
+    overflow-x: hidden;
 }
 .home{
     width:100vw;
@@ -21,7 +22,7 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    
+    padding:0 1 rem
 }
 .first-heading-content button,.second-heading-content button{
     background-color: white;
