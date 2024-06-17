@@ -21,6 +21,7 @@ import SignupPage from './pages/Signup';
 
 import Userlogout from './helpers/Logout';
 import BlogSection from './pages/BlogSection';
+import BlogForm from './pages/BlogForm';
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
   {
     path:'/blogsection',
     element:<BlogSection />
+  },
+  {
+    path:'blogform',
+    element:<BlogForm />
   }
 ]);
 
