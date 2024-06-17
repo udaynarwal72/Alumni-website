@@ -10,7 +10,8 @@ import BookMark from '../../Schema/BookMarkSchema.js';
 import Notification from '../../Schema/NotificationSchema.js';
 import nodemailer from 'nodemailer'
 import Comment from '../../Schema/CommentSchema.js';
-
+import { Chance } from 'chance';
+const chance = Chance();
 const refreshAccessToken = AsyncHandler(async (req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
 
@@ -97,7 +98,7 @@ const userSignUpController = async (req, res) => {
         facebook_profile,
         instagram_handle,
         job_title,
-        department,
+        designation,
         work_experience,
         skills,
         time_zone,
@@ -127,24 +128,44 @@ const userSignUpController = async (req, res) => {
     const coverImage = await uploadOnCloudinary(coverImageLocalPath)
 
     const user = await User.create({
-        username: username,
-        first_name: first_name,
-        last_name: last_name,
-        joining_batch: joining_batch,
-        country: country,
-        state: state,
-        city: city,
-        address: address,
-        branch: branch,
-        organisation: organisation,
+        username: chance.name().toLowerCase(),
+        first_name: chance.first(),
+        last_name: chance.last(),
+        joining_batch: chance.year(),
+        country: chance.country(),
+        state: chance.state(),
+        city: chance.city(),
+        address: chance.address(),
+        branch: "Other",
+        designation: chance.profession(),
+        organisation: chance.company(),
         skills: skills,
-        email: email,
-        password: password,
-        phone_number: phone_number,
-        dob: dob,
-        avatar: avatar?.url || "",
-        coverImage: coverImage?.url || "",
+        email: chance.email(),
+        password: "uday123",
+        phone_number: chance.phone(),
+        dob: chance.date(),
+        avatar: "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png" || "",
+        coverImage: "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg" || "",
     });
+    // const user = await User.create({
+    //     username: username,
+    //     first_name: first_name,
+    //     last_name: last_name,
+    //     joining_batch: joining_batch,
+    //     country: country,
+    //     state: state,
+    //     city: city,
+    //     address: address,
+    //     branch: branch,
+    //     organisation: organisation,
+    //     skills: skills,
+    //     email: email,
+    //     password: password,
+    //     phone_number: phone_number,
+    //     dob: dob,
+    //     avatar: avatar?.url || "",
+    //     coverImage: coverImage?.url || "",
+    // });
 
     const createdUser = await User.findById(user._id).select("-password")
     if (!createdUser) {
@@ -536,12 +557,12 @@ const getAllUsers = async (req, res) => {
 const checkAuthentication = AsyncHandler(async (req, res) => {
     if (req.user?._id) {
         const user = await User.findById(req.user._id).select("-password");
-        if(user){
+        if (user) {
             return res.status(200).json(new ApiResponse(200, { isLoggedIn: true }, "User is authenticated"));
         }
-        else{
+        else {
             return res.status(401).json(new ApiResponse(401, { isLoggedIn: false }, "User is not authenticated"));
-        
+
         }
     }
     else {

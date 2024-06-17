@@ -7,8 +7,8 @@ import dataState from '../../../../src/states.json';
 import { useNavigate } from 'react-router-dom';
 
 const branches = [
-    'Computer Science', 'Electronics and Communication', 'Information Technology',
-    'Mechanical', 'Electrical', 'Civil', 'Production and Industrial Engineering',
+    'Computer Science', 'Electronics and Communication Engineering', 'Information Technology',
+    'Mechanical Engineering', 'Electrical Engineering', 'Civil Engineering', 'Production and Industrial Engineering',
     'Mathematics and Computing', 'Industrial Internet of Things', 'Other'
 ];
 
@@ -148,8 +148,12 @@ function SignupPage() {
                             </select>
                         </div>
                         <div className="input-group">
-                            <label htmlFor="organisation">Organisation</label>
+                            <label htmlFor="organisation">Company</label>
                             <input type="text" id="organisation" name="organisation" required />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="designation">Designation</label>
+                            <input type="text" id="designation" name="designation" required />
                         </div>
                         <div className="input-group">
                             <label htmlFor="email">Email</label>

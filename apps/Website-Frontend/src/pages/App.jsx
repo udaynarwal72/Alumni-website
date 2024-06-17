@@ -32,8 +32,9 @@ function App() {
 		//request user for notification permission
 		requestPermission();
 	}, []);
-
-	
+	const allAlumni = () => {
+		window.location.href = "/alumnisection";
+	}
 	return (
 		<div style={{ backgroundColor: "#F9F5EB", minHeight: "100vh" }}>
 			<NavBar />
@@ -51,7 +52,7 @@ function App() {
 				<AlumniSlider />
 				<div className="alumni-end">
 					<div className="view-all-button">
-						<button className="view-all">View All</button>
+						<button onClick={allAlumni} className="view-all">View All</button>
 					</div>
 				</div>
 				<hr className="home"></hr>

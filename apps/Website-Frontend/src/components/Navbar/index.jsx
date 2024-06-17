@@ -70,7 +70,7 @@ const NavBar = () => {
                 <div className={`nav-elements ${showNavbar ? "active" : ""}`}>
                     <ul>
                         <li><NavLink exact to="/" activeClassName="active-link">Home</NavLink></li>
-                        <li><NavLink to="/blog" activeClassName="active-link">Blog</NavLink></li>
+                        <li><NavLink to="/blogsection" activeClassName="active-link">Blog</NavLink></li>
                         <li><NavLink to="/projects" activeClassName="active-link">Projects</NavLink></li>
                         <li><NavLink to="/about" activeClassName="active-link">About</NavLink></li>
                         <li><NavLink to="/contactus" activeClassName="active-link">Contact</NavLink></li>

@@ -33,7 +33,7 @@ const UserSchema = new Schema({
     facebook_profile: { type: String },
     instagram_handle: { type: String },
     job_title: { type: String },
-    department: { type: String },
+    designation: { type: String },
     work_experience: { type: String },
     skills: [{ type: String }],
     time_zone: { type: String },
@@ -44,8 +44,8 @@ const UserSchema = new Schema({
     certifications: [{ type: String }],
     awards: [{ type: String }],
     badges: [{ type: String }],
-    refreshToken: { type: String,},
-    notificationToken:{type:String,default:""},
+    refreshToken: { type: String, },
+    notificationToken: { type: String, default: "" },
 }, { timestamps: true });
 
 UserSchema.pre("save", async function (next) {
