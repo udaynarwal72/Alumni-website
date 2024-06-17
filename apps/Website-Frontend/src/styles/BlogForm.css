@@ -1,0 +1,111 @@
+.parent-blog-form{
+    background: linear-gradient(135deg, #f5f5dc 30%, #ffffff 100%);
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+.blog-form-container {
+    width: 90%;
+    max-width: 43.75rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    background-color: #F9F5EB;
+    box-shadow:  0 1rem 2rem rgba(139, 0, 0, 0.4);;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border:2px solid #C5291D;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    /* transform: perspective(1000px) rotateZ(2deg); */
+}
+
+
+
+.blog-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-h2{
+    margin-bottom: 1.25rem;
+    text-align: center;
+    color: #C5291D;
+    /* text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2); */
+}
+
+label {
+    margin-bottom: 0.625rem;
+    font-weight: bold;
+    color: #C5291D;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="file"],
+textarea {
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding: 0.625rem;
+    border: 1px solid #C5291D;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s; 
+    background-color: #fff7ec;
+    box-sizing: border-box;
+    background: linear-gradient(145deg, #fdf5e6, #fff5e1);
+    /* box-shadow:   0 0.5rem 1rem rgba(222, 113, 113, 0.4);  */
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="file"]:focus,
+textarea:focus {
+    border-color: #C5291D;
+
+}
+
+textarea {
+    resize: vertical;
+}
+
+.blog-form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #C5291D;
+    border: none;
+    border-radius: 6px;
+    color: #F9F5EB;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 1.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(222, 113, 113, 0.4);
+}
+
+.blog-form-button:hover {
+    background-color:#B22222;
+    transform: translateY(-2px);
+}
+
+
+@media (max-width: 600px) {
+    .blog-form-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="file"],
+    textarea {
+        padding: 8px;
+        margin-bottom: 15px;
+    }
+
+    .blog-form-button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
