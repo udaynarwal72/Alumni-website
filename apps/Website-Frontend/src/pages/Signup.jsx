@@ -88,7 +88,8 @@ function SignupPage() {
             <NavBar />
             <div className="parent-signup-container">
                 <div className="signup-container">
-                    <h1>Sign Up</h1>
+                    <h1>Welcome</h1>
+                    <h3>Join the RECNITKA Family</h3>
                     <form onSubmit={handleSubmit} encType="multipart/form-data">
                         <div className="input-group">
                             <label htmlFor="username">Username</label>
@@ -174,7 +175,7 @@ function SignupPage() {
                             <label htmlFor="coverImage">Cover Image</label>
                             <input type="file" id="coverImage" name="coverImage" accept="image/*" />
                         </div>
-                        <button type="submit">Sign Up</button>
+                        <button type="submit" className='sign-up-button'>Sign Up</button>
                     </form>
                 </div>
             </div>
