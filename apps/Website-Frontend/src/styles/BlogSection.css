@@ -1,0 +1,129 @@
+.parent-blog-section{
+    background-color: white;
+    height:100%;
+}
+.parent-blog-section h1:hover{
+    color:#C5291D;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.parent-blog-section h1{
+    transition: all 0.3s;
+    border-bottom: 3px solid #e0e0e0;
+}
+.blog-section-slider{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.trending{
+    margin-top: 40px;
+}
+.section-content{
+    width:90%;
+    margin:30px auto 30px;
+    /* border:1px solid red; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+.main-content{
+    width:70%;
+    float:left;
+    /* border:1px solid blue; */
+}
+.side-bar{
+    width:30%;
+    float:left;
+    /* border:1px dashed green; */
+    height:300px;
+}
+.section-content .side-bar section{
+    background-color: white;
+    padding:20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+.text-input-blog{
+    padding:0.7rem 1rem;
+    width:100%;
+    display: block;
+    border-radius: 5px;
+    outline:none;
+    color:green;
+    line-height: 1.5rem;
+    border:1px solid #e0e0e0;
+    font-size: 0.9rem;
+}
+.section-topics ul{
+    margin:0px;
+    padding: 0px;
+    list-style: none;
+    border-top: 2px solid #e0e0e0;
+}
+.section-topics ul a{
+    font-weight: 400;
+    display:block;
+    padding:15px 0px 15px 0px;
+    text-decoration: none;
+    color:black;
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.3s;
+}
+.section-topics ul a:hover{
+    padding-left:10px;
+    transition: all 0.3s;
+}
+.section-content .side-bar section .section-title{
+    margin-bottom: 20px;
+}
+@media (max-width: 390px) {
+    .section-content {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center align content */
+    }
+
+    .main-content, .side-bar {
+        width: 100%; /* Full width for main content and sidebar */
+        float: none; /* Remove float for responsiveness */
+    }
+
+    .side-bar {
+        margin-top: 20px; /* Add spacing between main content and sidebar */
+    }
+}
+@media (min-width: 768px) {
+    .section-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .main-content {
+        width: 70%;
+        float: left;
+    }
+
+    .side-bar {
+        width: 30%;
+        float: left;
+    }
+}
+@media (max-width: 390px) {
+    .main-content,
+    .side-bar {
+        width: 100%; /* Full width for main content and sidebar */
+        float: none; /* Remove float for responsiveness */
+    }
+
+    .side-bar {
+        margin-top: 20px; /* Add spacing between main content and sidebar */
+    }
+
+    .section-content {
+        flex-direction: column; /* Stack content vertically for mobile screens */
+        align-items: center;
+    }
+}

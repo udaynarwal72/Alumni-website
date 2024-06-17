@@ -20,6 +20,7 @@ import SignInPage from './pages/Signin';
 import SignupPage from './pages/Signup';
 
 import Userlogout from './helpers/Logout';
+import BlogSection from './pages/BlogSection';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
     path: '/logout',
     element: <Userlogout />
+  },
+  {
+    path:'/blogsection',
+    element:<BlogSection />
   }
 ]);
 

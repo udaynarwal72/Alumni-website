@@ -1,22 +1,25 @@
 .root-blog-sec-card {
     display: flex;
     justify-content: center;
-
+    margin-top: 50px;
+    /* flex-direction: column; */
 }
 
 .blog-sec-card {
-    width: 700px;
+    width: 90%;
     display: flex;
     background-color: white;
-    height: 200px;
+    height: auto;;
     margin-bottom: 30px;
+    padding: 10px;
+    flex-direction: column;
 }
 
 .sec-card-details {
     display: flex;
     justify-content: left;
     padding: 10px;
-    width: 70%;
+    width: 100%;
     flex-direction: column;
 }
 
@@ -44,10 +47,11 @@
 .sec-card-info {
     display: flex;
     justify-content: left;
+    flex-wrap: wrap;
 }
 
 .title {
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 8px;
     margin-top: 5px;
@@ -65,39 +69,98 @@
     margin-bottom: 16px;
     color: grey;
     line-height: 22px;
-    width: 95%;
+    width: 100%;
     margin-top: 6px;
 }
-.sec-card-image{
+
+.sec-card-image {
     margin-left: 40px;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
-.sec-card-image img{
+
+.sec-card-image img {
     width: 112px;
     aspect-ratio: auto 112 / 112;
     height: 112px;
-    box-sizing: inherit;
+    box-sizing: border-box;
+    ;
     vertical-align: middle;
     margin-top: 40px;
 }
-.sec-card-footer{
-display: flex;
-justify-content: space-between;
+
+.sec-card-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-.footer-left button{
+
+.footer-left button {
     background-color: #F2F2F2;
     color: black;
     border-radius: 18px;
-    
+
 }
-.footer-left{
+
+.footer-left {
     display: flex;
-    
+    flex-wrap: wrap;
+
 }
-.footer-left span{
-    
+
+.footer-left span {
+
     font-size: 14px;
     cursor: pointer;
     margin-left: 14px;
+}
+
+.read-more {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    color: #C5291D;
+    border-color: #C5291D;
+    border-width: 1px;
+    cursor: pointer;
+    border-style: groove;
+    transition: all 0.3s;
+}
+
+.read-more:hover {
+    background-color: #C5291D;
+    color: white;
+    transition: all 0.3s;
+}
+
+@media (min-width: 768px) {
+    .blog-sec-card {
+        flex-direction: row; /* Change to row direction for larger screens */
+        height: 200px;
+    }
+
+    .sec-card-details {
+        width: 70%;
+    }
+
+    .sec-card-image {
+        margin-left: 40px;
+        margin-top: 0; /* Reset margin-top for larger screens */
+    }
+}
+@media (max-width: 390px) {
+    .blog-sec-card {
+        flex-direction: column; /* Stack content vertically for mobile screens */
+        width:100%;
+        padding: 5px; /* Reduce padding for mobile */
+        margin-bottom: 15px; /* Reduce bottom margin */
+    }
+
+    .sec-card-image img {
+        margin-top: 10px; /* Adjust margin for better spacing on mobile screens */
+        width: 80px; /* Reduce image size for mobile */
+        height: 80px; /* Reduce image size for mobile */
+    }
 }

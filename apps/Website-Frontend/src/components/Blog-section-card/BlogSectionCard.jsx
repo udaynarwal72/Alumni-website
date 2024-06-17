@@ -27,8 +27,8 @@ const BlogSectionCard = () => {
 						and...
 					</div>
                     <div className="sec-card-footer">
-                        <div className="footer-left"><button>Statistics</button>
-                        <span>5 min read</span></div>
+                        <div className="footer-left"><button>Statistics</button></div>
+                        <span><button className="read-more">Read More</button></span>
                         
                     </div>
 				</div>
