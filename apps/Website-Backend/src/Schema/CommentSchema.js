@@ -3,7 +3,7 @@ const Schema = _Schema;
 
 const commentSchema = new Schema({
     text: { type: String, required: true },
-    createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    createdBy: { type: Schema.Types.ObjectId, ref: 'AlumniUser', required: true },
     blog: { type: Schema.Types.ObjectId, ref: 'Blog', required: true },
     createdAt: { type: Date, default: Date.now },
 }, { timestamps: true });

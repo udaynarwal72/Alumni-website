@@ -1,19 +1,19 @@
 import './AlumniCard.css';
 
-const AlumniCard = () => {
+const AlumniCard = ({ AlumniData }) => {
     return (
         <div className='Parent'>
             <div className='card'>
                 <div className="card-header">
-                    <img src="https://via.placeholder.com/150" className='profile-image' />
+                    <img src={AlumniData.avatar} className='profile-image' />
                 </div>
                 <div className='name'>
-                    <h1>Pragati Bhargawan</h1>
+                    <h1>{AlumniData.first_name} {AlumniData.last_name}</h1>
                 </div>
                 <div className='details'>
                     <div>
                         Batch
-                        <div>1998-02</div>
+                        <div>{AlumniData.joining_batch}-{Number(AlumniData.joining_batch)+4}</div>
                     </div>
                     <div>
                         Designation

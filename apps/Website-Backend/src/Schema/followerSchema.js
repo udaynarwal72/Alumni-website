@@ -3,7 +3,7 @@ import { Schema,model } from "mongoose";
 const FollowSchema = Schema({
     user_following: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'AlumniUser',
         required: true,
     },
     user_to_be_followed: {

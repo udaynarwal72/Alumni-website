@@ -32,6 +32,8 @@ function App() {
 		//request user for notification permission
 		requestPermission();
 	}, []);
+
+	
 	return (
 		<div style={{ backgroundColor: "#F9F5EB", minHeight: "100vh" }}>
 			<NavBar />

@@ -127,7 +127,7 @@ const userSignUpController = async (req, res) => {
     const coverImage = await uploadOnCloudinary(coverImageLocalPath)
 
     const user = await User.create({
-        username: username.toLowerCase(),
+        username: username,
         first_name: first_name,
         last_name: last_name,
         joining_batch: joining_batch,
@@ -137,6 +137,7 @@ const userSignUpController = async (req, res) => {
         address: address,
         branch: branch,
         organisation: organisation,
+        skills: skills,
         email: email,
         password: password,
         phone_number: phone_number,

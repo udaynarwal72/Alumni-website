@@ -48,7 +48,6 @@ const UserSchema = new Schema({
     notificationToken:{type:String,default:""},
 }, { timestamps: true });
 
-// Pre-save hook to hash the password before saving the user
 UserSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
         return next();
@@ -98,5 +97,5 @@ UserSchema.methods.generateRefreshToken = function () {
 };
 
 // Export the model
-const User = mongoose.model('Useryes', UserSchema);
+const User = mongoose.model('AlumniUser', UserSchema);
 export default User;

@@ -1,0 +1,2120 @@
+[
+    {
+        "username": "udaynarwal1",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1995,
+        "country": "China",
+        "state": "Beijing",
+        "city": "Beijing",
+        "address": "Random Address 1",
+        "branch": "Electrical",
+        "organisation": "Google",
+        "email": "udaynarwal1@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "5516021837",
+        "dob": "1996-05-04T15:47:43",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "SQL",
+            "Swift",
+            "CSS",
+            "Ruby"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect",
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Team Player",
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal2",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1997,
+        "country": "USA",
+        "state": "California",
+        "city": "San Francisco",
+        "address": "Random Address 2",
+        "branch": "Other",
+        "organisation": "Google",
+        "email": "udaynarwal2@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "7282855598",
+        "dob": "1977-03-30T21:46:44",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "C++"
+        ],
+        "hobbies": [
+            "Gaming"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Problem Solver",
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal3",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2014,
+        "country": "Australia",
+        "state": "New South Wales",
+        "city": "Sydney",
+        "address": "Random Address 3",
+        "branch": "Industrial Internet of Things",
+        "organisation": "Google",
+        "email": "udaynarwal3@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "6357157937",
+        "dob": "1973-05-02T06:55:47",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Ruby"
+        ],
+        "hobbies": [
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal4",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1990,
+        "country": "Japan",
+        "state": "Tokyo",
+        "city": "Tokyo",
+        "address": "Random Address 4",
+        "branch": "Electrical",
+        "organisation": "Google",
+        "email": "udaynarwal4@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "2410034047",
+        "dob": "1982-12-02T05:04:50",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Swift"
+        ],
+        "hobbies": [
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Team Player",
+            "Innovator"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal5",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1998,
+        "country": "France",
+        "state": "\u00cele-de-France",
+        "city": "Paris",
+        "address": "Random Address 5",
+        "branch": "Electronics and Communication",
+        "organisation": "Google",
+        "email": "udaynarwal5@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "9810431056",
+        "dob": "1998-07-13T07:06:50",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "CSS"
+        ],
+        "hobbies": [
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Innovator",
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal6",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1981,
+        "country": "France",
+        "state": "\u00cele-de-France",
+        "city": "Paris",
+        "address": "Random Address 6",
+        "branch": "Civil",
+        "organisation": "Google",
+        "email": "udaynarwal6@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "7728810212",
+        "dob": "1982-04-09T11:22:49",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Go",
+            "Java",
+            "JavaScript",
+            "C++"
+        ],
+        "hobbies": [
+            "Drawing"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal7",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2010,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 7",
+        "branch": "Electronics and Communication",
+        "organisation": "Google",
+        "email": "udaynarwal7@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "1489884403",
+        "dob": "1980-03-16T13:40:49",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Swift",
+            "Ruby",
+            "C++",
+            "JavaScript",
+            "Java"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Reading",
+            "Hiking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Innovator"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal8",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1987,
+        "country": "Germany",
+        "state": "Bavaria",
+        "city": "Munich",
+        "address": "Random Address 8",
+        "branch": "Electronics and Communication",
+        "organisation": "Google",
+        "email": "udaynarwal8@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "3144884715",
+        "dob": "1989-03-09T10:17:34",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Go",
+            "SQL",
+            "Ruby",
+            "C++",
+            "JavaScript"
+        ],
+        "hobbies": [
+            "Photography"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP",
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Innovator"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal9",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1981,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 9",
+        "branch": "Other",
+        "organisation": "Google",
+        "email": "udaynarwal9@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "4963556891",
+        "dob": "1995-07-05T03:24:38",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "SQL",
+            "Python",
+            "JavaScript",
+            "Swift",
+            "CSS"
+        ],
+        "hobbies": [
+            "Photography",
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Innovator",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal10",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1994,
+        "country": "India",
+        "state": "Haryana",
+        "city": "Kurukshetra",
+        "address": "Random Address 10",
+        "branch": "Industrial Internet of Things",
+        "organisation": "Google",
+        "email": "udaynarwal10@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "3371942595",
+        "dob": "1991-09-07T12:10:47",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Swift",
+            "C++",
+            "Java"
+        ],
+        "hobbies": [
+            "Drawing"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal11",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1994,
+        "country": "UK",
+        "state": "England",
+        "city": "London",
+        "address": "Random Address 11",
+        "branch": "Mathematics and Computing",
+        "organisation": "Google",
+        "email": "udaynarwal11@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "4173154957",
+        "dob": "1978-11-13T20:38:03",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Ruby",
+            "C++"
+        ],
+        "hobbies": [
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "PMP"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal12",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2016,
+        "country": "Canada",
+        "state": "Ontario",
+        "city": "Toronto",
+        "address": "Random Address 12",
+        "branch": "Electronics and Communication",
+        "organisation": "Google",
+        "email": "udaynarwal12@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "2098805744",
+        "dob": "1989-04-26T06:21:40",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Ruby",
+            "JavaScript",
+            "Java"
+        ],
+        "hobbies": [
+            "Drawing"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Top Performer",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal13",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2015,
+        "country": "Germany",
+        "state": "Bavaria",
+        "city": "Munich",
+        "address": "Random Address 13",
+        "branch": "Information Technology",
+        "organisation": "Google",
+        "email": "udaynarwal13@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "4695409019",
+        "dob": "1975-11-04T05:36:56",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Swift",
+            "JavaScript",
+            "Go",
+            "C++",
+            "Ruby"
+        ],
+        "hobbies": [
+            "Drawing",
+            "Cooking",
+            "Traveling"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Problem Solver",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal14",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1994,
+        "country": "Canada",
+        "state": "Ontario",
+        "city": "Toronto",
+        "address": "Random Address 14",
+        "branch": "Civil",
+        "organisation": "Google",
+        "email": "udaynarwal14@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "8837659566",
+        "dob": "1980-01-15T15:57:28",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Go",
+            "CSS"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Drawing"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Innovator",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal15",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2016,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 15",
+        "branch": "Industrial Internet of Things",
+        "organisation": "Google",
+        "email": "udaynarwal15@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "7847297168",
+        "dob": "1975-10-30T12:22:12",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Go",
+            "C++",
+            "HTML"
+        ],
+        "hobbies": [
+            "Hiking",
+            "Traveling",
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Best Project Award"
+        ],
+        "badges": [
+            "Top Performer",
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal16",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1995,
+        "country": "France",
+        "state": "\u00cele-de-France",
+        "city": "Paris",
+        "address": "Random Address 16",
+        "branch": "Information Technology",
+        "organisation": "Google",
+        "email": "udaynarwal16@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "6074870551",
+        "dob": "1986-11-26T07:22:30",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Swift"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Hiking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect",
+            "PMP"
+        ],
+        "awards": [
+            "Best Project Award",
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal17",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1981,
+        "country": "Germany",
+        "state": "Bavaria",
+        "city": "Munich",
+        "address": "Random Address 17",
+        "branch": "Electrical",
+        "organisation": "Google",
+        "email": "udaynarwal17@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "3141282420",
+        "dob": "1970-12-31T13:56:32",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Go"
+        ],
+        "hobbies": [
+            "Drawing"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect",
+            "PMP"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal18",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2001,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 18",
+        "branch": "Production and Industrial Engineering",
+        "organisation": "Google",
+        "email": "udaynarwal18@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "8267755530",
+        "dob": "1975-09-29T19:21:45",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "C++",
+            "Go",
+            "Swift",
+            "CSS"
+        ],
+        "hobbies": [
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Innovator"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal19",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2007,
+        "country": "UK",
+        "state": "England",
+        "city": "London",
+        "address": "Random Address 19",
+        "branch": "Other",
+        "organisation": "Google",
+        "email": "udaynarwal19@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "3245935695",
+        "dob": "1981-06-16T13:02:37",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "SQL"
+        ],
+        "hobbies": [
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Innovator",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal20",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2008,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 20",
+        "branch": "Other",
+        "organisation": "Google",
+        "email": "udaynarwal20@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "2456913697",
+        "dob": "1976-06-30T18:17:15",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "HTML",
+            "Python",
+            "Ruby",
+            "Swift",
+            "Java"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Drawing",
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Innovator"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal21",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1991,
+        "country": "Australia",
+        "state": "New South Wales",
+        "city": "Sydney",
+        "address": "Random Address 21",
+        "branch": "Civil",
+        "organisation": "Google",
+        "email": "udaynarwal21@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "7847579429",
+        "dob": "1984-03-01T04:59:13",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Java",
+            "CSS",
+            "Swift",
+            "Go",
+            "JavaScript"
+        ],
+        "hobbies": [
+            "Hiking",
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Best Project Award"
+        ],
+        "badges": [
+            "Team Player",
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal22",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2015,
+        "country": "UK",
+        "state": "England",
+        "city": "London",
+        "address": "Random Address 22",
+        "branch": "Mathematics and Computing",
+        "organisation": "Google",
+        "email": "udaynarwal22@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "8174386784",
+        "dob": "1998-10-17T01:01:09",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "CSS",
+            "Go"
+        ],
+        "hobbies": [
+            "Traveling"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Problem Solver",
+            "Innovator"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal23",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1998,
+        "country": "Germany",
+        "state": "Bavaria",
+        "city": "Munich",
+        "address": "Random Address 23",
+        "branch": "Mechanical",
+        "organisation": "Google",
+        "email": "udaynarwal23@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "3157611983",
+        "dob": "1996-01-09T10:50:04",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Swift",
+            "HTML",
+            "CSS"
+        ],
+        "hobbies": [
+            "Cooking",
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect",
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Best Project Award"
+        ],
+        "badges": [
+            "Top Performer",
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal24",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2011,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 24",
+        "branch": "Electrical",
+        "organisation": "Google",
+        "email": "udaynarwal24@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "9163205453",
+        "dob": "1988-03-06T09:51:40",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "JavaScript",
+            "HTML",
+            "Swift",
+            "C++"
+        ],
+        "hobbies": [
+            "Photography",
+            "Drawing"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Problem Solver",
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal25",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1981,
+        "country": "Germany",
+        "state": "Bavaria",
+        "city": "Munich",
+        "address": "Random Address 25",
+        "branch": "Mechanical",
+        "organisation": "Google",
+        "email": "udaynarwal25@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "2327768447",
+        "dob": "1997-03-09T03:50:46",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Go",
+            "CSS",
+            "Swift",
+            "Java"
+        ],
+        "hobbies": [
+            "Photography"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Team Player",
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal26",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2019,
+        "country": "USA",
+        "state": "California",
+        "city": "San Francisco",
+        "address": "Random Address 26",
+        "branch": "Electrical",
+        "organisation": "Google",
+        "email": "udaynarwal26@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "1684710222",
+        "dob": "1988-10-07T00:52:03",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Ruby",
+            "JavaScript"
+        ],
+        "hobbies": [
+            "Reading",
+            "Traveling"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "PMP"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Top Performer",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal27",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1989,
+        "country": "USA",
+        "state": "California",
+        "city": "San Francisco",
+        "address": "Random Address 27",
+        "branch": "Electronics and Communication",
+        "organisation": "Google",
+        "email": "udaynarwal27@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "4728499938",
+        "dob": "1981-12-03T19:24:33",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Swift"
+        ],
+        "hobbies": [
+            "Photography",
+            "Cooking",
+            "Traveling"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal28",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1989,
+        "country": "USA",
+        "state": "California",
+        "city": "San Francisco",
+        "address": "Random Address 28",
+        "branch": "Mathematics and Computing",
+        "organisation": "Google",
+        "email": "udaynarwal28@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "5166757796",
+        "dob": "1998-06-05T07:27:00",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Ruby",
+            "HTML"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Drawing",
+            "Hiking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP",
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Innovator"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal29",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2010,
+        "country": "France",
+        "state": "\u00cele-de-France",
+        "city": "Paris",
+        "address": "Random Address 29",
+        "branch": "Electronics and Communication",
+        "organisation": "Google",
+        "email": "udaynarwal29@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "1503064789",
+        "dob": "1987-11-17T11:08:02",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "JavaScript",
+            "Swift",
+            "Java",
+            "Ruby"
+        ],
+        "hobbies": [
+            "Drawing",
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal30",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2014,
+        "country": "USA",
+        "state": "California",
+        "city": "San Francisco",
+        "address": "Random Address 30",
+        "branch": "Information Technology",
+        "organisation": "Google",
+        "email": "udaynarwal30@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "4444603623",
+        "dob": "1993-06-27T22:02:34",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "SQL"
+        ],
+        "hobbies": [
+            "Photography",
+            "Traveling"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Top Performer",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal31",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1985,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 31",
+        "branch": "Other",
+        "organisation": "Google",
+        "email": "udaynarwal31@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "6515711061",
+        "dob": "1972-02-16T17:36:50",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Swift",
+            "Go",
+            "HTML"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Team Player",
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal32",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2001,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 32",
+        "branch": "Industrial Internet of Things",
+        "organisation": "Google",
+        "email": "udaynarwal32@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "2739111999",
+        "dob": "1997-02-14T18:14:34",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Ruby",
+            "HTML"
+        ],
+        "hobbies": [
+            "Cooking",
+            "Reading",
+            "Traveling"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Top Performer",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal33",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1987,
+        "country": "India",
+        "state": "Haryana",
+        "city": "Kurukshetra",
+        "address": "Random Address 33",
+        "branch": "Mathematics and Computing",
+        "organisation": "Google",
+        "email": "udaynarwal33@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "3093222304",
+        "dob": "1996-11-02T04:51:21",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Go"
+        ],
+        "hobbies": [
+            "Hiking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "PMP"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Team Player",
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal34",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1995,
+        "country": "Canada",
+        "state": "Ontario",
+        "city": "Toronto",
+        "address": "Random Address 34",
+        "branch": "Computer Science",
+        "organisation": "Google",
+        "email": "udaynarwal34@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "4575203533",
+        "dob": "1974-09-30T10:23:42",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "HTML",
+            "C++",
+            "Go"
+        ],
+        "hobbies": [
+            "Cooking",
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal35",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2014,
+        "country": "Canada",
+        "state": "Ontario",
+        "city": "Toronto",
+        "address": "Random Address 35",
+        "branch": "Civil",
+        "organisation": "Google",
+        "email": "udaynarwal35@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "9013095317",
+        "dob": "1975-05-19T02:48:28",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "HTML"
+        ],
+        "hobbies": [
+            "Cooking",
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Top Performer",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal36",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1997,
+        "country": "France",
+        "state": "\u00cele-de-France",
+        "city": "Paris",
+        "address": "Random Address 36",
+        "branch": "Mechanical",
+        "organisation": "Google",
+        "email": "udaynarwal36@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "8157478671",
+        "dob": "1995-02-02T01:55:23",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "C++",
+            "HTML",
+            "SQL",
+            "Go",
+            "Swift"
+        ],
+        "hobbies": [
+            "Hiking",
+            "Photography",
+            "Traveling"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "PMP"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal37",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1997,
+        "country": "Japan",
+        "state": "Tokyo",
+        "city": "Tokyo",
+        "address": "Random Address 37",
+        "branch": "Mathematics and Computing",
+        "organisation": "Google",
+        "email": "udaynarwal37@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "3487904524",
+        "dob": "1999-03-07T03:33:23",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "C++",
+            "CSS",
+            "JavaScript",
+            "Java",
+            "SQL"
+        ],
+        "hobbies": [
+            "Reading",
+            "Hiking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Best Project Award"
+        ],
+        "badges": [
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal38",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2015,
+        "country": "Australia",
+        "state": "New South Wales",
+        "city": "Sydney",
+        "address": "Random Address 38",
+        "branch": "Production and Industrial Engineering",
+        "organisation": "Google",
+        "email": "udaynarwal38@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "9049004908",
+        "dob": "1980-08-04T14:55:15",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Python",
+            "HTML",
+            "Swift"
+        ],
+        "hobbies": [
+            "Photography",
+            "Hiking",
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Team Player",
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal39",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1987,
+        "country": "Canada",
+        "state": "Ontario",
+        "city": "Toronto",
+        "address": "Random Address 39",
+        "branch": "Other",
+        "organisation": "Google",
+        "email": "udaynarwal39@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "5887915510",
+        "dob": "1975-08-12T18:16:41",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Ruby",
+            "Python"
+        ],
+        "hobbies": [
+            "Cooking",
+            "Photography"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP",
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Problem Solver",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal40",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2003,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 40",
+        "branch": "Industrial Internet of Things",
+        "organisation": "Google",
+        "email": "udaynarwal40@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "6119704099",
+        "dob": "1989-05-09T12:32:17",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Python",
+            "Ruby"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect",
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Top Performer",
+            "Team Player"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal41",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1983,
+        "country": "Australia",
+        "state": "New South Wales",
+        "city": "Sydney",
+        "address": "Random Address 41",
+        "branch": "Production and Industrial Engineering",
+        "organisation": "Google",
+        "email": "udaynarwal41@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "8259964661",
+        "dob": "1983-04-01T09:04:25",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "JavaScript",
+            "Go",
+            "Swift",
+            "CSS",
+            "SQL"
+        ],
+        "hobbies": [
+            "Traveling"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Innovator",
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal42",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2016,
+        "country": "Canada",
+        "state": "Ontario",
+        "city": "Toronto",
+        "address": "Random Address 42",
+        "branch": "Industrial Internet of Things",
+        "organisation": "Google",
+        "email": "udaynarwal42@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "7769405849",
+        "dob": "1972-01-09T11:46:37",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "JavaScript",
+            "Go",
+            "Java"
+        ],
+        "hobbies": [
+            "Drawing",
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Team Player",
+            "Innovator"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal43",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1983,
+        "country": "France",
+        "state": "\u00cele-de-France",
+        "city": "Paris",
+        "address": "Random Address 43",
+        "branch": "Electrical",
+        "organisation": "Google",
+        "email": "udaynarwal43@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "6989466410",
+        "dob": "1991-01-04T12:08:00",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Swift",
+            "JavaScript",
+            "Ruby",
+            "HTML"
+        ],
+        "hobbies": [
+            "Drawing",
+            "Photography"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Best Project Award",
+            "Employee of the Month"
+        ],
+        "badges": [
+            "Problem Solver",
+            "Innovator"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal44",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2011,
+        "country": "China",
+        "state": "Beijing",
+        "city": "Beijing",
+        "address": "Random Address 44",
+        "branch": "Other",
+        "organisation": "Google",
+        "email": "udaynarwal44@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "9506982320",
+        "dob": "1984-07-12T23:22:40",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "C++",
+            "JavaScript",
+            "SQL",
+            "Ruby"
+        ],
+        "hobbies": [
+            "Drawing",
+            "Cooking",
+            "Hiking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Best Project Award"
+        ],
+        "badges": [
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal45",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2019,
+        "country": "UK",
+        "state": "England",
+        "city": "London",
+        "address": "Random Address 45",
+        "branch": "Electrical",
+        "organisation": "Google",
+        "email": "udaynarwal45@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "4537707294",
+        "dob": "1999-07-11T01:25:37",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Go",
+            "C++"
+        ],
+        "hobbies": [
+            "Reading"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Best Project Award"
+        ],
+        "badges": [
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal46",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2014,
+        "country": "Germany",
+        "state": "Bavaria",
+        "city": "Munich",
+        "address": "Random Address 46",
+        "branch": "Production and Industrial Engineering",
+        "organisation": "Google",
+        "email": "udaynarwal46@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "5248247734",
+        "dob": "1983-11-23T10:34:38",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "HTML",
+            "C++",
+            "Swift",
+            "SQL",
+            "Java"
+        ],
+        "hobbies": [
+            "Cooking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Employee of the Month",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Problem Solver",
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal47",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2017,
+        "country": "Australia",
+        "state": "New South Wales",
+        "city": "Sydney",
+        "address": "Random Address 47",
+        "branch": "Mathematics and Computing",
+        "organisation": "Google",
+        "email": "udaynarwal47@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "2152351333",
+        "dob": "1993-03-27T02:52:07",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "JavaScript",
+            "HTML",
+            "Ruby",
+            "Swift"
+        ],
+        "hobbies": [
+            "Traveling"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator"
+        ],
+        "awards": [
+            "Best Project Award",
+            "Excellence in Innovation"
+        ],
+        "badges": [
+            "Top Performer"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal48",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1999,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 48",
+        "branch": "Production and Industrial Engineering",
+        "organisation": "Google",
+        "email": "udaynarwal48@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "6411871434",
+        "dob": "1982-08-27T10:45:33",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "C++",
+            "CSS",
+            "Python",
+            "JavaScript"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Gaming",
+            "Hiking"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "PMP"
+        ],
+        "awards": [
+            "Excellence in Innovation",
+            "Best Project Award"
+        ],
+        "badges": [
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal49",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 2016,
+        "country": "Brazil",
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "address": "Random Address 49",
+        "branch": "Other",
+        "organisation": "Google",
+        "email": "udaynarwal49@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "2146102642",
+        "dob": "1982-09-14T10:19:34",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "SQL",
+            "Swift",
+            "CSS"
+        ],
+        "hobbies": [
+            "Traveling",
+            "Drawing"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "Certified Kubernetes Administrator",
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Best Project Award"
+        ],
+        "badges": [
+            "Team Player",
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    },
+    {
+        "username": "udaynarwal50",
+        "avatar": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png",
+        "coverImage": "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg",
+        "first_name": "uday",
+        "last_name": "Narwal",
+        "joining_batch": 1999,
+        "country": "Japan",
+        "state": "Tokyo",
+        "city": "Tokyo",
+        "address": "Random Address 50",
+        "branch": "Industrial Internet of Things",
+        "organisation": "Google",
+        "email": "udaynarwal50@example.com",
+        "password": "$2b$10$U9YVdikztv2He8iBrMUoaO8EQUJ6cJZ7LOLXsCMvp5cP9Fqv/Sb5.",
+        "phone_number": "9807027931",
+        "dob": "1980-02-07T21:01:50",
+        "is_admin": false,
+        "verified": true,
+        "valid_user": true,
+        "skills": [
+            "Ruby",
+            "SQL"
+        ],
+        "hobbies": [
+            "Drawing"
+        ],
+        "terms_accepted": true,
+        "certifications": [
+            "AWS Certified Solutions Architect"
+        ],
+        "awards": [
+            "Best Project Award"
+        ],
+        "badges": [
+            "Team Player",
+            "Problem Solver"
+        ],
+        "notificationToken": ""
+    }
+]

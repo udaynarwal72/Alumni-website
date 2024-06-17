@@ -14,7 +14,7 @@ const eventSchema = new Schema({
     venue_country: { type: String },
     venue_zip_code: { type: String },
     venue_map_link: { type: String },
-    coming_alumni: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    coming_alumni: [{ type: Schema.Types.ObjectId, ref: 'AlumniUser' }],
     description: { type: String, required: true },
     organizer: { type: String, required: true },
     event_type: { type: String, enum: ['conference', 'webinar', 'meetup', 'workshop', 'other'], default: 'other' },

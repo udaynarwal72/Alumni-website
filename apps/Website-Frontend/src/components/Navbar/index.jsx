@@ -5,12 +5,13 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'; // Import axios for HTTP requests
 import './NavBar.css'; // Ensure to import your CSS file for styling
-
+import Cookies from 'js-cookie';
 library.add(fas);
 
 const NavBar = () => {
     const [showNavbar, setShowNavbar] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track authentication status
+    const [userName, setUserName] = useState("");
 
     const handleShowNavbar = () => {
         setShowNavbar(!showNavbar);
@@ -19,21 +20,36 @@ const NavBar = () => {
     useEffect(() => {
         const checkAuthentication = async () => {
             try {
-                // Perform your authentication check (replace with actual API call)
+                const userSpecialId = Cookies.get('user-accessToken');
+                console.log('User Special ID:', userSpecialId);
                 const response = await axios.get('http://localhost:3000/api/v1/user/check-auth', {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        'Authorization': `Bearer ${userSpecialId}`
                     }
                 });
-                console.log(response.data.data.isLoggedIn)
                 if (response.data.data.isLoggedIn) {
                     setIsLoggedIn(true); // User is authenticated
+                    fetchingUserName(userSpecialId); // Fetch the user's name if authenticated
                 } else {
                     setIsLoggedIn(false); // User is not authenticated
                 }
             } catch (error) {
                 console.error("Error checking authentication:", error);
                 setIsLoggedIn(false); // Set to false on error
+            }
+        };
+
+        const fetchingUserName = async (userSpecialId) => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/v1/user/profilesection', {
+                    headers: {
+                        'Authorization': `Bearer ${userSpecialId}`
+                    }
+                });
+                console.log('User Name:', response.data.data.username);
+                setUserName(response.data.data.first_name);
+            } catch (error) {
+                console.error("Error fetching user name:", error);
             }
         };
 
@@ -59,7 +75,10 @@ const NavBar = () => {
                         <li><NavLink to="/about" activeClassName="active-link">About</NavLink></li>
                         <li><NavLink to="/contactus" activeClassName="active-link">Contact</NavLink></li>
                         {isLoggedIn ? (
-                            <li><NavLink to="/logout">Logout</NavLink></li>
+                            <>
+                                <li><NavLink to="/logout">Logout</NavLink></li>
+                                <li><NavLink to="/userprofile">Hello, {userName}</NavLink></li>
+                            </>
                         ) : (
                             <>
                                 <li><NavLink to="/signin" activeClassName="active-link">Sign In</NavLink></li>

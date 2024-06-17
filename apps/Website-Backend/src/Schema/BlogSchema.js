@@ -5,7 +5,7 @@ const Schema = _Schema;
 const blogSchema = new Schema({
     blog_title: { type: String, required: true },
     blog_body: { type: String, required: true },
-    blog_createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    blog_createdBy: { type: Schema.Types.ObjectId, ref: 'AlumniUser', required: true },
     comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
     blogImage: { type: String },
     isPublished: { type: Boolean, default: true },

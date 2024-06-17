@@ -7,24 +7,24 @@ import axios from 'axios';
 const AlumniSlider = () => {
     const [alumni, setAlumni] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchAlumni = async () => {
-    //         try {
-    //             const myresponse = await axios.get('http://localhost:3000/api/v1/user/findalumni');
-    //             if (Array.isArray(myresponse.data)) {
-    //                 setAlumni(myresponse.data); // Ensure the response is an array
-    //             } else {
-    //                 console.error("Unexpected response format:", response.data);
-    //             }
-    //             console.log(myresponse.data);
-    //         } catch (error) {
-    //             console.error("Error fetching alumni data:", error);
-    //         }
-    //     };
+    useEffect(() => {
+        const fetchAlumni = async () => {
+            try {
+                console.log("Fetching alumni data...");
+                const response = await axios.get('http://localhost:3000/api/v1/user/findalumni');
+                if (Array.isArray(response.data.data)) {
+                    setAlumni(response.data.data);
+                } else {
+                    console.error("Unexpected response format:", response.data);
+                }
+                console.log(response.data.data);
+            } catch (error) {
+                console.error("Error fetching alumni data:", error);
+            }
+        }
+        fetchAlumni();
+    }, []);
 
-    //     fetchAlumni();
-    // }, []);
-    // console.log(alumni);
     const settings = {
         dots: true,
         infinite: true,
@@ -58,17 +58,16 @@ const AlumniSlider = () => {
         ]
     };
 
+    useEffect(() => {
+        console.log("Alumni data updated:", alumni);
+    }, [alumni]);
+
     return (
         <div className="image-slider">
             <Slider {...settings}>
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
-                <AlumniCard />
+                {alumni.map((alumniItem) => (
+                    <AlumniCard key={alumniItem._id} AlumniData={alumniItem} />
+                ))}
             </Slider>
         </div>
     );

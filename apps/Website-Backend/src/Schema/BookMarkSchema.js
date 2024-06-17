@@ -5,7 +5,7 @@ const { Schema, model } = mongoose;
 const bookMarkSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'AlumniUser',
         required: true,
     },
     blog: {

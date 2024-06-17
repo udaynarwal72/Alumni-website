@@ -3,7 +3,7 @@ import { Schema as _Schema, model } from 'mongoose';
 const Schema = _Schema;
 
 const likeSchema = new Schema({
-    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    user: { type: Schema.Types.ObjectId, ref: 'AlumniUser', required: true },
     blog: { type: Schema.Types.ObjectId, ref: 'Blog', required: true }
 }, { timestamps: true });
 
