@@ -43,30 +43,34 @@ function SignInPage() {
         <>
             <NavBar />
             <div className="parent-login">
-            <div className="parent-login-container">
-                <div className="left-panel">
-                    <div className="card-image-container">
-                        <img src="https://casepl.in/wp-content/uploads/2024/05/reck-logo-in-white-colour-120x93.png"></img>
+                <div className="parent-login-container">
+                    <div className="left-panel">
+                        <div className="card-image-container">
+                            <img src="https://casepl.in/wp-content/uploads/2024/05/reck-logo-in-white-colour-120x93.png"></img>
+                        </div>
+                        <div className="verification">
+                            <h2>Be Verified</h2>
+                            <p>Join experienced Designers on this platform.</p>
+                        </div>
                     </div>
-                    <div className="verification">
-                        <h2>Be Verified</h2>
-                        <p>Join experienced Designers on this platform.</p>
+                    <div className="right-panel">
+                        <h2>Welcome Back</h2>
+                        <p>We are happy to have you back</p>
+                        <form class="login-form">
+                            <input type="email" id="email" onChange={(e) => {
+                                setEmail(e.target.value);
+                            }} name="email" required />
+                            <input type="password" id="password" onChange={(p) => {
+                                setPassword(p.target.value);
+                            }} name="password" required />
+                            <div className="remember-forget">
+                                <a href="#">Forgot Password?</a>
+                            </div>
+                            <button type="submit" onClick={onHandleSubmit} class="login-button">Login</button>
+                        </form>
+                        <p class="Dont">Don't have an account?</p> <a href="http://localhost:5173/signup">Sign Up</a>
                     </div>
                 </div>
-                <div className="right-panel">
-                    <h2>Welcome Back</h2>
-                    <p>We are happy to have you back</p>
-                <form class="login-form">
-                    <input type="email" placeholder='Email Address' required></input>
-                    <input type="password" placeholder="Password" required></input>
-                    <div className="remember-forget">
-                        <a href="#">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="login-button">Login</button>
-                </form>
-                <p class="Dont">Don't have an account?</p> <a href="http://localhost:5173/signup">Sign Up</a>
-                </div>
-            </div>
             </div>
             <Footer />
         </>

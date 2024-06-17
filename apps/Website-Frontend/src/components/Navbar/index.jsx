@@ -25,7 +25,7 @@ const NavBar = () => {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
                 });
-				console.log(response.data.data.isLoggedIn)
+                console.log(response.data.data.isLoggedIn)
                 if (response.data.data.isLoggedIn) {
                     setIsLoggedIn(true); // User is authenticated
                 } else {
@@ -43,9 +43,11 @@ const NavBar = () => {
     return (
         <nav className="navbar">
             <div className="nav-container">
-                <div className="logo">
-                    <img src="https://casepl.in/wp-content/uploads/2024/05/reck-logo-in-white-colour-120x93.png" alt="logo" />
-                </div>
+                <a href="/" className="brand">
+                    <div className="logo">
+                        <img src="https://casepl.in/wp-content/uploads/2024/05/reck-logo-in-white-colour-120x93.png" alt="logo" />
+                    </div>
+                </a>
                 <div className="menu-icon" onClick={handleShowNavbar}>
                     <FontAwesomeIcon icon={['fas', 'bars']} style={{ color: "#ffffff" }} size="2x" />
                 </div>
@@ -55,7 +57,7 @@ const NavBar = () => {
                         <li><NavLink to="/blog" activeClassName="active-link">Blog</NavLink></li>
                         <li><NavLink to="/projects" activeClassName="active-link">Projects</NavLink></li>
                         <li><NavLink to="/about" activeClassName="active-link">About</NavLink></li>
-                        <li><NavLink to="/contact" activeClassName="active-link">Contact</NavLink></li>
+                        <li><NavLink to="/contactus" activeClassName="active-link">Contact</NavLink></li>
                         {isLoggedIn ? (
                             <li><NavLink to="/logout">Logout</NavLink></li>
                         ) : (
