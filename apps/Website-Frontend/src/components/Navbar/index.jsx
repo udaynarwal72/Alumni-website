@@ -21,7 +21,6 @@ const NavBar = () => {
         const checkAuthentication = async () => {
             try {
                 const userSpecialId = Cookies.get('user-accessToken');
-                console.log('User Special ID:', userSpecialId);
                 const response = await axios.get('http://localhost:3000/api/v1/user/check-auth', {
                     headers: {
                         'Authorization': `Bearer ${userSpecialId}`
@@ -46,7 +45,6 @@ const NavBar = () => {
                         'Authorization': `Bearer ${userSpecialId}`
                     }
                 });
-                console.log('User Name:', response.data.data.username);
                 setUserName(response.data.data.first_name);
             } catch (error) {
                 console.error("Error fetching user name:", error);
@@ -55,7 +53,10 @@ const NavBar = () => {
 
         checkAuthentication(); // Call the function to check authentication when component mounts
     }, []); // Empty dependency array means this effect runs only once on mount
-
+    const redirectProfile = () => {
+        const userId = Cookies.get('user-id');
+        window.location.href = `/user/${userId}`;
+    }
     return (
         <nav className="navbar">
             <div className="nav-container">
@@ -77,7 +78,7 @@ const NavBar = () => {
                         {isLoggedIn ? (
                             <>
                                 <li><NavLink to="/logout">Logout</NavLink></li>
-                                <li><NavLink to="/userprofile">Hello, {userName}</NavLink></li>
+                                <li><NavLink onClick={redirectProfile}>Hello, {userName}</NavLink></li>
                             </>
                         ) : (
                             <>

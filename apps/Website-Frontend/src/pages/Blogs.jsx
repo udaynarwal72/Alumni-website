@@ -9,19 +9,14 @@ const Blogs = () => {
 	const { blogId } = useParams();
 	const [blogData, setBlogData] = useState({});
 	const [loading, setLoading] = useState(true);
-	const [user, setUser] = useState({});
 
 	useEffect(() => {
 		const fetchBlogData = async () => {
 			try {
 				const blogResponse = await axios.get(`http://localhost:3000/api/v1/blog/single/${blogId}`);
-				const userData = await axios.get(`http://localhost:3000/api/v1/user/getuserbyid/${blogResponse.data.data.blog_createdBy}`);
-
-				console.log("User data:", userData.data.data.username); // Debug user data
-
+				
 				if (blogResponse.data && blogResponse.data.data) {
 					setBlogData(blogResponse.data.data);
-					setUser(userData.data.data);
 				} else {
 					console.error("Unexpected response format:", blogResponse.data);
 				}
@@ -40,6 +35,10 @@ const Blogs = () => {
 		return new Date(dateString).toLocaleDateString(undefined, options);
 	};
 
+	if (loading) {
+		return <div>Loading...</div>;
+	}
+
 	return (
 		<div>
 			<NavBar />
@@ -52,11 +51,11 @@ const Blogs = () => {
 						<div className="header">
 							<div className="profile">
 								<div className="image">
-									<img src="https://miro.medium.com/v2/resize:fill:55:55/1*7l1EOKCS6EEzIAmGbUWsxg.jpeg" alt="User profile" />
+									<img src={blogData.blog_createdBy.avatar} alt="User profile" />
 								</div>
 								<div className="info">
 									<div>
-										<span style={{ fontWeight: "bold" }}>@{user.username}</span>
+										<span style={{ fontWeight: "bold" }}>@{blogData.blog_createdBy.username}</span>
 									</div>
 									<div>
 										<span>{formatDate(blogData.createdAt)}</span>
