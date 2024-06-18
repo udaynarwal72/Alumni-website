@@ -25,6 +25,7 @@ body {
     position: relative;
     z-index: 1;
     border: 1px solid #C5291D;
+    max-height: 30rem;
 }
 
 .blog-card:hover {
@@ -33,7 +34,7 @@ body {
 
 .card-image img {
     width: 100%;
-    height: auto;
+    height: 12rem;
     display: block;
 }
 
