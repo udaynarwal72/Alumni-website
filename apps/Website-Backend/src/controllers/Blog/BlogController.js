@@ -9,7 +9,7 @@ const chance = new Chance();
 // Create a blog post
 const createblog = async (req, res) => {
     try {
-        const { blog_title, blog_body, blog_tags } = req.body;
+        const { blog_title, blog_body, blog_tags, blogImage } = req.body;
 
         let blogImagePath = "";
         if (req.files && Array.isArray(req.files.blogImage) && req.files.blogImage.length > 0) {
@@ -18,25 +18,40 @@ const createblog = async (req, res) => {
 
         const uploadImageCloud = await uploadOnCloudinary(blogImagePath);
 
-        // const createdBlog = await Blog.create({
-        //     blog_title: chance.sentence({ words: 2 }) || "",
-        //     blog_body: chance.paragraph({ sentences: 5 }) || "",
-        //     blogImage: "https://picsum.photos/seed/picsum/200/300" || "",
-        //     tags: ["Technology","Fiction","Inspiration"],
-        //     blog_createdBy: "6670874753daea9f31683066"
-        // });
         const createdBlog = await Blog.create({
             blog_title: blog_title,
             blog_body: blog_body,
             blogImage: uploadImageCloud?.url || "",
             tags: blog_tags,
-            blog_createdBy: req.user._id
+            blog_createdBy: req.user
         });
-        return res.status(200).json(new ApiResponse(200, createdBlog, "Blog created successfully"));
+
+        // const newBlog = await Blog.aggregate([
+        //     {
+        //         $match: { _id: createdBlog._id } // Match the newly created blog post
+        //     },
+        //     {
+        //         $lookup: {
+        //             from: "alumnis",
+        //             localField: "blog_createdBy",
+        //             foreignField: "_id",
+        //             as: "author"
+        //         }
+        //     },
+        //     {
+        //         $addFields: {
+        //             author: {
+        //                 $arrayElemAt: ["$author", 0]
+        //             }
+        //         }
+        //     }
+        // ]);
+        return res.status(200).json(new ApiResponse(200, createdBlog, newBlog, "Blog created successfully"));
     } catch (error) {
         return res.status(500).json(new ApiResponse(500, null, `Error creating blog: ${error.message}`));
     }
 };
+
 // Get all blog posts
 const getAllBlog = async (req, res) => {
     try {

@@ -1,22 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
+import axios from "axios";
 import "../styles/BlogForm.css";
 import NavBar from "../components/Navbar";
 import Footer from "../components/footer";
+import Cookies from "js-cookie";
 
 const BlogForm = () => {
-
-	const createBlog = () => {
-		const form = document.querySelector('.blog-form');
+	const createBlog = (event) => {
+		event.preventDefault(); // Prevent default form submission behavior
+		const form = event.target;
 		const formData = new FormData(form);
 
-		fetch('http:', {
-			method: 'POST',
-			body: formData
+		axios.post('http://localhost:3000/api/v1/blog/postblog', formData, {
+			headers: {
+				'Authorization': `Bearer ${Cookies.get('user-accessToken')}`,
+				'Content-Type': 'multipart/form-data'
+			}
 		})
-			.then(response => response.json())
-			.then(data => {
-				console.log(data);
-				if (data.status === 'success') {
+			.then(response => {
+				const data = response.data;
+				if (data.statusCode == 200) {
 					alert('Blog created successfully');
 				} else {
 					alert('An error occurred. Please try again');
@@ -25,8 +28,7 @@ const BlogForm = () => {
 			.catch(error => {
 				console.error('Error:', error);
 			});
-	}
-
+	};
 
 	return (
 		<>
@@ -34,19 +36,15 @@ const BlogForm = () => {
 			<div className="parent-blog-form">
 				<div className="blog-form-container">
 					<form
-						action="/submit_blog"
-						method="post"
-						enctype="multipart/form-data"
+						method="POST"
 						className="blog-form"
+						onSubmit={createBlog} // Handle form submission with the createBlog function
 					>
 						<h2 className="form-h2">Share Your Thoughts</h2>
-						<label for="name" >Name:</label>
-						<input type="text" id="name" name="name" required></input>
+						<label htmlFor="name">Title:</label>
+						<input type="text" id="blog_title" name="blog_title" required></input>
 
-						<label for="date">Date Uploaded:</label>
-						<input type="date" id="date" name="date" required></input>
-
-						<label for="tags">Tags:</label>
+						<label htmlFor="tags">Tags:</label>
 						<input
 							type="text"
 							id="tags"
@@ -55,19 +53,19 @@ const BlogForm = () => {
 							required
 						></input>
 
-						<label for="images">Upload Images:</label>
+						<label htmlFor="images">Upload Images:</label>
 						<input
 							type="file"
-							id="images"
-							name="images[]"
+							id="blogImage"
+							name="blogImage"
 							multiple
 							required
 						></input>
 
-						<label for="body">Body:</label>
-						<textarea id="body" name="body" rows="10" required></textarea>
+						<label htmlFor="body">Body:</label>
+						<textarea id="blog_body" name="blog_body" rows="10" required></textarea>
 
-						<button type="submit" onClick={createBlog} className="blog-form-button">Post</button>
+						<button type="submit" className="blog-form-button">Post</button>
 					</form>
 				</div>
 			</div>

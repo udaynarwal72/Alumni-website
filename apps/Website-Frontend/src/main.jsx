@@ -57,10 +57,6 @@ const router = createBrowserRouter([
     element: <OurAlumni />
   },
   {
-    path: '/blog',
-    element: <Blogs />
-  },
-  {
     path: 'testblogcard',
     element: <BlogCard />
   },
@@ -75,6 +71,10 @@ const router = createBrowserRouter([
   {
     path:'/createblog',
     element:<BlogForm />
+  },
+  {
+    path:'/blog/:blogId',
+    element:<Blogs />
   }
 ]);
 

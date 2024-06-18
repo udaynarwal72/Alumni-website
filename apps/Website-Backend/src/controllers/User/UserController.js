@@ -163,7 +163,7 @@ const userSignUpController = async (req, res) => {
         organisation: organisation,
         skills: skills,
         email: email,
-        designation:designation,
+        designation: designation,
         password: password,
         phone_number: phone_number,
         dob: dob,
@@ -574,6 +574,21 @@ const checkAuthentication = AsyncHandler(async (req, res) => {
     }
 })
 
+const getUserById = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId);
+        if (user) {
+            return res.status(200).json(new ApiResponse(200, user, "User fetched successfully"));
+        }
+        else {
+            return res.status(404).json(new ApiResponse(404, null, "User not found"));
+        }
+    } catch (error) {
+        return res.status(500).json(new ApiResponse(500, null, "An error occurred while fetching user"));
+    }
+}
+
+
 export {
     userLogin,
     logoutUser,
@@ -596,4 +611,5 @@ export {
     changeNotloggedInUserPassword,
     getAllUsers,
     checkAuthentication,
+    getUserById,
 };
