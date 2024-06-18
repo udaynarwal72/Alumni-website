@@ -1,38 +1,49 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "../components/Navbar";
 import { useParams } from 'react-router-dom';
-import Footer from "../components/footer";
 import axios from 'axios';
+import NavBar from "../components/Navbar";
+import Footer from "../components/footer";
 import "../styles/Blogs.css";
 
 const Blogs = () => {
-    const { blogId } = useParams();
-    const [blogData, setBlogData] = useState({});
-    const [loading, setLoading] = useState(true);
+	const { blogId } = useParams();
+	const [blogData, setBlogData] = useState({});
+	const [loading, setLoading] = useState(true);
+	const [user, setUser] = useState({});
 
-    useEffect(() => {
-        const getBlogData = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3000/api/v1/blog/single/${blogId}`);
-                if (response.data && response.data.data) {
-                    setBlogData(response.data.data);
-					console.log("API Response:", response.data.data); // Debug the API response
-                } else {
-                    console.error("Unexpected response format:", response.data);
-                }
-            } catch (error) {
-                console.error('Error fetching blog data:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        getBlogData();
-    }, [blogId]);
+	useEffect(() => {
+		const fetchBlogData = async () => {
+			try {
+				const blogResponse = await axios.get(`http://localhost:3000/api/v1/blog/single/${blogId}`);
+				const userData = await axios.get(`http://localhost:3000/api/v1/user/getuserbyid/${blogResponse.data.data.blog_createdBy}`);
+
+				console.log("User data:", userData.data.data.username); // Debug user data
+
+				if (blogResponse.data && blogResponse.data.data) {
+					setBlogData(blogResponse.data.data);
+					setUser(userData.data.data);
+				} else {
+					console.error("Unexpected response format:", blogResponse.data);
+				}
+			} catch (error) {
+				console.error('Error fetching blog data:', error);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchBlogData();
+	}, [blogId]);
+
+	const formatDate = (dateString) => {
+		const options = { year: 'numeric', month: 'long', day: 'numeric' };
+		return new Date(dateString).toLocaleDateString(undefined, options);
+	};
 
 	return (
 		<div>
 			<NavBar />
-			<div class="Parent-blog">
+			<div className="Parent-blog">
 				<div className="root">
 					<div className="content">
 						<div>
@@ -41,84 +52,49 @@ const Blogs = () => {
 						<div className="header">
 							<div className="profile">
 								<div className="image">
-									<img src="	https://miro.medium.com/v2/resize:fill:55:55/1*7l1EOKCS6EEzIAmGbUWsxg.jpeg"></img>
+									<img src="https://miro.medium.com/v2/resize:fill:55:55/1*7l1EOKCS6EEzIAmGbUWsxg.jpeg" alt="User profile" />
 								</div>
 								<div className="info">
 									<div>
-										<span>{blogData.username}</span>
-										<span>Follow</span>
+										<span style={{ fontWeight: "bold" }}>@{user.username}</span>
 									</div>
 									<div>
-										<span>3 min read</span>
-										<span>13 June 2024</span>
+										<span>{formatDate(blogData.createdAt)}</span>
 									</div>
-								</div>
-							</div>
-							<div className="icons">
-								<div className="left">
-									<button>
-										<img src="https://via.placeholder.com/150"></img>
-									</button>
-									<button>
-										<img src="https://via.placeholder.com/150"></img>
-									</button>
-								</div>
-								<div className="right">
-									<button>
-										<img src="https://via.placeholder.com/150"></img>
-									</button>
-									<button>
-										<img src="https://via.placeholder.com/150"></img>
-									</button>
-									<button>
-										<img src="https://via.placeholder.com/150"></img>
-									</button>
 								</div>
 							</div>
 						</div>
 						<div className="image-big">
-							<div>
-								<img src={blogData.blogImage}></img>
-							</div>
+							<img src={blogData.blogImage} alt="Blog cover" />
 						</div>
 						<div className="para">
 							{blogData.blog_body}
 						</div>
 						<div className="buttons">
-							<div>
-								<button>Programming</button>
-							</div>
-							<div>
-								<button>C Sharp</button>
-							</div>
-							<div>
-								<button>Software Development</button>
-							</div>
-							<div>
-								<button>Software Engineering</button>
-							</div>
-							<div>
-								<button>Dotnet</button>
-							</div>
+							{blogData.blog_tags && blogData.blog_tags.map((tag, index) => (
+								<div key={index}>
+									<button>{tag}</button>
+								</div>
+							))}
 						</div>
 						<div className="icons">
 							<div className="left">
 								<button>
-									<img src="https://via.placeholder.com/150"></img>
+									<img src="https://via.placeholder.com/150" alt="Placeholder icon" />
 								</button>
 								<button>
-									<img src="https://via.placeholder.com/150"></img>
+									<img src="https://via.placeholder.com/150" alt="Placeholder icon" />
 								</button>
 							</div>
 							<div className="right">
 								<button>
-									<img src="https://via.placeholder.com/150"></img>
+									<img src="https://via.placeholder.com/150" alt="Placeholder icon" />
 								</button>
 								<button>
-									<img src="https://via.placeholder.com/150"></img>
+									<img src="https://via.placeholder.com/150" alt="Placeholder icon" />
 								</button>
 								<button>
-									<img src="https://via.placeholder.com/150"></img>
+									<img src="https://via.placeholder.com/150" alt="Placeholder icon" />
 								</button>
 							</div>
 						</div>
@@ -129,4 +105,5 @@ const Blogs = () => {
 		</div>
 	);
 };
+
 export default Blogs;

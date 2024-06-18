@@ -19,7 +19,8 @@ const BlogForm = () => {
 		})
 			.then(response => {
 				const data = response.data;
-				if (data.statusCode == 200) {
+				console.log(data);
+				if (data.status == 200) {
 					alert('Blog created successfully');
 				} else {
 					alert('An error occurred. Please try again');
@@ -49,7 +50,7 @@ const BlogForm = () => {
 							type="text"
 							id="tags"
 							name="tags"
-							placeholder="e.g., tech, health, education"
+							placeholder="Tech Health Education"
 							required
 						></input>
 

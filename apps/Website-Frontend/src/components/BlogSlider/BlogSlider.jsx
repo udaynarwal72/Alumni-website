@@ -12,8 +12,10 @@ const BlogSlider = () => {
         const getBlogData = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/api/v1/blog/bulk');
+                console.log('this is slider response',response.data.data)
                 if (Array.isArray(response.data.data)) {
                     setBlogData(response.data.data);
+                    
                 } else {
                     console.error("Unexpected response format:", response.data);
                 }
@@ -24,6 +26,7 @@ const BlogSlider = () => {
             }
         };
         getBlogData();
+        console.log("this is blog data slider side",blogData)
     }, []);
 
     const settings = {

@@ -27,7 +27,6 @@ const BlogCard = ({ data }) => {
         const fetchAuthor = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/api/v1/user/getuserbyid/${blog_createdBy}`);
-                console.log("API Response:", response.data); // Debug the API response
                 setAuthor(response.data.data); // Assuming the response has more details than just the username
             } catch (error) {
                 setError(error);
@@ -50,8 +49,6 @@ const BlogCard = ({ data }) => {
     const blogRedirect = () => {
         window.location.href = `/blog/${data._id}`;
     }
-
-    console.log("Author Data:", author); // Debug the author data
 
     return (
         <div className="parent-card">
