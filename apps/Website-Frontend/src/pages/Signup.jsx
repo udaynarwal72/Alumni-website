@@ -149,11 +149,11 @@ function SignupPage() {
                         </div>
                         <div className="input-group">
                             <label htmlFor="organisation">Company</label>
-                            <input type="text" id="organisation" name="organisation" required />
+                            <input type="text" id="organisation" maxLength="16" name="organisation" required />
                         </div>
                         <div className="input-group">
                             <label htmlFor="designation">Designation</label>
-                            <input type="text" id="designation" name="designation" required />
+                            <input type="text" id="designation" maxLength="20" name="designation" required />
                         </div>
                         <div className="input-group">
                             <label htmlFor="email">Email</label>

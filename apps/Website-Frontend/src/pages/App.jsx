@@ -35,6 +35,9 @@ function App() {
 	const allAlumni = () => {
 		window.location.href = "/alumnisection";
 	}
+	const blogSection = () => {
+		window.location.href = "/blogsection";
+	}
 	return (
 		<div style={{ backgroundColor: "#F9F5EB", minHeight: "100vh" }}>
 			<NavBar />
@@ -58,7 +61,7 @@ function App() {
 				<hr className="home"></hr>
 				<div className="second-heading">
 					<div className="second-heading-content">
-						<button>Blogs</button>
+						<button onClick={blogSection}>Blogs</button>
 						<div>
 							<h1>Alumnis Write..</h1>
 						</div>

@@ -73,7 +73,7 @@ const router = createBrowserRouter([
     element:<BlogSection />
   },
   {
-    path:'blogform',
+    path:'/createblog',
     element:<BlogForm />
   }
 ]);

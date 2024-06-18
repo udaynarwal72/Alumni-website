@@ -3,6 +3,8 @@ import Blog from '../../Schema/BlogSchema.js';
 import uploadOnCloudinary from '../../utils/Cloudinary.js';
 import Liked from '../../Schema/LikeSchema.js';
 import Comment from '../../Schema/CommentSchema.js';
+import Chance from 'chance';
+const chance = new Chance();
 
 // Create a blog post
 const createblog = async (req, res) => {
@@ -16,6 +18,13 @@ const createblog = async (req, res) => {
 
         const uploadImageCloud = await uploadOnCloudinary(blogImagePath);
 
+        // const createdBlog = await Blog.create({
+        //     blog_title: chance.sentence({ words: 2 }) || "",
+        //     blog_body: chance.paragraph({ sentences: 5 }) || "",
+        //     blogImage: "https://picsum.photos/seed/picsum/200/300" || "",
+        //     tags: ["Technology","Fiction","Inspiration"],
+        //     blog_createdBy: "6670874753daea9f31683066"
+        // });
         const createdBlog = await Blog.create({
             blog_title: blog_title,
             blog_body: blog_body,

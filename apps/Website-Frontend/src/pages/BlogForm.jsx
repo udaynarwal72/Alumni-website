@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/BlogForm.css";
 import NavBar from "../components/Navbar";
 import Footer from "../components/footer";
 
 const BlogForm = () => {
+
+	const createBlog = () => {
+		const form = document.querySelector('.blog-form');
+		const formData = new FormData(form);
+
+		fetch('http:', {
+			method: 'POST',
+			body: formData
+		})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data);
+				if (data.status === 'success') {
+					alert('Blog created successfully');
+				} else {
+					alert('An error occurred. Please try again');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+	}
+
+
 	return (
 		<>
 			<NavBar />
@@ -13,7 +37,7 @@ const BlogForm = () => {
 						action="/submit_blog"
 						method="post"
 						enctype="multipart/form-data"
-                        className="blog-form"
+						className="blog-form"
 					>
 						<h2 className="form-h2">Share Your Thoughts</h2>
 						<label for="name" >Name:</label>
@@ -43,7 +67,7 @@ const BlogForm = () => {
 						<label for="body">Body:</label>
 						<textarea id="body" name="body" rows="10" required></textarea>
 
-						<button type="submit" className="blog-form-button">Post</button>
+						<button type="submit" onClick={createBlog} className="blog-form-button">Post</button>
 					</form>
 				</div>
 			</div>
