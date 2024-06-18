@@ -10,7 +10,7 @@ const chance = new Chance();
 const createblog = async (req, res) => {
     try {
         const { blog_title, blog_body, tags, blogImage } = req.body;
-
+        req.user.username
         // Handle blog image upload to Cloudinary
         let blogImagePath = "";
         if (req.files && Array.isArray(req.files.blogImage) && req.files.blogImage.length > 0) {
@@ -27,13 +27,14 @@ const createblog = async (req, res) => {
             blog_body: blog_body,
             blogImage: uploadImageCloud?.url || "",
             blog_tags: tagArray,
-            blog_createdBy: req.user // Assuming req.user contains creator information
+            blog_createdBy: req.user._id // Assuming req.user contains creator information
+
         });
 
         // Return success response with created blog data
         return res.status(200).json({
             status: 200,
-            data: createdBlog,
+            data: newBlog,
             message: "Blog created successfully"
         });
     } catch (error) {
@@ -46,17 +47,16 @@ const createblog = async (req, res) => {
     }
 };
 
-
 // Get all blog posts
 const getAllBlog = async (req, res) => {
     try {
-        const blogs = await Blog.find();
-
+        const blogs = await Blog.find().populate('blog_createdBy', 'username avatar');
         return res.status(200).json(new ApiResponse(200, blogs, "Blogs retrieved successfully"));
     } catch (error) {
         return res.status(500).json(new ApiResponse(500, null, `Error retrieving blogs: ${error.message}`));
     }
 };
+
 const updateBlogById = async (req, res) => {
     try {
         const { blogId } = req.params;
@@ -97,7 +97,7 @@ const getSingleBlogById = async (req, res) => {
     try {
         const { blogId } = req.params;
 
-        const blog = await Blog.findById(blogId);
+        const blog = await Blog.findById(blogId).populate('blog_createdBy', 'username avatar');
 
         return res.status(200).json(new ApiResponse(200, blog, "Blog retrieved successfully"));
     }

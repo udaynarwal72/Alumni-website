@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './BlogCard.css';
-import axios from 'axios';
-import BlogDetails from '../../pages/Blogdisplay';
-import Blog from '../../../../Website-Backend/src/Schema/BlogSchema';
 
 const BlogCard = ({ data }) => {
     const { blog_title, blog_body, blogImage, tags, blog_createdBy, createdAt } = data;
-    const [author, setAuthor] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     const truncateText = (text, wordLimit) => {
         const words = text.split(' ');
@@ -21,29 +15,6 @@ const BlogCard = ({ data }) => {
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
-    };
-
-    useEffect(() => {
-        const fetchAuthor = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3000/api/v1/user/getuserbyid/${blog_createdBy}`);
-                setAuthor(response.data.data); // Assuming the response has more details than just the username
-            } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchAuthor();
-    }, [blog_createdBy]);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error loading author information.</div>;
     }
 
     const blogRedirect = () => {
@@ -68,11 +39,11 @@ const BlogCard = ({ data }) => {
                     </div>
                     <div className="card-footer">
                         <div className="aut-image">
-                            <img src={author.profileImage || blogImage} alt={author.name || blog_createdBy} />
+                            <img src={blog_createdBy.avatar} alt={blog_createdBy.username} />
                         </div>
                         <div className="aut-desc">
                             <div>
-                                <span>{author.username}</span> {/* Assuming the author object has a username property */}
+                                <span>{blog_createdBy.username}</span>
                                 <span>{formatDate(createdAt)}</span> {/* Format and display the createdAt date */}
                             </div>
                         </div>

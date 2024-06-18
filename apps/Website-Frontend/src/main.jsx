@@ -49,10 +49,6 @@ const router = createBrowserRouter([
     element: <HiringPage />
   },
   {
-    path: '/profilesection',
-    element: <UserProfile />
-  },
-  {
     path: '/alumnisection',
     element: <OurAlumni />
   },
@@ -65,16 +61,20 @@ const router = createBrowserRouter([
     element: <Userlogout />
   },
   {
-    path:'/blogsection',
-    element:<BlogSection />
+    path: '/blogsection',
+    element: <BlogSection />
   },
   {
-    path:'/createblog',
-    element:<BlogForm />
+    path: '/createblog',
+    element: <BlogForm />
   },
   {
-    path:'/blog/:blogId',
-    element:<Blogs />
+    path: '/blog/:blogId',
+    element: <Blogs />
+  },
+  {
+    path: '/user/:userId',
+    element: <UserProfile />
   }
 ]);
 
