@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #F9F5EB;
+    
 }
 
 .Main-blog-card {
@@ -11,6 +12,7 @@ body {
     flex-wrap: wrap;
     margin-top: 20px;
     padding: 0 10px;
+    
 }
 
 .blog-card {
@@ -26,6 +28,7 @@ body {
     z-index: 1;
     border: 1px solid #C5291D;
     max-height: 30rem;
+    min-height: 27rem;
 }
 
 .blog-card:hover {
@@ -68,6 +71,7 @@ body {
     font-size: 0.9rem; /* Further reduced font-size */
     margin-bottom: 1rem; /* Reduced margin-bottom */
     color: #666;
+    height:5rem;
 }
 
 .card-footer {
@@ -92,6 +96,7 @@ body {
     flex-direction: column;
     padding: 0 0.625rem; /* Adjusted padding */
 }
+
 
 .aut-desc span {
     font-size: 0.8rem; /* Reduced font-size */

@@ -43,13 +43,14 @@ const BlogForm = () => {
 					>
 						<h2 className="form-h2">Share Your Thoughts</h2>
 						<label htmlFor="name">Title:</label>
-						<input type="text" id="blog_title" name="blog_title" required></input>
+						<input type="text" id="blog_title" className="demo" name="blog_title" required></input>
 
 						<label htmlFor="tags">Tags:</label>
 						<input
 							type="text"
 							id="tags"
 							name="tags"
+							className="demo"
 							placeholder="Tech Health Education"
 							required
 						></input>
@@ -59,6 +60,7 @@ const BlogForm = () => {
 							type="file"
 							id="blogImage"
 							name="blogImage"
+							className="demo"
 							multiple
 							required
 						></input>
