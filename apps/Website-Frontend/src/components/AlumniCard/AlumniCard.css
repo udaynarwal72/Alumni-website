@@ -1,5 +1,6 @@
 .card {
     width: 100%;
+    min-width: 16rem;
     max-width: 20rem;
     border-radius: 10px;
     overflow: hidden;
@@ -20,7 +21,10 @@
     cursor: pointer;
     transform: translateY(-5px);
 }
-
+.head1{
+    display: flex;
+    justify-content: space-around;
+}
 .card-header {
     background: linear-gradient(to bottom, #e4cac9, #ffffff);
     padding: 1rem;
@@ -50,17 +54,17 @@
 
 .details {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .details div {
-    padding: 8px 10px;
+    padding: 4px 6px;
 }
 
-.details div:first-child {
+/* .details div:first-child {
     color: #C5291D;
-}
+} */
 
 @media (max-width: 600px) {
     .card {
