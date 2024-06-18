@@ -41,7 +41,7 @@ label {
     color: #C5291D;
 }
 
-input[type="text"],
+.demo,
 input[type="date"],
 input[type="file"],
 textarea {
@@ -58,7 +58,7 @@ textarea {
     /* box-shadow:   0 0.5rem 1rem rgba(222, 113, 113, 0.4);  */
 }
 
-input[type="text"]:focus,
+.demo:focus,
 input[type="date"]:focus,
 input[type="file"]:focus,
 textarea:focus {

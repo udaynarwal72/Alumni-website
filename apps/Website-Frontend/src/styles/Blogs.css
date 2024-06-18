@@ -2,6 +2,8 @@
     height:100%;
     background-color: #FFFFFF;
     animation: fadeIn 1s ease-in-out;
+    display:flex;
+    flex-direction: column;
 }
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -14,6 +16,47 @@
     /* width:900px; */
     padding:20px 12px;
 }
+.last-comments{
+    
+    margin-top: 10px;
+    flex-direction: column;
+}
+.comm{
+    display: flex;
+    /* float: right; */
+    width:60vw;
+    /* background-color: aqua; */
+    /* height:50vh; */
+    justify-content: center;
+    margin-top:40px ;
+    position: relative;
+    display: block;
+    z-index:1;
+    /* overflow-y: scroll; */
+    border-radius: 12px;
+    /* margin-left: -40px; */
+}
+.submit-button{
+    display: flex;
+    justify-content: right;
+}
+.submit-button button{
+    background-color: rgb(161, 195, 110);
+}
+.comments{
+    background-color: #e0e0e0;
+    width:100%;
+    padding:15px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    /* overflow-y: scroll; */
+    border-radius: 12px;
+}
+#res{
+    background-color: white;
+    border: 1px solid #e0e0e0;
+}
 .content{
     max-width: 1000px;
     min-width: 480px;
@@ -23,6 +66,54 @@
     font-size: 30px;
     padding:15px 25px;
     animation: slideInLeft 0.5s ease-in-out;
+}
+.left span{
+    margin-right: 8px;
+    font-size: 12px;
+    padding: 12px;
+}
+.comments h3{
+    font-size: 15px;
+    margin-top: 15px;
+}
+.responses{
+    font-size: 10px;
+}
+.user-comment{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    padding: 0.75rem; /* Adjusted padding */
+    margin-top: -0.9375rem; /* Adjusted margin-top */
+}
+.comm-image img{
+    border-radius: 50%;
+    width: 2.25rem; /* Reduced width */
+    height: 2.25rem; /* Reduced height */
+    box-sizing: border-box;
+    vertical-align: middle;
+    object-fit: cover;
+}
+.comment-body{
+    font-size: 16px;
+}
+.comment-column{
+    display: flex;
+    flex-direction: column;
+    height:6rem;
+    background-color: white;
+    border-radius: 8px;
+    padding:8px;
+    gap:18px;
+}
+.comm-desc div{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.625rem; /* Adjusted padding */
+}
+.comm-desc span{
+    font-size: 0.8rem; /* Reduced font-size */
+    color: black;
 }
 @keyframes slideInLeft {
     from { transform: translateX(-100px); }
@@ -129,16 +220,18 @@
     display: flex;
     transition: transform 0.3s ease;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 .image-big img {
-    width: 100%;
+    width: 80%;
     height: auto;
     transition: transform 0.3s ease;
     object-fit: cover;
 }
 .image-big:hover{
     
-    transform: scale(1.05);
+    transform: scale(1.01);
 }
 .para{
     width:inherit-(12px);

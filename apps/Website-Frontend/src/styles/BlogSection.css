@@ -38,14 +38,15 @@
     width:30%;
     float:left;
     /* border:1px dashed green; */
-    height:300px;
+    height:30rem;
+    overflow-y: hidden;
 }
 .section-content .side-bar section{
     background-color: white;
     padding:20px;
     border-radius: 10px;
     margin-bottom: 20px;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 .text-input-blog{
     padding:0.7rem 1rem;
