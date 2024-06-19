@@ -230,6 +230,19 @@ const createBookMark = async (req, res) => {
     }
 }
 
+const deleteCommentById = async (req, res) => {
+    try {
+        const { commentId } = req.params;
+        const deletedComment = await Comment.findByIdAndDelete(commentId);
+        if (!deletedComment) {
+            return res.status(404).json(new ApiResponse(404, null, "Comment not found"));
+        }
+        return res.status(200).json(new ApiResponse(200, deletedComment, "Comment deleted successfully"));
+    } catch (error) {
+        return res.status(500).json(new ApiResponse(500, null, `Error deleting comment: ${error.message}`));
+    }
+}
+
 export {
     createblog,
     getAllBlog,
@@ -243,4 +256,5 @@ export {
     getBlogsByAuthor,//pending
     getBlogsByTag,//pending
     createBookMark,//pending
+    deleteCommentById,
 };

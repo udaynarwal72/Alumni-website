@@ -1,5 +1,7 @@
 /* src/ImageSlider.css */
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .image-slider {
     margin: 5px;
    position: relative;

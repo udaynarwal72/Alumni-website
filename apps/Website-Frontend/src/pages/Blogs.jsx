@@ -12,6 +12,7 @@ const Blogs = () => {
 	const { blogId } = useParams();
 	const [blogData, setBlogData] = useState({});
 	const [loading, setLoading] = useState(true);
+
 	useEffect(() => {
 		const fetchBlogData = async () => {
 			try {
@@ -20,6 +21,8 @@ const Blogs = () => {
 				);
 
 				if (blogResponse.data && blogResponse.data.data) {
+					console.log(blogResponse.data.data)
+
 					setBlogData(blogResponse.data.data);
 				} else {
 					console.error("Unexpected response format:", blogResponse.data);
@@ -32,24 +35,20 @@ const Blogs = () => {
 		};
 
 		fetchBlogData();
-	}, [blogId, blogData.comments]);
+	}, [blogId]);
 
-	const formatDate = dateString => {
+	const formatDate = (dateString) => {
 		const options = { year: "numeric", month: "long", day: "numeric" };
 		return new Date(dateString).toLocaleDateString(undefined, options);
 	};
 
-	if (loading) {
-		return <div>Loading...</div>;
-	}
-	const postComment = async e => {
+	const postComment = async (e) => {
 		e.preventDefault();
 		const comment = e.target.blog_comment.value;
 		const data = {
 			user_response: comment,
 		};
 		try {
-			console.log("Posting comment:", blogId);
 			const response = await axios.post(
 				`http://localhost:3000/api/v1/blog/comment/${blogId}`,
 				data,
@@ -59,15 +58,64 @@ const Blogs = () => {
 					},
 				}
 			);
+			// if (response.data && response.data.data) {
+			// setBlogData((prevData) => ({
+			//     ...prevData,
+			//     comments: [...prevData.comments, response.data.data],
+			// }));
+			e.target.blog_comment.value = ""; // Clear the input field
+			//     } else {
+			//         console.error("Unexpected response format:", response.data);
+			//     }
+		}
+		catch (error) {
+			console.error("Error posting comment:", error);
+		}
+	};
+
+	const removeComment = async (commentId) => {
+		try {
+			await axios.delete(`http://localhost:3000/api/v1/blog/comment/${commentId}`, {
+				headers: {
+					Authorization: `Bearer ${Cookies.get("user-accessToken")}`,
+				},
+			});
+			setBlogData((prevData) => ({
+				...prevData,
+				comments: prevData.comments.filter((comment) => comment._id !== commentId),
+			}));
+		} catch (error) {
+			console.error("Error removing comment:", error);
+		}
+	};
+	const likeUserBlog = async () => {
+		try {
+			const response = await axios.post(
+				`http://localhost:3000/api/v1/blog/like/${blogId}`,
+				{},
+				{
+					headers: {
+						Authorization: `Bearer ${Cookies.get("user-accessToken")}`,
+					},
+				}
+			);
 			if (response.data && response.data.data) {
-				console.log("Comment posted successfully");
+				setBlogData((prevData) => ({
+					...prevData,
+					likes: response.data.data,
+				}));
 			} else {
 				console.error("Unexpected response format:", response.data);
 			}
 		} catch (error) {
-			console.error("Error posting comment:", error);
+			console.error("Error liking blog:", error);
 		}
 	};
+
+
+	if (loading) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<div>
@@ -81,15 +129,12 @@ const Blogs = () => {
 						<div className="header">
 							<div className="profile">
 								<div className="image">
-									<img
-										src={blogData.blog_createdBy.avatar}
-										alt="User profile"
-									/>
+									<img src={blogData.blog_createdBy?.avatar} alt="User profile" />
 								</div>
 								<div className="info">
 									<div>
 										<span style={{ fontWeight: "bold" }}>
-											@{blogData.blog_createdBy.username}
+											@{blogData.blog_createdBy?.username}
 										</span>
 									</div>
 									<div>
@@ -115,11 +160,11 @@ const Blogs = () => {
 								<div className="comment-button">
 									<FontAwesomeIcon icon={faComment} />
 								</div>
-								<span>{blogData.comments.length}</span>
-								<div className="like-button">
+								<span>{blogData.comments?.length || 0}</span>
+								<div className="like-button" onClick={likeUserBlog}>
 									<FontAwesomeIcon icon={faThumbsUp} />
 								</div>
-								<span>123</span>
+								<span>{blogData.likes?.length || 0}</span>
 							</div>
 						</div>
 						<div className="comm">
@@ -131,45 +176,45 @@ const Blogs = () => {
 									<div>
 										<input
 											type="text"
-											placeholder="What are you thoughts?"
+											placeholder="What are your thoughts?"
 											id="res"
 											name="blog_comment"
-										></input>
+										/>
 									</div>
 									<div className="submit-button">
 										<div>
-											<button>Submit</button>
+											<button type="submit">Submit</button>
 										</div>
 									</div>
 								</form>
 								<div>
 									<h3>Previous comments</h3>
 								</div>
-								{blogData.comments.map((comment, index) => {
+								{blogData.comments?.map((comment, index) => {
+									const isCommentOwner = comment.createdBy?._id === Cookies.get("user-id");
 									return (
 										<div className="comment-column" key={index}>
 											<div className="user-comment">
 												<div className="comm-image">
-													<img src={comment.createdBy.avatar}></img>
+													<img src={comment.createdBy?.avatar} alt="Commenter avatar" />
 												</div>
 												<div className="comm-desc">
-													
 													<div>
-														<span>{comment.createdBy.username}</span>
+														<span>{comment.createdBy?.username}</span>
 														<span>{formatDate(comment.createdAt)}</span>
 													</div>
-													<div>
-													<button className="remove">Remove</button>
-												</div>
+													{isCommentOwner && (
+														<div>
+															<button onClick={() => removeComment(comment._id)} className="remove">
+																Remove
+															</button>
+														</div>
+													)}
 												</div>
 											</div>
-											
 											<div className="comment-remove">
-												
 												<div className="comment-body">{comment.text}</div>
-												
 											</div>
-											
 										</div>
 									);
 								})}
@@ -178,7 +223,6 @@ const Blogs = () => {
 					</div>
 				</div>
 			</div>
-
 			<Footer />
 		</div>
 	);
