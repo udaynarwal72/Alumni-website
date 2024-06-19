@@ -5,6 +5,7 @@ import axios, { isCancel, AxiosError } from "axios";
 import NavBar from "../components/Navbar";
 import Footer from "../components/footer";
 import Cookies from "js-cookie";
+import BlogSectionCard from "../components/Blog-section-card/BlogSectionCard"
 const UserProfile = () => {
 	const params = useParams();
 	const [user, setUser] = useState({});
@@ -115,55 +116,43 @@ const UserProfile = () => {
 					</div>
 				</div>
 				<div className="lower-section">
-					<div className="profile-left-panel">
-						<div className="info-button">
-							<div>
-								<button>Personal Info</button>
-							</div>
-							<div>
-								<button>Educational Qualifications</button>
-							</div>
-
-							<div>
-								<button>Recent Posts</button>
-							</div>
-						</div>
-					</div>
+					
 					<div className="profile-right-panel">
 						<div className="profile-line1">
 							<div className="profile-heading">
-								<h1>Personal Info</h1>
+								<div><h1>Personal Info</h1></div>
 							</div>
 							<div className="edit-button-2">
 								<button>Edit</button>
 							</div>
 						</div>
 						<div className="all-list">
-							<div>
-								<h3>Heading1</h3>
-								<h4>Info</h4>
-								<h5>more-info</h5>
-								<h5>subsec</h5>
+							<div className="inner">
+							<div><h3>Name:</h3></div>
+							<div><h4>Uday Singh</h4></div>
+								
+								
 							</div>
-							<div>
-								<h3>Heading1</h3>
-								<h4>Info</h4>
-								<h5>more-info</h5>
-								<h5>subsec</h5>
+							<div className="inner">
+							<div><h3>Batch:</h3></div>
+							<div><h4>1994-1998</h4></div>
+								
 							</div>
-							<div>
-								<h3>Heading1</h3>
-								<h4>Info</h4>
-								<h5>more-info</h5>
-								<h5>subsec</h5>
+							<div className="inner">
+							<div><h3>Branch:</h3></div>
+							<div><h4>Computer Engineering</h4></div>
+								
 							</div>
-							<div>
-								<h3>Heading1</h3>
-								<h4>Info</h4>
-								<h5>more-info</h5>
-								<h5>subsec</h5>
+							<div className="inner">
+								<div><h3>Location</h3></div>
+								<div><h4>Bengaluru</h4></div>
+								
 							</div>
 						</div>
+					</div>
+					<div className="profile-recent">
+						<h1>Recent Posts</h1>
+						
 					</div>
 				</div>
 			</div>
