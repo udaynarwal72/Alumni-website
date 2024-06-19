@@ -116,11 +116,14 @@
   display: flex;
   padding: 30px 50px;
   margin-top: 20px;
+  display: flex;
+  /* justify-content: space-around; */
   /* flex-direction: column; */
   /* height:100%; */
   /* background-color: grey; */
   width: 100%;
   /* justify-content: space-between; */
+  gap:200px;
   
 }
 
@@ -245,8 +248,9 @@
 .lower-section{
   padding: 30px 50px;
   display: flex;
-  gap:1px;
+  gap:200px;
   width:100%;
+  /* justify-content: space-around; */
   /* background-color: grey; */
 }
 .info-button{
@@ -277,8 +281,8 @@
   color: white;
   transition: all 0.2s;
 }
-.profile-right-panel{
-  width:60%;
+.profile-right-panel,.profile-recent{
+  width:45%;
   background-color: #fdf9e5;
   padding: 12px;
   display: flex;
@@ -286,6 +290,8 @@
   gap:5px;
   height:20rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* margin-left: -150px; */
+  /* margin-left: 120px; */
 }
 .profile-left-panel{
   width:30%;
@@ -319,36 +325,69 @@
   overflow-y: scroll;
   /* height:20rem; */
   margin-bottom: 20px;
+  /* justify-content: center; */
+  align-items: center;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
-.all-list div{
-  width:100%;
+.inner{
+  width:80%;
   background-color: white;
-  /* height:20rem; */
+  min-height: 5rem;
   margin-bottom: 10px;
   border-radius: 12px;
   padding:10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* overflow: scroll; */
 }
-.all-list::-webkit-scrollbar {
+.inner div{
+  width:100px;
+}
+.all-list div h3{
+  color:#222;
+  
+  
+}
+.all-list div h4{
+  color:#C5291D;
+  
+}
+.all-list::-webkit-scrollbar,.profile-recent::-webkit-scrollbar {
   width: 8px; /* Width of the scrollbar */
 }
 
-.all-list::-webkit-scrollbar-track {
+.all-list::-webkit-scrollbar-track,.profile-recent::-webkit-scrollbar-track {
   background: #f1f1f1; /* Background of the scrollbar track */
   border-radius: 10px; /* Rounded corners for the track */
 }
 
-.all-list::-webkit-scrollbar-thumb {
+.all-list::-webkit-scrollbar-thumb,.profile-recent::-webkit-scrollbar-thumb {
   background: #a1605b; /* Color of the scrollbar thumb */
   border-radius: 10px; /* Rounded corners for the thumb */
   border: 2px solid #f1f1f1; /* Adds a border around the thumb */
 }
 
-.all-list::-webkit-scrollbar-thumb:hover {
+.all-list::-webkit-scrollbar-thumb:hover,.profile-recent::-webkit-scrollbar-thumb:hover {
   background: #A71C15; /* Darker color when hovering over the thumb */
 }
+.profile-recent{
+  width:60%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  gap:15px;
+  height:20rem;
+}
+.profile-recent h1{
+  color:#C5291D;
+  font-size: 30px;
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  
+}
+
 
 
 @media (max-width: 768px) {
@@ -406,17 +445,23 @@
 @media (max-width: 480px) {
   .upper-section {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    /* gap:200px */
   }
   .info-button{
     width:100%;
     flex-direction: row;
   }
   .profile-card {
-    margin-bottom: 15px;
+    margin-top: 150px;
+    margin-bottom: -150px;
   }
 
   .upper-portion {
     flex-direction: column;
+    justify-content: top;
+    /* gap:-100px */
   }
 
   .profile-pic img {
@@ -444,11 +489,16 @@
 
   .profile-right-panel, .profile-left-panel {
     padding: 10px;
+    width:100%;
+    height:50rem
   }
 
   .info-button button {
     padding: 10px;
     font-size: 14px;
+  }
+  .profile-recent{
+    width:100%
   }
 }
 
