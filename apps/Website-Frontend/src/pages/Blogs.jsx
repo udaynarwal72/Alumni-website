@@ -14,7 +14,7 @@ const Blogs = () => {
 		const fetchBlogData = async () => {
 			try {
 				const blogResponse = await axios.get(`http://localhost:3000/api/v1/blog/single/${blogId}`);
-				
+
 				if (blogResponse.data && blogResponse.data.data) {
 					setBlogData(blogResponse.data.data);
 				} else {
@@ -89,7 +89,7 @@ const Blogs = () => {
 										src="data:image/png;base64,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"
 										alt="Placeholder icon"
 									/>
-									
+
 								</button>
 								<span>123</span>
 							</div>
@@ -127,9 +127,9 @@ const Blogs = () => {
 									></input>
 								</div>
 								<div className="submit-button">
-								<div ><button>Submit</button></div>
+									<div ><button>Submit</button></div>
 								</div>
-								
+
 								<div>
 									<h3>Previous comments</h3>
 								</div>
