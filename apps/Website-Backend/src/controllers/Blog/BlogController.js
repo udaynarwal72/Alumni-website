@@ -4,6 +4,7 @@ import uploadOnCloudinary from '../../utils/Cloudinary.js';
 import Liked from '../../Schema/LikeSchema.js';
 import Comment from '../../Schema/CommentSchema.js';
 import Chance from 'chance';
+import ApiError from '../../utils/ApiError.js';
 const chance = new Chance();
 
 // Create a blog post
@@ -93,15 +94,32 @@ const deleteBlogById = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error deleting blog: ${error.message}`));
     }
 }
+
 const getSingleBlogById = async (req, res) => {
     try {
         const { blogId } = req.params;
+        console.log("blogId", blogId);
 
-        const blog = await Blog.findById(blogId).populate('blog_createdBy', 'username avatar');
+        // Find the blog by ID and populate the fields
+        const blog = await Blog.findById(blogId)
+            .populate('blog_createdBy', 'username avatar')
+            .populate({
+                path: 'comments',
+                select: 'text createdBy createdAt',
+                populate: {
+                    path: 'createdBy',
+                    select: 'username avatar'
+                }
+            });
+        // Check if the blog exists
+        if (!blog) {
+            return res.status(404).json(new ApiResponse(404, null, "Blog not found"));
+        }
 
+        // Return the blog details in the response
         return res.status(200).json(new ApiResponse(200, blog, "Blog retrieved successfully"));
-    }
-    catch (error) {
+    } catch (error) {
+        // Handle any errors that occur during the process
         return res.status(500).json(new ApiResponse(500, null, `Error retrieving blog: ${error.message}`));
     }
 };
@@ -120,23 +138,35 @@ const likeBlog = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error liking blog: ${error.message}`));
     }
 }
+
 const commentOnBlog = async (req, res) => {
     try {
         const { blogId } = req.params;
-        const { text } = req.body;
+        const { user_response } = req.body;
 
-        const comment = Comment.create({
-            text: text,
+        // Ensure req.user is defined
+        if (!req.user || !req.user._id) {
+            return res.status(401).json(new ApiResponse(401, null, "Unauthorized"));
+        }
+
+        // Await comment creation
+        const comment = await Comment.create({
+            text: user_response,
             blog: blogId,
             createdBy: req.user._id
         });
+        const blog = await Blog.findByIdAndUpdate(blogId, {
+            $push: {
+                comments: comment._id
+            }
+        });
 
         return res.status(200).json(new ApiResponse(200, comment, "Comment added successfully"));
+    } catch (error) {
+        return res.status(500).json(new ApiError(500, null, `Error adding comment: ${error.message}`));
     }
-    catch (error) {
-        return res.status(500).json(new ApiResponse(500, null, `Error adding comment: ${error.message}`));
-    }
-}
+};
+
 const getCommentsByBlogId = async (req, res) => {
     try {
         const { blogId } = req.params;
@@ -149,6 +179,7 @@ const getCommentsByBlogId = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, `Error retrieving comments: ${error.message}`));
     }
 }
+
 const searchBlogs = async (req, res) => {
     try {
         const { search } = req.query;
