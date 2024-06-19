@@ -96,7 +96,9 @@
 }
 .comment-body{
     font-size: 16px;
+    /* margin-bottom: 12px; */
 }
+
 .comment-column{
     display: flex;
     flex-direction: column;
@@ -106,10 +108,16 @@
     padding:8px;
     gap:18px;
 }
+
 .comm-desc div{
     display: flex;
     flex-direction: column;
     padding: 0 0.625rem; /* Adjusted padding */
+}
+.comm-desc{
+    display: flex;
+    justify-content: space-between;
+    width:100%
 }
 .comm-desc span{
     font-size: 0.8rem; /* Reduced font-size */
@@ -297,6 +305,22 @@
     row-gap: 12px;
     transition: background-color #d7d4d4 0.3s ease, transform 0.3s ease;
     color:black;
+}
+.remove{
+    /* width:50px */
+    padding:8px 8px;
+    background-color: #d7d4d4;
+    border-radius:18px ;
+    color: black;
+    border-color: 1px solid white;
+    border-width: 1px;
+    cursor: pointer;
+    border-style:groove;
+    font-size: 8px;
+}
+.remove:hover{
+    transform: scale(1.1);
+    background-color: #d7d4d4;
 }
 .buttons button:hover{
     transform: scale(1.1);
