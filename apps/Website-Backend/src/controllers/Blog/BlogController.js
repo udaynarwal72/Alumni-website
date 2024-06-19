@@ -110,7 +110,8 @@ const getSingleBlogById = async (req, res) => {
                     path: 'createdBy',
                     select: 'username avatar'
                 }
-            });
+            })
+            .populate('likes', 'user');
         // Check if the blog exists
         if (!blog) {
             return res.status(404).json(new ApiResponse(404, null, "Blog not found"));
@@ -126,18 +127,42 @@ const getSingleBlogById = async (req, res) => {
 const likeBlog = async (req, res) => {
     try {
         const { blogId } = req.params;
+        const userId = req.user._id;
 
-        const blog = await Blog.findById(blogId);
-        Liked.create({
-            user: req.user._id,
+        // Check if the user has already liked the blog
+        const existingLike = await Liked.findOne({
+            user: userId,
             blog: blogId,
         });
-        return res.status(200).json(new ApiResponse(200, blog, "Blog liked successfully"));
-    }
-    catch (error) {
+
+        if (existingLike) {
+            return res.status(400).json(new ApiResponse(400, null, "User has already liked this blog"));
+        }
+
+        // Create a new like entry
+        const liked = await Liked.create({
+            user: userId,
+            blog: blogId,
+        });
+
+        // Update the blog with the new like
+        const blog = await Blog.findByIdAndUpdate(
+            blogId,
+            { $push: { likes: liked._id } },
+            { new: true }
+        );
+
+        if (!blog) {
+            return res.status(404).json(new ApiResponse(404, null, "Blog not found"));
+        }
+
+        return res.status(200).json(new ApiResponse(200, liked, "Blog liked successfully"));
+    } catch (error) {
         return res.status(500).json(new ApiResponse(500, null, `Error liking blog: ${error.message}`));
     }
-}
+};
+
+
 
 const commentOnBlog = async (req, res) => {
     try {
@@ -166,6 +191,33 @@ const commentOnBlog = async (req, res) => {
         return res.status(500).json(new ApiError(500, null, `Error adding comment: ${error.message}`));
     }
 };
+
+const removeLike = async (req, res) => {
+    try {
+        const { blogId } = req.params;
+        const userId = req.user._id;
+
+        const like = await Liked.findOneAndDelete({ blog: blogId, user: userId });
+
+        if (!like) {
+            return res.status(404).json(new ApiResponse(404, null, "Like not found"));
+        }
+
+        const blog = await Blog.findByIdAndUpdate(
+            blogId,
+            { $pull: { likes: like._id } },
+            { new: true }
+        );
+
+        if (!blog) {
+            return res.status(404).json(new ApiResponse(404, null, "Blog not found"));
+        }
+
+        return res.status(200).json(new ApiResponse(200, like, "Like removed successfully"));
+    } catch (error) {
+        return res.status(500).json(new ApiResponse(500, null, `Error removing like: ${error.message}`));
+    }
+}
 
 const getCommentsByBlogId = async (req, res) => {
     try {
@@ -257,4 +309,5 @@ export {
     getBlogsByTag,//pending
     createBookMark,//pending
     deleteCommentById,
+    removeLike,
 };

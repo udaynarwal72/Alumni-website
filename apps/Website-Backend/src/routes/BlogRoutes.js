@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { commentOnBlog, createblog, deleteBlogById, deleteCommentById, getAllBlog, getBlogsByAuthor, getCommentsByBlogId, getSingleBlogById, likeBlog, searchBlogs, updateBlogById } from "../controllers/Blog/BlogController.js";
+import { commentOnBlog, createblog, deleteBlogById, deleteCommentById, getAllBlog, getBlogsByAuthor, getCommentsByBlogId, getSingleBlogById, likeBlog, removeLike, searchBlogs, updateBlogById } from "../controllers/Blog/BlogController.js";
 import { upload } from "../middlewares/Multer.middleware.js";
 import verifyJWT from "../middlewares/Auth.middleware.js";
 
@@ -19,6 +19,7 @@ BlogRoutes.post("/like/:blogId", verifyJWT, likeBlog);
 BlogRoutes.post("/comment/:blogId", verifyJWT, commentOnBlog);
 BlogRoutes.get("/comments/:blogId", getCommentsByBlogId);
 BlogRoutes.get("/search", searchBlogs);
+BlogRoutes.delete('/unlike/:blogId', verifyJWT, removeLike);
 BlogRoutes.get("/author/:authorId", getBlogsByAuthor);
 BlogRoutes.delete("/comment/:commentId", verifyJWT, deleteCommentById);
 export default BlogRoutes;

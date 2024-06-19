@@ -1,62 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios'; // Import axios for HTTP requests
-import './NavBar.css'; // Ensure to import your CSS file for styling
+import axios from 'axios';
+import './NavBar.css';
 import Cookies from 'js-cookie';
+
 library.add(fas);
 
 const NavBar = () => {
     const [showNavbar, setShowNavbar] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track authentication status
-    const [userName, setUserName] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const location = useLocation(); // Get the current location
+
+    useEffect(() => {
+        const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        setIsLoggedIn(loggedIn);
+    }); // Re-run this effect when the location changes
 
     const handleShowNavbar = () => {
         setShowNavbar(!showNavbar);
     };
 
-    useEffect(() => {
-        const checkAuthentication = async () => {
-            try {
-                const userSpecialId = Cookies.get('user-accessToken');
-                const response = await axios.get('http://localhost:3000/api/v1/user/check-auth', {
-                    headers: {
-                        'Authorization': `Bearer ${userSpecialId}`
-                    }
-                });
-                if (response.data.data.isLoggedIn) {
-                    setIsLoggedIn(true); // User is authenticated
-                    fetchingUserName(userSpecialId); // Fetch the user's name if authenticated
-                } else {
-                    setIsLoggedIn(false); // User is not authenticated
-                }
-            } catch (error) {
-                console.error("Error checking authentication:", error);
-                setIsLoggedIn(false); // Set to false on error
-            }
-        };
-
-        const fetchingUserName = async (userSpecialId) => {
-            try {
-                const response = await axios.get('http://localhost:3000/api/v1/user/profilesection', {
-                    headers: {
-                        'Authorization': `Bearer ${userSpecialId}`
-                    }
-                });
-                setUserName(response.data.data.first_name);
-            } catch (error) {
-                console.error("Error fetching user name:", error);
-            }
-        };
-
-        checkAuthentication(); // Call the function to check authentication when component mounts
-    }, []); // Empty dependency array means this effect runs only once on mount
-    const redirectProfile = () => {
+    const redirectProfile = (e) => {
+        e.preventDefault();
         const userId = Cookies.get('user-id');
         window.location.href = `/user/${userId}`;
-    }
+    };
+
     return (
         <nav className="navbar">
             <div className="nav-container">
@@ -72,13 +44,12 @@ const NavBar = () => {
                     <ul>
                         <li><NavLink exact to="/" activeClassName="active-link">Home</NavLink></li>
                         <li><NavLink to="/blogsection" activeClassName="active-link">Blog</NavLink></li>
-                        <li><NavLink to="/projects" activeClassName="active-link">Projects</NavLink></li>
                         <li><NavLink to="/about" activeClassName="active-link">About</NavLink></li>
                         <li><NavLink to="/contactus" activeClassName="active-link">Contact</NavLink></li>
                         {isLoggedIn ? (
                             <>
                                 <li><NavLink to="/logout">Logout</NavLink></li>
-                                <li><NavLink onClick={redirectProfile}>Hello, {userName}</NavLink></li>
+                                <li><NavLink to="#" onClick={redirectProfile}>Hello, {localStorage.getItem('first_name')}</NavLink></li>
                             </>
                         ) : (
                             <>

@@ -20,6 +20,8 @@ function SignInPage() {
             if (response.status === 200 && response.data.data.accessToken) {
                 const userId = response.data.data.user._id;
                 localStorage.setItem("token", response.data.data.accessToken);
+                localStorage.setItem("first_name", response.data.data.user.first_name);
+                localStorage.setItem("isLoggedIn", true);
                 const notificationToken = localStorage.getItem("notification-token");
                 Cookies.set('user-accessToken', response.data.data.accessToken, { secure: true });
                 Cookies.set('user-id', userId, { secure: true })

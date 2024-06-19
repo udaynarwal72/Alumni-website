@@ -29,7 +29,7 @@ const UserProfile = () => {
 	const createBlog = () => {
 		window.location.href = "/createblog";
 	}
-	const completeProfile = () => {	
+	const completeProfile = () => {
 		window.location.href = "/completeprofile";
 	}
 	return (
@@ -116,7 +116,7 @@ const UserProfile = () => {
 					</div>
 				</div>
 				<div className="lower-section">
-					
+
 					<div className="profile-right-panel">
 						<div className="profile-line1">
 							<div className="profile-heading">
@@ -128,31 +128,24 @@ const UserProfile = () => {
 						</div>
 						<div className="all-list">
 							<div className="inner">
-							<div><h3>Name:</h3></div>
-							<div><h4>Uday Singh</h4></div>
-								
-								
+								<div><h3>Batch:</h3></div>
+								<div><h4>{user.joining_batch}-{Number(user.joining_batch)+4}</h4></div>
+
 							</div>
 							<div className="inner">
-							<div><h3>Batch:</h3></div>
-							<div><h4>1994-1998</h4></div>
-								
-							</div>
-							<div className="inner">
-							<div><h3>Branch:</h3></div>
-							<div><h4>Computer Engineering</h4></div>
-								
+								<div><h3>Branch:</h3></div>
+								<div><h4>{user.branch}</h4></div>
+
 							</div>
 							<div className="inner">
 								<div><h3>Location</h3></div>
-								<div><h4>Bengaluru</h4></div>
-								
+								<div><h4>{user.city}</h4></div>
+
 							</div>
 						</div>
 					</div>
 					<div className="profile-recent">
 						<h1>Recent Posts</h1>
-						
 					</div>
 				</div>
 			</div>

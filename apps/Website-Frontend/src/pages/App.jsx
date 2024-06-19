@@ -45,9 +45,9 @@ function App() {
 				<Herosection />
 				<div className="-first heading">
 					<div className="first-heading-content">
-						<button>Our Alumnis</button>
 						<div>
-							<h1>Connect Your Batchmates</h1>
+							<h1>Our Alumni</h1>
+							<hr /><hr />
 						</div>
 					</div>
 				</div>
@@ -61,34 +61,37 @@ function App() {
 				<hr className="home"></hr>
 				<div className="second-heading">
 					<div className="second-heading-content">
-						<button onClick={blogSection}>Blogs</button>
 						<div>
-							<h1>Alumnis Write..</h1>
+							<h1>Alumni Write..</h1>
+							<hr /><hr />
 						</div>
 					</div>
 				</div>
 				<BlogSlider />
+				<div className="view-all-button">
+					<button onClick={blogSection}>View All</button>
+				</div>
 				<hr className="home"></hr>
 				<div className="second-heading">
 					<div className="second-heading-content">
-						<button>Events</button>
 						<div>
 							<h1>The Alumnis Meet</h1>
+							<hr /><hr />
 						</div>
 					</div>
 				</div>
 				<EventSlider />
+				<button>View All</button>
 				<hr className="home"></hr>
 				<div className="second-heading">
 					<div className="second-heading-content">
-						<button>Jobs</button>
 						<div>
-							<h1>Job Section</h1>
+							<h1>Job Section</h1><hr /><hr />
 						</div>
 					</div>
 				</div>
 				<JobSlider />
-				{/* <ImageSlider /> */}
+				<button>View All</button>
 			</div>
 
 			<Footer />
