@@ -12,12 +12,37 @@
 
 .Parent h1 {
     font-family: "DM Sans", sans-serif;
+    font-size: 40px;
+    padding: 12px 8px;
+    color:#C5291D
 
 }
 
 .heading {
     display: flex;
-    padding: 12px
+    padding: 12px;
+    justify-content: space-between;
+}
+.branch-drop{
+    width:60%;
+    border:2px solid #C5291D;
+    height:40px;
+    background-color: white;
+    border-radius: 10px;
+    color:#C5291D;
+    padding:8px 15px;
+    margin-right: -30px;
+    position: relative;
+}
+
+.heading .left-head{
+    display: flex;
+    gap:2px;
+}
+option{
+    background-color:#F9F5EB ;
+    color:#C5291D;
+    font-weight: 500;
 }
 
 .heading button {
@@ -46,6 +71,51 @@
     display: flex;
     flex-wrap: wrap;
 }
+.text-input-blog-search{
+    border:2px solid #C5291D;
+    height:3rem;
+    padding:8px;
+    border-radius: 15px;
+    color:#C5291D;
+    font-weight: 600;
+    /* margin-bottom: 2rem; */
+    margin-top: -0.5rem;
+    font-size: 12px;
+}
+.text-input-blog-search:focus{
+    border:2px solid #C5291D;
+    height:3rem;
+    padding:12px;
+    
+}
+.batch-drop{
+    border:2px solid #C5291D;
+    height:40px;
+    background-color: white;
+    border-radius: 10px;
+    color:#C5291D;
+    padding:8px 15px;
+    margin-right: -30px;
+    width:10rem;
+}
+select::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  .select::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+  }
+  
+  select::-webkit-scrollbar-thumb {
+    background: #a1605b; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 2px solid #f1f1f1; /* Adds a border around the thumb */
+  }
+  
+  select::-webkit-scrollbar-thumb:hover {
+    background: #A71C15; /* Darker color when hovering over the thumb */
+  }
 
 @media (max-width: 400px) {
 

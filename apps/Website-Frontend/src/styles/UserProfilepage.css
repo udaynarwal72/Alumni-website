@@ -379,13 +379,14 @@
   overflow-y: scroll;
   gap:15px;
   height:20rem;
+  border-radius: 10px;
 }
 .profile-recent h1{
   color:#C5291D;
-  font-size: 30px;
+  font-size: 32px;
   font-family: "DM Serif Text", serif;
   font-weight: 400;
-  
+  padding:2px;
 }
 
 
