@@ -1,6 +1,6 @@
-import NavBar from "../components/Navbar";
-import Footer from "../components/footer";
-import "../styles/EventInfo.css";
+import NavBar from "../../components/Navbar";
+import Footer from "../../components/footer";
+import "../../styles/EventInfo.css";
 
 const EventInfo = () => {
 	return (

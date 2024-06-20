@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import "../styles/BlogForm.css";
-import NavBar from "../components/Navbar";
-import Footer from "../components/footer";
+import "../../styles/BlogForm.css";
+import NavBar from "../../components/Navbar";
+import Footer from "../../components/footer";
 import Cookies from "js-cookie";
 
 const BlogForm = () => {

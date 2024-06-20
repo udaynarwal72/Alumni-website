@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/SignUp.css';
-import NavBar from '../components/Navbar';
-import Footer from '../components/footer';
-import dataCountry from '../../../../src/countries.json';
-import dataState from '../../../../src/states.json';
+import '../../styles/SignUp.css';
+import NavBar from '../../components/Navbar';
+import Footer from '../../components/footer';
+import dataCountry from '../../../../../src/countries.json';
+import dataState from '../../../../../src/states.json';
 import { useNavigate } from 'react-router-dom';
 
 const branches = [
@@ -58,23 +58,20 @@ function SignupPage() {
         } else {
             setCities([]);
         }
-    }, [selectedState, selectedCountry]);
+    }, [selectedState]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-
         try {
             const response = await fetch('http://localhost:3000/api/v1/user/signup', {
                 method: 'POST',
                 body: formData
             });
-
             if (!response.ok) {
                 throw new Error('Failed to register user');
             }
-
             const data = await response.json();
             console.log(data); // Handle successful registration response
             navigate('/signin'); // Use navigate hook to redirect after successful signup
@@ -82,7 +79,6 @@ function SignupPage() {
             console.error('Error registering user:', error);
         }
     };
-
     return (
         <>
             <NavBar />

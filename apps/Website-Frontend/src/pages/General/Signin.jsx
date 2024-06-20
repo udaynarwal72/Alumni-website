@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../styles/SignIn.css';
-import NavBar from '../components/Navbar';
-import Footer from '../components/footer';
+import '../../styles/SignIn.css';
+import NavBar from '../../components/Navbar';
+import Footer from '../../components/footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';

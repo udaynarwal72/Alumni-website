@@ -343,8 +343,45 @@ const getUserDetails = AsyncHandler(async (req, res) => {
     }
 });
 
+const updateRemainingProfile = AsyncHandler(async (req, res) => {
+
+    try {
+        const { country, state, city, likedin, instagram, twitter, achievements, hobbies } = req.body;
+        const awards = achievements.split(",").map((achievement) => {
+            return achievement.trim();
+        });
+        console.log(awards)
+        const user_hobbie = hobbies.split(",").map((hobby) => {
+            return hobby.trim();
+        });
+        console.log(user_hobbie)
+        const user = await User.findByIdAndUpdate(
+            req.user?._id,
+            {
+                $set: {
+                    current_state: state,
+                    currnet_country: country,
+                    current_city: city,
+                    linkedin_profile: likedin,
+                    twitter_handle: twitter,
+                    instagram_handle: instagram,
+                    awards: awards,
+                    hobbies: user_hobbie,
+                }
+            },
+        ).select("-password");
+        console.log(user)
+        return res
+            .status(200)
+            .json(new ApiResponse(200, user, "Profile updated successfully"));
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
+});
+
 const updateUserProfile = AsyncHandler(async (req, res) => {
     try {
+        console.log(req.body)
         const { first_name, last_name, joining_batch, country, state, city, address, branch, organisation, phone_number, dob, linkedin_profile, twitter_handle, facebook_profile, instagram_handle, job_title, department, work_experience, skills, time_zone, hobbies, certifications, awards, badges } = req.body;
 
         if (!first_name) {
@@ -612,4 +649,5 @@ export {
     getAllUsers,
     checkAuthentication,
     getUserById,
+    updateRemainingProfile,
 };

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 // import { fields } from '../middlewares/Multer.middleware.js';
 import verifyJWT from '../middlewares/Auth.middleware.js';
-import { userSignUpController, userLogin, refreshAccessToken, logoutUser, getUserDetails, updateUserProfile, getUserlikedPost, getUserComments, changeCurrentPassword, deleteUserProfile, getUserBookMark, getUserNotifications, findNotificationById, deleteNotification, userForgotPasssword, changeNotloggedInUserPassword, getAllUsers, checkAuthentication, getUserById } from '../controllers/User/UserController.js';
+import { userSignUpController, userLogin, refreshAccessToken, logoutUser, getUserDetails, updateUserProfile, getUserlikedPost, getUserComments, changeCurrentPassword, deleteUserProfile, getUserBookMark, getUserNotifications, findNotificationById, deleteNotification, userForgotPasssword, changeNotloggedInUserPassword, getAllUsers, checkAuthentication, getUserById, updateRemainingProfile } from '../controllers/User/UserController.js';
 import { upload } from '../middlewares/Multer.middleware.js';
 import { saveUserToken } from '../controllers/User/UserNotification.js';
 import User from '../Schema/UserSchema.js';
@@ -33,6 +33,7 @@ UserRouter.get('/profilesection', verifyJWT, getUserDetails);
 UserRouter.get('/check-auth', verifyJWT, checkAuthentication);
 UserRouter.get('/findalumni', getAllUsers)
 UserRouter.put('/profile/:userId', verifyJWT, updateUserProfile);
+UserRouter.put('/updateprofile/:userId', verifyJWT, updateRemainingProfile);
 UserRouter.post('/forgot-password', verifyJWT, userForgotPasssword);
 UserRouter.get('/profile/:userId/likedPost', verifyJWT, getUserlikedPost);
 UserRouter.get('/profile/:userId/comments', verifyJWT, getUserComments);

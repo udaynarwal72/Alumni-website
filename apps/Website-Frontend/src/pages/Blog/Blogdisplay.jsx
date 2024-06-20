@@ -1,5 +1,5 @@
 // import 
-import "../styles/Blogdisplaysection.css";
+import "../../styles/Blogdisplaysection.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 

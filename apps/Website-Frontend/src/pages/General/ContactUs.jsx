@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/ContactUsPage.css'; // Importing CSS file for styling
-import NavBar from '../components/Navbar';
-import Footer from '../components/footer';
+import '../../styles/ContactUsPage.css'; // Importing CSS file for styling
+import NavBar from '../../components/Navbar';
+import Footer from '../../components/footer';
 
 const ContactUsPage = () => {
     return (

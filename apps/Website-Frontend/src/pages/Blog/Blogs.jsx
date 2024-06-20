@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import NavBar from "../components/Navbar";
-import Footer from "../components/footer";
-import "../styles/Blogs.css";
+import NavBar from "../../components/Navbar";
+import Footer from "../../components/footer";
+import "../../styles/Blogs.css";
 import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faThumbsUp } from "@fortawesome/free-solid-svg-icons";

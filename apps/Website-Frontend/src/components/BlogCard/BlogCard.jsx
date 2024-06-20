@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './BlogCard.css';
 
 const BlogCard = ({ data }) => {
-    const { blog_title, blog_body, blogImage, tags, blog_createdBy, createdAt } = data;
+    const { blog_title, blog_body, blogImage, blog_tags, blog_createdBy, createdAt } = data;
 
     const truncateText = (text, wordLimit) => {
         const words = text.split(' ');
@@ -20,7 +20,7 @@ const BlogCard = ({ data }) => {
     const blogRedirect = () => {
         window.location.href = `/blog/${data._id}`;
     }
-
+    console.log(blog_tags);
     return (
         <div className="parent-card">
             <div className="main-blog-card" onClick={blogRedirect}>
@@ -29,9 +29,13 @@ const BlogCard = ({ data }) => {
                         <img src={blogImage} alt={blog_title} />
                     </div>
                     <div className="card-content">
-                        <div className="card-category">
-                            {tags}
-                        </div>
+                        {blog_tags?.map((index, tag) => {
+                            return (
+                                <div className="card-category">
+                                    {index}
+                                </div>
+                            )
+                        })}
                         <h2 className="card-title">
                             <a href={`/blog/${data._id}`}>{blog_title}</a>
                         </h2>

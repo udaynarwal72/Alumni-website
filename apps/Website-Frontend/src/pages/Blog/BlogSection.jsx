@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import "../styles/BlogSection.css";
-import NavBar from "../components/Navbar";
-import Footer from "../components/footer";
-import BlogSlider from "../components/BlogSlider/BlogSlider";
-import BlogSectionCard from "../components/Blog-section-card/BlogSectionCard";
+import "../../styles/BlogSection.css";
+import NavBar from "../../components/Navbar";
+import Footer from "../../components/footer";
+import BlogSlider from "../../components/BlogSlider/BlogSlider";
+import BlogSectionCard from "../../components/Blog-section-card/BlogSectionCard";
 
 const BlogSection = () => {
     const [blogs, setBlogs] = useState([]);

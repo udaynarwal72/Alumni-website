@@ -50,6 +50,7 @@ body {
     color: white;
     padding: 0.3125rem 0.625rem; /* Adjusted padding */
     border-radius: 5px;
+    margin-right: 0.625rem;
     display: inline-block;
     font-size: 0.75rem; /* Adjusted font-size */
     margin-bottom: 0.625rem; /* Adjusted margin-bottom */

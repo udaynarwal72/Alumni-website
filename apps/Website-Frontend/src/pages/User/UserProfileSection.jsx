@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import NavBar from "../components/Navbar";
-import Footer from "../components/footer"; // Assuming the correct file name is 'Footer'
+import NavBar from "../../components/Navbar";
+import Footer from "../../components/footer"; // Assuming the correct file name is 'Footer'
 import Cookies from "js-cookie";
-import "../styles/UserProfilepage.css";
-import BlogSectionCard from "../components/Blog-section-card/BlogSectionCard";
+import "../../styles/UserProfilepage.css";
+import BlogSectionCard from "../../components/Blog-section-card/BlogSectionCard";
 
 const UserProfile = () => {
 	const { userId } = useParams();
@@ -138,11 +138,11 @@ const UserProfile = () => {
 							</div>
 							<div className="link2">
 								<div className="link-logo">
-									<a href="https://www.linkedin.com">
+									<a href={user.instagram_handle}>
 										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjvzC_QRv6moAhgNb5C6e3yicKgFND1g2RwA&s" alt="LinkedIn" />
 									</a>
 								</div>
-								<div>LinkedIn</div>
+								<div>Instagram</div>
 							</div>
 						</div>
 						<div className="unique-link">

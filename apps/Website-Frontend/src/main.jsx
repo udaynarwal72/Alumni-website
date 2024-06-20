@@ -9,21 +9,21 @@ import {
 import App from './pages/App';
 import './index.css';
 import HeaderProvider from './context/HeaderProvider';
-import AboutUsPage from './pages/AboutUs';
-import ContactUsPage from './pages/ContactUs';
-import HiringPage from './pages/Hire';
-import UserProfile from './pages/UserProfileSection';
-import OurAlumni from './pages/OurAlumini';
-import Blogs from './pages/Blogs';
+import AboutUsPage from './pages/General/AboutUs';
+import ContactUsPage from './pages/General/ContactUs';
+import HiringPage from './pages/Job/Hire';
+import UserProfile from './pages/User/UserProfileSection';
+import OurAlumni from './pages/Alumni/OurAlumini';
+import Blogs from './pages/Blog/Blogs';
 import BlogCard from './components/BlogCard/BlogCard';
-import SignInPage from './pages/Signin';
-import SignupPage from './pages/Signup';
+import SignInPage from './pages/General/Signin';
+import SignupPage from './pages/General/Signup';
 
-import Userlogout from './helpers/Logout';
-import BlogSection from './pages/BlogSection';
-import BlogForm from './pages/BlogForm';
-import Completeprofile from './pages/Completeprofile';
-import EventInfo from './pages/EventInfo';
+import Userlogout from './pages/User/Logout';
+import BlogSection from './pages/Blog/BlogSection';
+import BlogForm from './pages/Blog/BlogForm';
+import Completeprofile from './pages/User/Completeprofile';
+import EventInfo from './pages/Events/EventInfo';
 
 const router = createBrowserRouter([
   {
@@ -83,8 +83,8 @@ const router = createBrowserRouter([
     element: <Completeprofile />
   },
   {
-    path:'eventpage',
-    element:<EventInfo />
+    path: 'eventpage',
+    element: <EventInfo />
   }
 ]);
 

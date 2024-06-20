@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../styles/HiringPage.css';
-import NavBar from '../components/Navbar';
-import Footer from '../components/footer';
+import '../../styles/HiringPage.css';
+import NavBar from '../../components/Navbar';
+import Footer from '../../components/footer';
 
 const HiringPage = () => {
     const [jobTitle, setJobTitle] = useState('');
