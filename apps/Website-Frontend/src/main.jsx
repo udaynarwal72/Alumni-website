@@ -23,6 +23,7 @@ import Userlogout from './helpers/Logout';
 import BlogSection from './pages/BlogSection';
 import BlogForm from './pages/BlogForm';
 import Completeprofile from './pages/Completeprofile';
+import EventInfo from './pages/EventInfo';
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
     path: '/completeprofile',
     element: <Completeprofile />
   },
+  {
+    path:'eventpage',
+    element:<EventInfo />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
