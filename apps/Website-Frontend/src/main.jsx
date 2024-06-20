@@ -24,6 +24,7 @@ import BlogSection from './pages/Blog/BlogSection';
 import BlogForm from './pages/Blog/BlogForm';
 import Completeprofile from './pages/User/Completeprofile';
 import EventInfo from './pages/Events/EventInfo';
+import EditProfile from './pages/User/EditProfile';
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
   {
     path: 'eventpage',
     element: <EventInfo />
+  },
+  {
+    path: 'editprofile',
+    element: <EditProfile />
   }
 ]);
 
