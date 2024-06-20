@@ -14,67 +14,77 @@ const Blogs = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [likeCount, setLikeCount] = useState(0);
-    const [isLikedByUser, setIsLikedByUser] = useState(false); // Track whether the current user has liked this blog
+    const [isLikedByUser, setIsLikedByUser] = useState(false);
+
+    const fetchBlogData = async () => {
+        try {
+            const blogResponse = await axios.get(`http://localhost:3000/api/v1/blog/single/${blogId}`);
+            if (blogResponse.data && blogResponse.data.data) {
+                const blog = blogResponse.data.data;
+                setBlogData(blog);
+                setLikeCount(blog.likes.length);
+                const userId = Cookies.get("user-id");
+                setIsLikedByUser(blog.likes.includes(userId));
+            } else {
+                console.error("Unexpected response format:", blogResponse.data);
+            }
+        } catch (error) {
+            console.error("Error fetching blog data:", error);
+            setError("Failed to load blog data.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchBlogData();
+    }, [blogId]);
+    
+
+    const handleLikeToggle = async () => {
+        const url = `http://localhost:3000/api/v1/blog/${isLikedByUser ? 'unlike' : 'like'}/${blogId}`;
+        const method = isLikedByUser ? 'delete' : 'post';
+
+        // Optimistic UI update
+        setLikeCount(prevCount => prevCount + (isLikedByUser ? -1 : 1));
+        setIsLikedByUser(!isLikedByUser);
+
+        try {
+            await axios[method](url, {}, {
+                headers: {
+                    Authorization: `Bearer ${Cookies.get("user-accessToken")}`,
+                },
+            });
+        } catch (error) {
+            // Revert optimistic UI update if the request fails
+            setLikeCount(prevCount => prevCount + (isLikedByUser ? 1 : -1));
+            setIsLikedByUser(isLikedByUser);
+            console.error("Error toggling like:", error);
+        }
+    };
+
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    };
 
     const postComment = async (e) => {
         e.preventDefault();
         const comment = e.target.blog_comment.value;
-        const data = {
-            user_response: comment,
-        };
+        const data = { user_response: comment };
+
         try {
-            const response = await axios.post(
-                `http://localhost:3000/api/v1/blog/comment/${blogId}`,
-                data,
-                {
-                    headers: {
-                        Authorization: `Bearer ${Cookies.get("user-accessToken")}`,
-                    },
-                }
-            );
-            // if (response.data && response.data.data) {
-            //     setBlogData((prevData) => ({
-            //         ...prevData,
-            //         comments: [...prevData.comments, response.data.data],
-            //     }));
-            // }
-            e.target.blog_comment.value = ""; // Clear the input field
+            await axios.post(`http://localhost:3000/api/v1/blog/comment/${blogId}`, data, {
+                headers: {
+                    Authorization: `Bearer ${Cookies.get("user-accessToken")}`,
+                },
+            });
+            e.target.blog_comment.value = "";
+            fetchBlogData(); // Fetch blog data again to update comments
         } catch (error) {
             console.error("Error posting comment:", error);
         }
     };
-    useEffect(() => {
-        const fetchBlogData = async () => {
-            try {
-                const blogResponse = await axios.get(
-                    `http://localhost:3000/api/v1/blog/single/${blogId}`
-                );
-                if (blogResponse.data && blogResponse.data.data) {
-                    const blog = blogResponse.data.data;
-                    setBlogData(blog);
-                    setLikeCount(blog.likes.length);
-                    // Check if the current user has liked this blog
-                    const userId = Cookies.get("user-id");
-                    setIsLikedByUser(blog.likes.some(like => like === userId));
-                } else {
-                    console.error("Unexpected response format:", blogResponse.data);
-                }
-            } catch (error) {
-                console.error("Error fetching blog data:", error);
-                setError("Failed to load blog data.");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchBlogData();
-    }, [postComment]);
-
-    const formatDate = (dateString) => {
-        const options = { year: "numeric", month: "long", day: "numeric" };
-        return new Date(dateString).toLocaleDateString(undefined, options);
-    };
-
 
     const removeComment = async (commentId) => {
         try {
@@ -89,40 +99,6 @@ const Blogs = () => {
             }));
         } catch (error) {
             console.error("Error removing comment:", error);
-        }
-    };
-
-    const likeUserBlog = async () => {
-        try {
-            if (isLikedByUser) {
-                // Unlike the blog
-                await axios.delete(
-                    `http://localhost:3000/api/v1/blog/unlike/${blogId}`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${Cookies.get("user-accessToken")}`,
-                        },
-                    }
-                );
-                setLikeCount((prevCount) => prevCount - 1);
-            }
-            else if (!isLikedByUser) {
-                // Like the blog
-                await axios.post(
-                    `http://localhost:3000/api/v1/blog/like/${blogId}`,
-                    {},
-                    {
-                        headers: {
-                            Authorization: `Bearer ${Cookies.get("user-accessToken")}`,
-                        },
-                    }
-                );
-                setLikeCount((prevCount) => prevCount + 1);
-            }
-            setIsLikedByUser(!isLikedByUser); // Toggle the liked status locally
-        } catch (error) {
-            console.error("Error liking blog:", error);
-            // Handle error
         }
     };
 
@@ -178,9 +154,8 @@ const Blogs = () => {
                                     <FontAwesomeIcon icon={faComment} />
                                 </div>
                                 <span>{blogData.comments?.length || 0}</span>
-                                <div className="like-button" onClick={likeUserBlog}>
-                                    <FontAwesomeIcon icon="fa-light fa-thumbs-up" />
-                                    <FontAwesomeIcon icon={faThumbsUp} style={{ color: isLikedByUser ? 'blue' : '' }} />
+                                <div className="like-button" onClick={handleLikeToggle}>
+                                    <FontAwesomeIcon icon={faThumbsUp} style={{ color: isLikedByUser ? 'blue' : 'grey' }} />
                                 </div>
                                 <span>{likeCount}</span>
                             </div>
@@ -188,7 +163,7 @@ const Blogs = () => {
                         <div className="comm">
                             <div className="comments">
                                 <div className="responses">
-                                    <h1 className="responses">Responses</h1>
+                                    <h1 className="responses">Responses ({blogData.comments?.length || 0})</h1>
                                 </div>
                                 <form method="POST" onSubmit={postComment}>
                                     <div>

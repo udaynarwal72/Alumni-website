@@ -9,6 +9,7 @@ const OurAlumni = () => {
     const [alumni, setAlumni] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const alumniPerPage = 20;
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         const fetchAlumni = async () => {
@@ -24,41 +25,70 @@ const OurAlumni = () => {
             } catch (error) {
                 console.error("Error fetching alumni data:", error);
             }
-        }
+        };
         fetchAlumni();
     }, []);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    // Search functionality
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value.toLowerCase());
+    };
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+    };
+
+    const filteredAlumni = alumni.filter(alumniItem =>
+        alumniItem.username.toLowerCase().includes(searchTerm)|| alumniItem.branch.toLowerCase().includes(searchTerm)|| alumniItem.first_name.toLowerCase().includes(searchTerm)|| alumniItem.last_name.toLowerCase().includes(searchTerm) 
+    );
 
     // Calculate the indexes for the current page
     const indexOfLastAlumni = currentPage * alumniPerPage;
     const indexOfFirstAlumni = indexOfLastAlumni - alumniPerPage;
-    const currentAlumni = alumni.slice(indexOfFirstAlumni, indexOfLastAlumni);
+    const currentAlumni = filteredAlumni.slice(indexOfFirstAlumni, indexOfLastAlumni);
 
-    // Change page
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    // Placeholder functions for button clicks
     const allAlumni = () => {
         window.location.href = "/alumnisection";
-    }
+    };
+
     const branchAlumni = () => {
+        // Implement branch alumni filtering logic
+    };
 
-    }
     const branchFilter = () => {
+        // Implement branch filter logic
+    };
 
-    }
     const companyFilter = () => {
-
-    }
+        // Implement company filter logic
+    };
     return (
         <div>
             <NavBar />
             <div className="Parent">
                 <h1>Alumni</h1>
                 <div className="heading">
-                    <div><button onClick={allAlumni} >All</button></div>
+                    <div><button onClick={allAlumni}>All</button></div>
                     <div><button>Nearby</button></div>
                     <div><button onClick={branchAlumni}>My Batch</button></div>
                     <div><button onClick={branchFilter}>My Branch</button></div>
                     <div><button onClick={companyFilter}>My Company</button></div>
-                    <div><button >My Designation</button></div>
+                    <div><button>My Designation</button></div>
+                    <div className="side-search">
+                        <form onSubmit={handleSearchSubmit}>
+                            <input
+                                type="text"
+                                name="search-term"
+                                onChange={handleSearch}
+                                className="text-input-blog"
+                                placeholder="Search..."
+                            />
+                        </form>
+                    </div>
                 </div>
                 <div className="card-holder">
                     {currentAlumni.map((alumniItem) => (

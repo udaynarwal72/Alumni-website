@@ -248,7 +248,7 @@ const getBlogsByAuthor = async (req, res) => {
     try {
         const { authorId } = req.params;
 
-        const blogs = await Blog.find({ blog_createdBy: authorId });
+        const blogs = await Blog.find({ blog_createdBy: authorId }).populate('blog_createdBy','username avatar');
 
         return res.status(200).json(new ApiResponse(200, blogs, "Blogs retrieved successfully"));
     }

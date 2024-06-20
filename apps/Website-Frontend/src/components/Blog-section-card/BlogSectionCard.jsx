@@ -1,7 +1,7 @@
 import "./BlogSectionCard.css";
 
 const BlogSectionCard = ({ data }) => {
-    const { blog_title, blog_body, blogImage, tags, blog_createdBy, createdAt, _id } = data;
+    const { blog_title, blog_body, blogImage, blog_tags, blog_createdBy, createdAt, _id } = data;
 
     // Function to limit the blog body to 20 words
     const truncateText = (text, limit) => {
@@ -12,21 +12,24 @@ const BlogSectionCard = ({ data }) => {
         window.location.href = `/blog/${data._id}`;
     }
 
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    }
     return (
         <div className="root-blog-sec-card">
             <div className="blog-sec-card">
                 <div className="sec-card-details">
                     <div className="sec-card-info">
                         <img
-                            src="https://miro.medium.com/v2/resize:fill:176:176/1*v2jvthQJ4-zUQTzn5JlLfg.jpeg"
+                            src={blog_createdBy.avatar}
                             className="auth-image"
                             alt="Author"
                         />
                         <div>
-                            <p>Ryan Byan in towards Data science</p>
+                            <p>@{blog_createdBy.username}</p>
                         </div>
-                        <span>1 day ago</span>
-                        <span>Member only</span>
+                        <span>{formatDate(createdAt)}</span>
                     </div>
                     <div className="blog-sec-para">
                         <div className="title">
@@ -37,9 +40,9 @@ const BlogSectionCard = ({ data }) => {
                         {truncateText(blog_body, 20)}
                     </div>
                     <div className="sec-card-footer">
-                        {/* {tags.map((index, tag) => (
-                                <div className="footer-left"><button>{tag}</button></div>
-                            ))} */}
+                        {blog_tags?.map((index, tag) => (
+                            <div className="footer-left"><button>{index}</button></div>
+                        ))}
                         <span><button onClick={redirectBlog} className="read-more">Read More</button></span>
                     </div>
                 </div>

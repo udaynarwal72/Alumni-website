@@ -22,6 +22,7 @@ import SignupPage from './pages/Signup';
 import Userlogout from './helpers/Logout';
 import BlogSection from './pages/BlogSection';
 import BlogForm from './pages/BlogForm';
+import Completeprofile from './pages/Completeprofile';
 
 const router = createBrowserRouter([
   {
@@ -75,7 +76,11 @@ const router = createBrowserRouter([
   {
     path: '/user/:userId',
     element: <UserProfile />
-  }
+  },
+  {
+    path: '/completeprofile',
+    element: <Completeprofile />
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

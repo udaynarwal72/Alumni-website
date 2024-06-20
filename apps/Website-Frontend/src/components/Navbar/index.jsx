@@ -25,7 +25,7 @@ const NavBar = () => {
 
     const redirectProfile = (e) => {
         e.preventDefault();
-        const userId = Cookies.get('user-id');
+        const userId = localStorage.getItem('user_id');
         window.location.href = `/user/${userId}`;
     };
 

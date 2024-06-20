@@ -22,9 +22,10 @@ function SignInPage() {
                 localStorage.setItem("token", response.data.data.accessToken);
                 localStorage.setItem("first_name", response.data.data.user.first_name);
                 localStorage.setItem("isLoggedIn", true);
+                localStorage.setItem("user_id", userId);
                 const notificationToken = localStorage.getItem("notification-token");
-                Cookies.set('user-accessToken', response.data.data.accessToken, { secure: true });
-                Cookies.set('user-id', userId, { secure: true })
+                Cookies.set('user-accessToken', response.data.data.accessToken);
+                Cookies.set('user-id', userId)
                 await fetch(`http://localhost:3000/api/v1/user/save-notification-token/${userId}`, {
                     method: 'POST',
                     headers: {
