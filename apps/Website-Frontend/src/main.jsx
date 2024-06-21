@@ -25,6 +25,7 @@ import BlogForm from './pages/Blog/BlogForm';
 import Completeprofile from './pages/User/Completeprofile';
 import EventInfo from './pages/Events/EventInfo';
 import EditProfile from './pages/User/EditProfile';
+import PostEvent from './pages/Events/PostEvent';
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
   {
     path: 'editprofile',
     element: <EditProfile />
+  },
+  {
+    path: 'postevent',
+    element:<PostEvent />
   }
 ]);
 

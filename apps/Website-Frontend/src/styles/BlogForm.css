@@ -18,6 +18,7 @@
     border:2px solid #C5291D;
     margin-top: 50px;
     margin-bottom: 50px;
+    /* justify-content: center; */
     /* transform: perspective(1000px) rotateZ(2deg); */
 }
 
@@ -26,6 +27,7 @@
 .blog-form {
     display: flex;
     flex-direction: column;
+    width:100%
 }
 
 .form-h2{
@@ -42,7 +44,7 @@ label {
 }
 
 .demo,
-input[type="date"],
+
 input[type="file"],
 textarea {
     width: 100%;

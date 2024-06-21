@@ -69,7 +69,7 @@ function App() {
 				</div>
 				<BlogSlider />
 				<div className="view-all-button">
-					<button onClick={blogSection}>View All</button>
+					<button onClick={blogSection} className="view-all">View All</button>
 				</div>
 				<hr className="home"></hr>
 				<div className="second-heading">
@@ -81,7 +81,7 @@ function App() {
 					</div>
 				</div>
 				<EventSlider />
-				<button>View All</button>
+				<button className="view-all">View All</button>
 				<hr className="home"></hr>
 				<div className="second-heading">
 					<div className="second-heading-content">
@@ -91,7 +91,8 @@ function App() {
 					</div>
 				</div>
 				<JobSlider />
-				<button>View All</button>
+				<button className="view-all">View All</button>
+				<div className="home-end"></div>
 			</div>
 
 			<Footer />

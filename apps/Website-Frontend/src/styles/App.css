@@ -6,6 +6,9 @@ body{
     background-color: #e4c679;
     overflow-x: hidden;
 }
+.home-end{
+    margin-bottom: 50px;
+}
 .home{
     width:100vw;
     background-color:#C5291D;
