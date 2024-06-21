@@ -95,6 +95,9 @@ const UserProfile = () => {
 	const createEvent = () => {
 		navigate("/postevent");
 	}
+	const createJob =()=>{
+		navigate("/postjob");
+	}
 
 	return (
 		<>
@@ -114,6 +117,7 @@ const UserProfile = () => {
 								<button onClick={createBlog}>Post Blog</button>
 								<button onClick={completeProfile}>Complete Profile</button>
 								<button onClick={createEvent}>Post Event</button>
+								<button onClick={createJob}>Post Job</button>
 							</div>
 						</div>
 						<div className="lower-portion">

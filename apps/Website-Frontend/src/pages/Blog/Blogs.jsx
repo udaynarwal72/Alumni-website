@@ -20,7 +20,6 @@ const Blogs = () => {
 
     const fetchBlogData = async () => {
         try {
-            console.log('userData from blogs', userData)
             const blogResponse = await axios.get(`http://localhost:3000/api/v1/blog/single/${blogId}`);
             if (blogResponse.data && blogResponse.data.data) {
                 const blog = blogResponse.data.data;

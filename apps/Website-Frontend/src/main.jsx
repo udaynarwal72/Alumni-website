@@ -28,6 +28,7 @@ import EditProfile from './pages/User/EditProfile';
 import PostEvent from './pages/Events/PostEvent'
 import { RecoilRoot } from 'recoil';
 import JobInfo from './pages/Job/JobInfo';
+import PostJob from './pages/Job/PostJob';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -98,8 +99,12 @@ const router = createBrowserRouter([
     element: <PostEvent />
   },
   {
-    path:'jobinfo',
-    element:<JobInfo/>
+    path: '/jobinfo',
+    element: <JobInfo />
+  },
+  {
+    path: '/postjob',
+    element: <PostJob />
   }
 ]);
 
