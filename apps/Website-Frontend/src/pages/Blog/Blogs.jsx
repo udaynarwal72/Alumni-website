@@ -7,6 +7,8 @@ import "../../styles/Blogs.css";
 import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { useRecoilValue } from "recoil";
+import { userAtom } from "../App";
 
 const Blogs = () => {
     const { blogId } = useParams();
@@ -15,15 +17,18 @@ const Blogs = () => {
     const [error, setError] = useState(null);
     const [likeCount, setLikeCount] = useState(0);
     const [isLikedByUser, setIsLikedByUser] = useState(false);
+    const [commentError, setCommentError] = useState(null);
+    const userData = useRecoilValue(userAtom);
 
     const fetchBlogData = async () => {
         try {
+            console.log('userData from blogs', userData)
             const blogResponse = await axios.get(`http://localhost:3000/api/v1/blog/single/${blogId}`);
             if (blogResponse.data && blogResponse.data.data) {
                 const blog = blogResponse.data.data;
                 setBlogData(blog);
                 setLikeCount(blog.likes.length);
-                const userId = Cookies.get("user-id");
+                const userId = userData._id;
                 setIsLikedByUser(blog.likes.includes(userId));
             } else {
                 console.error("Unexpected response format:", blogResponse.data);
@@ -39,7 +44,10 @@ const Blogs = () => {
     useEffect(() => {
         fetchBlogData();
     }, [blogId]);
-    
+
+    useEffect(() => {
+        console.log('userData from blogs', userData);
+    }, [userData]);
 
     const handleLikeToggle = async () => {
         const url = `http://localhost:3000/api/v1/blog/${isLikedByUser ? 'unlike' : 'like'}/${blogId}`;
@@ -83,6 +91,7 @@ const Blogs = () => {
             fetchBlogData(); // Fetch blog data again to update comments
         } catch (error) {
             console.error("Error posting comment:", error);
+            setCommentError("Failed to post comment. Please try again.");
         }
     };
 
@@ -179,6 +188,7 @@ const Blogs = () => {
                                             <button type="submit">Submit</button>
                                         </div>
                                     </div>
+                                    {commentError && <div className="error">{commentError}</div>}
                                 </form>
                                 <div>
                                     <h3>Previous comments</h3>
@@ -219,6 +229,6 @@ const Blogs = () => {
             <Footer />
         </div>
     );
-};
+}
 
 export default Blogs;

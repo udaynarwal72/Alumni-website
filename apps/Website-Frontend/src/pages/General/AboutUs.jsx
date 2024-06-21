@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../styles/AboutUsPage.css';
 import NavBar from '../../components/Navbar';
 import Footer from '../../components/footer';
+import { userAtom } from '../../pages/App';
+import { useRecoilValue } from 'recoil';
 
 const AboutUsPage = () => {
+    const user = useRecoilValue(userAtom);
+
+    useEffect(() => {
+        console.log('this is user', user);
+    }, [user]);
+
     return (
         <>
             <div className="about-us-page">
@@ -12,7 +20,7 @@ const AboutUsPage = () => {
                     <section className="about-section">
                         <h1>About Us</h1>
                         <p>
-                             Alumni Association of National Institute of Technology Kurukshetra (NITKKR) is dedicated to fostering a strong bond among its alumni and maintaining a lifelong connection with the institute.
+                            Alumni Association of National Institute of Technology Kurukshetra (NITKKR) is dedicated to fostering a strong bond among its alumni and maintaining a lifelong connection with the institute.
                         </p>
                         <p>
                             Our association aims to:

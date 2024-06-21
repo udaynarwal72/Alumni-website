@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 import './NavBar.css';
-import Cookies from 'js-cookie';
 
 library.add(fas);
 
 const NavBar = () => {
     const [showNavbar, setShowNavbar] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const location = useLocation(); // Get the current location
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
         setIsLoggedIn(loggedIn);
-    }); // Re-run this effect when the location changes
+    }, [location]);
 
     const handleShowNavbar = () => {
         setShowNavbar(!showNavbar);
@@ -26,7 +25,7 @@ const NavBar = () => {
     const redirectProfile = (e) => {
         e.preventDefault();
         const userId = localStorage.getItem('user_id');
-        window.location.href = `/user/${userId}`;
+        navigate(`/user/${userId}`);
     };
 
     return (
@@ -49,7 +48,7 @@ const NavBar = () => {
                         {isLoggedIn ? (
                             <>
                                 <li><NavLink to="/logout">Logout</NavLink></li>
-                                <li><NavLink to="#" onClick={redirectProfile}>Hello, {localStorage.getItem('first_name')}</NavLink></li>
+                                <li><NavLink to="#" onClick={redirectProfile}>Profile</NavLink></li>
                             </>
                         ) : (
                             <>

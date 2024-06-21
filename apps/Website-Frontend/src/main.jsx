@@ -25,8 +25,8 @@ import BlogForm from './pages/Blog/BlogForm';
 import Completeprofile from './pages/User/Completeprofile';
 import EventInfo from './pages/Events/EventInfo';
 import EditProfile from './pages/User/EditProfile';
-import PostEvent from './pages/Events/PostEvent';
-
+import PostEvent from './pages/Events/PostEvent'
+import { RecoilRoot } from 'recoil';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
     element: <Completeprofile />
   },
   {
-    path: 'eventpage',
+    path: '/eventpage',
     element: <EventInfo />
   },
   {
@@ -94,12 +94,14 @@ const router = createBrowserRouter([
   },
   {
     path: 'postevent',
-    element:<PostEvent />
+    element: <PostEvent />
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <HeaderProvider>
-    <RouterProvider router={router} />
-  </HeaderProvider>,
+  <RecoilRoot>
+    <HeaderProvider>
+      <RouterProvider router={router} />
+    </HeaderProvider>
+  </RecoilRoot>
 );

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './BlogCard.css';
 
 const BlogCard = ({ data }) => {
-    const { blog_title, blog_body, blogImage, blog_tags, blog_createdBy, createdAt } = data;
+    const navigate = useNavigate();
+    const { _id, blog_title, blog_body, blogImage, blog_tags, blog_createdBy, createdAt } = data;
 
     const truncateText = (text, wordLimit) => {
         const words = text.split(' ');
@@ -15,29 +17,27 @@ const BlogCard = ({ data }) => {
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
-    }
+    };
 
     const blogRedirect = () => {
-        window.location.href = `/blog/${data._id}`;
-    }
-    console.log(blog_tags);
+        navigate(`/blog/${_id}`);
+    };
+
     return (
-        <div className="parent-card">
-            <div className="main-blog-card" onClick={blogRedirect}>
+        <div className="parent-card" onClick={blogRedirect}>
+            <div className="main-blog-card">
                 <div className="blog-card">
                     <div className="card-image">
                         <img src={blogImage} alt={blog_title} />
                     </div>
                     <div className="card-content">
-                        {blog_tags?.map((index, tag) => {
-                            return (
-                                <div className="card-category">
-                                    {index}
-                                </div>
-                            )
-                        })}
+                        {blog_tags?.map((tag, index) => (
+                            <div key={index} className="card-category">
+                                {tag}
+                            </div>
+                        ))}
                         <h2 className="card-title">
-                            <a href={`/blog/${data._id}`}>{blog_title}</a>
+                            <a href={`/blog/${_id}`}>{blog_title}</a>
                         </h2>
                         <p className="card-desc">{truncateText(blog_body, 20)}</p>
                     </div>
@@ -48,7 +48,7 @@ const BlogCard = ({ data }) => {
                         <div className="aut-desc">
                             <div>
                                 <span>{blog_createdBy.username}</span>
-                                <span>{formatDate(createdAt)}</span> {/* Format and display the createdAt date */}
+                                <span>{formatDate(createdAt)}</span>
                             </div>
                         </div>
                     </div>

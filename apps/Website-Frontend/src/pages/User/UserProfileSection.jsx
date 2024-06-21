@@ -6,35 +6,18 @@ import Footer from "../../components/footer"; // Assuming the correct file name 
 import Cookies from "js-cookie";
 import "../../styles/UserProfilepage.css";
 import BlogSectionCard from "../../components/Blog-section-card/BlogSectionCard";
-
+import { userAtom } from "../App";
+import { useRecoilValue } from "recoil";
 const UserProfile = () => {
 	const { userId } = useParams();
-	const [user, setUser] = useState({});
 	const [userBlog, setUserBlog] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const user = useRecoilValue(userAtom);
 
 	useEffect(() => {
-		const fetchUserData = async () => {
-			setLoading(true);
-			try {
-				const userToken = localStorage.getItem("token");
-				const response = await axios.get(`http://localhost:3000/api/v1/user/profilesection`, {
-					headers: {
-						'Authorization': `Bearer ${userToken}`
-					}
-				});
-				setUser(response.data.data);
-			} catch (error) {
-				console.error("Error fetching user data:", error);
-				setError("Failed to fetch user data. Please try again later.");
-			} finally {
-				setLoading(false);
-			}
-		};
-
-		fetchUserData();
-	}, []);
+		console.log("user data from profile page", user);
+	}, [user]);
 
 	useEffect(() => {
 		const fetchUserBlogs = async () => {
@@ -58,32 +41,21 @@ const UserProfile = () => {
 
 		fetchUserBlogs();
 	}, [userId]);
-
 	useEffect(() => {
 		console.log("blog data", userBlog);
 	})
 	const createBlog = () => {
-		// Use React Router's Link for internal navigation
-		// You need to define the route in your routing setup
-		// Example: <Link to="/createblog">Post Blog</Link>
 		window.location.href = "/createblog";
 	};
-
 	const completeProfile = () => {
-		// Use React Router's Link for internal navigation
-		// You need to define the route in your routing setup
-		// Example: <Link to="/completeprofile">Complete Profile</Link>
 		window.location.href = "/completeprofile";
 	};
-
 	if (loading) {
 		return <div>Loading...</div>;
 	}
-
 	if (error) {
 		return <div>Error: {error}</div>;
 	}
-
 	return (
 		<>
 			<NavBar />
