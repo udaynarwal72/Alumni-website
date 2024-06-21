@@ -15,10 +15,11 @@ const EventInfo = () => {
 					<div className="event-infos">
 						<div className="event-col">
 							<div>Date-22/06/24</div>
-							<div>Mode-Online</div>
+
+							<div>Guest-Lorem Ipsum</div>
 						</div>
 						<div className="event-col">
-							<div>Guest-Lorem Ipsum</div>
+							<div>Mode-Online</div>
 							<div>Time- 5pm-7pm</div>
 						</div>
 					</div>
@@ -51,26 +52,46 @@ const EventInfo = () => {
 					<div className="end-container">
 						<div className="end-inside">
 							<div>
-								<div><h5>Upcoming event</h5></div>
-								<div><h1>Mehfil</h1></div>
+								<div>
+									<h5>Upcoming event</h5>
+								</div>
+								<div>
+									<h1>Mehfil</h1>
+								</div>
 							</div>
 						</div>
 						<div className="sec">
 							<div>
-								<span><h1>10</h1></span>
-								<span><h5>Days</h5></span>
+								<span>
+									<h1>10</h1>
+								</span>
+								<span>
+									<h5>Days</h5>
+								</span>
 							</div>
 							<div>
-							<span><h1>22</h1></span>
-							<span><h5>Hours</h5></span>
+								<span>
+									<h1>22</h1>
+								</span>
+								<span>
+									<h5>Hours</h5>
+								</span>
 							</div>
 							<div>
-							<span><h1>55</h1></span>
-							<span><h5>Minutes</h5></span>
+								<span>
+									<h1>55</h1>
+								</span>
+								<span>
+									<h5>Minutes</h5>
+								</span>
 							</div>
 							<div>
-							<span><h1>20</h1></span>
-							<span><h5>Seconds</h5></span>
+								<span>
+									<h1>20</h1>
+								</span>
+								<span>
+									<h5>Seconds</h5>
+								</span>
 							</div>
 						</div>
 					</div>
