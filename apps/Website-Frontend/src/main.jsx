@@ -99,7 +99,7 @@ const router = createBrowserRouter([
     element: <PostEvent />
   },
   {
-    path: '/jobinfo',
+    path: '/job/:jobId',
     element: <JobInfo />
   },
   {

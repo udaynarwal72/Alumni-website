@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import './JobSlider.css'; // Importing CSS file for styling
 // import BlogCard from '../BlogCard/BlogCard';
 import JobCard from '../JobCard/JobCard'
-
+import axios from 'axios'
 const JobSlider = () => {
     const settings = {
         dots: true,
@@ -37,29 +37,31 @@ const JobSlider = () => {
             }
         ]
     };
+    const [jobData, setjobData] = useState([]);
+    useEffect(() => {
+        const gettingJobData = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/v1/job/alljobs')
+                console.log(response.data.data)
+                setjobData(response.data.data)
+            } catch (error) {
+                console.log("Error fetching Job data");
+            }
+        }
+        gettingJobData();
+    }, [])
 
-    const images = [
-        'https://via.placeholder.com/300x200?text=Image+1',
-        'https://via.placeholder.com/300x200?text=Image+2',
-        'https://via.placeholder.com/300x200?text=Image+3',
-        'https://via.placeholder.com/300x200?text=Image+4',
-        'https://via.placeholder.com/300x200?text=Image+5',
-        'https://via.placeholder.com/300x200?text=Image+6',
-        'https://via.placeholder.com/300x200?text=Image+7',
-        'https://via.placeholder.com/300x200?text=Image+8',
-    ];
 
     return (
         <div className="image-slider">
             <Slider {...settings}>
-                <JobCard />
-                <JobCard />
-                <JobCard />
-                <JobCard />
-                <JobCard />
-                <JobCard />
-                <JobCard />
-                <JobCard />
+                {
+                    jobData.map((job, index) => {
+                        return (
+                            <JobCard key={index} data={job} />
+                        )
+                    })
+                }
             </Slider>
         </div>
     );

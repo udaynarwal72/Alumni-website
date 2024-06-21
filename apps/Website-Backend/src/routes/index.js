@@ -6,6 +6,7 @@ import EventRoutes from './EventRoutes.js';
 import CommentRoutes from './CommentRoutes.js';
 import BookMarkRoutes from './BookMarkRoutes.js';
 import FollowRoutes from './FollowRoutes.js';
+import Jobroutes from './JobRoutes.js';
 const router = Router();
 
 // Setting up routes
@@ -15,6 +16,7 @@ router.use('/api/v1/admin', AdminRoutes);
 router.use('/api/v1/event', EventRoutes);
 router.use('api/v1/comment', CommentRoutes);
 router.use('api/v1/bookmark', BookMarkRoutes);
-router.use('aou/v1/follow', FollowRoutes);
+router.use('api/v1/follow', FollowRoutes);
+router.use('/api/v1/job', Jobroutes);
 
 export default router;

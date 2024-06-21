@@ -25,8 +25,8 @@ const Blogs = () => {
                 const blog = blogResponse.data.data;
                 setBlogData(blog);
                 setLikeCount(blog.likes.length);
-                const userId = userData._id;
-                setIsLikedByUser(blog.likes.includes(userId));
+                // const userId = userData._id;
+                // setIsLikedByUser(blog.likes.includes(userId));
             } else {
                 console.error("Unexpected response format:", blogResponse.data);
             }
