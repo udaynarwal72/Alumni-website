@@ -31,7 +31,7 @@
     font-size: 20px;
 }
 
-.event-name h1 ,.about-event h1,.end-inside h1{
+.event-name h1 ,.about-event h1{
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -127,6 +127,16 @@
     position: relative; /* Allows positioning of pseudo-element */
     
 }
+.event-link{
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid red; /* Initial border for blinking effect */
+    /* animation: typing 2s steps(22, end) forwards, blink 1s infinite step-end; */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    color:#C5291D;
+}
 .event-para{
     
     flex-wrap: wrap;
@@ -168,12 +178,12 @@
     width:100%;
     
 }
-.end-inside h1{
-    width: 80px;
+.left-h1{
+    width: 60px;
     word-break: break;
     flex-wrap: wrap;
     margin-top: 15px;
-    font-size: 5vw;
+    font-size: 3em;
 }
 .sec{
     display: flex;
@@ -219,6 +229,16 @@
     .event-para {
         width: 100%;
     }
+}
+
+.left-h1{
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid red; /* Initial border for blinking effect */
+    animation: typing 2s steps(22, end) forwards, blink 1s infinite step-end;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.5em;
 }
 
    

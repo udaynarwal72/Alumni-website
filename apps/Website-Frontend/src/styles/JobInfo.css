@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+.parent-job-info{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    background-color:#F9F5EB;
+}
+.upper-cont{
+    height:450px;
+    width: 100vw;
+    color: white;
+    background: linear-gradient(to bottom right, #8B0000, #A52A2A);
+
+    /* Adjusted clip-path for a more vertical ellipse */
+    clip-path: ellipse(60% 50% at 50% 20%);
+    display:flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+   
+}
+.main-job{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main-job h1{
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid red; /* Initial border for blinking effect */
+    animation: typing 2s steps(22, end) forwards, blink 1s infinite step-end;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 5em;
+    font-family: "DM Sans", sans-serif;
+}
+.whole-flex{
+    display: flex;
+    justify-content: space-around;
+    width:50%;
+    font-size: 20px;
+    margin-top: 25px;
+    align-items: center;
+    margin-left: 30px;
+    gap:30px;
+}
+.job-col1{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    width:40%;
+    line-height: 30px;
+}
+.all-head{
+    display: flex;
+    
+}
+.all-name{
+    display: flex;
+    flex-wrap: wrap;
+    width:60%
+}
+.seci{
+    display: flex;
+    justify-content: center;
+}
+
+
+.lower-cont{
+    width:100vw;
+}
+
+.lower-row{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.lower-row:first-child{
+    margin-left: 20px;
+}
+.lower-row:nth-child(2){
+    margin-right: 20px;
+}
+.about-comp{
+    padding: 12px 10px;
+    margin-top: 5px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    flex-wrap: wrap;
+
+}
+.about-comp h1{
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid red; /* Initial border for blinking effect */
+    animation: typing 2s steps(22, end) forwards, blink 1s infinite step-end;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    color:#C5291D;
+}
+.comp-para{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 15px;
+}
+@keyframes typing {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        border-color: transparent;
+    }
+    50% {
+        border-color: transparent;
+    }
+}
+.apply-job{
+    justify-content: center;
+    display: flex;
+    margin-top: 80px;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+    margin-bottom: 100px;
+}
+.apply-job h1{
+    margin: 0;
+    overflow: hidden;
+    
+    
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    color:#C5291D;
+}
+.apply-job h3{
+    color: green;
+}
+.apply-here{
+    background-color: white;
+    padding:12px ;
+    border-radius:8px ;
+    color: #C5291D;
+    border-color: #C5291D;
+    border-width: 1px;
+    cursor: pointer;
+    border-style:groove;
+    font-weight: 700;
+}
+.apply-here:hover{
+    background-color: #C5291D;
+    color: white;
+}
+
+
