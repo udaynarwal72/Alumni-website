@@ -67,7 +67,7 @@ const EventInfo = () => {
 				<div className="middle-container">
 					<div className="middle-row">
 						<div className="ev-img">
-							<img src="https://marketplace.canva.com/EAFJMl8KcjI/1/0/1131w/canva-purple-black-tropical-party-club-poster-orVwDS2lrfY.jpg" alt="Event" />
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_7EksNI3HN5R-ShASsqO9J5XZO5PNe-t1rg&s" alt="Event" />
 						</div>
 						<div className="about-event">
 							<div>
@@ -78,7 +78,7 @@ const EventInfo = () => {
 									{eventDetails.event_body}
 								</h3>
 							</div>
-							<h3>Link for meetup: </h3><p>{eventDetails.live_stream_link}</p>
+							<h2 className="event-link">Link for meetup: </h2><p>{eventDetails.live_stream_link}</p>
 						</div>
 					</div>
 				</div>
@@ -87,7 +87,7 @@ const EventInfo = () => {
 					<div className="end-container">
 						<div className="end-inside">
 							<div>
-								<h1>Time remaining</h1>
+								<h1 className="left-h1">Time Left:</h1>
 							</div>
 						</div>
 						<div className="sec">
