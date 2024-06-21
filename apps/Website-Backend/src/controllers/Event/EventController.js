@@ -6,43 +6,51 @@ import ApiError from '../../utils/ApiError.js';
 const createEvent = async (req, res) => {
     try {
         const {
-            name, date, start_time, end_time, venue, venue_address, venue_city, venue_state,
-            venue_country, venue_zip_code, venue_map_link, description, organizer,
-            event_type, hashtags, live_stream_link, feedback_form_link,
+            event_title,
+            event_date,
+            event_start_time,
+            event_end_time,
+            event_venue,
+            event_organizer,
+            event_body,
+            venue_address,
+            venue_map_link,
+            event_hashtags,
+            live_stream_link,
+            confirm_apperance_deadline
         } = req.body;
 
-        let promotionalImagePath = "";
-        if (req.files && Array.isArray(req.files.promotional_image) && req.files.promotional_image.length > 0) {
-            promotionalImagePath = req.files.promotional_image[0].path;
-        }
+        const calculated_hash_tags = event_hashtags.split("#").filter(tag => tag.trim() !== '');
 
-        const uploadImageCloud = await uploadOnCloudinary(promotionalImagePath);
         const createdEvent = await Event.create({
-            name: name,
-            date: date,
-            start_time: start_time,
-            end_time: end_time,
-            venue: venue,
-            venue_address: venue_address,
-            venue_city: venue_city,
-            venue_state: venue_state,
-            venue_country: venue_country,
-            venue_zip_code: venue_zip_code,
-            venue_map_link: venue_map_link,
-            description: description,
-            organizer: organizer,
-            event_type: event_type,
-            promotional_image: uploadImageCloud?.url || "",
-            hashtags: hashtags,
-            live_stream_link: live_stream_link,
-            feedback_form_link: feedback_form_link,
+            event_title,
+            event_date,
+            start_time: event_start_time,
+            end_time: event_end_time,
+            event_venue,
+            venue_address,
+            venue_map_link,
+            event_body,
+            event_organizer,
+            confirm_apperance_deadline,
+            event_hashtags: calculated_hash_tags,
+            live_stream_link,
         });
 
-        return res.status(200).json(new ApiResponse(200, createdEvent, "Event created successfully"));
+        return res.status(200).json({
+            status: 200,
+            data: createdEvent,
+            message: "Event created successfully"
+        });
     } catch (error) {
-        return res.status(500).json(new ApiResponse(500, null, `Error creating event: ${error.message}`));
+        return res.status(500).json({
+            status: 500,
+            data: null,
+            message: `Error creating event: ${error.message}`
+        });
     }
 };
+
 
 const getAllEvents = async (req, res) => {
     try {
@@ -145,9 +153,20 @@ const searchEventByDate = async (req, res) => {
     }
 }
 
+const getEventById = async (req, res) => {
+    try {
+        const { eventId } = req.params;
+        const events = await Event.findById(eventId);
+        return res.status(200).json(new ApiResponse(200, events, "Event Fetched Succesfully"));
+    } catch (error) {
+        return req.status(500).json(new ApiError(500, error.message, "Internal Server Error"))
+    }
+}
+
 export {
     createEvent,
     getAllEvents,
+    getEventById,
     updateEventById,
     deleteEventById,
     searchEventByname,

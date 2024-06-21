@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { useRecoilValue } from "recoil";
-import { userAtom } from "../App";
 
 const Blogs = () => {
     const { blogId } = useParams();
@@ -18,7 +17,6 @@ const Blogs = () => {
     const [likeCount, setLikeCount] = useState(0);
     const [isLikedByUser, setIsLikedByUser] = useState(false);
     const [commentError, setCommentError] = useState(null);
-    const userData = useRecoilValue(userAtom);
 
     const fetchBlogData = async () => {
         try {
@@ -44,10 +42,6 @@ const Blogs = () => {
     useEffect(() => {
         fetchBlogData();
     }, [blogId]);
-
-    useEffect(() => {
-        console.log('userData from blogs', userData);
-    }, [userData]);
 
     const handleLikeToggle = async () => {
         const url = `http://localhost:3000/api/v1/blog/${isLikedByUser ? 'unlike' : 'like'}/${blogId}`;

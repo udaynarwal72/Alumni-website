@@ -2,15 +2,9 @@ import React, { useEffect } from 'react';
 import '../../styles/AboutUsPage.css';
 import NavBar from '../../components/Navbar';
 import Footer from '../../components/footer';
-import { userAtom } from '../../pages/App';
 import { useRecoilValue } from 'recoil';
 
 const AboutUsPage = () => {
-    const user = useRecoilValue(userAtom);
-
-    useEffect(() => {
-        console.log('this is user', user);
-    }, [user]);
 
     return (
         <>

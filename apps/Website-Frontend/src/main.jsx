@@ -85,15 +85,15 @@ const router = createBrowserRouter([
     element: <Completeprofile />
   },
   {
-    path: '/eventpage',
+    path: '/eventpage/:eventId',
     element: <EventInfo />
   },
   {
-    path: 'editprofile',
+    path: '/editprofile',
     element: <EditProfile />
   },
   {
-    path: 'postevent',
+    path: '/postevent',
     element: <PostEvent />
   }
 ]);

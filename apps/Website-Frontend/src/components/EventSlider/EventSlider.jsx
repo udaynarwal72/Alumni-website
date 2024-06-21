@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import "./EventSlider.css";
+import axios from 'axios';
 import EventCard from "../EventCard/EventCard"
+import { atom, useRecoilState } from 'recoil';
 
-
-const EventSlider= ()=>{
+const eventAtom = atom({
+    key: 'eventData',
+    default: [],
+});
+const EventSlider = () => {
+    const [eventData, setEventData] = useRecoilState(eventAtom);
     const settings = {
         dots: true,
         infinite: true,
@@ -38,28 +44,28 @@ const EventSlider= ()=>{
         ]
     };
 
-    const images = [
-        'https://via.placeholder.com/300x200?text=Image+1',
-        'https://via.placeholder.com/300x200?text=Image+2',
-        'https://via.placeholder.com/300x200?text=Image+3',
-        'https://via.placeholder.com/300x200?text=Image+4',
-        'https://via.placeholder.com/300x200?text=Image+5',
-        'https://via.placeholder.com/300x200?text=Image+6',
-        'https://via.placeholder.com/300x200?text=Image+7',
-        'https://via.placeholder.com/300x200?text=Image+8',
-    ];
+    useEffect(() => {
+        const gettingAllEvents = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/v1/event/getallevents');
+                console.log("This is the event data", response.data.data)
+                setEventData(response.data.data);
+            } catch (error) {
+                console.log("Error fetching events", error.message)
+            }
+        }
+        gettingAllEvents();
+    }, [])
+
 
     return (
         <div className="image-slider">
             <Slider {...settings}>
-                <EventCard />
-                <EventCard />
-                <EventCard />
-                <EventCard />
-                <EventCard />
-                <EventCard />
-                <EventCard />
-                <EventCard />
+                {eventData.map((event, index) => {
+                    return (
+                        <EventCard key={index} event={event} />
+                    )
+                })}
             </Slider>
         </div>
     );

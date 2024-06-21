@@ -15,54 +15,16 @@ import "../styles/App.css";
 import { atom, useRecoilState } from "recoil";
 import axios from "axios";
 
-export const userAtom = atom({
-    key: 'user',
-    default: {},
-});
-
 export const userNumber = atom({
     key: 'something',
     default: 0,
 });
 
 function App() {
-    const [userData, setUserData] = useRecoilState(userAtom);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const [someNumber, setSomeNumber] = useRecoilState(userNumber);
-
-    useEffect(() => {
-        const fetchUserData = async () => {
-            setLoading(true);
-            setSomeNumber(1); // Setting a number, not a string
-            console.log("Setting someNumber to 1");
-            try {
-                const userToken = localStorage.getItem("token");
-                if (!userToken) {
-                    throw new Error("No token found");
-                }
-                const response = await axios.get(`http://localhost:3000/api/v1/user/profilesection`, {
-                    headers: {
-                        'Authorization': `Bearer ${userToken}`,
-                    },
-                });
-                setUserData(response.data.data);
-            } catch (error) {
-                console.error("Error fetching user data:", error);
-                setError("Failed to fetch user data. Please try again later.");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchUserData();
-    }, [setUserData, setSomeNumber]);
-
-    useEffect(() => {
-        console.log('userData', userData);
-    }, [userData]);
-
     const requestPermission = async () => {
         const permission = await Notification.requestPermission();
         console.log("Notification permission:", permission);

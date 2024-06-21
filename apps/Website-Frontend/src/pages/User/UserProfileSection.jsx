@@ -1,23 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavBar from "../../components/Navbar";
 import Footer from "../../components/footer"; // Assuming the correct file name is 'Footer'
 import Cookies from "js-cookie";
 import "../../styles/UserProfilepage.css";
 import BlogSectionCard from "../../components/Blog-section-card/BlogSectionCard";
-import { userAtom } from "../App";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState, atom } from "recoil";
+
+export const userAtom = atom({
+	key: 'user',
+	default: {},
+});
+
 const UserProfile = () => {
+	const navigate = useNavigate();
 	const { userId } = useParams();
 	const [userBlog, setUserBlog] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const setUserData = useSetRecoilState(userAtom);
 	const user = useRecoilValue(userAtom);
 
 	useEffect(() => {
 		console.log("user data from profile page", user);
 	}, [user]);
+
+	useEffect(() => {
+		const fetchUserData = async () => {
+			setLoading(true);
+			try {
+				const userToken = localStorage.getItem("token");
+				if (!userToken) {
+					throw new Error("No token found");
+				}
+				const response = await axios.get(`http://localhost:3000/api/v1/user/profilesection`, {
+					headers: {
+						'Authorization': `Bearer ${userToken}`,
+					},
+				});
+				setUserData(response.data.data);
+			} catch (error) {
+				console.error("Error fetching user data:", error);
+				setError("Failed to fetch user data. Please try again later.");
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchUserData();
+	}, [setUserData]);
 
 	useEffect(() => {
 		const fetchUserBlogs = async () => {
@@ -30,7 +62,6 @@ const UserProfile = () => {
 					}
 				});
 				setUserBlog(response.data.data);
-				console.log(response.data.data)
 			} catch (error) {
 				console.error("Error fetching user blogs:", error);
 				setError("Failed to fetch user blogs. Please try again later.");
@@ -41,21 +72,30 @@ const UserProfile = () => {
 
 		fetchUserBlogs();
 	}, [userId]);
+
 	useEffect(() => {
 		console.log("blog data", userBlog);
-	})
+	}, [userBlog]);
+
 	const createBlog = () => {
-		window.location.href = "/createblog";
+		navigate("/createblog");
 	};
+
 	const completeProfile = () => {
-		window.location.href = "/completeprofile";
+		navigate("/completeprofile")
 	};
+
 	if (loading) {
 		return <div>Loading...</div>;
 	}
+
 	if (error) {
 		return <div>Error: {error}</div>;
 	}
+	const createEvent = () => {
+		navigate("/postevent");
+	}
+
 	return (
 		<>
 			<NavBar />
@@ -73,6 +113,7 @@ const UserProfile = () => {
 							<div className="edit-button">
 								<button onClick={createBlog}>Post Blog</button>
 								<button onClick={completeProfile}>Complete Profile</button>
+								<button onClick={createEvent}>Post Event</button>
 							</div>
 						</div>
 						<div className="lower-portion">
@@ -111,7 +152,7 @@ const UserProfile = () => {
 							<div className="link2">
 								<div className="link-logo">
 									<a href={user.instagram_handle}>
-										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjvzC_QRv6moAhgNb5C6e3yicKgFND1g2RwA&s" alt="LinkedIn" />
+										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjvzC_QRv6moAhgNb5C6e3yicKgFND1g2RwA&s" alt="Instagram" />
 									</a>
 								</div>
 								<div>Instagram</div>
@@ -169,22 +210,8 @@ const UserProfile = () => {
 					<div className="profile-recent">
 						<h1>Recent Posts</h1>
 						<div className="recent-blogs">
-							{userBlog.map((index, blog) => (
-								<BlogSectionCard key={index._id} data={index} />
-								// <div className="blog-card">
-								// 	<div className="blog-image">
-								// 		<img src={index.blogImage} alt="Blog" />
-								// 	</div>
-								// 	<div className="blog-title">
-								// 		<h3>{index.blog_title}</h3>
-								// 	</div>
-								// 	<div className="blog-content">
-								// 		<p>{index.blog_body}</p>
-								// 	</div>
-								// 	<div className="blog-author">
-								// 		<h4>{index.blog_createdBy.username}</h4>
-								// 	</div>
-								// </div>
+							{userBlog.map((blog, index) => (
+								<BlogSectionCard key={blog._id} data={blog} />
 							))}
 						</div>
 					</div>
