@@ -1,18 +1,4 @@
-import React from "react";
-import "../../styles/ContactUsPage.css"; // Importing CSS file for styling
-import NavBar from "../../components/Navbar";
-import Footer from "../../components/footer";
-
-const ContactUsPage = () => {
-	return (
-		<>
-			<NavBar />
-			<div className="contact-us-page">
-            <div className="contact-container ">
-	
-	
-
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 563" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 563" fill="none">
 			<g id="Image">
 					<g id="g14">
 							<g id="g16">
@@ -307,47 +293,3 @@ const ContactUsPage = () => {
 					</g>
 			</g>
 	</svg>
-	
-	
-
-	
-	<form className="contact-form">
-		<div className="just"><h1 className="title-contact ">Reach Us</h1></div>
-
-			
-			<div className="form-group position-relative">
-				<label for="formName" class="d-block">
-					<i class="icon" data-feather="user"></i>
-				</label>
-				<input type="text" id="formName" className="form-control form-control-lg thick" placeholder="Name"></input>
-			</div>
-
-			
-			<div class="form-group position-relative">
-				<label for="formEmail" className="d-block">
-					<i className="contact-icon" data-feather="mail"></i>
-				</label>
-				<input type="email" id="formEmail" className="form-control form-control-lg thick" placeholder="E-mail"></input>
-			</div>
-
-			
-			<div className="form-group message">
-				<textarea id="formMessage" className="form-control form-control-lg" rows="5" placeholder="Drop a message"></textarea>
-			</div>
-		
-			
-			<div className="text-center">
-				<button type="submit" class="btn btn-primary" tabIndex="-1">Send message</button>
-			</div>
-	</form>
-	
-</div>
-            </div>
-			<footer>
-				<Footer />
-			</footer>
-		</>
-	);
-};
-
-export default ContactUsPage;

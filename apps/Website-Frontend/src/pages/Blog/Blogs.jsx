@@ -173,12 +173,13 @@ const Blogs = () => {
                                             type="text"
                                             placeholder="What are your thoughts?"
                                             id="res"
+                                            className="what-thought"
                                             name="blog_comment"
                                         />
                                     </div>
                                     <div className="submit-button">
                                         <div>
-                                            <button type="submit">Submit</button>
+                                            <button type="submit" className="subt-button">Submit</button>
                                         </div>
                                     </div>
                                     {commentError && <div className="error">{commentError}</div>}

@@ -88,7 +88,6 @@
     aspect-ratio: auto 112 / 112;
     height: 112px;
     box-sizing: border-box;
-    ;
     vertical-align: middle;
     margin-top: 40px;
 }
@@ -100,9 +99,17 @@
 }
 
 .footer-left button {
-    background-color: #F2F2F2;
+    background-color: #d7d4d4;
+    padding:12px 18px;
+    border-radius:18px ;
     color: black;
-    border-radius: 18px;
+    border: 1px solid transparent;
+    border-width: 1px;
+    cursor: pointer;
+    border-style:groove;
+    row-gap: 12px;
+    transition: background-color #d7d4d4 0.3s ease, transform 0.3s ease;
+    color:black;
 
 }
 

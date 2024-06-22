@@ -42,6 +42,16 @@
 }
 .submit-button button{
     background-color: rgb(161, 195, 110);
+    border-radius: 6px;
+    width:100px;
+    padding: 12px 10px;
+    color: black;
+    border: 1px solid transparent;
+}
+.what-thought{
+    height:50px;
+    width:100%;
+    padding: 12px 10px;
 }
 .comments{
     background-color: #e0e0e0;

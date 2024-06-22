@@ -115,9 +115,10 @@ const UserProfile = () => {
 							</div>
 							<div className="edit-button">
 								<button onClick={createBlog}>Post Blog</button>
-								<button onClick={completeProfile}>Complete Profile</button>
+								
 								<button onClick={createEvent}>Post Event</button>
 								<button onClick={createJob}>Post Job</button>
+								<button onClick={completeProfile}>Complete Profile</button>
 							</div>
 						</div>
 						<div className="lower-portion">
@@ -188,7 +189,7 @@ const UserProfile = () => {
 							<div className="profile-heading">
 								<div><h1>Personal Info</h1></div>
 							</div>
-							<div className="edit-button-2">
+							<div className="edit-button">
 								<button>Edit</button>
 							</div>
 						</div>
