@@ -29,6 +29,7 @@ import PostEvent from './pages/Events/PostEvent'
 import { RecoilRoot } from 'recoil';
 import JobInfo from './pages/Job/JobInfo';
 import PostJob from './pages/Job/PostJob';
+import AlumniClick from './pages/User/AlumniClick';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
   {
     path: '/postjob',
     element: <PostJob />
+  },
+  {
+    path:'alumniclick',
+    element:<AlumniClick/>
   }
 ]);
 

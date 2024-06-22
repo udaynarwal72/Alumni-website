@@ -124,7 +124,7 @@
   width: 100%;
   /* justify-content: space-between; */
   /* gap:200px; */
-  gap:400px
+  gap:300px
   
 }
 
@@ -285,10 +285,11 @@
 }
 .profile-right-panel,.profile-recent{
   width:45%;
-  background-color: #fdf9e5;
+  background-color: white;
   padding: 12px;
   display: flex;
   flex-direction: column;
+  border-radius: 12px;
   gap:5px;
   height:20rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
