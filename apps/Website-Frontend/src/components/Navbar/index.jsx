@@ -48,7 +48,7 @@ const NavBar = () => {
                         {isLoggedIn ? (
                             <>
                                 <li><NavLink to="/logout">Logout</NavLink></li>
-                                <li><NavLink to="#" onClick={redirectProfile}>Profile</NavLink></li>
+                                <li><NavLink to="#" onClick={redirectProfile}>Hello,{localStorage.getItem('first_name')}</NavLink></li>
                             </>
                         ) : (
                             <>
