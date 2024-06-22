@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import NavBar from '../../components/Navbar';
 import Footer from '../../components/footer'; // Assuming correct filename is Footer.jsx or Footer.js
 import '../../styles/PostEvent.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router';
 
 const PostEvent = () => {
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
+  const [eventId,setEventId] = useState("");
 
   const createEvent = async (e) => {
     e.preventDefault();
@@ -53,20 +58,31 @@ const PostEvent = () => {
       }
 
       const data = await response.json();
+      setEventId(data.data._id);
       console.log(data);
+      console.log(data.data._id)
+      notifyEvent("Event Posted Successfully!!")
+      console.log(notifyEvent("Event Posted Successfully!!"))
+
       // Optionally reset form fields or show success message
     } catch (error) {
       console.error('Error posting event:', error);
       setErrorMessage('Failed to post event. Please try again later.');
     }
   };
-
+  const notifyEvent = (props)=>{
+    toast.success(props, {
+      onClose: () => {
+        navigate(`/eventpage/${eventId}`)
+      }
+    });
+  }
   return (
     <>
       <NavBar />
       <div className="parent-event-form">
         <div className="blog-form-container">
-          <form onSubmit={createEvent} className="event-form">
+          <form  className="event-form">
             <h1>Create Event</h1>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <div className="event-row">
@@ -119,10 +135,11 @@ const PostEvent = () => {
               <label htmlFor="event_body">Event Description:</label>
               <textarea id="event_body" name="event_body" rows="10" required />
             </div>
-            <button type="submit" className="blog-form-button">Post</button>
+            <button type="submit" onClick={createEvent} className="blog-form-button">Post</button>
           </form>
         </div>
       </div>
+      <ToastContainer />
       <Footer />
     </>
   );
