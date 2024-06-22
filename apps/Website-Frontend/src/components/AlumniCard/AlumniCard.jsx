@@ -41,15 +41,15 @@ const AlumniCard = ({ AlumniData }) => {
 						alt="Profile"
 					/>
 				</div>
-				<div className="name">
-					<h1 ref={nameRef}>
+				<div className="card-name">
+					<h2 className="card-name" >
 						{AlumniData.first_name} {AlumniData.last_name}
-					</h1>
+					</h2>
 				</div>
 				<div className="details">
 					<div className="head1">
 						<div>
-                            <div>Batch</div>
+                            <div className="Batch">Batch</div>
 							
 							<div>
 								{AlumniData.joining_batch}-
@@ -57,20 +57,20 @@ const AlumniCard = ({ AlumniData }) => {
 							</div>
 						</div>
 						<div>
-							<div>Location</div>
+							<div className="Batch">Location</div>
 							<div>{AlumniData.state}</div>
                             
 						</div>
 					</div>
 					<div className="head1">
 						<div>
-							<div>Company</div>
+							<div className="Batch">Company</div>
 							<div>{AlumniData.organisation}</div>
 						</div>
 					</div>
                     <div className="head1">
                     <div>
-							<div>Designation</div>
+							<div className="Batch">Designation</div>
 							<div>{AlumniData.designation}</div>
 						</div>
                     </div>

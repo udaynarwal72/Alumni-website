@@ -6,8 +6,8 @@
 }
 
 .main-job-card {
-  background-color:#faf1da;
-  min-height:18rem;
+  
+  min-height:19rem;
   max-height: 19rem;
   border: 0.1em solid #C5291D;
   border-radius: 0.75em;
@@ -34,31 +34,35 @@
 }
 
 .job-card-header h1 {
-  font-size: 1.2em; /* Adjusted font-size */
+  font-size: 1.5em; /* Adjusted font-size */
   margin: 0;
 }
 
+
 .job-card-header p {
-  font-size: 0.75em;
-  color: #6b7280;
+  font-size: 1em;
+  color:#C5291D;
+  font-weight: 600;
   margin-top: 0.5em;
 }
 
 .ux-designer {
   color: #C5291D;
-  font-size: 1em; /* Adjusted font-size */
+  font-size: 1.2em; /* Adjusted font-size */
   margin: 0.5em 0;
   font-weight: 600;
 }
 
 .time-posted {
-  color: #6b7280;
-  font-size: 0.75em;
+  color: black;
+  font-size: 1em;
 }
 
 .job-card-details {
   margin: 1em 0;
   display: flex;
+  color: black;
+  font-weight: 600;
   flex-direction: column;
 }
 
@@ -113,7 +117,9 @@
 .one-detail,
 .second-detail {
   display: flex;
-  color: #6b7280;
+  color: black;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .job-logos img {

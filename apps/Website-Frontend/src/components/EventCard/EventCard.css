@@ -5,7 +5,7 @@
 
 .event-card {
   background-color: #faf1da;
-  border: 1px solid #C5291D;
+  border: 2px solid #C5291D;
   border-radius: 18px;
   padding: 1rem;
   width: 100%;
@@ -41,18 +41,20 @@
 .date {
   font-size: 2rem; /* Adjusted font-size */
   font-weight: 700;
+  color:#C5291D;
   margin-top: -0.75rem; /* Adjusted margin */
 }
 
 .month {
   font-size: 1.25rem; /* Adjusted font-size */
-  color: #6b7280;
-  font-weight: 500;
+  color: black;
+  font-weight: 700;
 }
 
 .event-card-title h1 {
   margin-top: 0.5rem; /* Adjusted margin-top */
-  font-weight: 500;
+  font-weight: 700;
+  color:#C5291D;
   font-size: 1.25rem; /* Adjusted font-size */
 }
 
