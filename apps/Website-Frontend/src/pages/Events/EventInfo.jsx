@@ -3,8 +3,8 @@ import NavBar from "../../components/Navbar";
 import Footer from "../../components/footer";
 import "../../styles/EventInfo.css";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router";
 
 const EventInfo = () => {
@@ -21,7 +21,7 @@ const EventInfo = () => {
 		const response = await axios.get(
 			`http://localhost:3000/api/v1/event/findeventbyid/${eventId}`
 		);
-		console.log(response.data.data)
+		console.log(response.data.data);
 		setEventDetails(response.data.data);
 	};
 	useEffect(() => {
@@ -40,8 +40,12 @@ const EventInfo = () => {
 					setTimeRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 				} else {
 					const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-					const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-					const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+					const hours = Math.floor(
+						(difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+					);
+					const minutes = Math.floor(
+						(difference % (1000 * 60 * 60)) / (1000 * 60)
+					);
 					const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 					setTimeRemaining({ days, hours, minutes, seconds });
 				}
@@ -73,7 +77,7 @@ const EventInfo = () => {
 	};
 	const fireToast = (toastData, blogId) => {
 		toast(toastData);
-	  };
+	};
 	return (
 		<>
 			<NavBar />
@@ -90,7 +94,8 @@ const EventInfo = () => {
 								{new Date(eventDetails.event_date).toLocaleDateString()}
 							</div>
 							<div>
-								<span style={{ fontWeight: "bold" }}>Venue</span> - {eventDetails.event_venue}
+								<span style={{ fontWeight: "bold" }}>Venue</span> -{" "}
+								{eventDetails.event_venue}
 							</div>
 						</div>
 						<div className="event-col">
@@ -99,8 +104,8 @@ const EventInfo = () => {
 								{eventDetails.live_stream_link ? "Online" : "Offline"}
 							</div>
 							<div>
-								<span style={{ fontWeight: "bold" }}>Time</span> - {eventDetails.start_time} -{" "}
-								{eventDetails.end_time}
+								<span style={{ fontWeight: "bold" }}>Time</span> -{" "}
+								{eventDetails.start_time} - {eventDetails.end_time}
 							</div>
 						</div>
 					</div>
@@ -126,17 +131,23 @@ const EventInfo = () => {
 								<p>{eventDetails.live_stream_link}</p>
 							</div>
 						</div>
-						<button onClick={confirmAlumniAppearance}>Confirm your appearance</button>
-						{
-							eventDetails.coming_alumni?.map((alumni, index) => {
-								return (<div>
-									<h3>{alumni.first_name} {alumni.last_name}</h3>
-								</div>)
-							})
-						}
+
+						{/* {eventDetails.coming_alumni?.map((alumni, index) => {
+							return (
+								<div>
+									<h3>
+										{alumni.first_name} {alumni.last_name}
+									</h3>
+								</div>
+							);
+						})} */}
 					</div>
 				</div>
-
+				<div className="confirm">
+					<button onClick={confirmAlumniAppearance}>
+						Confirm your appearance
+					</button>
+				</div>
 				<div className="ending">
 					<div className="end-container">
 						<div className="end-inside">
@@ -146,9 +157,9 @@ const EventInfo = () => {
 						</div>
 						<div className="sec">
 							{timeRemaining.days === 0 &&
-								timeRemaining.hours === 0 &&
-								timeRemaining.minutes === 0 &&
-								timeRemaining.seconds === 0 ? (
+							timeRemaining.hours === 0 &&
+							timeRemaining.minutes === 0 &&
+							timeRemaining.seconds === 0 ? (
 								<div>Event is closed</div>
 							) : (
 								<>
@@ -188,6 +199,18 @@ const EventInfo = () => {
 							)}
 						</div>
 					</div>
+				</div>
+				<div className="h1-comi"><h1 className="comi">Alumnis Coming</h1></div>
+				<div className="arr-list">
+				{eventDetails.coming_alumni?.map((alumni, index) => {
+							return (
+								<div className="list-names">
+									<h3>
+										{alumni.first_name} {alumni.last_name}
+									</h3>
+								</div>
+							);
+						})}
 				</div>
 			</div>
 			<ToastContainer />

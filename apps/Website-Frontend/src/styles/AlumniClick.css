@@ -1,0 +1,27 @@
+.alu-up{
+display: flex;
+  gap: 25px;
+  height: 50%;
+  /* margin-bottom: 25px; */
+  margin-top: 20px;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.kl{
+    gap:-40px
+}
+/* .pro-alu{
+    display: flex;
+    justify-content: center;
+}
+.pro-alu-img{
+    width: 9.375rem;
+  height: 9.375rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #F9F5EB;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  margin-left: 12px;
+} */

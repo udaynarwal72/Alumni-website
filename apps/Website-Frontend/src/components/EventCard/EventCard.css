@@ -14,6 +14,11 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin: 1rem auto; /* Center the card and give some margin */
 }
+.event-card:hover{
+  box-shadow: 2px 12px 20px #cb8985;
+  cursor: pointer;
+  transform: translateY(-5px);
+}
 
 .event-card-header {
   display: flex;
