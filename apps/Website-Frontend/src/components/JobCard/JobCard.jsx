@@ -9,7 +9,7 @@ const JobCard = ({ data }) => {
 		return new Date(dateString).toLocaleDateString(undefined, options);
 	};
 	const redirectToBlog = (e) => {
-		navigate(`/job/${data._id}`)
+		navigate(`/jobpage/${data._id}`)
 	}
 	return (
 		<div onClick={(e) => (redirectToBlog(e))}>

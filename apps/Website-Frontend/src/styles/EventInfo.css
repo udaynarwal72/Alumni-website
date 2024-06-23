@@ -4,6 +4,29 @@
     display: flex;
     flex-direction: column;
 }
+.confirm{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    
+}
+.confirm button{
+    background-color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    color: #C5291D;
+    border-color: #C5291D;
+    border-width: 1px;
+    cursor: pointer;
+    border-style: groove;
+    row-gap: 12px;
+    transition:all 0.3s;
+}
+.confirm button:hover {
+    background-color: #C5291D;
+    color: white;
+    transition: all 0.3s;
+}
 #ellipse {
     height: 450px;
     width: 100vw;
@@ -239,6 +262,33 @@
     animation: typing 2s steps(22, end) forwards, blink 1s infinite step-end;
     font-family: 'Courier New', Courier, monospace;
     font-size: 3.5em;
+}
+.h1-comi{
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    white-space: nowrap;
+    color:#C5291D;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.arr-list{
+    display: flex;
+    gap:12px;
+    color:black;
+    font-size: 20px;
+    /* justify-content: space-around; */
+    flex-wrap: wrap;
+    margin-top: 25px;
+    width:100%;
+    height:300px;
+    margin-left: 200px;
+    
+}
+.list-names{
+    width:30%;
 }
 
    
