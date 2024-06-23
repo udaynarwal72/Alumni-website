@@ -5,7 +5,8 @@ import dataCountry from '../../../../../src/countries.json';
 import dataState from '../../../../../src/states.json';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditProfile = () => {
 	const [selectedCountry, setSelectedCountry] = useState('');

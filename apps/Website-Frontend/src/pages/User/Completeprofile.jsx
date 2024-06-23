@@ -8,6 +8,8 @@ import dataCountry from '../../../../../src/countries.json';
 import dataState from '../../../../../src/states.json';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
 
 const Completeprofile = () => {
@@ -86,11 +88,17 @@ const Completeprofile = () => {
 				},
 			});
 			console.log(response.data); // Access response data if needed
+			fireToast("Profile Updated successfully", data.data._id);
 		} catch (error) {
 			console.error('Failed to submit extra information', error);
 		}
 	};
 
+	const fireToast = (toastData) => {
+		toast(toastData, {
+			onClose: () => navigate(`/user/${localStorage.getItem('user_id')}`)
+		});
+	};
 	return (
 		<>
 			<NavBar />
@@ -194,6 +202,7 @@ const Completeprofile = () => {
 					{error && <p className="error">{error}</p>}
 				</div>
 			</div>
+			<ToastContainer />
 			<Footer />
 		</>
 	);
