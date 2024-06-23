@@ -88,7 +88,7 @@ const Completeprofile = () => {
 				},
 			});
 			console.log(response.data); // Access response data if needed
-			fireToast("Profile Updated successfully", data.data._id);
+			fireToast("Profile Updated successfully");
 		} catch (error) {
 			console.error('Failed to submit extra information', error);
 		}

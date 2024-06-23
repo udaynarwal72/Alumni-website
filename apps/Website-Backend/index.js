@@ -9,16 +9,22 @@ dotenv.config(); // Initialize dotenv
 const app = express();
 const port = process.env.PORT || 3000;
 
+const corsOptions = {
+  origin: 'https://alumni-website-mu.vercel.app', // replace with your Vercel app URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Use router middleware
 app.use(router);
 
 // Mongoose connect
-mongoose.connect("mongodb+srv://udaynarwal:udaynarwal@alumniwebsite.utpcccl.mongodb.net/?retryWrites=true&w=majority&appName=AlumniWebsite", {
+mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
