@@ -10,6 +10,10 @@ import Jobroutes from './JobRoutes.js';
 const router = Router();
 
 // Setting up routes
+router.get('/', (req, res) => {
+    res.status(200).json({ message: 'Welcome to Alumni API' });
+}
+);
 router.use('/api/v1/user', UserRouter);
 router.use('/api/v1/blog', BlogRoutes);
 router.use('/api/v1/admin', AdminRoutes);
