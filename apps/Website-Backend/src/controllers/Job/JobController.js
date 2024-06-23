@@ -15,8 +15,10 @@ const getAllJobs = async (req, res) => {
 const postJob = async (req, res) => {
     try {
         console.log(req.body);
-        const { job_title, job_tags, job_company, job_company_location, job_postedBy, job_type, job_duration, job_company_description, job_about_role, job_apply_email, job_apply_link } = req.body;
-        const calculate_job_tags = job_tags.split(",").filter((tag) => tag.trim() !== "")
+        const { job_title, job_tags, job_company, job_company_location, job_type, job_duration, job_company_description, job_about_role, job_apply_email, job_apply_link, job_experience } = req.body;
+        
+        const calculate_job_tags = job_tags.split(",").filter((tag) => tag.trim() !== "");
+        
         const jobs = await JobData.create({
             job_title,
             job_tags: calculate_job_tags,
@@ -31,13 +33,13 @@ const postJob = async (req, res) => {
             job_apply_link,
             job_experience,
         });
-        return res
-            .status(200)
-            .json(new ApiResponse(200, jobs, "Job created Successfully"));
+
+        return res.status(200).json(new ApiResponse(200, jobs, "Job created Successfully"));
     } catch (error) {
         return res.status(500).json(new ApiError(500, null, "Internal Server Error"));
     }
-}
+};
+
 
 const getJobById = async (req, res) => {
     const { jobId } = req.params

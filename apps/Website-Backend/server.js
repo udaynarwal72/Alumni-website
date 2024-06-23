@@ -7,7 +7,7 @@ import cors from 'cors';
 dotenv.config(); // Initialize dotenv
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +18,7 @@ app.use(cors());
 app.use(router);
 
 // Mongoose connect
-mongoose.connect("mongodb+srv://udaynarwal:udaynarwal@alumniwebsite.utpcccl.mongodb.net/?retryWrites=true&w=majority&appName=AlumniWebsite",{
+mongoose.connect("mongodb+srv://udaynarwal:udaynarwal@alumniwebsite.utpcccl.mongodb.net/?retryWrites=true&w=majority&appName=AlumniWebsite", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds

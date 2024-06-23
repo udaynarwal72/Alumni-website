@@ -2,6 +2,7 @@ import Event from '../../Schema/EventSchema.js'; // Adjust the path as necessary
 import uploadOnCloudinary from '../../utils/Cloudinary.js'; // Adjust the path as necessary
 import ApiResponse from '../../utils/ApiResponse.js'; // Adjust the path as necessary
 import ApiError from '../../utils/ApiError.js';
+import ConfirmAppearance from '../../Schema/ConfirmAppearanceSchema.js'
 
 const createEvent = async (req, res) => {
     try {
@@ -156,12 +157,58 @@ const searchEventByDate = async (req, res) => {
 const getEventById = async (req, res) => {
     try {
         const { eventId } = req.params;
-        const events = await Event.findById(eventId);
+        const events = await Event.findById(eventId).populate('coming_alumni' ,'first_name last_name');
         return res.status(200).json(new ApiResponse(200, events, "Event Fetched Succesfully"));
     } catch (error) {
         return req.status(500).json(new ApiError(500, error.message, "Internal Server Error"))
     }
 }
+
+//confirmApperance
+const confirmedAppearance = async (req, res) => {
+    try {
+        console.log("Request Params:", req.params);
+        const userId = req.user?._id;
+        console.log("User ID:", userId);
+        const eventId = req.params.eventId;
+
+        if (!userId || !eventId) {
+            return res
+                .status(400)
+                .json(new ApiError(400, null, "User ID or Event ID is missing"));
+        }
+
+        const appearanceConfirmed = await ConfirmAppearance.create({
+            coming_user_id: userId,
+            event_id: eventId,
+        });
+
+        const updatedEvent = await Event.findByIdAndUpdate(
+            eventId,
+            { $addToSet: { coming_alumni: userId } }, // Assuming coming_alumni is an array
+            { new: true }
+        );
+
+        if (!updatedEvent) {
+            return res
+                .status(404)
+                .json(new ApiError(404, null, "Event not found"));
+        }
+
+        console.log("Updated Event:", updatedEvent);
+
+        return res
+            .status(200)
+            .json(new ApiResponse(200, appearanceConfirmed, "Your appearance is confirmed"));
+    } catch (error) {
+        console.error(`Error confirming appearance: ${error.message}`);
+        return res
+            .status(500)
+            .json(new ApiError(500, null, `Error confirming appearance: ${error.message}`));
+    }
+};
+
+
 
 export {
     createEvent,
@@ -171,5 +218,6 @@ export {
     deleteEventById,
     searchEventByname,
     searchEventByType,
-    searchEventByDate
+    searchEventByDate,
+    confirmedAppearance
 };

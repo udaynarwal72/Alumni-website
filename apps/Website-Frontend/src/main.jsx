@@ -76,7 +76,7 @@ const router = createBrowserRouter([
     element: <BlogForm />
   },
   {
-    path: '/blog/:blogId',
+    path: '/blogpage/:blogId',
     element: <Blogs />
   },
   {
@@ -100,7 +100,7 @@ const router = createBrowserRouter([
     element: <PostEvent />
   },
   {
-    path: '/job/:jobId',
+    path: '/jobpage/:jobId',
     element: <JobInfo />
   },
   {
@@ -108,7 +108,7 @@ const router = createBrowserRouter([
     element: <PostJob />
   },
   {
-    path:'alumniclick',
+    path:'/infoalumni/:alumniId',
     element:<AlumniClick/>
   }
 ]);

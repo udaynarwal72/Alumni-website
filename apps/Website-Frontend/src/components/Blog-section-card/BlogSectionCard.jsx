@@ -9,7 +9,7 @@ const BlogSectionCard = ({ data }) => {
         return words.length > limit ? words.slice(0, limit).join(' ') + '...' : text;
     };
     const redirectBlog = () => {
-        window.location.href = `/blog/${data._id}`;
+        window.location.href = `/blogpage/${data._id}`;
     }
 
     const formatDate = (dateString) => {

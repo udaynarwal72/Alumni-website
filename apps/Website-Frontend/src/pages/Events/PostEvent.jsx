@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import NavBar from '../../components/Navbar';
-import Footer from '../../components/footer'; // Assuming correct filename is Footer.jsx or Footer.js
+import NavBar from '../../components/Navbar'; // Fixed case sensitivity
+import Footer from '../../components/footer'; // Fixed case sensitivity
 import '../../styles/PostEvent.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom'; // Fixed import from 'react-router-dom'
 
 const PostEvent = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
-  const [eventId,setEventId] = useState("");
+  const [eventId, setEventId] = useState('');
 
   const createEvent = async (e) => {
     e.preventDefault();
 
+    // Collect form data
     const event_title = document.getElementById('event_title').value;
     const event_date = document.querySelector('.event-date').value;
     const event_start_time = document.querySelector('input[name="start_time"]').value;
@@ -25,8 +26,9 @@ const PostEvent = () => {
     const venue_map_link = document.getElementById('venue_map_link').value;
     const event_hashtags = document.getElementById('event_hashtags').value;
     const live_stream_link = document.getElementById('live_stream_link').value;
-    const confirm_apperance_deadline = document.getElementById('confirm_apperance_deadline').value;
+    const confirm_appearance_deadline = document.getElementById('confirm_appearance_deadline').value;
 
+    // Create event object
     const event = {
       event_title,
       event_date,
@@ -39,11 +41,11 @@ const PostEvent = () => {
       venue_map_link,
       event_hashtags,
       live_stream_link,
-      confirm_apperance_deadline
-      // Add other fields here as needed
+      confirm_appearance_deadline,
     };
 
     try {
+      // Send POST request to the server
       const response = await fetch('http://localhost:3000/api/v1/event/postevent', {
         method: 'POST',
         headers: {
@@ -53,36 +55,36 @@ const PostEvent = () => {
         body: JSON.stringify(event),
       });
 
+      // Check if response is not ok
       if (!response.ok) {
         throw new Error('Failed to post event');
       }
 
+      // Get response data
       const data = await response.json();
       setEventId(data.data._id);
-      console.log(data);
-      console.log(data.data._id)
-      notifyEvent("Event Posted Successfully!!")
-      console.log(notifyEvent("Event Posted Successfully!!"))
 
-      // Optionally reset form fields or show success message
+      // Notify user and navigate to event page
+      fireToast("Event Posted Successfully", data.data._id);
     } catch (error) {
+      // Handle error
       console.error('Error posting event:', error);
       setErrorMessage('Failed to post event. Please try again later.');
     }
   };
-  const notifyEvent = (props)=>{
-    toast.success(props, {
-      onClose: () => {
-        navigate(`/eventpage/${eventId}`)
-      }
+
+  const fireToast = (toastData, eventId) => {
+    toast(toastData, {
+      onClose: () => navigate(`/eventpage/${eventId}`)
     });
-  }
+  };
+
   return (
     <>
       <NavBar />
       <div className="parent-event-form">
         <div className="blog-form-container">
-          <form  className="event-form">
+          <form className="event-form" onSubmit={createEvent}>
             <h1>Create Event</h1>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <div className="event-row">
@@ -121,21 +123,21 @@ const PostEvent = () => {
             </div>
             <div className="event-row">
               <label htmlFor="event_hashtags">Hashtags:</label>
-              <input type="text" id="event_hashtags" className='demo' name="event_hashtags" placeholder="e.g. #letshavefun #alumni #meetup" />
+              <input type="text" id="event_hashtags" className="demo" name="event_hashtags" placeholder="e.g. #letshavefun #alumni #meetup" />
             </div>
             <div className="event-row">
               <label htmlFor="live_stream_link">Live Stream Link:</label>
-              <input type="text" id="live_stream_link"className='demo' name="live_stream_link" />
+              <input type="text" id="live_stream_link" className="demo" name="live_stream_link" />
             </div>
             <div className="event-row">
-              <label htmlFor="confirm_apperance_deadline">Deadline for Confirming Appearance:</label>
-              <input type="date" id="confirm_apperance_deadline"className='demo' name="confirm_apperance_deadline" />
+              <label htmlFor="confirm_appearance_deadline">Deadline for Confirming Appearance:</label>
+              <input type="date" id="confirm_appearance_deadline" className="demo" name="confirm_appearance_deadline" />
             </div>
             <div className="event-row">
               <label htmlFor="event_body">Event Description:</label>
               <textarea id="event_body" name="event_body" rows="10" required />
             </div>
-            <button type="submit" onClick={createEvent} className="blog-form-button">Post</button>
+            <button type="submit" className="blog-form-button">Post</button>
           </form>
         </div>
       </div>

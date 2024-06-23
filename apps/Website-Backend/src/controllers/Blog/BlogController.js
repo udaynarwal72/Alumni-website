@@ -35,7 +35,7 @@ const createblog = async (req, res) => {
         // Return success response with created blog data
         return res.status(200).json({
             status: 200,
-            data: newBlog,
+            data: createdBlog,
             message: "Blog created successfully"
         });
     } catch (error) {

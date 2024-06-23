@@ -3,8 +3,13 @@ import axios from 'axios';
 import NavBar from '../../components/Navbar';
 import Footer from '../../components/footer';
 import '../../styles/PostJob.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const PostJob = () => {
+    const navigate = useNavigate();
+
     const createJob = async (e) => {
         e.preventDefault();
 
@@ -14,13 +19,20 @@ const PostJob = () => {
         try {
             const response = await axios.post('http://localhost:3000/api/v1/job/postjob', jobData, {
                 headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('token')} `
+                    "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }
             });
             console.log('Job created successfully:', response.data.data);
+            fireToast("Job created successfully", response.data.data._id);
         } catch (error) {
             console.error('Error creating job:', error);
         }
+    };
+
+    const fireToast = (toastData, jobId) => {
+        toast(toastData, {
+            onClose: () => navigate(`/jobpage/${jobId}`)
+        });
     };
 
     return (
@@ -30,7 +42,6 @@ const PostJob = () => {
                 <div className="blog-form-container">
                     <form onSubmit={(e) => { createJob(e) }} className="event-form">
                         <h1>Create Job</h1>
-                        {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
                         <div className="event-row">
                             <label htmlFor="job_title">Job title:</label>
                             <input type="text" id="job_title" name="job_title" className="demo" required />
@@ -66,8 +77,8 @@ const PostJob = () => {
                             <input type="text" id="job_tags" className='demo' name="job_tags" placeholder="e.g. android developer, web developer etc.." />
                         </div>
                         <div className="event-row">
-                            <label htmlFor="job_tags">Experience required:</label>
-                            <input type="text" id="job_tags" className='demo' name="job_experience"/>
+                            <label htmlFor="job_experience">Experience required:</label>
+                            <input type="text" id="job_experience" className='demo' name="job_experience"/>
                         </div>
                         <div className="event-row">
                             <label htmlFor="job_about_role">Job Description:</label>
@@ -81,6 +92,7 @@ const PostJob = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
             <Footer />
         </>
     );

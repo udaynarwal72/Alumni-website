@@ -1,21 +1,22 @@
-.parent-event-form{
+.parent-event-form {
     background: linear-gradient(135deg, #f5f5dc 30%, #ffffff 100%);
-    height:100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(10px);
 }
+
 .blog-form-container {
     width: 90%;
     max-width: 43.75rem;
     padding: 2rem;
     backdrop-filter: blur(10px);
     background-color: #F9F5EB;
-    box-shadow:  0 1rem 2rem rgba(139, 0, 0, 0.4);;
+    box-shadow: 0 1rem 2rem rgba(139, 0, 0, 0.4);
     border-radius: 8px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    border:2px solid #C5291D;
+    border: 2px solid #C5291D;
     margin-top: 50px;
     margin-bottom: 50px;
     display: flex;
@@ -23,53 +24,147 @@
     /* justify-content: center; */
     /* transform: perspective(1000px) rotateZ(2deg); */
 }
+
 .event-form {
     display: flex;
     flex-direction: column;
-    width:100%;
+    width: 100%;
 }
-.hel{
+
+.hel {
     margin-bottom: 1.25rem;
     text-align: center;
     color: #C5291D;
     /* text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2); */
 }
-.event-row{
+
+.event-row {
     display: flex;
     flex-direction: column;
-    width:100%
+    width: 100%
 }
-.event-title{
-    width:100%;
+
+.event-title {
+    width: 100%;
     margin-bottom: 0.5rem;
     padding: 0.625rem;
     border: 1px solid #C5291D;
     border-radius: 0.5rem;
     font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s; 
+    transition: border-color 0.3s, box-shadow 0.3s;
     background-color: #fff7ec;
     box-sizing: border-box;
     background: linear-gradient(145deg, #fdf5e6, #fff5e1);
 }
-.event-col{
+
+.event-col {
     display: flex;
     flex-direction: column;
-    width:100%
+    width: 100%
 }
-.event-date,.event-time{
-    width:90%;
-    
+
+.event-date,
+.event-time {
+    width: 90%;
+
     padding: 0.625rem;
     border: 1px solid #C5291D;
     border-radius: 0.5rem;
     font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s; 
+    transition: border-color 0.3s, box-shadow 0.3s;
     background-color: #fff7ec;
     box-sizing: border-box;
     margin-top: -12px;
     background: linear-gradient(145deg, #fdf5e6, #fff5e1);
 }
-.event-row2{
+
+.event-row2 {
     display: flex;
     justify-content: space-between;
+}
+
+/* Custom toast container styling */
+.Toastify__toast-container {
+    z-index: 9999;
+    /* Ensure it's above other elements */
+    padding: 16px;
+    /* Add padding around the container */
+}
+
+/* Custom toast styling */
+.Toastify__toast {
+    min-height: 50px;
+    /* Adjust the minimum height as needed */
+    border-radius: 8px;
+    /* Add rounded corners */
+    font-size: 14px;
+    /* Set a comfortable font size */
+    display: flex;
+    align-items: center;
+    /* Center the content vertically */
+    padding: 10px 16px;
+    /* Add padding inside the toast */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+}
+
+/* Success toast */
+.Toastify__toast--success {
+    background-color: #4caf50;
+    /* Success background color */
+    color: white;
+    /* White text color */
+}
+
+/* Error toast */
+.Toastify__toast--error {
+    background-color: #f44336;
+    /* Error background color */
+    color: white;
+    /* White text color */
+}
+
+/* Info toast */
+.Toastify__toast--info {
+    background-color: #2196f3;
+    /* Info background color */
+    color: white;
+    /* White text color */
+}
+
+/* Custom close button */
+.Toastify__close-button {
+    color: white;
+    /* Close button color */
+    opacity: 0.7;
+    /* Slightly transparent */
+}
+
+.Toastify__close-button:hover,
+.Toastify__close-button:focus {
+    opacity: 1;
+    /* Fully opaque on hover or focus */
+}
+
+/* Adjusting toast progress bar */
+.Toastify__progress-bar {
+    height: 4px;
+    /* Adjust the height of the progress bar */
+    border-radius: 0 0 8px 8px;
+    /* Rounded bottom corners */
+}
+
+.Toastify__progress-bar--success {
+    background-color: #81c784;
+    /* Success progress bar color */
+}
+
+.Toastify__progress-bar--error {
+    background-color: #e57373;
+    /* Error progress bar color */
+}
+
+.Toastify__progress-bar--info {
+    background-color: #64b5f6;
+    /* Info progress bar color */
 }

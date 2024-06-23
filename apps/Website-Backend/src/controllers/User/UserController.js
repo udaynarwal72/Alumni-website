@@ -150,13 +150,15 @@ const userSignUpController = async (req, res) => {
     //     avatar: "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png" || "",
     //     coverImage: "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg" || "",
     // });
+    const calculated_state = state.split("+")[0].trim();
+
     const user = await User.create({
         username: username,
         first_name: first_name,
         last_name: last_name,
         joining_batch: joining_batch,
         country: country,
-        state: state,
+        state: calculated_state,
         city: city,
         address: address,
         branch: branch,

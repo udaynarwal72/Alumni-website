@@ -2,23 +2,7 @@ import ConfirmAppearance from "../../Schema/ConfirmAppearanceSchema";
 import ApiError from "../../utils/ApiError";
 import ApiResponse from "../../utils/ApiResponse";
 
-const ConfirmedAppearance = async (req, res) => {
-    try {
-        const userId = req.user?._id;
-        const eventId = req.params.eventId;
-        const appearanceConfirmed = await ConfirmAppearance.create({
-            commer_user_id: userId,
-            event_id: eventId,
-        });
-        return res
-            .status(200)
-            .json(new ApiResponse(200, appearanceConfirmed, "Your appearance is confirmed"));
-    } catch (error) {
-        return res
-            .status(500)
-            .json(new ApiError(500, null, `Error confirming appearance: ${error.message}`));
-    }
-}
+
 
 const removeYourAppearance = async (req, res) => {
     try {

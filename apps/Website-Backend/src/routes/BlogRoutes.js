@@ -20,7 +20,7 @@ BlogRoutes.post("/comment/:blogId", verifyJWT, commentOnBlog);
 BlogRoutes.get("/comments/:blogId", getCommentsByBlogId);
 BlogRoutes.get("/search", searchBlogs);
 BlogRoutes.delete('/unlike/:blogId', verifyJWT, removeLike);
-BlogRoutes.get("/author/:authorId",verifyJWT, getBlogsByAuthor);
+BlogRoutes.get("/author/:authorId",getBlogsByAuthor);
 BlogRoutes.delete("/comment/:commentId", verifyJWT, deleteCommentById);
 
 export default BlogRoutes;

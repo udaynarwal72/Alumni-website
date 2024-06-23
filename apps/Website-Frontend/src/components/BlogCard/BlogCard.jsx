@@ -20,9 +20,8 @@ const BlogCard = ({ data }) => {
     };
 
     const blogRedirect = () => {
-        navigate(`/blog/${_id}`);
+        navigate(`/blogpage/${_id}`);
     };
-
     return (
         <div className="parent-card" onClick={blogRedirect}>
             <div className="main-blog-card">
