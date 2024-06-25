@@ -34,7 +34,7 @@ function SignInPage() {
                     body: JSON.stringify({ notification_token: notificationToken })
                 });
                 console.log('Notification token saved successfully');
-                navigate('/'); // Redirect to the home page
+                window.location.href = "/"; // Redirect to the home page
             } else {
                 setErrorMessage("Login failed. Please check your email and password.");
             }
@@ -76,7 +76,6 @@ function SignInPage() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

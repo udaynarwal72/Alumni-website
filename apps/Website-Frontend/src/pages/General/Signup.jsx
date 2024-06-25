@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../../styles/SignUp.css';
 import NavBar from '../../components/Navbar';
 import Footer from '../../components/footer';
 import dataCountry from '../../../../../src/countries.json';
 import dataState from '../../../../../src/states.json';
 import { useNavigate } from 'react-router-dom';
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
 
 const branches = [
     'Computer Science', 'Electronics and Communication Engineering', 'Information Technology',
@@ -18,7 +20,12 @@ function SignupPage() {
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
     const [fetchedCountries, setFetchedCountries] = useState([]);
-    const navigate = useNavigate(); // useNavigate hook used correctly within the component
+    const [avatar, setAvatar] = useState(null);
+    const [coverImage, setCoverImage] = useState(null);
+    const [crop, setCrop] = useState({ aspect: 1 });
+    const [croppedImage, setCroppedImage] = useState(null);
+    const [croppedCoverImage, setCroppedCoverImage] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const userCountries = dataCountry.map(country => `${country.name}+${country.id}+${country.iso2}`);
@@ -60,10 +67,27 @@ function SignupPage() {
         }
     }, [selectedState]);
 
+    const handleImageChange = (e, setImage) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                setImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
+        if (croppedImage) {
+            formData.append('avatar', croppedImage);
+        }
+        if (croppedCoverImage) {
+            formData.append('coverImage', croppedCoverImage);
+        }
         try {
             const response = await fetch('http://localhost:3000/api/v1/user/signup', {
                 method: 'POST',
@@ -73,12 +97,46 @@ function SignupPage() {
                 throw new Error('Failed to register user');
             }
             const data = await response.json();
-            console.log(data); // Handle successful registration response
-            navigate('/signin'); // Use navigate hook to redirect after successful signup
+            console.log(data);
+            navigate('/signin');
         } catch (error) {
             console.error('Error registering user:', error);
         }
     };
+
+    const onImageCropComplete = (croppedArea, croppedAreaPixels, setCroppedImage) => {
+        setCroppedImage(croppedAreaPixels);
+    };
+
+    const createCroppedImage = async (image, croppedAreaPixels) => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const imageElement = new Image();
+        imageElement.src = image;
+
+        return new Promise((resolve) => {
+            imageElement.onload = () => {
+                canvas.width = croppedAreaPixels.width;
+                canvas.height = croppedAreaPixels.height;
+                ctx.drawImage(
+                    imageElement,
+                    croppedAreaPixels.x,
+                    croppedAreaPixels.y,
+                    croppedAreaPixels.width,
+                    croppedAreaPixels.height,
+                    0,
+                    0,
+                    croppedAreaPixels.width,
+                    croppedAreaPixels.height
+                );
+                canvas.toBlob((blob) => {
+                    resolve(blob);
+                });
+            };
+        });
+    };
+
     return (
         <>
             <NavBar />
@@ -168,18 +226,33 @@ function SignupPage() {
                             <input type="date" id="dob" name="dob" required />
                         </div>
                         <div className="input-group">
-                            <label htmlFor="avatar">Avatar</label>
-                            <input type="file" id="avatar" name="avatar" accept="image/*" />
+                            <label htmlFor="avatar">Profile Photo:</label>
+                            <input type="file" id="avatar" name="avatar" accept="image/*" onChange={(e) => handleImageChange(e, setAvatar)} />
+                            {avatar && (
+                                <ReactCrop
+                                    src={avatar}
+                                    crop={crop}
+                                    onChange={(newCrop) => setCrop(newCrop)}
+                                    onComplete={(croppedArea, croppedAreaPixels) => onImageCropComplete(croppedArea, croppedAreaPixels, setCroppedImage)}
+                                />
+                            )}
                         </div>
                         <div className="input-group">
-                            <label htmlFor="coverImage">Cover Image</label>
-                            <input type="file" id="coverImage" name="coverImage" accept="image/*" />
+                            <label htmlFor="coverImage">Family Photo:</label>
+                            <input type="file" id="coverImage" name="coverImage" accept="image/*" onChange={(e) => handleImageChange(e, setCoverImage)} />
+                            {coverImage && (
+                                <ReactCrop
+                                    src={coverImage}
+                                    crop={crop}
+                                    onChange={(newCrop) => setCrop(newCrop)}
+                                    onComplete={(croppedArea, croppedAreaPixels) => onImageCropComplete(croppedArea, croppedAreaPixels, setCroppedCoverImage)}
+                                />
+                            )}
                         </div>
                         <button type="submit" className='sign-up-button'>Sign Up</button>
                     </form>
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

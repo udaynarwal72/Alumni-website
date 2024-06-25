@@ -14,6 +14,7 @@ import EventSlider from "../components/EventSlider/EventSlider";
 import "../styles/App.css";
 import { atom, useRecoilState } from "recoil";
 import axios from "axios";
+import API_URL from "../helpers/ApiKey.js";
 
 export const userNumber = atom({
     key: 'something',
@@ -21,6 +22,7 @@ export const userNumber = atom({
 });
 
 function App() {
+    console.log(`API URL: ${API_URL}`);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();

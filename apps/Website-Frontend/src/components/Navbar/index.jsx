@@ -1,22 +1,27 @@
+// src/components/NavBar.js
+
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import './NavBar.css';
+import { useRecoilState, useRecoilValueLoadable } from 'recoil';
+import { authState, checkAuthSelector } from '../../Recoil/Authuser';
 
 library.add(fas);
 
 const NavBar = () => {
     const [showNavbar, setShowNavbar] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const location = useLocation();
     const navigate = useNavigate();
+    const [auth, setAuth] = useRecoilState(authState);
+    const authStatus = useRecoilValueLoadable(checkAuthSelector);
 
     useEffect(() => {
-        const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        setIsLoggedIn(loggedIn);
-    }, [location]);
+        if (authStatus.state === 'hasValue') {
+            setAuth(authStatus.contents);
+        }
+    }, [authStatus.state, authStatus.contents, setAuth]);
 
     const handleShowNavbar = () => {
         setShowNavbar(!showNavbar);
@@ -24,8 +29,9 @@ const NavBar = () => {
 
     const redirectProfile = (e) => {
         e.preventDefault();
-        const userId = localStorage.getItem('user_id');
-        navigate(`/user/${userId}`);
+        if (auth.user) {
+            navigate(`/user/${auth.user._id}`);
+        }
     };
 
     return (
@@ -45,10 +51,12 @@ const NavBar = () => {
                         <li><NavLink to="/blogsection" activeClassName="active-link">Blog</NavLink></li>
                         <li><NavLink to="/about" activeClassName="active-link">About</NavLink></li>
                         <li><NavLink to="/contactus" activeClassName="active-link">Contact</NavLink></li>
-                        {isLoggedIn ? (
+                        {auth.isLoading ? (
+                            <li>Loading...</li>
+                        ) : auth.isLoggedIn ? (
                             <>
                                 <li><NavLink to="/logout">Logout</NavLink></li>
-                                <li><NavLink to="#" onClick={redirectProfile}>Hello,{localStorage.getItem('first_name')}</NavLink></li>
+                                <li><NavLink to="#" onClick={redirectProfile}>Hello, {auth.user?.first_name}</NavLink></li>
                             </>
                         ) : (
                             <>

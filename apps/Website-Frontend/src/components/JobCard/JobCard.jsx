@@ -16,16 +16,16 @@ const JobCard = ({ data }) => {
 			<div className="job-card-parent">
 				<div className="main-job-card">
 					<div className="all-set">
-					<div className="job-card-header">
-						<h1>{data.job_company}</h1>
-						<p>@{data.job_postedBy.username}</p>
+						<div className="job-card-header">
+							<h1>{data.job_company}</h1>
+							<p>@{data.job_postedBy.username}</p>
+						</div>
+						<div className="second">
+							<div className="ux-designer">{data.job_title}</div>
+							<div className="time-posted">{formatDate(data.createdAt)}</div>
+						</div>
 					</div>
-					<div className="second">
-						<div className="ux-designer">{data.job_title}</div>
-						<div className="time-posted">{formatDate(data.createdAt)}</div>
-					</div>
-					</div>
-					
+
 					<div className="job-card-details">
 						<div className="row1">
 							<div className="one-detail">
@@ -59,7 +59,7 @@ const JobCard = ({ data }) => {
 					<div className="skills">
 						{
 							data.job_tags.map((tag, index) => {
-								return (<span>{tag}</span>)
+								return (<span key={index}>{tag}</span>)
 							})
 						}
 					</div>

@@ -108,15 +108,15 @@ const router = createBrowserRouter([
     element: <PostJob />
   },
   {
-    path:'/infoalumni/:alumniId',
-    element:<AlumniClick/>
+    path: '/infoalumni/:alumniId',
+    element: <AlumniClick />
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RecoilRoot>
-    <HeaderProvider>
-      <RouterProvider router={router} />
-    </HeaderProvider>
-  </RecoilRoot>
+    <RecoilRoot>
+      <HeaderProvider>
+        <RouterProvider router={router} />
+      </HeaderProvider>
+    </RecoilRoot>
 );

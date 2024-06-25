@@ -1,6 +1,8 @@
 import "./BlogSectionCard.css";
+import { useNavigate } from "react-router";
 
 const BlogSectionCard = ({ data }) => {
+    const navigate = useNavigate();
     const { blog_title, blog_body, blogImage, blog_tags, blog_createdBy, createdAt, _id } = data;
 
     // Function to limit the blog body to 20 words
@@ -9,7 +11,7 @@ const BlogSectionCard = ({ data }) => {
         return words.length > limit ? words.slice(0, limit).join(' ') + '...' : text;
     };
     const redirectBlog = () => {
-        window.location.href = `/blogpage/${data._id}`;
+        navigate(`/blogpage/${_id}`);
     }
 
     const formatDate = (dateString) => {
@@ -40,8 +42,8 @@ const BlogSectionCard = ({ data }) => {
                         {truncateText(blog_body, 20)}
                     </div>
                     <div className="sec-card-footer">
-                        {blog_tags?.map((index, tag) => (
-                            <div className="footer-left"><button>{index}</button></div>
+                        {blog_tags?.map((tag, index) => (
+                            <div className="footer-left" key={index}><button>{tag}</button></div>
                         ))}
                         <span><button onClick={redirectBlog} className="read-more">Read More</button></span>
                     </div>
