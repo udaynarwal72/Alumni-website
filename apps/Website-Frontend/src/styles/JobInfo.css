@@ -161,4 +161,89 @@
     color: white;
 }
 
+@media screen and (max-width: 1200px) {
+    .whole-flex {
+        width: 80%; /* Adjust width as needed */
+    }
+}
 
+@media screen and (max-width: 992px) {
+    .whole-flex {
+        width: 90%; /* Adjust width as needed */
+    }
+    .job-col1 {
+        width: 100%; /* Stack columns on smaller screens */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .whole-flex {
+        width: 100%; /* Full width on smaller devices */
+    }
+    .lower-row {
+        flex-direction: column; /* Stack items vertically */
+    }
+    .about-comp {
+        width: 100%; /* Full width for about section items */
+    }
+    .upper-cont{
+        clip-path: fill-box;
+        height:18em
+    }
+    .job-col1{
+        margin-left: 8px;
+       }
+}
+
+@media screen and (max-width: 480px) {
+    .apply-job {
+        margin-top: 40px; /* Adjust spacing for smaller screens */
+        margin-bottom: 60px; /* Adjust spacing for smaller screens */
+    }
+    .apply-job h1 {
+        font-size: 1.5em; /* Adjust font size for smaller screens */
+    }
+    .parent-job-info{
+        overflow-x: hidden;
+    }
+    .about-comp h1{
+        font-size: 1.5em;
+    }
+    .comp-para h3{
+        font-size: 1.1em;
+        line-height: 20px;
+    }
+    .upper-cont{
+        height: 15.5em; /* Adjust height for small screens */
+        background-color: #8B0000;
+        width:100%;
+        clip-path: fill-box;
+    }
+    .all-head {
+        font-size: 0.9em !important;
+        font-size: 0.8em !important;
+        font-weight: 500;
+        font-family: fangsong;
+    }
+
+   .all-name{
+    display: flex;
+    flex-wrap: wrap;
+    /* word-break: break-all; */
+   }
+   .job-col1{
+    margin-left: 10px;
+   }
+    .lower-cont{
+        margin-top: 25px;
+    }
+    .job-head{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .main-job h1 {
+        display: flex;
+        font-size: 2em; /* Adjust font size for smaller screens */
+        flex-wrap: wrap; /* Allow text to wrap on smaller screens */
+    }
+}

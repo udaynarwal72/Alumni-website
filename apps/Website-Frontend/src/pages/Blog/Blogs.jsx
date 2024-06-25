@@ -155,7 +155,7 @@ const Blogs = () => {
                                 <div className="comment-button">
                                     <FontAwesomeIcon icon={faComment} />
                                 </div>
-                                <span>{blogData.comments?.length || 0}</span>
+                                <span className="number-comment">{blogData.comments?.length || 0}</span>
                                 <div className="like-button" onClick={handleLikeToggle}>
                                     <FontAwesomeIcon icon={faThumbsUp} style={{ color: isLikedByUser ? 'blue' : 'grey' }} />
                                 </div>

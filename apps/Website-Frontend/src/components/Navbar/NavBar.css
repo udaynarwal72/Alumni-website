@@ -79,7 +79,7 @@ body {
 .logo{
   color:white;
 }
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .menu-icon {
     display: flex;
     cursor: pointer;

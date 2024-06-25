@@ -3,6 +3,7 @@
     background-color: #F9F5EB;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 .confirm{
     display: flex;
@@ -222,17 +223,30 @@
 @media screen and (max-width: 1200px) {
     .event-infos {
         flex-direction: column;
-        align-items: center;
+        /* align-items: center; */
         gap: 20px;
+        justify-content: flex-start;
     }
     .about-event {
         width: 80%;
     }
+    .parent-event-info{
+        overflow-x: hidden;
+    }
 }
-
 @media screen and (max-width: 768px) {
-    .ev-img {
-        width: 100%;
+    .event-name h1, .about-event h1, .left-h1 {
+        font-size: 2.5em;
+    }
+    .parent-event-info{
+        justify-content: center;
+    }
+    .event-link {
+        font-size: 1.5em;
+    }
+    .ev-img{
+        width:80%;
+        margin-bottom: 60px;
     }
     .about-event {
         width: 100%;
@@ -247,10 +261,109 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        width:100%;
+        width: 100%;
     }
     .event-para {
         width: 100%;
+    }
+    #ellipse {
+        height: 25em; /* Adjust height for medium screens */
+        clip-path: fill-box; /* Adjust ellipse shape for medium screens */
+    }
+    .event-infos {
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: flex-start;
+        overflow-y: visible; /* Ensure the content is visible */
+    }
+    .parent-event-info {
+        overflow-x: hidden;
+    }
+    .event-col {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center align items */
+        text-align: center; /* Center align text */
+    }
+    .event-col div {
+        width: 100%; /* Ensure full width for better responsiveness */
+        margin-bottom: 10px; /* Add some spacing between items */
+    }
+    .middle-container{
+        margin-top: 50px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .event-name h1, .about-event h1 {
+        font-size: 2em;
+    }
+    .event-link {
+        font-size: 1.2em;
+    }
+    .exc-h, .event-col div, .event-name h3, .event-col, .confirm button, .about-event h3 {
+        font-size: 16px;
+    }
+    .middle-row img {
+        width: 40%;
+    }
+    .middle-row{
+        justify-content: center;
+    }
+    .middle-container{
+        margin-top: 50px;
+    }
+    .comi{
+        font-size: 1.8em;
+    }
+    #ellipse {
+        height: 15.5em; /* Adjust height for small screens */
+        background-color: #8B0000;
+        width:100%;
+        clip-path: fill-box;
+    }
+    .event-infos {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: visible; /* Ensure the content is visible */
+        gap: 15px; /* Reduce gap between elements */
+    }
+    .event-col {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center align items */
+        text-align: center; /* Center align text */
+    }
+    .event-col div {
+        width: 100%; /* Ensure full width for better responsiveness */
+        margin-bottom: 8px; /* Adjust margin for smaller screens */
+    }
+    .middle-row img {
+        width: 100%; /* Ensure images take full width */
+    }
+    
+    .end-container {
+        width: 90%; /* Adjust width for better fit */
+        padding: 10px; /* Add padding for spacing */
+        margin-top: 3rem;
+        height:12.5rem;
+    }
+    .arr-list {
+        margin-left: 0; /* Adjust margin for better alignment */
+        width: 100%; /* Ensure full width for better responsiveness */
+    }
+    .ev-img{
+        width:80%;
+        margin-bottom: 20px;
+    }
+    .left-h1{
+        font-size: 2.6em !important;
+    }
+    .arr-list{
+        margin-left: 0px !important;
+        justify-content: center;
+    }
+    .h1-comi{
+        font-size: 1.3em !important; 
     }
 }
 
@@ -261,7 +374,7 @@
     border-right: 2px solid red; /* Initial border for blinking effect */
     animation: typing 2s steps(22, end) forwards, blink 1s infinite step-end;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 3.5em;
+    font-size: 3.5rem;
 }
 .h1-comi{
     display: flex;
