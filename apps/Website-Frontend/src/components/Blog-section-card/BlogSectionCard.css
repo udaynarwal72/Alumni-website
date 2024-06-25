@@ -78,10 +78,12 @@
 }
 
 .sec-card-image {
-    margin-left: 40px;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    height: 200px; /* Set a fixed height for the image container */
+    overflow: hidden; /* Ensure content doesn't overflow */
+    margin-top: 10px; /* Adjust margin as needed */
 }
 
 .sec-card-image img {
@@ -164,17 +166,69 @@
         margin-top: 0; /* Reset margin-top for larger screens */
     }
 }
-@media (max-width: 390px) {
-    .blog-sec-card {
-        flex-direction: column; /* Stack content vertically for mobile screens */
-        width:100%;
-        padding: 5px; /* Reduce padding for mobile */
-        margin-bottom: 15px; /* Reduce bottom margin */
+@media (max-width: 480px) {
+    .sec-card-image {
+        order: 3; /* Move image to the bottom */
+        margin-top: 10px; /* Adjust margin */
     }
 
-    .sec-card-image img {
-        margin-top: 10px; /* Adjust margin for better spacing on mobile screens */
-        width: 80px; /* Reduce image size for mobile */
-        height: 80px; /* Reduce image size for mobile */
+    .sec-card-details {
+        padding-bottom: 10px; /* Add padding at the bottom of details */
     }
+}
+@media (max-width: 768px) {
+    .blog-sec-card {
+        width: 80%; /* Full width on mobile */
+        overflow-y: scroll;
+        margin-bottom: 12px;
+        border: 1px solid grey;
+        border-radius: 18px;
+    }
+
+    .sec-card-details {
+        padding: 10px 10px 0 10px; /* Adjust padding for spacing */
+    }
+
+    .sec-card-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        height: 120px; /* Set a fixed height for the image container */
+        margin-top: 0px; /* Adjust margin as needed */
+    }
+    
+    
+    .sec-card-image img {
+        width: 100%; /* Full width for responsiveness */
+        height:120px; /* Take full height of its container */
+        object-fit: cover; /* Maintain aspect ratio and cover the container */
+        border-radius: 8px;
+    }
+    .description{
+        font-size: 12px;
+        line-height: 18px;
+        margin-top: 2px;
+    }
+
+    .footer-left,.read-more{
+        display: none; /* Hide footer content on mobile */
+    }
+    .title{
+        font-size: 18px;
+    }
+    .sec-card-details div p{
+        font-size: 10px;
+    }
+    .sec-card-details span{
+        font-size: 10px;
+    }
+    .auth-image {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+   
+    
 }
