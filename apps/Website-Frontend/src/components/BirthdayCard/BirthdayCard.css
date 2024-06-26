@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+MX:wght@100..400&display=swap');
+.birth-card{
+    
+    min-width: 17rem;
+    max-width: 20rem;
+    border-radius: 10px;
+    height:25rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
+    border: 1px solid #C5291D;
+    margin: auto;
+    margin-top: 10px;
+    background-image: url('birthdaycard2.jpg');
+    background-size: cover; /* Ensures the image covers the entire div */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+.birth-card h1{
+    font-family: "Playwrite NZ", cursive;
+    font-size: 30px;
+    font-weight: 600;
+    color:black
+}
+.birth-card:hover {
+    box-shadow: 2px 12px 20px #cb8985;
+    cursor: pointer;
+    transform: translateY(-5px);
+}

@@ -187,7 +187,7 @@
   padding:12px;
   
 }
-.edit-button button{
+.edit-button button,.edit-button-3 button{
   padding: 10px;
     background-color: #C5291D;
     color: #F9F5EB;
@@ -391,18 +391,23 @@
   font-weight: 400;
   padding:2px;
 }
-
-
+.edit-button-3{
+  padding: 12px;
+}
 
 @media (max-width: 768px) {
   .upper-section {
-    padding: 20px;
+    padding: 15px;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+        align-items: center;
   }
 
   .profile-card {
-    margin-bottom: 20px;
-    width: 100%;
-  }
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 
   .upper-portion {
     flex-direction: column;
@@ -412,10 +417,6 @@
   .profile-pic img {
     margin: 0 auto;
   }
-  .info-button{
-    width:100%;
-    flex-direction: row;
-  }
 
   .user-name {
     margin-left: 0;
@@ -424,17 +425,63 @@
   }
 
   .profile-links {
+    
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    margin-left: 0px;
+    gap:75px;
+}
+  .all-list{
+    height:auto;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+  }
+  .profile-heading .edit-button{
+    padding: 0px;
+  }
+  .all-list div{
+    height: 1rem;
+        font-size: 13px;
+        min-height: 3rem;
+        margin-top: 15px;
+        justify-content: center;
+        align-items: center;
+    
+  }
+  .inner div{
+    padding: 5px;
+  }
+  .profile-heading h1{
+    font-size: 25px;
   }
 
   .lower-section {
     padding: 20px;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .profile-left-panel, .profile-right-panel {
     width: 100%;
     margin-bottom: 20px;
+    height:auto;
+  }
+  .profile-recent{
+    height:auto;
+    overflow-y: auto;
+    width:100%;
+  }
+
+  .info-button {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
   }
 
   .info-button button {
@@ -444,28 +491,30 @@
   .unique-link {
     align-items: center;
   }
+  .edit-button-3{
+    padding: 0px;
+  }
 }
 
 @media (max-width: 480px) {
   .upper-section {
     padding: 15px;
-    display: flex;
     flex-direction: column;
-    /* gap:200px */
-  }
-  .info-button{
-    width:100%;
-    flex-direction: row;
-  }
-  .profile-card {
-    margin-top: 150px;
-    margin-bottom: -150px;
+    gap: 15px;
   }
 
+  .profile-card {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
   .upper-portion {
-    flex-direction: column;
-    justify-content: top;
-    /* gap:-100px */
+    display: flex;
+    gap: 0px;
+    height: 70%;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    justify-content: space-between;
   }
 
   .profile-pic img {
@@ -478,31 +527,41 @@
   }
 
   .link1, .link2 {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+        height: 80px;
   }
 
   .profile-links {
-    gap: 10px;
+    
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      width: 100%;
+      align-items: center;
+      margin-left: 0px;
+      gap:75px;
   }
+  
 
   .lower-section {
     padding: 15px;
     flex-direction: column;
+    gap: 15px;
   }
 
   .profile-right-panel, .profile-left-panel {
     padding: 10px;
-    width:100%;
-    height:50rem
+    width: 100%;
+    height: auto; /* Adjust height to auto for better responsiveness */
   }
 
   .info-button button {
     padding: 10px;
     font-size: 14px;
   }
-  .profile-recent{
-    width:100%
+
+  .profile-recent {
+    width: 100%;
   }
 }
 

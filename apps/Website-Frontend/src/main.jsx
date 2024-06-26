@@ -30,6 +30,9 @@ import { RecoilRoot } from 'recoil';
 import JobInfo from './pages/Job/JobInfo';
 import PostJob from './pages/Job/PostJob';
 import AlumniClick from './pages/User/AlumniClick';
+import BirthdayCard from './components/BirthdayCard/BirthdayCard';
+import ForgotPass from './pages/General/ForgotPass';
+import ConfirmMail from './pages/General/ConfirmMail';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -110,6 +113,17 @@ const router = createBrowserRouter([
   {
     path: '/infoalumni/:alumniId',
     element: <AlumniClick />
+  },
+  {
+    path:'/birthday',
+    element:<BirthdayCard/>
+  },{
+    path:'/forget',
+    element:<ForgotPass/>
+  },
+  {
+    path:'resetmail',
+    element:<ConfirmMail/>
   }
 ]);
 
