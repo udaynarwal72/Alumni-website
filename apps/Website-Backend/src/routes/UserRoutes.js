@@ -32,7 +32,10 @@ UserRouter.get('/getuserbyid/:userId', getUserById);
 UserRouter.get('/profilesection', verifyJWT, getUserDetails);
 UserRouter.get('/check-auth', verifyJWT, checkAuthentication);
 UserRouter.get('/findalumni', getAllUsers)
-UserRouter.put('/profile/:userId', verifyJWT, updateUserProfile);
+UserRouter.put('/profileupdate', verifyJWT, upload.fields([
+    { name: 'avatar', maxCount: 1 },
+    { name: 'coverImage', maxCount: 1 }
+]), updateUserProfile);
 UserRouter.put('/updateprofile/:userId', verifyJWT, updateRemainingProfile);
 UserRouter.post('/forgot-password', verifyJWT, userForgotPasssword);
 UserRouter.get('/profile/:userId/likedPost', verifyJWT, getUserlikedPost);

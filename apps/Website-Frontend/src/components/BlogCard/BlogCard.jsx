@@ -36,7 +36,7 @@ const BlogCard = ({ data }) => {
                             </div>
                         ))}
                         <h2 className="card-title">
-                            <a href={`/blog/${_id}`}>{blog_title}</a>
+                            {blog_title}
                         </h2>
                         <p className="card-desc">{truncateText(blog_body, 20)}</p>
                     </div>

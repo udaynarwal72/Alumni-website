@@ -13,13 +13,13 @@ const UserSchema = new Schema({
     coverImage: { type: String, required: false },
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
-    joining_batch: { type: String },
-    currnet_country: { type: String },
-    current_state: { type: String },
-    current_city: { type: String },
-    country: { type: String },
-    state: { type: String },
-    city: { type: String },
+    joining_batch: { type: String, default: '' },
+    joining_country: { type: String, default: '' },
+    joining_country: { type: String, default: '' },
+    joining_country: { type: String, default: '' },
+    current_country: { type: String, default: '' },
+    current_state: { type: String, default: '' },
+    current_city: { type: String, default: '' },
     address: { type: String },
     branch: { type: String },
     organisation: { type: String },
@@ -27,6 +27,7 @@ const UserSchema = new Schema({
     password: { type: String, required: true },
     phone_number: { type: String },
     dob: { type: Date },
+    marriage_anniversary: { type: Date },
     profile_picture: { type: String },
     is_admin: { type: Boolean, default: false },
     verified: { type: Boolean, default: false },
@@ -36,7 +37,6 @@ const UserSchema = new Schema({
     facebook_profile: { type: String, default: "" },
     instagram_handle: { type: String, default: "" },
     designation: { type: String },
-    // time_zone: { type: String },
     hobbies: [{ type: String }],
     profile_views: { type: Number, default: 0 },
     verification_status: { type: String, enum: ['pending', 'verified', 'rejected'], default: 'pending' },
@@ -46,6 +46,9 @@ const UserSchema = new Schema({
     badges: [{ type: String }],
     refreshToken: { type: String, },
     notificationToken: { type: String, default: "" },
+    children_name: [{ type: String, default: "" }],
+    wife_name: { type: String, default: "" },
+    phone_visible: { type: Boolean, default: true }
 }, { timestamps: true });
 
 UserSchema.pre("save", async function (next) {
@@ -69,7 +72,6 @@ UserSchema.methods.isPasswordCorrect = async function (password) {
 
 // Method to generate access token
 UserSchema.methods.generateAccessToken = function () {
-    console.log('hi')
     return sign(
         {
             _id: this._id,

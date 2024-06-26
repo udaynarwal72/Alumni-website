@@ -12,7 +12,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
 
+const branches = [
+	'Computer Science', 'Electronics and Communication Engineering', 'Information Technology',
+	'Mechanical Engineering', 'Electrical Engineering', 'Civil Engineering', 'Production and Industrial Engineering',
+	'Mathematics and Computing', 'Industrial Internet of Things', 'MBA', 'MCA', 'Ph.D', 'Other'
+];
 const Completeprofile = () => {
+	const navigate = useNavigate();
 	const [selectedCountry, setSelectedCountry] = useState('');
 	const [selectedState, setSelectedState] = useState('');
 	const [states, setStates] = useState([]);
@@ -111,7 +117,7 @@ const Completeprofile = () => {
 						<div className="comp-form-section">
 							<div>
 								<label>Country:</label>
-								<select className='in' name="country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)} required>
+								<select className='in' name="current_country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)}>
 									<option value="">Select Country</option>
 									{fetchedCountries.map(country => (
 										<option key={country} value={country}>{country.split('+')[0]}</option>
@@ -120,7 +126,7 @@ const Completeprofile = () => {
 							</div>
 							<div>
 								<label>State:</label>
-								<select className='in' name="state" value={selectedState} onChange={(e) => setSelectedState(e.target.value)} required>
+								<select className='in' name="current_state" value={selectedState} onChange={(e) => setSelectedState(e.target.value)} >
 									<option value="">Select State</option>
 									{states.map(state => (
 										<option key={state} value={state}>{state.split('+')[0]}</option>
@@ -129,7 +135,7 @@ const Completeprofile = () => {
 							</div>
 							<div>
 								<label>City:</label>
-								<select className='in' name="city" required>
+								<select className='in' name="current_city">
 									<option value="">Select City</option>
 									{cities.map(city => (
 										<option key={city} value={city}>{city}</option>
@@ -140,7 +146,7 @@ const Completeprofile = () => {
 						<div className="comp-form-section">
 							<div>
 								<label>LinkedIn Profile:</label>
-								<input type="text" name="linkedin" className="in" required />
+								<input type="text" name="linkedin" className="in" />
 							</div>
 							<div>
 								<label>Instagram Profile:</label>

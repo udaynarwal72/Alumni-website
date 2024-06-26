@@ -76,9 +76,9 @@ const userSignUpController = async (req, res) => {
         first_name,
         last_name,
         joining_batch,
-        country,
-        state,
-        city,
+        joining_country,
+        joining_state,
+        joining_city,
         address,
         branch,
         organisation,
@@ -109,13 +109,13 @@ const userSignUpController = async (req, res) => {
         terms_accepted,
         certifications,
         awards,
+        phone_visible,
         badges,
     } = req.body;
     console.log(req.body)
     if (username === "" && first_name === "" && email == "" && password == "") {
         throw new ApiError(400, "Required fields are empty")
     }
-
     let coverImageLocalPath;
     if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
         coverImageLocalPath = req.files.coverImage[0].path;
@@ -126,45 +126,23 @@ const userSignUpController = async (req, res) => {
     }
     const avatar = await uploadOnCloudinary(avatarLocalPath)
     const coverImage = await uploadOnCloudinary(coverImageLocalPath)
-
-    // const user = await User.create({
-    //     username: chance.name().toLowerCase(),
-    //     first_name: chance.first(),
-    //     last_name: chance.last(),
-    //     joining_batch: chance.year(),
-    //     country: chance.country(),
-    //     state: chance.state(),
-    //     city: chance.city(),
-    //     address: chance.address(),
-    // //     'Computer Science', ', 'Information Technology',
-    // // 'Mechanical Engineering', 'Electrical Engineering', 'Civil Engineering', 'Production and Industrial Engineering',
-    // // 'Mathematics and Computing', 'Industrial Internet of Things', 'Other'
-    //     branch: "Computer Science",
-    //     designation: chance.profession({length:1}),
-    //     organisation: chance.company({length:1}),
-    //     skills: skills,
-    //     email: chance.email(),
-    //     password: "uday123",
-    //     phone_number: chance.phone(),
-    //     dob: chance.date(),
-    //     avatar: "http://res.cloudinary.com/dttk927pq/image/upload/v1718633857/atpqyd8ciinqbdsgccle.png" || "",
-    //     coverImage: "http://res.cloudinary.com/dttk927pq/image/upload/v1718633859/wdzusookus0daswbldum.jpg" || "",
-    // });
-    const calculated_state = state.split("+")[0].trim();
-
+    const calculated_state = joining_state.split("+")[0].trim();
+    const calculated_country = joining_country.split("+")[0].trim();
+    const calculated_phone_visible = phone_visible === "on" ? true : false;
     const user = await User.create({
         username: username,
         first_name: first_name,
         last_name: last_name,
         joining_batch: joining_batch,
-        country: country,
-        state: calculated_state,
-        city: city,
+        joining_country: calculated_country,
+        joining_state: calculated_state,
+        joining_city: joining_city,
         address: address,
         branch: branch,
         organisation: organisation,
         skills: skills,
         email: email,
+        phone_visible: calculated_phone_visible,
         designation: designation,
         password: password,
         phone_number: phone_number,
@@ -345,90 +323,140 @@ const getUserDetails = AsyncHandler(async (req, res) => {
     }
 });
 
-const updateRemainingProfile = AsyncHandler(async (req, res) => {
-
+const updateRemainingProfile = async (req, res) => {
     try {
-        const { country, state, city, likedin, instagram, twitter, achievements, hobbies } = req.body;
-        const awards = achievements.split(",").map((achievement) => {
-            return achievement.trim();
-        });
-        console.log(awards)
-        const user_hobbie = hobbies.split(",").map((hobby) => {
-            return hobby.trim();
-        });
-        console.log(user_hobbie)
-        const user = await User.findByIdAndUpdate(
-            req.user?._id,
-            {
-                $set: {
-                    current_state: state,
-                    currnet_country: country,
-                    current_city: city,
-                    linkedin_profile: likedin,
-                    twitter_handle: twitter,
-                    instagram_handle: instagram,
-                    awards: awards,
-                    hobbies: user_hobbie,
-                }
-            },
-        ).select("-password");
-        console.log(user)
-        return res
-            .status(200)
-            .json(new ApiResponse(200, user, "Profile updated successfully"));
+        const { current_country, current_state, current_city, linkedin, instagram, twitter, achievements, hobbies } = req.body;
+
+        // Split achievements and hobbies into arrays
+        const awards = achievements.split(",").map((achievement) => achievement.trim());
+        const user_hobbies = hobbies.split(",").map((hobby) => hobby.trim());
+
+        // Create an object to store only the updated fields
+        const updates = {};
+        const calculated_country = current_country.split("+")[0].trim();
+        const calculated_state = current_state.split("+")[0].trim();
+        // Populate updates object with fields that have changed
+        if (current_state) updates.current_state = calculated_state;
+        if (current_country) updates.current_country = calculated_country;
+        if (current_city) updates.current_city = current_city;
+        if (linkedin) updates.linkedin_profile = linkedin;
+        if (twitter) updates.twitter_handle = twitter;
+        if (instagram) updates.instagram_handle = instagram;
+        if (achievements) updates.awards = awards;
+        if (hobbies) updates.hobbies = user_hobbies;
+
+        // Update user only if there are changes
+        if (Object.keys(updates).length > 0) {
+            const user = await User.findByIdAndUpdate(
+                req.user?._id,
+                { $set: updates },
+                { new: true } // To return the updated document
+            ).select("-password");
+
+            return res.status(200).json(new ApiResponse(200, user, "Profile updated successfully"));
+        } else {
+            // No fields were updated
+            return res.status(200).json(new ApiResponse(200, null, "No changes detected"));
+        }
     } catch (error) {
-        throw new ApiError(500, error.message)
+        throw new ApiError(500, error.message);
     }
-});
+};
 
 const updateUserProfile = AsyncHandler(async (req, res) => {
     try {
-        console.log(req.body)
-        const { first_name, last_name, joining_batch, country, state, city, address, branch, organisation, phone_number, dob, linkedin_profile, twitter_handle, facebook_profile, instagram_handle, job_title, department, work_experience, skills, time_zone, hobbies, certifications, awards, badges } = req.body;
+        console.log(req.body);
 
-        if (!first_name) {
-            throw new ApiError(400, "First Name is required");
+        const {
+            username, first_name, last_name, joining_batch, current_country, current_state, current_city,
+            address, branch, organisation, designation, email, phone_number, dob, linkedin_profile,
+            instagram_handle, twitter_handle, facebook_profile, hobbies, awards, marriage_anniversary,
+            wife_name, children_name, phone_visible
+        } = req.body;
+
+        // Determine phone_visible based on checkbox value
+        console.log('this is phone visible')
+        const calculated_phone_visible = (phone_visible) === "on";
+
+        console.log(calculated_phone_visible);
+
+        // Prepare update fields object
+        const updateFields = {
+            username: username || "",
+            first_name: first_name || "",
+            last_name: last_name || "",
+            joining_batch: joining_batch || "",
+            address: address || "",
+            organisation: organisation || "",
+            designation: designation || "",
+            email: email || "",
+            phone_number: phone_number || "",
+            dob: dob || "",
+            linkedin_profile: linkedin_profile || "",
+            instagram_handle: instagram_handle || "",
+            twitter_handle: twitter_handle || "",
+            facebook_profile: facebook_profile || "",
+            hobbies: hobbies ? hobbies.trim().split(',').map(hobby => hobby.trim()) : [],
+            awards: awards ? awards.trim().split(',').map(award => award.trim()) : [],
+            marriage_anniversary: marriage_anniversary || "",
+            wife_name: wife_name || "",
+            children_name: children_name ? children_name.trim().split(',').map(child => child.trim()) : []
+        };
+
+        // Add phone_visible to updateFields if true
+        if (calculated_phone_visible) {
+            updateFields.phone_visible = true;
+        }else{
+            updateFields.phone_visible = false;
         }
 
+        // Add branch, current_country, and current_state if available
+        if (branch) {
+            updateFields.branch = branch;
+        }
+        if (current_country) {
+            updateFields.current_country = current_country.split('+')[0].trim();
+        }
+        if (current_state) {
+            updateFields.current_state = current_state.split('+')[0].trim();
+        }
+        
+        // Handle file uploads (avatar and coverImage)
+        let avatar, coverImage;
+        if (req.files && Array.isArray(req.files.avatar) && req.files.avatar.length > 0) {
+            const avatarLocalPath = req.files.avatar[0].path;
+            avatar = await uploadOnCloudinary(avatarLocalPath);
+            updateFields.avatar = avatar?.url || "";
+        }
+        if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
+            const coverImageLocalPath = req.files.coverImage[0].path;
+            coverImage = await uploadOnCloudinary(coverImageLocalPath);
+            updateFields.coverImage = coverImage?.url || "";
+        }
+
+        // Update user profile in the database
         const user = await User.findByIdAndUpdate(
-            req.user?._id,
-            {
-                $set: {
-                    first_name: first_name,
-                    last_name: last_name,
-                    joining_batch: joining_batch,
-                    country: country,
-                    state: state,
-                    city: city,
-                    address: address,
-                    branch: branch,
-                    organisation: organisation,
-                    phone_number: phone_number,
-                    dob: dob,
-                    linkedin_profile: linkedin_profile,
-                    twitter_handle: twitter_handle,
-                    facebook_profile: facebook_profile,
-                    instagram_handle: instagram_handle,
-                    job_title: job_title,
-                    department: department,
-                    work_experience: work_experience,
-                    skills: skills,
-                    time_zone: time_zone,
-                    hobbies: hobbies,
-                    certifications: certifications,
-                    awards: awards,
-                    badges: badges
-                }
-            },
+            req.user._id,
+            { $set: updateFields },
             { new: true }
-        ).select("-password")
-        return res
-            .status(200)
-            .json(new ApiResponse(200, user, "Profile updated successfully"))
+        ).select("-password");
+
+        // Check if user exists and return response
+        if (!user) {
+            return res.status(404).json(new ApiResponse(404, null, "User not found"));
+        }
+
+        // Return success response with updated user data
+        return res.status(200).json(new ApiResponse(200, user, "Profile updated successfully"));
     } catch (error) {
-        throw new ApiError(500, error.message)
+        console.error(error);
+        return res.status(500).json(new ApiResponse(500, null, error.message));
     }
-})
+});
+
+
+
+
 
 const getUserlikedPost = AsyncHandler(async (req, res) => {
     try {

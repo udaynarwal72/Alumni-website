@@ -20,7 +20,7 @@ const createblog = async (req, res) => {
         const uploadImageCloud = await uploadOnCloudinary(blogImagePath);
 
         // Process tags: convert to lowercase and split into array
-        const tagArray = tags.trim().toLowerCase().split(' ');
+        const tagArray = tags.trim().toLowerCase().split(',');
 
         // Create the blog entry in the database
         const createdBlog = await Blog.create({

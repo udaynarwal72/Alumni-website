@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import '../../styles/SignUp.css';
 import NavBar from '../../components/Navbar';
-import Footer from '../../components/footer';
 import dataCountry from '../../../../../src/countries.json';
 import dataState from '../../../../../src/states.json';
 import { useNavigate } from 'react-router-dom';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
+import { Checkbox } from 'flowbite-react';
 
 const branches = [
     'Computer Science', 'Electronics and Communication Engineering', 'Information Technology',
     'Mechanical Engineering', 'Electrical Engineering', 'Civil Engineering', 'Production and Industrial Engineering',
-    'Mathematics and Computing', 'Industrial Internet of Things', 'Other'
+    'Mathematics and Computing', 'Industrial Internet of Things', 'MBA', 'MCA', 'Ph.D', 'Other'
 ];
 
 function SignupPage() {
@@ -26,6 +26,7 @@ function SignupPage() {
     const [croppedImage, setCroppedImage] = useState(null);
     const [croppedCoverImage, setCroppedCoverImage] = useState(null);
     const navigate = useNavigate();
+    const [checked, setChecked] = useState(true);
 
     useEffect(() => {
         const userCountries = dataCountry.map(country => `${country.name}+${country.id}+${country.iso2}`);
@@ -67,6 +68,10 @@ function SignupPage() {
         }
     }, [selectedState]);
 
+    const handleChange = () => {
+        setChecked(!checked);
+    };
+
     const handleImageChange = (e, setImage) => {
         const file = e.target.files[0];
         if (file) {
@@ -104,9 +109,9 @@ function SignupPage() {
         }
     };
 
-    const onImageCropComplete = (croppedArea, croppedAreaPixels, setCroppedImage) => {
+    const onImageCropComplete = useCallback((croppedArea, croppedAreaPixels, setCroppedImage) => {
         setCroppedImage(croppedAreaPixels);
-    };
+    }, []);
 
     const createCroppedImage = async (image, croppedAreaPixels) => {
         const canvas = document.createElement('canvas');
@@ -163,7 +168,7 @@ function SignupPage() {
                         </div>
                         <div className="input-group">
                             <label htmlFor="country">Country</label>
-                            <select id="country" name="country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)} required>
+                            <select id="country" name="joining_country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)} required>
                                 <option value="">Joining Country</option>
                                 {fetchedCountries.map(country => (
                                     <option key={country} value={country}>{country.split('+')[0]}</option>
@@ -172,7 +177,7 @@ function SignupPage() {
                         </div>
                         <div className="input-group">
                             <label htmlFor="state">State</label>
-                            <select id="state" name="state" value={selectedState} onChange={(e) => setSelectedState(e.target.value)} required>
+                            <select id="state" name="joining_state" value={selectedState} onChange={(e) => setSelectedState(e.target.value)} required>
                                 <option value="">Joining State</option>
                                 {states.map(state => (
                                     <option key={state} value={state}>{state.split('+')[0]}</option>
@@ -181,7 +186,7 @@ function SignupPage() {
                         </div>
                         <div className="input-group">
                             <label htmlFor="city">City</label>
-                            <select id="city" name="city" required>
+                            <select id="city" name="joining_city" required>
                                 <option value="">Joining City</option>
                                 {cities.map(city => (
                                     <option key={city} value={city}>{city}</option>
@@ -220,6 +225,10 @@ function SignupPage() {
                         <div className="input-group">
                             <label htmlFor="phoneNumber">Phone Number</label>
                             <input type="tel" id="phoneNumber" name="phone_number" required />
+                            <input type="checkbox" id="phone_visible" checked={checked} onChange={handleChange} name="phone_visible" />
+                            <label htmlFor="phone_visible">
+                                Make phone number visible
+                            </label>
                         </div>
                         <div className="input-group">
                             <label htmlFor="dob">Date of Birth</label>
