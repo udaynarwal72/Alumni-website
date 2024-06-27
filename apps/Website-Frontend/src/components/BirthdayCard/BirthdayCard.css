@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+MX:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Text:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 .birth-card{
     
-    min-width: 17rem;
-    max-width: 20rem;
+    width:19rem;
     border-radius: 10px;
     height:25rem;
     overflow: hidden;
@@ -14,22 +16,111 @@
     display: flex;
     flex-direction: column;
     transition: all 0.2s;
-    border: 1px solid #C5291D;
+    border: 2px solid #C5291D;
+    background: linear-gradient(to bottom, #f57571, #ffffff);
     margin: auto;
+   
     margin-top: 10px;
-    background-image: url('birthdaycard2.jpg');
+    /* background-image: url('birthdaycard2.jpg'); */
     background-size: cover; /* Ensures the image covers the entire div */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
 }
+.birth-head{
+    display: flex;
+    flex-direction: column;
+    gap:0px;
+    
+}
+.birth-head h2{
+    margin-top: 15px;
+    font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+    font-optical-sizing: auto;
+    font-weight:500;
+    
+  text-align: center;
+  color:white;
+  font-size: 35px;
+}
 .birth-card h1{
-    font-family: "Playwrite NZ", cursive;
-    font-size: 30px;
-    font-weight: 600;
-    color:black
+    font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+    color:white;
+  font-size: 40px;
+  margin-top: -20px;
 }
 .birth-card:hover {
     box-shadow: 2px 12px 20px #cb8985;
     cursor: pointer;
     transform: translateY(-5px);
 }
+.birth-middle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%; /* Adjust as needed */
+   
+}
+.birth-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   
+}
+.birth-image{
+    display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  align-items: center;
+  width: 140px; /* Fixed width */
+  height: 140px; /* Fixed height to make it square */
+  overflow: hidden;
+  border:1px solid #C5291D;
+  border-radius: 50%; /* Makes the image circular */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: for styling */
+}
+.birth-last{
+    display: flex;
+    justify-content: center;
+   
+  
+}
+.birth-list{
+    margin-top: 40px;
+}
+.birth-head1{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+.info-list {
+    list-style: none; /* Removes default list styling */
+    padding: 0;
+    margin: 20px 0 0 0; /* Adds some space between the image and the list */
+  }
+  .info-list div{
+    width:180px;
+  }
+  
+  .info-list li {
+    position: relative;
+    padding-left: 10px; /* Adjust the padding to set the fixed start space */
+    margin-bottom: 10px; /* Adds some space between list items */
+  }
+  
+  .info-list li::before {
+    content: "•"; /* Custom bullet character */
+    position: absolute;
+    color:#C5291D;
+    left: 0;
+    font-size: 20px; /* Adjust the size of the bullet */
+    line-height: 1;
+  }
+  .info-list h3{
+    color:#C5291D;
+    font-size: 18px;
+    
+  }

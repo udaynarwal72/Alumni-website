@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import './AlumniSlider.css';
 import AlumniCard from '../AlumniCard/AlumniCard';
 import axios from 'axios';
+import BirthdayCard from '../BirthdayCard/BirthdayCard';
 
 const AlumniSlider = () => {
     const [alumni, setAlumni] = useState([]);
@@ -65,9 +66,17 @@ const AlumniSlider = () => {
     return (
         <div className="image-slider">
             <Slider {...settings}>
-                {alumni.map((alumniItem) => (
+                {/* {alumni.map((alumniItem) => (
                     <AlumniCard key={alumniItem._id} AlumniData={alumniItem} />
-                ))}
+                ))} */}
+                <BirthdayCard/>
+                <BirthdayCard/>
+                <BirthdayCard/>
+                <BirthdayCard/>
+                <BirthdayCard/>
+                <BirthdayCard/>
+                <BirthdayCard/>
+                <BirthdayCard/>
             </Slider>
         </div>
     );
