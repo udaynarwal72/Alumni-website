@@ -115,7 +115,7 @@ body {
     }
 
     .blog-card {
-        width: 100%;
+        width: 90%;
         max-width: 100%; /* Make the card take full width */
     }
 

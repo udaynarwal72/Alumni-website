@@ -149,4 +149,49 @@ svg {
   background-size: 100% 100%;
   transform: translateY(-0.15em);
 }
+@media (max-width: 768px) { /* Tablet screens */
+  svg {
+    height: 18rem; /* Adjust height for tablets */
+    margin-right: 2rem; /* Adjust margin for tablets */
+    margin-bottom: 12px;
+  }
+
+  .just {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  .title-contact {
+    font-size: 35px; /* Adjust font size for tablets */
+  }
+
+  .contact-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-us-page{
+    overflow-x: hidden;
+  }
+
+  #formMessage {
+    width: 100%; /* Full width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) { /* Mobile phones */
+  svg {
+    height: 15rem; /* Adjust height for mobile phones */
+    margin-right: 1rem; /* Adjust margin for mobile phones */
+  }
+
+  .title-contact {
+    font-size: 30px; /* Adjust font size for mobile phones */
+  }
+
+  .btn.btn-primary {
+    padding: 0 2rem; /* Adjust padding for mobile phones */
+  }
+}
   

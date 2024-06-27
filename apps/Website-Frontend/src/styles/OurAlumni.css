@@ -117,11 +117,14 @@ select::-webkit-scrollbar {
     background: #A71C15; /* Darker color when hovering over the thumb */
   }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
 
     .heading {
         flex-direction: column;
         align-items: flex-start;
+    }
+    .Parent{
+        padding:30px 15px;
     }
 
     .heading button {
