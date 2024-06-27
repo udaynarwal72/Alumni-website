@@ -58,7 +58,6 @@
  transform: translateY(-50%) scale(1.1);
  box-shadow: 0 4px 8px #F9F5EB; /* Subtle shadow on hover */
 }
-
 .slick-prev:before {
  content: '←';
 }

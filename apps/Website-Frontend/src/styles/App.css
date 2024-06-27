@@ -3,11 +3,12 @@ body{
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e4c679;
+    background-color: white;
+    /* background-color: #e4c679; */
     overflow-x: hidden;
 }
 .home-end{
-    margin-bottom: 50px;
+    margin-bottom: 50px;    
 }
 .home{
     width:100vw;
@@ -20,7 +21,9 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: white;
 }
+
 .first-heading{
     display:flex;
     justify-content: center;

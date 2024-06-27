@@ -66,17 +66,9 @@ const AlumniSlider = () => {
     return (
         <div className="image-slider">
             <Slider {...settings}>
-                {/* {alumni.map((alumniItem) => (
+                {alumni.map((alumniItem) => (
                     <AlumniCard key={alumniItem._id} AlumniData={alumniItem} />
-                ))} */}
-                <BirthdayCard/>
-                <BirthdayCard/>
-                <BirthdayCard/>
-                <BirthdayCard/>
-                <BirthdayCard/>
-                <BirthdayCard/>
-                <BirthdayCard/>
-                <BirthdayCard/>
+                ))}
             </Slider>
         </div>
     );

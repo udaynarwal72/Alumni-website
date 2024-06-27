@@ -16,6 +16,9 @@
     height: fit-content;
     background-color: white;
 }
+.Parent{
+    background-color: white;
+}
 .card-name{
     font-family: Georgia, 'Times New Roman', Times, serif;
     color:#C5291D;

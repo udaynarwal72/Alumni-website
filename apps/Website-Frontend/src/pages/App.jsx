@@ -112,6 +112,7 @@ function App() {
                 <button className="view-all">View All</button>
 				<div className="home-end"></div>
             </div>
+            {/* <h1 style={{margin:'10px'}}>Hello</h1> */}
             <Footer />
         </div>
     );
