@@ -36,7 +36,7 @@ const AlumniCard = ({ AlumniData }) => {
 	}
 	return (
 		<div onClick={redirectToAlumniPage}>
-			<div className="Parent">
+			<div className="parent-container">
 				<div className="card">
 					<div className="card-header">
 						<img
