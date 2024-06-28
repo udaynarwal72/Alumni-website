@@ -69,6 +69,7 @@ const Adminsignup = async (req, res) => {
 };
 
 const Adminsignin = AsyncHandler(async (req, res, next) => {
+    console.log("this is body",req.body)
     const { username, password } = req.body;
     if (!username || !password) {
         throw new ApiError(400, "username and password required");
@@ -96,7 +97,17 @@ const Adminsignin = AsyncHandler(async (req, res, next) => {
         .json(new ApiResponse(200, { user: loggedInUser, accessToken, refreshToken }, "User logged in successfully"));
 });
 
+const Admindelete = AsyncHandler(async (req, res) => {
+    const { adminId } = req.params;
+    const user = await Alumniadmin.findByIdAndDelete(adminId);
+    if (!user) {
+        throw new ApiError(404, "User not found");
+    }
+    res.status(200).json({ message: "User deleted successfully" });
+});
+
 export {
     Adminsignup,
     Adminsignin,
+    Admindelete
 };

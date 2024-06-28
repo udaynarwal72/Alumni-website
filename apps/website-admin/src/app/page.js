@@ -1,73 +1,63 @@
 "use client";
-
-import Navbar from '@/component/Navbar/Navbar';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 
 // Home component to display the users' data
 export default function Home() {
-  const [userData, setUserData] = useState([]);
-  const userDataFunc = () => {
-    console.log('Fetching data from API...');
-    // Fetching data using Axios
-    axios.get('http://localhost:3000/api/v1/user/findalumni')
-      .then(res => {
-        const allUsers = res.data.data;
-        setUserData(allUsers);
-        console.log('Data fetched:', allUsers);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }
-  const UserRemove = (e, id) => {
-    console.log('Removing user with id:', id);
-    // Removing user using Axios
-    axios.delete(`http://localhost:3000/api/v1/user/${id}`)
-      .then(res => {
-        console.log('User removed:', res.data);
-        userDataFunc();
-      })
-      .catch(error => {
-        console.error('Error removing user:', error);
-      });
-  }
-  useEffect(() => {
-    userDataFunc();
-  }, []);
+  const loginUser = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
 
+    // Convert FormData to a plain object
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
 
+    try {
+      const response = await axios.post('http://localhost:3000/api/v1/admin/adminsignin', JSON.stringify(data), {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.status === 200) {
+        window.location.href = '/admin';
+      } else {
+        alert('Invalid username or password');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <main className='overflow-scroll flex-1 align-center justify-center'>
-      <table className="table m-5 w-auto">
-        <thead className="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Username</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Joining Batch</th>
-            <th scope="col">Branch</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {userData.map((user, index) => (
-            <tr key={index}>
-              <th scope="row">{index + 1}</th>
-              <td>{user.username}</td>
-              <td>{user.first_name}</td>
-              <td>{user.last_name}</td>
-              <td>{user.email}</td>
-              <td>{user.joining_batch}</td>
-              <td>{user.branch}</td>
-              <td><button className='btn btn-danger'  onClick={(e) => { UserRemove(e, user._id) }}>Remove</button></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <main className='d-flex align-items-center justify-content-center vh-100 bg-light'>
+      <div className='container'>
+        <div className='row justify-content-center'>
+          <div className='col-md-6'>
+            <div className='card shadow-sm'>
+              <div className='card-header bg-dark text-light text-center'>
+                <h1>Admin Login</h1>
+              </div>
+              <div className='card-body'>
+                <form method='POST' onSubmit={loginUser}>
+                  <div className='form-group mb-3'>
+                    <label htmlFor='username' className='form-label'>Username</label>
+                    <input type='text' id='username' name='username' className='form-control' required />
+                  </div>
+                  <div className='form-group mb-3'>
+                    <label htmlFor='password' className='form-label'>Password</label>
+                    <input type='password' id='password' name='password' className='form-control' required />
+                  </div>
+                  <button type='submit' className='btn btn-primary w-100'>Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
