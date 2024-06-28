@@ -58,15 +58,17 @@ function App() {
     };
 
     return (
-        <div style={{ backgroundColor: "#F9F5EB", minHeight: "100vh" }}>
+        <div >
             <NavBar />
             <div className="parent-container">
-                <Herosection />
-                <div className="-first heading">
+                <div className="hero-section">
+                    <Herosection />
+                </div>
+                <div className="first heading">
                     <div className="first-heading-content">
                         <div>
                             <h1>Our Alumni</h1>
-                            <hr /><hr />
+                            <hr /><hr /><hr/>
                         </div>
                     </div>
                 </div>
@@ -80,7 +82,7 @@ function App() {
                 <div className="second-heading">
                     <div className="second-heading-content">
                         <div>
-                            <h1>Alumni Write..</h1>
+                            <h1>Blog</h1>
                             <hr /><hr />
                         </div>
                     </div>
@@ -110,9 +112,9 @@ function App() {
                 </div>
                 <JobSlider />
                 <button className="view-all">View All</button>
-				<div className="home-end"></div>
+                <div className="home-end"></div>
             </div>
-            {/* <h1 style={{margin:'10px'}}>Hello</h1> */}
+            <h1 className="">Hello</h1>
             <Footer />
         </div>
     );

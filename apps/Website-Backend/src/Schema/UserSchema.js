@@ -70,7 +70,6 @@ UserSchema.methods.isPasswordCorrect = async function (password) {
     return isMatch;
 };
 
-// Method to generate access token
 UserSchema.methods.generateAccessToken = function () {
     return sign(
         {
@@ -85,7 +84,7 @@ UserSchema.methods.generateAccessToken = function () {
     );
 };
 
-// Method to generate refresh token
+
 UserSchema.methods.generateRefreshToken = function () {
     return sign(
         {

@@ -118,14 +118,14 @@ const UserProfile = () => {
 				<div className="upper-section">
 					<div className="profile-card">
 						<div className="upper-portion">
-							<div className="profile-pic">
+							<div className="profile-pic border-box ">
 								<img src={user.avatar} alt="Profile Pic" />
 							</div>
 							<div className="user-name">
 								<div>{user.first_name} {user.last_name}</div>
 								<span style={{ fontWeight: "bold" }}>{user.organisation}</span>
 							</div>
-							<div className="edit-button">
+							<div className="edit-button">	
 								<button onClick={createBlog}>Post Blog</button>
 								<button onClick={createEvent}>Post Event</button>
 								<button onClick={createJob}>Post Job</button>

@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import App from './pages/App';
-import './index.css';
+import './main.css';
 import HeaderProvider from './context/HeaderProvider';
 import AboutUsPage from './pages/General/AboutUs';
 import ContactUsPage from './pages/General/ContactUs';
@@ -18,7 +18,6 @@ import Blogs from './pages/Blog/Blogs';
 import BlogCard from './components/BlogCard/BlogCard';
 import SignInPage from './pages/General/Signin';
 import SignupPage from './pages/General/Signup';
-
 import Userlogout from './pages/User/Logout';
 import BlogSection from './pages/Blog/BlogSection';
 import BlogForm from './pages/Blog/BlogForm';
@@ -124,7 +123,7 @@ const router = createBrowserRouter([
   {
     path:'resetmail',
     element:<ConfirmMail/>
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

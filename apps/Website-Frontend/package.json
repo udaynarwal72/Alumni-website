@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "axios": "^1.7.2",
+    "ckeditor5": "^42.0.0",
+    "ckeditor5-premium-features": "^42.0.0",
     "dotenv": "^16.4.5",
     "firebase": "^10.12.2",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.10.1",
+    "jodit": "^4.2.27",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.2.1",

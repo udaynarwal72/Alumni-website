@@ -52,7 +52,7 @@ const NavBar = () => {
                         <li><NavLink to="/about" activeClassName="active-link">About</NavLink></li>
                         <li><NavLink to="/contactus" activeClassName="active-link">Contact</NavLink></li>
                         {auth.isLoading ? (
-                            <li>Loading...</li>
+                            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-20 m-5 mb-4"></div>
                         ) : auth.isLoggedIn ? (
                             <>
                                 <li><NavLink to="/logout">Logout</NavLink></li>

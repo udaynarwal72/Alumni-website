@@ -3,7 +3,7 @@ import ApiError from '../../utils/ApiError.js';
 import uploadOnCloudinary from "../../utils/Cloudinary.js";
 import ApiResponse from '../../utils/ApiResponse.js';
 import jsonwebtoken from 'jsonwebtoken';
-const { sign, decode, verify } = jsonwebtoken;
+const { verify } = jsonwebtoken;
 import User from '../../Schema/UserSchema.js';
 import Liked from '../../Schema/LikeSchema.js';
 import BookMark from '../../Schema/BookMarkSchema.js';
@@ -11,10 +11,9 @@ import Notification from '../../Schema/NotificationSchema.js';
 import nodemailer from 'nodemailer'
 import Comment from '../../Schema/CommentSchema.js';
 import { Chance } from 'chance';
-const chance = Chance();
+
 const refreshAccessToken = AsyncHandler(async (req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
-
     if (incomingRefreshToken) {
         throw new ApiError(401, "unauthrized request");
     }
@@ -23,16 +22,13 @@ const refreshAccessToken = AsyncHandler(async (req, res) => {
             incomingRefreshToken,
             process.env.REFRESH_TOKEN_SECRET
         )
-
         const user = await User.findById(decodedToken?._id)
         if (incomingRefreshToken) {
             throw new ApiError(401, "unauthorized request");
         }
-
         if (incomingRefreshToken !== user?.refreshToken) {
             throw new ApiError(401, "Refresh token in expired or used");
         }
-
         const options = {
             httpOnly: true,
             secure: true,
@@ -174,7 +170,6 @@ const userLogin = AsyncHandler(async (req, res, next) => {
     if (!isPasswordValid) {
         throw new ApiError(401, "Invalid User credentials");
     }
-
     const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user._id);
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken");
 
@@ -654,7 +649,6 @@ const getUserById = async (req, res) => {
         return res.status(500).json(new ApiResponse(500, null, "An error occurred while fetching user"));
     }
 }
-
 
 export {
     userLogin,

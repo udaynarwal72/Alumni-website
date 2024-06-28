@@ -1,11 +1,9 @@
 import { Router } from 'express';
-import { Admin } from 'mongodb';
-
+import { Adminsignin, Adminsignup } from '../controllers/Admin/AdminController.js';
 const AdminRoutes = Router();
 
-AdminRoutes.get('/',)
-AdminRoutes.post('/',)
-AdminRoutes.put('/:adminId',)
+AdminRoutes.post('/adminsignin',Adminsignin)
+AdminRoutes.post('/adminsignup',Adminsignup)
 AdminRoutes.delete('/:adminId',)
 AdminRoutes.get('/:adminId',)
 AdminRoutes.get('/:adminId/notifications',)
