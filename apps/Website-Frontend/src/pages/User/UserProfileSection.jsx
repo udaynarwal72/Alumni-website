@@ -114,141 +114,150 @@ const UserProfile = () => {
 	return (
 		<>
 			<NavBar />
-			<div className="parent-user">
-				<div className="upper-section">
-					<div className="profile-card">
-						<div className="upper-portion">
-							<div className="profile-pic border-box ">
-								<img src={user.avatar} alt="Profile Pic" />
-							</div>
-							<div className="user-name">
-								<div>{user.first_name} {user.last_name}</div>
-								<span style={{ fontWeight: "bold" }}>{user.organisation}</span>
-							</div>
-							<div className="edit-button">	
-								<button onClick={createBlog}>Post Blog</button>
-								<button onClick={createEvent}>Post Event</button>
-								<button onClick={createJob}>Post Job</button>
-								<button onClick={completeProfile}>Complete Profile</button>
-							</div>
-						</div>
-						<div className="lower-portion">
-							<div className="user-profile-info">
-								<div className="user-mail">
-									<div className="loco-logo">
-										<img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg" alt="Logo" />
-									</div>
-									<div>{user.email}</div>
-								</div>
-								{
-									(user.phone_visible) ? (
+			{
+				user.verification_status === "verified" ? (
 
-										<div className="user-phone">
-											<div className="loco-logo">
-												<img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg" alt="Logo" />
-											</div>
-											<div>{user.phone_number}</div>
-										</div>
-									) : (
-										<div className="user-phone">
-											<div className="loco-logo">
-												<img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg" alt="Logo" />
-											</div>
-											<div>Hidden</div>
-										</div>
-									)
-								}
-								<div className="user-loco">
-									<div className="loco-logo">
-										<img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg" alt="Logo" />
+					<div className="parent-user">
+						<div className="upper-section">
+							<div className="profile-card">
+								<div className="upper-portion">
+									<div className="profile-pic border-box ">
+										<img src={user.avatar} alt="Profile Pic" />
 									</div>
-									<div>{user.current_city}</div>
+									<div className="user-name">
+										<div>{user.first_name} {user.last_name}</div>
+										<span style={{ fontWeight: "bold" }}>{user.organisation}</span>
+									</div>
+									<div className="edit-button">
+										<button onClick={createBlog}>Post Blog</button>
+										<button onClick={createEvent}>Post Event</button>
+										<button onClick={createJob}>Post Job</button>
+										<button onClick={completeProfile}>Complete Profile</button>
+									</div>
+								</div>
+								<div className="lower-portion">
+									<div className="user-profile-info">
+										<div className="user-mail">
+											<div className="loco-logo">
+												<img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg" alt="Logo" />
+											</div>
+											<div>{user.email}</div>
+										</div>
+										{
+											(user.phone_visible) ? (
+
+												<div className="user-phone">
+													<div className="loco-logo">
+														<img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg" alt="Logo" />
+													</div>
+													<div>{user.phone_number}</div>
+												</div>
+											) : (
+												<div className="user-phone">
+													<div className="loco-logo">
+														<img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg" alt="Logo" />
+													</div>
+													<div>Hidden</div>
+												</div>
+											)
+										}
+										<div className="user-loco">
+											<div className="loco-logo">
+												<img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg" alt="Logo" />
+											</div>
+											<div>{user.current_city}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className="profile-links">
+								<div className="unique-link">
+									<div className="link1">
+										<div className="link-logo">
+											<a href="https://www.linkedin.com">
+												<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png" alt="LinkedIn" />
+											</a>
+										</div>
+										<div>LinkedIn</div>
+									</div>
+									<div className="link2">
+										<div className="link-logo">
+											<a href={user.instagram_handle}>
+												<img src="../../assets/instagramimage.jpg" alt="Instagram" />
+											</a>
+										</div>
+										<div>Instagram</div>
+									</div>
+								</div>
+								<div className="unique-link">
+									<div className="link1">
+										<div className="link-logo">
+											<a id="emailLink">
+												<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qGmoUH55tCoXEvccuBA09KNqL9n5pSupnQ&s" alt="Gmail" />
+											</a>
+										</div>
+										<div>Gmail</div>
+									</div>
+									<div className="link2">
+										<div className="link-logo">
+											<a href={user.facebook_profile}>
+												<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjvzC_QRv6moAhgNb5C6e3yicKgFND1g2RwA&s" alt="Facebook" />
+											</a>
+										</div>
+										<div>Facebook</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className="lower-section">
+							<div className="profile-right-panel">
+								<div className="profile-line1">
+									<div className="profile-heading">
+										<h1>Personal Info</h1>
+									</div>
+									<div className="edit-button">
+										<button onClick={navigateToEditSection}>Edit</button>
+									</div>
+								</div>
+								<div className="all-list">
+									<div className="inner">
+										<div><h3>Batch:</h3></div>
+										<div><h4>{user.joining_batch}-{Number(user.joining_batch) + 4}</h4></div>
+									</div>
+									<div className="inner">
+										<div><h3>Branch:</h3></div>
+										<div><h4>{user.branch}</h4></div>
+									</div>
+									<div className="inner">
+										<div><h3>City:</h3></div>
+										<div><h4>{user.current_city}</h4></div>
+									</div>
+									<div className="inner">
+										<div><h3>Achievements:</h3></div>
+										<ul>
+											<div><h4>{user.awards?.map((award, index) => (
+												<li key={index}>{award}</li>
+											))}</h4></div>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div className="profile-recent">
+								<h1>Recent Posts</h1>
+								<div className="recent-blogs">
+									{userBlog.map((blog) => (
+										<BlogSectionCard key={blog._id} data={blog} />
+									))}
 								</div>
 							</div>
 						</div>
 					</div>
-					<div className="profile-links">
-						<div className="unique-link">
-							<div className="link1">
-								<div className="link-logo">
-									<a href="https://www.linkedin.com">
-										<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png" alt="LinkedIn" />
-									</a>
-								</div>
-								<div>LinkedIn</div>
-							</div>
-							<div className="link2">
-								<div className="link-logo">
-									<a href={user.instagram_handle}>
-										<img src="../../assets/instagramimage.jpg" alt="Instagram" />
-									</a>
-								</div>
-								<div>Instagram</div>
-							</div>
-						</div>
-						<div className="unique-link">
-							<div className="link1">
-								<div className="link-logo">
-									<a id="emailLink">
-										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qGmoUH55tCoXEvccuBA09KNqL9n5pSupnQ&s" alt="Gmail" />
-									</a>
-								</div>
-								<div>Gmail</div>
-							</div>
-							<div className="link2">
-								<div className="link-logo">
-									<a href={user.facebook_profile}>
-										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjvzC_QRv6moAhgNb5C6e3yicKgFND1g2RwA&s" alt="Facebook" />
-									</a>
-								</div>
-								<div>Facebook</div>
-							</div>
-						</div>
+				) : (
+					<div className="not-verified flex flex-col items-center">
+						<h2 className="heading text-2xl font-semibold">Your application is under process</h2>
 					</div>
-				</div>
-				<div className="lower-section">
-					<div className="profile-right-panel">
-						<div className="profile-line1">
-							<div className="profile-heading">
-								<h1>Personal Info</h1>
-							</div>
-							<div className="edit-button">
-								<button onClick={navigateToEditSection}>Edit</button>
-							</div>
-						</div>
-						<div className="all-list">
-							<div className="inner">
-								<div><h3>Batch:</h3></div>
-								<div><h4>{user.joining_batch}-{Number(user.joining_batch) + 4}</h4></div>
-							</div>
-							<div className="inner">
-								<div><h3>Branch:</h3></div>
-								<div><h4>{user.branch}</h4></div>
-							</div>
-							<div className="inner">
-								<div><h3>City:</h3></div>
-								<div><h4>{user.current_city}</h4></div>
-							</div>
-							<div className="inner">
-								<div><h3>Achievements:</h3></div>
-								<ul>
-									<div><h4>{user.awards?.map((award, index) => (
-										<li key={index}>{award}</li>
-									))}</h4></div>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div className="profile-recent">
-						<h1>Recent Posts</h1>
-						<div className="recent-blogs">
-							{userBlog.map((blog) => (
-								<BlogSectionCard key={blog._id} data={blog} />
-							))}
-						</div>
-					</div>
-				</div>
-			</div>
+				)
+			}
 			<Footer />
 		</>
 	);

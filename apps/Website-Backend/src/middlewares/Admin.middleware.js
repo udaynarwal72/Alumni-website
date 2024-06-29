@@ -1,11 +1,11 @@
 import ApiError from "../utils/ApiError.js";
 // const asyncHandler = require('../../utils/asyncHandler');
 import jsonwebtoken from 'jsonwebtoken';
-const { sign, decode, verify } = jsonwebtoken;
+const { verify } = jsonwebtoken;
 import AsyncHandler from "../utils/AsyncHandle.js";
-import User from "../Schema/UserSchema.js";
+import Alumniadmin from "../Schema/AdminShema.js";
 
-const verifyJWT = AsyncHandler(async (req, res, next) => {
+const verifyAdmin = AsyncHandler(async (req, res, next) => {
     try {
         // console.log("user id",req.user._id)
         const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
@@ -14,7 +14,7 @@ const verifyJWT = AsyncHandler(async (req, res, next) => {
             throw new ApiResponse(401, "Unauthorized request");
         }
         const decodedToken = verify(token, process.env.ACCESS_TOKEN_SECRET);
-        const user = await User.findById(decodedToken?._id).select("-password -refreshToken");
+        const user = await  Alumniadmin.findById(decodedToken?._id).select("-password -refreshToken");
         if (!user) {
             throw new ApiError(401, "Invalid Access Token");
         }
@@ -26,4 +26,4 @@ const verifyJWT = AsyncHandler(async (req, res, next) => {
     //Authorizatoin: Bearer <token>
 })
 
-export default verifyJWT
+export default verifyAdmin

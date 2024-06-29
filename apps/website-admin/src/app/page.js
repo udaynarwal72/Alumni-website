@@ -23,6 +23,7 @@ export default function Home() {
       });
 
       if (response.status === 200) {
+        localStorage.setItem('token', response.data.data.accessToken);
         window.location.href = '/admin';
       } else {
         alert('Invalid username or password');

@@ -3,6 +3,10 @@ import AsyncHandler from '../../utils/AsyncHandle.js';
 const { verify } = 'jsonwebtoken'; // Ensure to import 'verify' from 'jsonwebtoken'
 import ApiError from '../../utils/ApiError.js'; // Import ApiError
 import ApiResponse from '../../utils/ApiResponse.js'; // Import ApiResponse
+import User from "../../Schema/UserSchema.js";
+import Blog from "../../Schema/BlogSchema.js";
+import JobData from "../../Schema/JobSchema.js";
+import Event from "../../Schema/EventSchema.js";
 
 const refreshAccessToken = AsyncHandler(async (req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken;
@@ -69,7 +73,7 @@ const Adminsignup = async (req, res) => {
 };
 
 const Adminsignin = AsyncHandler(async (req, res, next) => {
-    console.log("this is body",req.body)
+    console.log("this is body", req.body)
     const { username, password } = req.body;
     if (!username || !password) {
         throw new ApiError(400, "username and password required");
@@ -106,8 +110,97 @@ const Admindelete = AsyncHandler(async (req, res) => {
     res.status(200).json({ message: "User deleted successfully" });
 });
 
+const deleteUserProfileByAdmin = AsyncHandler(async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const user = await User.findByIdAndDelete(userId)
+        const blog = await Blog.deleteMany({ blog_createdBy: userId })
+        const jobPost = await JobData.deleteMany({ job_postedBy: userId })
+        const eventPost = await Event.deleteMany({ posted_by: userId })
+        return res.status(200).json(new ApiResponse(200, user, blog, jobPost, eventPost, "User deleted successfully"))
+    } catch (error) {
+        throw new ApiError(500, error.message)
+    }
+})
+const deleteBlogByAdmin = async (req, res) => {
+    try {
+        const { blogId } = req.params;
+
+        const deletedBlog = await Blog.findByIdAndDelete(blogId);
+
+        return res.status(200).json(new ApiResponse(200, deletedBlog, "Blog deleted successfully"));
+    }
+    catch (error) {
+        return res.status(500).json(new ApiResponse(500, null, `Error deleting blog: ${error.message}`));
+    }
+}
+
+const deleteEventByAdmin = async (req, res) => {
+    try {
+        const { eventId } = req.params;
+
+        const deletedEvent = await Event.findByIdAndDelete(eventId);
+
+        return res.status(200).json(new ApiResponse(200, deletedEvent, "Event deleted successfully"));
+    }
+    catch (error) {
+        return res.status(500).json(new ApiResponse(500, null, `Error deleting event: ${error.message}`));
+    }
+}
+
+const deleteJobByAdmin = async (req, res) => {
+    try {
+        const { jobId } = req.params;
+
+        const deletedJob = await JobData.findByIdAndDelete(jobId);
+
+        return res.status(200).json(new ApiResponse(200, deletedJob, "Job deleted successfully"));
+    }
+    catch (error) {
+        return res.status(500).json(new ApiResponse(500, null, `Error deleting job: ${error.message}`));
+    }
+}
+
+const allowUserByAdmin = async (req, res) => {
+
+    try {
+        const { userId } = req.params;
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { verification_status: "verified" },
+            { new: true }
+        );
+        return res.status(200).json(new ApiResponse(200, user, "User verified successfully"));
+    }
+    catch (error) {
+        return res.status(500).json(new ApiResponse(500, null, `Error verifying user: ${error.message}`));
+    }
+}
+const pushUserToWaitingRoomByAdmin = async (req, res) => {
+
+    try {
+        const { userId } = req.params;
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { verification_status: "pending" },
+            { new: true }
+        );
+        return res.status(200).json(new ApiResponse(200, user, "User verified successfully"));
+    }
+    catch (error) {
+        return res.status(500).json(new ApiResponse(500, null, `Error verifying user: ${error.message}`));
+    }
+}
+
 export {
     Adminsignup,
     Adminsignin,
-    Admindelete
+    Admindelete,
+    deleteUserProfileByAdmin,
+    deleteBlogByAdmin,
+    deleteEventByAdmin,
+    deleteJobByAdmin,
+    refreshAccessToken,
+    allowUserByAdmin,
+    pushUserToWaitingRoomByAdmin
 };

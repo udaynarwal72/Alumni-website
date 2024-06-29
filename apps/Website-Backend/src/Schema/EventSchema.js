@@ -17,6 +17,7 @@ const eventSchema = new Schema({
     confirm_apperance_deadline: { type: Date },
     live_stream_link: { type: String },
     feedback_form_link: { type: String },
+    posted_by: { type: Schema.Types.ObjectId, ref: 'Alumni' },
 }, { timestamps: true });
 
 const Event = model('Event', eventSchema);

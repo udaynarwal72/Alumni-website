@@ -36,8 +36,8 @@ const createEvent = async (req, res) => {
             confirm_apperance_deadline,
             event_hashtags: calculated_hash_tags,
             live_stream_link,
+            posted_by: req.user._id
         });
-
         return res.status(200).json({
             status: 200,
             data: createdEvent,

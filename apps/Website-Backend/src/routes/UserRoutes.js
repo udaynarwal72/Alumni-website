@@ -43,7 +43,7 @@ UserRouter.get('/profile/:userId/comments', verifyJWT, getUserComments);
 UserRouter.get('/profile/:userId/bookmarks', verifyJWT, getUserBookMark);
 UserRouter.put('/profile/settings/:userID/change-password', changeNotloggedInUserPassword);
 UserRouter.put('/profile/change-password', verifyJWT, changeCurrentPassword);
-UserRouter.delete('/delete/:userId/', verifyJWT, deleteUserProfile);
+UserRouter.delete('/delete/:userId', verifyJWT, deleteUserProfile);
 UserRouter.get('/profile/:userId/notifications', verifyJWT, getUserNotifications);
 UserRouter.get('/profile/:userId/notifications/:notificationId', verifyJWT, findNotificationById);
 UserRouter.delete('/profile/:userId/notifications/:notificationId', verifyJWT, deleteNotification);
