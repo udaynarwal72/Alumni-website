@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './CardSlider.css';
 import EventCard from '../EventCard/EventCard';
+import API_URL from '../../helpers/ApiKey';
 
 const CardSlider = () => {
     const [eventData, setEventData] = useState([]);
@@ -13,7 +14,7 @@ const CardSlider = () => {
     useEffect(() => {
         const gettingAllEvents = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/v1/event/getallevents');
+                const response = await axios.get(`${API_URL}/api/v1/event/getallevents`);
                 console.log("This is the event data from tailwind", response.data.data);
                 setEventData(response.data.data);
             } catch (error) {

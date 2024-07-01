@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import './BlogSlider.css'; // Importing CSS file for styling
 import BlogCard from '../BlogCard/BlogCard';
 import axios from 'axios';
+import API_URL from '../../helpers/ApiKey';
 
 const BlogSlider = () => {
     const [blogData, setBlogData] = useState([]); // Initial state as an empty array
@@ -11,7 +12,7 @@ const BlogSlider = () => {
     useEffect(() => {
         const getBlogData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/v1/blog/bulk');
+                const response = await axios.get(`${API_URL}/api/v1/blog/bulk`);
                 console.log('This is slider response:', response.data.data);
                 if (Array.isArray(response.data.data)) {
                     setBlogData(response.data.data);

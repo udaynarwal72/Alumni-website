@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import JobCard from '../JobCard/JobCard';
 import axios from 'axios';
+import API_URL from '../../helpers/ApiKey';
 
 const JobSlider = () => {
     const settings = {
@@ -43,7 +44,7 @@ const JobSlider = () => {
     useEffect(() => {
         const fetchJobData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/v1/job/alljobs');
+                const response = await axios.get(`${API_URL}/api/v1/job/alljobs`);
                 console.log(response.data.data);
                 setJobData(response.data.data);
                 setLoading(false);

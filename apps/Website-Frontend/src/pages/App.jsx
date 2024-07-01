@@ -34,7 +34,7 @@ function Testapp() {
 
     const getAllImage = useCallback(async () => {
         try {
-            const res = await axios.get('http://localhost:3000/api/v1/admin/getallimage');
+            const res = await axios.get(`${API_URL}/api/v1/admin/getallimage`);
             console.log("All images:", res.data.data);
             setImage(res.data.data);
         } catch (err) {
