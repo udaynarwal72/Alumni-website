@@ -87,20 +87,6 @@ const BlogSection = () => {
                                 </form>
                             </div>
                         </section>
-                        {/* Uncomment and add functionality if topics section is needed */}
-                        {/* <section>
-                            <div className="section-topics">
-                                <h2 className="section-title">Topics</h2>
-                                <ul>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Statistics</a></li>
-                                    <li><a href="#">Fiction</a></li>
-                                    <li><a href="#">Inspiration</a></li>
-                                    <li><a href="#">Shayaris</a></li>
-                                    <li><a href="#">Stories</a></li>
-                                </ul>
-                            </div>
-                        </section> */}
                     </div>
                 </div>
                 <div className="pagination">

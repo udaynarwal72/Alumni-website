@@ -4,8 +4,7 @@
 }
 
 .event-card {
-  background-color: #faf1da;
-  border: 2px solid #C5291D;
+  background: transparent linear-gradient(180deg, #ffffff 0%, #BFDBF7 100%) 0% 0% no-repeat padding-box;
   border-radius: 18px;
   padding: 1rem;
   width: 100%;
@@ -34,7 +33,7 @@
 .event-card-logo img {
   cursor: pointer;
   height: auto;
-  width: 4rem; /* Adjusted width */
+  width: 4em; /* Adjusted width */
   font-size: 1rem; /* Adjusted font-size */
 }
 
@@ -46,7 +45,7 @@
 .date {
   font-size: 2rem; /* Adjusted font-size */
   font-weight: 700;
-  color:#C5291D;
+  color:#1F7A8C;
   margin-top: -0.75rem; /* Adjusted margin */
 }
 
@@ -59,7 +58,7 @@
 .event-card-title h1 {
   margin-top: 0.5rem; /* Adjusted margin-top */
   font-weight: 700;
-  color:#C5291D;
+  color:#1F7A8C;
   font-size: 1.25rem; /* Adjusted font-size */
 }
 
@@ -71,7 +70,7 @@
 }
 
 .event-card-icon img {
-  width: 0.625rem;
+  width: 1.2rem;
 }
 
 .event-card-icon {

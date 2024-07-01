@@ -1,7 +1,6 @@
 /* JobCard.css */
 
 .job-card-parent {
-  
   padding: 2%;
 }
 
@@ -9,7 +8,7 @@
   
   min-height:19rem;
   max-height: 19rem;
-  border: 0.1em solid #C5291D;
+  border: 0.1em solid #ffffff;
   border-radius: 0.75em;
   padding: 1em; /* Adjusted padding for a smaller card */
   width: 100%;
@@ -21,9 +20,10 @@
 }
 
 .main-job-card:hover {
-  transform: translateY(-0.3em);
+  color: black;
+  transform: translateY(-0.25em);
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-  cursor:pointer;
+  background-color: #1F7A8C;
 }
 
 .job-card-header {
@@ -35,33 +35,34 @@
 
 .job-card-header h1 {
   font-size: 1.5em; /* Adjusted font-size */
+  color:#ffffff;
   margin: 0;
 }
 
 
 .job-card-header p {
   font-size: 1em;
-  color:#C5291D;
+  color:#ffffff;
   font-weight: 600;
   margin-top: 0.5em;
 }
 
 .ux-designer {
-  color: #C5291D;
+  color: #ffffff;
   font-size: 1.2em; /* Adjusted font-size */
   margin: 0.5em 0;
   font-weight: 600;
 }
 
 .time-posted {
-  color: black;
+  color: #ffffff;
   font-size: 1em;
 }
 
 .job-card-details {
   margin: 1em 0;
   display: flex;
-  color: black;
+  color: #ffffff;
   font-weight: 600;
   flex-direction: column;
 }
@@ -74,7 +75,7 @@
 }
 
 .apply-link span {
-  color: #C5291D;
+  color: #ffffff;
 }
 
 .skills {
@@ -85,18 +86,18 @@
 }
 
 .skills span {
-  background-color: #fff;
-  border: 0.1em solid #C5291D;
+  background:transparent;
+  border: 0.1em solid #ffffff;
   border-radius: 1.25em;
   padding: 0.25em 0.5em;
-  color: #C5291D;
+  color: #ffffff;
   font-size: 0.8em; /* Adjusted font-size */
 }
 
 .apply-link {
   display: block;
   margin-top: 0.5em; /* Reduced margin-top for better alignment */
-  color: #1d4ed8;
+  color: #ffffff;
   text-decoration: none;
   font-weight: bold;
   font-size: 0.8em; /* Adjusted font-size */
@@ -117,7 +118,7 @@
 .one-detail,
 .second-detail {
   display: flex;
-  color: black;
+  color: #ffffff;
   font-size: 18px;
   font-weight: 400;
 }

@@ -11,7 +11,6 @@ const AlumniCard = ({ AlumniData }) => {
 			const nameElement = nameRef.current;
 			if (nameElement) {
 				const parentElement = nameElement.parentElement;
-
 				// Reset font size before recalculating
 				nameElement.style.fontSize = "1.25rem";
 				// Adjust font size if necessary
@@ -35,13 +34,12 @@ const AlumniCard = ({ AlumniData }) => {
 		navigate(`/infoalumni/${AlumniData._id}`)
 	}
 	return (
-		<div onClick={redirectToAlumniPage}>
-			<div className="parent-container">
-				<div className="card">
-					<div className="card-header">
+		// <div onClick={redirectToAlumniPage}>
+				<div className=" card border ">
+					<div className="card-header" >
 						<img
 							src={AlumniData.avatar}
-							className="profile-image"
+							className="profile-image "
 							alt="Profile"
 						/>
 					</div>
@@ -63,7 +61,6 @@ const AlumniCard = ({ AlumniData }) => {
 							<div>
 								<div className="Batch">Location</div>
 								<div>{AlumniData.state}</div>
-
 							</div>
 						</div>
 						<div className="head1">
@@ -78,13 +75,9 @@ const AlumniCard = ({ AlumniData }) => {
 								<div>{AlumniData.designation}</div>
 							</div>
 						</div>
-
-
-
 					</div>
 				</div>
-			</div>
-		</div>
+		// </div>
 	);
 };
 

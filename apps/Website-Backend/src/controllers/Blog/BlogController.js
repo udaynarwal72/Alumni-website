@@ -1,6 +1,6 @@
 import ApiResponse from '../../utils/ApiResponse.js';
 import Blog from '../../Schema/BlogSchema.js';
-import uploadOnCloudinary from '../../utils/Cloudinary.js';
+import {uploadOnCloudinary} from '../../utils/Cloudinary.js';
 import Liked from '../../Schema/LikeSchema.js';
 import Comment from '../../Schema/CommentSchema.js';
 import Chance from 'chance';

@@ -8,7 +8,7 @@
     
 }
 .left-panel {
-    background-color: #C5291D;
+    background-color: #1F7A8C;
     color: #fff;
     padding: 40px;
     width: 50%;
@@ -17,7 +17,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 8px 0px 0px 8px;
 }
 .card-image-container {
     width: 100%;
@@ -37,7 +37,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #F9F5EB;
 }
 .left-panel .verification h2 {
     margin: 0;
@@ -58,14 +57,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #faf1da;
+
 }
 
 .right-panel h2 {
     margin: 0;
     font-size: 30px;
     font-weight: bold;
-    color:#C5291D
+    color:#022B3A
 }
 
 .right-panel p {
@@ -102,7 +101,7 @@
 }
 .login-button {
     padding: 10px;
-    background-color: #C5291D;
+    background-color: #022B3A;
     color: #F9F5EB;
     border: none;
     border-radius: 5px;

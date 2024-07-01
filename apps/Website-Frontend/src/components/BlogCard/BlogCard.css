@@ -1,63 +1,74 @@
-body {
+/* body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #F9F5EB;
-    
-}
+} */
+
 
 .main-blog-card {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
-    padding: 0 10px;
-    
+    margin:20px;
+    /* padding: 0 10px; */
 }
 
 .blog-card {
-    background: #fff;
-    border-radius: 10px;
+    background: #ffffff;
+    border-radius: 2em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     transition: transform 0.3s ease;
-    width: 100%;
-    max-width: 18rem; /* Further reduced max-width */
-    margin: 15px;
+    width: 100%; /* Take full width */
+    max-width: 31em; /* Maximum width */
     position: relative;
     z-index: 1;
-    max-height: 30rem;
-    min-height: 27rem;
+    max-height: 25.2rem;
+    min-height: 22rem;
 }
 
 .blog-card:hover {
     transform: translateY(-10px);
 }
 
+.card-image {
+    overflow: hidden; /* Ensure the image stays within its container */
+}
+
 .card-image img {
     width: 100%;
     height: 12rem;
     display: block;
+    object-fit: cover; /* Ensure images fill the space */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.card-image img:hover {
+    cursor: pointer;
+    transform: scale(1.3); /* Zoom in on hover */
 }
 
 .card-content {
-    padding: 1rem; /* Reduced padding */
+    padding: 1rem;
 }
 
 .card-category {
-    background: #b4c746;
+    background: #1F7A8C;
     color: white;
-    padding: 0.3125rem 0.625rem; /* Adjusted padding */
+    padding: 0.5rem 1rem;
     border-radius: 5px;
-    margin-right: 0.625rem;
+    margin-right: 0.5rem;
     display: inline-block;
-    font-size: 0.75rem; /* Adjusted font-size */
-    margin-bottom: 0.625rem; /* Adjusted margin-bottom */
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .card-title {
-    font-size: 1.25rem; /* Adjusted font-size */
-    margin: 0.625rem 0; /* Adjusted margins */
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
     font-weight: 700;
     text-decoration: none;
 }
@@ -68,38 +79,36 @@ body {
 }
 
 .card-desc {
-    font-size: 0.9rem; /* Further reduced font-size */
-    margin-bottom: 1rem; /* Reduced margin-bottom */
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
     color: #666;
-    height:5rem;
+    height: 5rem;
+    overflow: hidden; /* Ensure content doesn't overflow */
 }
 
 .card-footer {
     display: flex;
     justify-content: left;
     width: 100%;
-    padding: 0.75rem; /* Adjusted padding */
-    margin-top: -0.9375rem; /* Adjusted margin-top */
+    padding: 0.75rem;
+    margin-top: -0.9375rem;
 }
 
 .aut-image img {
     border-radius: 50%;
-    width: 2.25rem; /* Reduced width */
-    height: 2.25rem; /* Reduced height */
-    box-sizing: border-box;
-    vertical-align: middle;
+    width: 2.25rem;
+    height: 2.25rem;
     object-fit: cover;
 }
 
 .aut-desc div {
     display: flex;
     flex-direction: column;
-    padding: 0 0.625rem; /* Adjusted padding */
+    padding: 0 0.625rem;
 }
 
-
 .aut-desc span {
-    font-size: 0.8rem; /* Reduced font-size */
+    font-size: 0.8rem;
     color: black;
 }
 
@@ -108,22 +117,22 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-    .Main-blog-card {
+    .main-blog-card {
         width: 100%;
         margin: 0 10px;
     }
 
     .blog-card {
-        width: 90%;
-        max-width: 100%; /* Make the card take full width */
+        width: calc(100% - 30px); /* Adjusted width */
+        max-width: 100%;
     }
 
     .card-title {
-        font-size: 1.1rem; /* Further reduced font-size */
+        font-size: 1.1rem;
     }
 
     .card-desc {
-        font-size: 0.8rem; /* Further reduced font-size */
+        font-size: 0.8rem;
     }
 
     .card-footer {
@@ -131,8 +140,8 @@ body {
     }
 
     .aut-image img {
-        width: 2rem; /* Further reduced width */
-        height: 2rem; /* Further reduced height */
+        width: 2rem;
+        height: 2rem;
     }
 
     .aut-desc div {
@@ -140,10 +149,10 @@ body {
     }
 
     .aut-desc span {
-        font-size: 0.7rem; /* Further reduced font-size */
+        font-size: 0.7rem;
     }
 
     .aut-desc span:first-child {
-        font-size: 0.8rem; /* Further reduced font-size */
+        font-size: 0.8rem;
     }
 }

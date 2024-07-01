@@ -1,5 +1,5 @@
 import Event from '../../Schema/EventSchema.js'; // Adjust the path as necessary
-import uploadOnCloudinary from '../../utils/Cloudinary.js'; // Adjust the path as necessary
+import {uploadOnCloudinary} from '../../utils/Cloudinary.js'; // Adjust the path as necessary
 import ApiResponse from '../../utils/ApiResponse.js'; // Adjust the path as necessary
 import ApiError from '../../utils/ApiError.js';
 import ConfirmAppearance from '../../Schema/ConfirmAppearanceSchema.js'

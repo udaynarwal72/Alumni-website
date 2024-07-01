@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router";
+import clockIcon from "../../assets/clock.svg";
+import locationIcon from "../../assets/location-blue-icon.svg";
 import "./EventCard.css";
+import retnitkaLogo from "../../assets/retnitka-logo.svg";
 
 const EventCard = ({ event }) => {
     const navigate = useNavigate();
@@ -17,8 +20,11 @@ const EventCard = ({ event }) => {
                             <div className="date">{event_date.getDate()}</div>
                             <div className="month">{event_date.toLocaleDateString(undefined, { month: 'long' })}</div>
                         </div>
-                        <div className="vl"></div>
-                        <div className="event-card-logo">
+                        <div className="vl">
+
+                        </div>
+                        <div className="event-card-logo ">
+                            <img src={retnitkaLogo} alt="" />
                         </div>
                     </div>
                     <div className="event-card-title">
@@ -27,13 +33,13 @@ const EventCard = ({ event }) => {
                     <div className="event-card-details">
                         <div className="event-card-timing">
                             <div className="event-card-icon">
-                                <img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg"></img>
+                                <img src={clockIcon} height='49px' width='48px'></img>
                             </div>
                             <div className="event-card-time">{event.start_time} -{event.end_time}</div>
                         </div>
                         <div className="event-card-location">
                             <div className="event-card-icon">
-                                <img src="https://i.pinimg.com/736x/fa/08/34/fa08346badcad803eca9b1b5cb796c3a.jpg"></img>
+                                <img src={locationIcon}></img>
                             </div>
                             <div className="event-card-loc">{event.event_venue}</div>
 

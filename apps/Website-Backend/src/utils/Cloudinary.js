@@ -1,6 +1,7 @@
 import { config, uploader } from 'cloudinary';
 import { unlinkSync } from 'fs';
 import dotenv from 'dotenv';
+import { v2 as cloudinary } from 'cloudinary';
 
 dotenv.config();
 
@@ -30,4 +31,25 @@ const uploadOnCloudinary = async (localFilePath) => {
     }
 };
 
-export default uploadOnCloudinary;
+const deleteImageFromCloudinary = async (imageUrl) => {
+    try {
+        // Extract public ID from URL
+        const publicId = imageUrl.split('/').pop().split('.')[0];
+
+        // Delete the image using the public ID
+        const result = await cloudinary.uploader.destroy(publicId);
+
+        if (result.result === 'ok') {
+            console.log('Image deleted successfully');
+        } else {
+            console.log('Failed to delete image:', result);
+        }
+    } catch (error) {
+        console.error('Error deleting image:', error);
+    }
+};
+
+export {
+    uploadOnCloudinary,
+    deleteImageFromCloudinary
+};

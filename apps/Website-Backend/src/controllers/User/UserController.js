@@ -1,6 +1,6 @@
 import AsyncHandler from '../../utils/AsyncHandle.js';
 import ApiError from '../../utils/ApiError.js';
-import uploadOnCloudinary from "../../utils/Cloudinary.js";
+import {uploadOnCloudinary} from "../../utils/Cloudinary.js";
 import ApiResponse from '../../utils/ApiResponse.js';
 import jsonwebtoken from 'jsonwebtoken';
 const { verify } = jsonwebtoken;
@@ -67,6 +67,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
 
 const userSignUpController = async (req, res) => {
     // Extract user details from frontend
+    console.log(req.body)
     const {
         username,
         first_name,
@@ -120,6 +121,7 @@ const userSignUpController = async (req, res) => {
     if (req.files && Array.isArray(req.files.avatar) && (req.files.avatar.length > 0)) {
         avatarLocalPath = req.files.avatar[0].path;
     }
+
     const avatar = await uploadOnCloudinary(avatarLocalPath)
     const coverImage = await uploadOnCloudinary(coverImageLocalPath)
     const calculated_state = joining_state.split("+")[0].trim();

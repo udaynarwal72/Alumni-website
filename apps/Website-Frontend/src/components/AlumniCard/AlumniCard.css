@@ -1,49 +1,47 @@
 .card {
     width: 100%;
-    min-width: 17rem;
-    max-width: 20rem;
+    min-width: 12rem;
+    max-width: 21rem;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     transition: all 0.2s;
-    border: 2px solid #C5291D;
+    background-color: white;
     margin: auto;
-    height: fit-content;
-    background-color: white;
 }
-.parent-container{
-    background-color: white;
+
+.card:hover {
+    box-shadow: 2px 12px 20px #acacac;
+    cursor: pointer;    
+    transform: translateY(-5px);
 }
-.card-name{
+
+.card-name {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color:#C5291D;
+    color: #022B3A;
     font-weight: 900;
     font-size: 1.2em;
     margin-bottom: 10px;
 }
 
-.card:hover {
-    box-shadow: 2px 12px 20px #cb8985;
-    cursor: pointer;
-    transform: translateY(-5px);
-}
-.Batch{
-    color:#C5291D;
+.Batch {
+    color: #022B3A;
     font-weight: 600;
 }
-.head1{
+
+.head1 {
     display: flex;
     justify-content: space-around;
 }
+
 .card-header {
-    background: linear-gradient(to bottom, #e7c8c7, #ffffff);
     padding: 1rem;
-    display: flex;
+    display: flex;  
     justify-content: center;
     align-items: center;
 }
@@ -53,13 +51,12 @@
     height: 6rem;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid #C5291D;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .name h1 {
     font-size: 1.25rem;
-    color: #C5291D;
+    color: #022B3A;
     margin-bottom: 1.25rem;
     font-weight: 500;
     overflow: hidden;
@@ -77,13 +74,8 @@
     padding: 4px 6px;
 }
 
-/* .details div:first-child {
-    color: #C5291D;
-} */
-
 @media (max-width: 600px) {
     .card {
-        width: 100%;
         margin: 0 10px;
     }
 

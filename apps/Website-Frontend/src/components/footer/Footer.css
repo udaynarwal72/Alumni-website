@@ -1,7 +1,7 @@
 /* src/Footer.css */
 
 .home-footer {
-  background-color:#C5291D;
+  background-color:#022B3A;
   /* position: relative; */
   color:#F9F5EB;
   padding:10px;
@@ -37,7 +37,7 @@
   position: relative;
 }
 .footer-email-id{
-  border-bottom: 1px solid #C5291D;width: fit-content;
+  border-bottom: 1px solid #022B3A;width: fit-content;
   margin: 20px 0;
 }
 .footer col ul li{
@@ -81,7 +81,7 @@
 .underline span{
   width:15px;
   height:100%;
-  background: #b73557;
+  background: #022B3A;
   border-radius: 2px;
   position: absolute;
   top:0;

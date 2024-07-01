@@ -54,7 +54,7 @@ function SignInPage() {
                         </div>
                         <div className="verification">
                             <h2>Be Verified</h2>
-                            <p>Join experienced Designers on this platform.</p>
+                            <p>Join NIT KKR Alumni Community</p>
                         </div>
                     </div>
                     <div className="right-panel">

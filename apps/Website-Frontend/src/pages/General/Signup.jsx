@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import '../../styles/SignUp.css';
 import NavBar from '../../components/Navbar';
+import UserDetails from './UserDetails';
+import AddressDetails from './AddressDetails';
+import ProfileDetails from './ProfileDetails';
+import AccountDetails from './AccountDetails';
 import dataCountry from '../../../../../src/countries.json';
 import dataState from '../../../../../src/states.json';
 import { useNavigate } from 'react-router-dom';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
-import { Checkbox } from 'flowbite-react';
 
 const branches = [
     'Computer Science', 'Electronics and Communication Engineering', 'Information Technology',
@@ -15,18 +18,36 @@ const branches = [
 ];
 
 function SignupPage() {
-    const [selectedCountry, setSelectedCountry] = useState('');
-    const [selectedState, setSelectedState] = useState('');
+    const [step, setStep] = useState(1);
+    const [formData, setFormData] = useState({
+        username: '',
+        first_name: '',
+        last_name: '',
+        joining_batch: '',
+        joining_country: '',
+        joining_state: '',
+        joining_city: '',
+        address: '',
+        branch: '',
+        organisation: '',
+        designation: '',
+        email: '',
+        password: '',
+        phone_number: '',
+        phone_visible: true,
+        dob: '',
+        avatar: null,
+        coverImage: null,
+    });
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
     const [fetchedCountries, setFetchedCountries] = useState([]);
-    const [avatar, setAvatar] = useState(null);
-    const [coverImage, setCoverImage] = useState(null);
     const [crop, setCrop] = useState({ aspect: 1 });
     const [croppedImage, setCroppedImage] = useState(null);
     const [croppedCoverImage, setCroppedCoverImage] = useState(null);
+    const [avatar,setAvatar] = useState('')
+    const [coverImage,setCoverImage] = useState('')
     const navigate = useNavigate();
-    const [checked, setChecked] = useState(true);
 
     useEffect(() => {
         const userCountries = dataCountry.map(country => `${country.name}+${country.id}+${country.iso2}`);
@@ -34,20 +55,20 @@ function SignupPage() {
     }, []);
 
     useEffect(() => {
-        if (selectedCountry) {
-            const selectedCountryId = selectedCountry.split('+')[1];
+        if (formData.joining_country) {
+            const selectedCountryId = formData.joining_country.split('+')[1];
             const userStates = dataState.filter(state => state.country_id == selectedCountryId);
             setStates(userStates.map(state => `${state.name}+${state.id}+${state.iso2}`));
         } else {
             setStates([]);
             setCities([]);
         }
-    }, [selectedCountry]);
+    }, [formData.joining_country]);
 
     useEffect(() => {
-        if (selectedState) {
-            const selectedCountryIso2 = selectedCountry.split('+')[2];
-            const selectedStateIso2 = selectedState.split('+')[2];
+        if (formData.joining_state) {
+            const selectedCountryIso2 = formData.joining_country.split('+')[2];
+            const selectedStateIso2 = formData.joining_state.split('+')[2];
             var headers = new Headers();
             headers.append("X-CSCAPI-KEY", "UEFXY210QzFpUzlLdlpUTUlBelNrNjVNcUJwS2xYSjUzMGlMY3UxTg==");
 
@@ -66,10 +87,21 @@ function SignupPage() {
         } else {
             setCities([]);
         }
-    }, [selectedState]);
+    }, [formData.joining_state]);
 
-    const handleChange = () => {
-        setChecked(!checked);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleChangeChecked = () => {
+        setFormData({
+            ...formData,
+            phone_visible: !formData.phone_visible
+        });
     };
 
     const handleImageChange = (e, setImage) => {
@@ -85,22 +117,30 @@ function SignupPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
+        
+        // Create a new object to include both the form data and the images
+        let formDataWithImages = { ...formData };
+    
         if (croppedImage) {
-            formData.append('avatar', croppedImage);
+            formDataWithImages.avatar = croppedImage;
         }
         if (croppedCoverImage) {
-            formData.append('coverImage', croppedCoverImage);
+            formDataWithImages.coverImage = croppedCoverImage;
         }
+    
         try {
             const response = await fetch('http://localhost:3000/api/v1/user/signup', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formDataWithImages)
             });
+    
             if (!response.ok) {
                 throw new Error('Failed to register user');
             }
+    
             const data = await response.json();
             console.log(data);
             navigate('/signin');
@@ -108,6 +148,7 @@ function SignupPage() {
             console.error('Error registering user:', error);
         }
     };
+    
 
     const onImageCropComplete = useCallback((croppedArea, croppedAreaPixels, setCroppedImage) => {
         setCroppedImage(croppedAreaPixels);
@@ -142,124 +183,23 @@ function SignupPage() {
         });
     };
 
+    const nextStep = () => {
+        setStep(step + 1);
+    };
+
+    const prevStep = () => {
+        setStep(step - 1);
+    };
+
     return (
         <>
             <NavBar />
             <div className="parent-signup-container">
                 <div className="signup-container">
-                    <h1>Welcome</h1>
-                    <h3>Join the RECNITKA Family</h3>
-                    <form onSubmit={handleSubmit} encType="multipart/form-data">
-                        <div className="input-group">
-                            <label htmlFor="username">Username</label>
-                            <input type="text" id="username" name="username" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="firstName">First Name</label>
-                            <input type="text" id="firstName" name="first_name" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="last_name" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="joiningBatch">Joining Batch</label>
-                            <input type="text" id="joiningBatch" name="joining_batch" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="country">Country</label>
-                            <select id="country" name="joining_country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.target.value)} required>
-                                <option value="">Joining Country</option>
-                                {fetchedCountries.map(country => (
-                                    <option key={country} value={country}>{country.split('+')[0]}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="state">State</label>
-                            <select id="state" name="joining_state" value={selectedState} onChange={(e) => setSelectedState(e.target.value)} required>
-                                <option value="">Joining State</option>
-                                {states.map(state => (
-                                    <option key={state} value={state}>{state.split('+')[0]}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="city">City</label>
-                            <select id="city" name="joining_city" required>
-                                <option value="">Joining City</option>
-                                {cities.map(city => (
-                                    <option key={city} value={city}>{city}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="address">Address</label>
-                            <input type="text" id="address" name="address" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="branch">Branch</label>
-                            <select id="branch" name="branch" required>
-                                <option value="">Select Branch</option>
-                                {branches.map(branch => (
-                                    <option key={branch} value={branch}>{branch}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="organisation">Company</label>
-                            <input type="text" id="organisation" maxLength="16" name="organisation" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="designation">Designation</label>
-                            <input type="text" id="designation" maxLength="20" name="designation" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" id="password" name="password" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="phoneNumber">Phone Number</label>
-                            <input type="tel" id="phoneNumber" name="phone_number" required />
-                            <input type="checkbox" id="phone_visible" checked={checked} onChange={handleChange} name="phone_visible" />
-                            <label htmlFor="phone_visible">
-                                Make phone number visible
-                            </label>
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="dob">Date of Birth</label>
-                            <input type="date" id="dob" name="dob" required />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="avatar">Profile Photo:</label>
-                            <input type="file" id="avatar" name="avatar" accept="image/*" onChange={(e) => handleImageChange(e, setAvatar)} />
-                            {avatar && (
-                                <ReactCrop
-                                    src={avatar}
-                                    crop={crop}
-                                    onChange={(newCrop) => setCrop(newCrop)}
-                                    onComplete={(croppedArea, croppedAreaPixels) => onImageCropComplete(croppedArea, croppedAreaPixels, setCroppedImage)}
-                                />
-                            )}
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="coverImage">Family Photo:</label>
-                            <input type="file" id="coverImage" name="coverImage" accept="image/*" onChange={(e) => handleImageChange(e, setCoverImage)} />
-                            {coverImage && (
-                                <ReactCrop
-                                    src={coverImage}
-                                    crop={crop}
-                                    onChange={(newCrop) => setCrop(newCrop)}
-                                    onComplete={(croppedArea, croppedAreaPixels) => onImageCropComplete(croppedArea, croppedAreaPixels, setCroppedCoverImage)}
-                                />
-                            )}
-                        </div>
-                        <button type="submit" className='sign-up-button'>Sign Up</button>
-                    </form>
+                    {step === 1 && <UserDetails formData={formData} handleChange={handleChange} nextStep={nextStep} />}
+                    {step === 2 && <AddressDetails formData={formData} handleChange={handleChange} prevStep={prevStep} nextStep={nextStep} fetchedCountries={fetchedCountries} states={states} cities={cities} />}
+                    {step === 3 && <ProfileDetails formData={formData} branches={branches} handleChange={handleChange} prevStep={prevStep} nextStep={nextStep} handleImageChange={handleImageChange} setAvatar={setAvatar} setCoverImage={setCoverImage} crop={crop} setCrop={setCrop} onImageCropComplete={onImageCropComplete} />}
+                    {step === 4 && <AccountDetails formData={formData} handleChange={handleChange} prevStep={prevStep} handleSubmit={handleSubmit} handleChangeChecked={handleChangeChecked} />}
                 </div>
             </div>
         </>

@@ -32,6 +32,8 @@ import AlumniClick from './pages/User/AlumniClick';
 import BirthdayCard from './components/BirthdayCard/BirthdayCard';
 import ForgotPass from './pages/General/ForgotPass';
 import ConfirmMail from './pages/General/ConfirmMail';
+import Testapp from './pages/TestApp';
+import { ThemeProvider } from '@material-tailwind/react';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -114,22 +116,28 @@ const router = createBrowserRouter([
     element: <AlumniClick />
   },
   {
-    path:'/birthday',
-    element:<BirthdayCard/>
-  },{
-    path:'/forget',
-    element:<ForgotPass/>
+    path: '/birthday',
+    element: <BirthdayCard />
+  }, {
+    path: '/forget',
+    element: <ForgotPass />
   },
   {
-    path:'resetmail',
-    element:<ConfirmMail/>
+    path: 'resetmail',
+    element: <ConfirmMail />
   },
+  {
+    path: '/testapp',
+    element: <Testapp />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <RecoilRoot>
+  <RecoilRoot>
+      <ThemeProvider>
       <HeaderProvider>
         <RouterProvider router={router} />
       </HeaderProvider>
+  </ThemeProvider>
     </RecoilRoot>
 );

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    overflow-x: hidden;
+}
+.home-end{
+    margin-bottom: 50px;    
+}
+.home{
+    width:100vw;
+    background-color:#C5291D;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+.parent-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+.first-heading{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:0 1 rem
+}
+.first-heading-content button,.second-heading-content button{
+    background-color: white;
+    padding:12px ;
+    border-radius:8px ;
+    color: #C5291D;
+    border-color: #C5291D;
+    border-width: 1px;
+    cursor: pointer;
+    border-style:groove;
+    font-weight: 700;
+    width:120px;
+    box-sizing: border-box;
+}
+.first-heading-content,.second-heading-content{
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    justify-content: center;
+    align-items: center;
+    padding:12px 8px;
+    box-sizing: border-box;
+    /* max-width: 90%; */
+}
+.first-heading-content h1, .second-heading-content h1{
+    font-size: 2.25rem;
+    font-weight: 400;
+    color:#2669c2;
+    font-family: "DM Serif Text", serif;
+    /* margin:0px; */
+}
+.alumni-end{
+    justify-content:right;
+    display: flex;
+}
+.view-all{
+    background-color: white;
+    padding:12px ;
+    border-radius:8px ;
+    color: #2669c2;
+    cursor: pointer;
+    border-style:groove;
+    font-weight: 700;
+}
+.view-all:hover,.second-heading-content button:hover{
+    background-color: #C5291D;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .first-heading-content h1 {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+    }
+
+    .first-heading-content button {
+        width: 100px; /* Adjust button width for smaller screens */
+        padding: 8px 16px; /* Adjust padding for smaller screens */
+    }
+}
+

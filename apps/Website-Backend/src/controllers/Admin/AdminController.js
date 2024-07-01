@@ -7,6 +7,8 @@ import User from "../../Schema/UserSchema.js";
 import Blog from "../../Schema/BlogSchema.js";
 import JobData from "../../Schema/JobSchema.js";
 import Event from "../../Schema/EventSchema.js";
+import {uploadOnCloudinary, deleteImageFromCloudinary } from "../../utils/Cloudinary.js";
+import HeroSection from "../../Schema/HeroSectionSchema.js";
 
 const refreshAccessToken = AsyncHandler(async (req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken;
@@ -122,6 +124,7 @@ const deleteUserProfileByAdmin = AsyncHandler(async (req, res) => {
         throw new ApiError(500, error.message)
     }
 })
+
 const deleteBlogByAdmin = async (req, res) => {
     try {
         const { blogId } = req.params;
@@ -192,6 +195,64 @@ const pushUserToWaitingRoomByAdmin = async (req, res) => {
     }
 }
 
+const addImageToHeroSection = async (req, res) => {
+    try {
+        console.log(req.files);
+        let coverImageLocalPath;
+        if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
+            coverImageLocalPath = req.files.coverImage[0].path;
+        } else {
+            return res.status(400).json(new ApiResponse(400, null, "Cover image is required"));
+        }
+
+        const coverImage = await uploadOnCloudinary(coverImageLocalPath);
+
+        const imageCreated = await HeroSection.create({
+            coverImage: coverImage?.url,
+            createdBy: req.user._id,
+            isPublished: true,
+        });
+        return res.status(200).json(new ApiResponse(200, imageCreated, "Photo added successfully"));
+    } catch (error) {
+        return res.status(500).json(new ApiResponse(500, null, `Error adding photo: ${error.message}`));
+    }
+};
+
+
+const removeImageFromHeroSection = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const image = await HeroSection.findById(id);
+
+        if (!image) {
+            return res.status(404).json(new ApiError(404, 'Image not found'));
+        }
+
+        console.log("coverImage url:", image.coverImage);
+
+        // Await the deleteImageFromCloudinary function
+        const removedImageFromCloudinary = await deleteImageFromCloudinary(image.coverImage);
+
+        // Remove the image from the database
+        const removedImage = await HeroSection.findByIdAndDelete(id);
+
+        return res.status(200).json(new ApiResponse(200, removedImageFromCloudinary, removedImage, "Image removed successfully"));
+    } catch (error) {
+        return res.status(500).json(new ApiError(500, 'Error removing image'));
+    }
+};
+
+
+const getAllImageOfHeroSection = async (req, res) => {
+    try {
+        const images = await HeroSection.find().populate('createdBy', 'username');
+        return res.status(200).json(new ApiResponse(200, images, "Images fetched successfully"));
+    } catch (error) {
+        return res.status(500).json(new ApiError(500, 'Error fetching Images'));
+    }
+}
+
+
 export {
     Adminsignup,
     Adminsignin,
@@ -202,5 +263,8 @@ export {
     deleteJobByAdmin,
     refreshAccessToken,
     allowUserByAdmin,
-    pushUserToWaitingRoomByAdmin
+    pushUserToWaitingRoomByAdmin,
+    addImageToHeroSection,
+    removeImageFromHeroSection,
+    getAllImageOfHeroSection
 };

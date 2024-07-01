@@ -34,6 +34,9 @@ const Navbar = () => {
                             <a className="nav-link" href="/admin/job">Job</a>
                         </li>
                         <li className="nav-item m-2">
+                            <a className="nav-link" href="/admin/announcement">Announcement</a>
+                        </li>
+                        <li className="nav-item m-2">
                             <a className="nav-link" href="/admin/logout">Logout</a>
                         </li>
 

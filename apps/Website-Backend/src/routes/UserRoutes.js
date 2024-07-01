@@ -31,7 +31,7 @@ UserRouter.post('/refresh-token').post(refreshAccessToken);
 UserRouter.get('/getuserbyid/:userId', getUserById);
 UserRouter.get('/profilesection', verifyJWT, getUserDetails);
 UserRouter.get('/check-auth', verifyJWT, checkAuthentication);
-UserRouter.get('/findalumni', getAllUsers)
+UserRouter.get('/findalumni', getAllUsers);
 UserRouter.put('/profileupdate', verifyJWT, upload.fields([
     { name: 'avatar', maxCount: 1 },
     { name: 'coverImage', maxCount: 1 }

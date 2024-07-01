@@ -1,6 +1,9 @@
 import { Router } from 'express';
-import { Admindelete, Adminsignin, Adminsignup, allowUserByAdmin, deleteBlogByAdmin, deleteEventByAdmin, deleteJobByAdmin, deleteUserProfileByAdmin, pushUserToWaitingRoomByAdmin } from '../controllers/Admin/AdminController.js';
+import { Admindelete, Adminsignin, Adminsignup, addImageToHeroSection, allowUserByAdmin, deleteBlogByAdmin, deleteEventByAdmin, deleteJobByAdmin, deleteUserProfileByAdmin, getAllImageOfHeroSection, pushUserToWaitingRoomByAdmin, removeImageFromHeroSection } from '../controllers/Admin/AdminController.js';
 import verifyAdmin from '../middlewares/Admin.middleware.js';
+import { deleteAnnouncement } from '../controllers/Announcement/AnnouncementController.js';
+import { upload } from '../middlewares/Multer.middleware.js';
+
 const AdminRoutes = Router();
 
 //Admin Routes
@@ -18,5 +21,16 @@ AdminRoutes.delete('/deleteblog/:blogId', verifyAdmin, deleteBlogByAdmin);
 AdminRoutes.delete('/deleteevent/:eventId', verifyAdmin, deleteEventByAdmin);
 //Admin control on Job
 AdminRoutes.delete('/deletejob/:jobId', verifyAdmin, deleteJobByAdmin);
+
+//Admin control on Announcement
+AdminRoutes.delete('/deleteannouncement/:id', verifyAdmin, deleteAnnouncement);
+
+//Admin control on Herosection and adding Image into it
+AdminRoutes.post('/addphotoinherosection',verifyAdmin, upload.fields([
+    { name: 'coverImage', maxCount: 1 }
+]), addImageToHeroSection);
+AdminRoutes.delete('/adminremoveimage/:id', verifyAdmin, removeImageFromHeroSection);
+AdminRoutes.get('/getallimage',getAllImageOfHeroSection)
+
 
 export default AdminRoutes;
