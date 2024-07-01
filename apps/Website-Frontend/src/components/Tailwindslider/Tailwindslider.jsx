@@ -1,7 +1,7 @@
 // CardSlider.jsx
 import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-import axios from 'axios'; // Make sure axios is imported
+import axios from 'axios';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './CardSlider.css';
@@ -9,7 +9,7 @@ import EventCard from '../EventCard/EventCard';
 
 const CardSlider = () => {
     const [eventData, setEventData] = useState([]);
-    
+
     useEffect(() => {
         const gettingAllEvents = async () => {
             try {
@@ -25,12 +25,11 @@ const CardSlider = () => {
 
     const settings = {
         dots: true,
-        infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        autoplay: true,
+        autoplaySpeed: 3000,
         responsive: [
             {
                 breakpoint: 1024,
@@ -49,39 +48,16 @@ const CardSlider = () => {
                 },
             },
         ],
-        beforeChange: (current, next) => setSlideAnimation(current, next),
     };
 
     return (
-        <div className="w-full max-w-6xl mx-auto py-8">
+        <div className="w-full max-w-6xl mx-auto py-4">
             <Slider {...settings}>
                 {eventData.map((event, index) => (
                     <EventCard event={event} key={index} />
                 ))}
             </Slider>
         </div>
-    );
-};
-
-const SampleNextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={`${className} bg-gray-800 rounded-full p-2 text-white`}
-            style={{ ...style, display: "block" }}
-            onClick={onClick}
-        />
-    );
-};
-
-const SamplePrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={`${className} bg-gray-800 rounded-full p-2 text-white`}
-            style={{ ...style, display: "block" }}
-            onClick={onClick}
-        />
     );
 };
 

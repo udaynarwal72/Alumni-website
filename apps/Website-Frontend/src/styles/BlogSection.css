@@ -1,15 +1,6 @@
 .parent-blog-section{
-    background-color: white;
+    background-color: #E1E5F2;
     height:100%;
-}
-.parent-blog-section h1:hover{
-    color:#C5291D;
-    transition: all 0.3s;
-    cursor: pointer;
-}
-.parent-blog-section h1{
-    transition: all 0.3s;
-    border-bottom: 3px solid #e0e0e0;
 }
 .blog-section-slider{
     display: flex;
@@ -43,10 +34,9 @@
 }
 .section-content .side-bar section{
     background-color: white;
-    padding:20px;
+    padding:.7em;
     border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top: 0px;
+    margin-top: 1.1em;
 }
 .text-input-blog{
     padding:0.7rem 1rem;

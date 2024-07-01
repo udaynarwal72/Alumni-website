@@ -14,7 +14,7 @@
   margin: 1rem auto; /* Center the card and give some margin */
 }
 .event-card:hover{
-  box-shadow: 2px 12px 20px #cb8985;
+  box-shadow: 2px 12px 20px #878787;
   cursor: pointer;
   transform: translateY(-5px);
 }

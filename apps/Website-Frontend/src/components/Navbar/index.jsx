@@ -8,10 +8,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import './NavBar.css';
 import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { authState, checkAuthSelector } from '../../Recoil/Authuser';
+import nitLogo from '../../assets/nit-kkr-logo.png';
 
 library.add(fas);
 
-const NavBar = () => {
+const NavBar = () => {  
     const [showNavbar, setShowNavbar] = useState(false);
     const navigate = useNavigate();
     const [auth, setAuth] = useRecoilState(authState);
@@ -35,11 +36,12 @@ const NavBar = () => {
     };
 
     return (
-        <nav className="navbar">
+        <nav className="navbar p-3">
             <div className="nav-container">
                 <a href="/" className="brand">
-                    <div className="logo">
-                        <img src="https://casepl.in/wp-content/uploads/2024/05/reck-logo-in-white-colour-120x93.png" alt="logo" />
+                    <div className="logo flex">
+                        <img src="https://casepl.in/wp-content/uploads/2024/05/reck-logo-in-white-colour-120x93.png" className="mr-5" alt="logo" />
+                        <img src={nitLogo}  alt="logo" />
                     </div>
                 </a>
                 <div className="menu-icon" onClick={handleShowNavbar}>

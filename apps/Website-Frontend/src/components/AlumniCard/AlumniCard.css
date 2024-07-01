@@ -12,7 +12,10 @@
     flex-direction: column;
     transition: all 0.2s;
     background-color: white;
-    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card:hover {

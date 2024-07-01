@@ -1,6 +1,6 @@
 .Parent-blog{
     height:100%;
-    background-color: #FFFFFF;
+    background-color: #E1E5F2;
     animation: fadeIn 1s ease-in-out;
 }
 @keyframes fadeIn {

@@ -7,7 +7,7 @@ import User from "../../Schema/UserSchema.js";
 import Blog from "../../Schema/BlogSchema.js";
 import JobData from "../../Schema/JobSchema.js";
 import Event from "../../Schema/EventSchema.js";
-import {uploadOnCloudinary, deleteImageFromCloudinary } from "../../utils/Cloudinary.js";
+import { uploadOnCloudinary, deleteImageFromCloudinary } from "../../utils/Cloudinary.js";
 import HeroSection from "../../Schema/HeroSectionSchema.js";
 
 const refreshAccessToken = AsyncHandler(async (req, res) => {
@@ -119,7 +119,8 @@ const deleteUserProfileByAdmin = AsyncHandler(async (req, res) => {
         const blog = await Blog.deleteMany({ blog_createdBy: userId })
         const jobPost = await JobData.deleteMany({ job_postedBy: userId })
         const eventPost = await Event.deleteMany({ posted_by: userId })
-        return res.status(200).json(new ApiResponse(200, user, blog, jobPost, eventPost, "User deleted successfully"))
+        const comment = await Comment.deleteMany({ createdBy: userId })
+        return res.status(200).json(new ApiResponse(200, user, blog, jobPost, eventPost, comment, "User deleted successfully"))
     } catch (error) {
         throw new ApiError(500, error.message)
     }

@@ -59,10 +59,10 @@ const BlogSection = () => {
         <div>
             <NavBar />
             <div className="parent-blog-section">
-                <div className="blog-section-slider">
-                    <h1 className="trending">Trending Blogs</h1>
+                <div className="flex flex-col justify-center p-4">
+                    <h1 className=" font-dmserif text-center font-bold text-4xl">Trending Blogs</h1>
                     <BlogSlider />
-                    <h1 className="RecentPosts">Recent Posts</h1>
+                    <h1 className=" font-dmserif text-center font-bold text-4xl">Recent Posts</h1>
                 </div>
                 <div className="section-content">
                     <div className="main-content">
@@ -75,7 +75,6 @@ const BlogSection = () => {
                     <div className="side-bar">
                         <section>
                             <div className="side-search">
-                                <h2 className="section-title">Search</h2>
                                 <form onSubmit={handleSearchSubmit}>
                                     <input
                                         type="text"

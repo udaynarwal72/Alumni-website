@@ -32,48 +32,48 @@ const JobCard = ({ data }) => {
   return (
     <div onClick={(e) => redirectToBlog(e)}>
       <div className="job-card-parent">
-        <div className="main-job-card">
+        <div className="main-job-card hover:bg-[#E1E5F2]">
           <div className="all-set">
             <div className="job-card-header">
-              <h1>{data.job_company}</h1>
-              <p>@{data.job_postedBy.username}</p>
+              <h1 className="font-dmserif font-bold">{data.job_company}</h1>
+              <p className="font-dmsans">@{data.job_postedBy.username}</p>
             </div>
             <div className="second">
-              <div className="ux-designer">{data.job_title}</div>
-              <div className="time-posted">{formatDate(data.createdAt)}</div>
+              <div className="font-dmsans text-white font-semibold test-3xl">{data.job_title}</div>
+              <div className="time-posted font-dmsans">{formatDate(data.createdAt)}</div>
             </div>
           </div>
-          <div className="job-card-details">
+          <div className="job-card-details ">
             <div className="row1">
-              <div className="one-detail">
+              <div className="one-detail flex items-center">
                 <div className="job-logos">
                   <img src={jobSuitCase} alt="Job Experience" />
                 </div>
-                <div>{data.job_experience} years</div>
+                <div className="font-dmsans">{data.job_experience} years</div>
               </div>
-              <div className="second-detail">
+              <div className="second-detail flex items-center">
                 <div className="job-logos">
                   <img src={jobLocation} alt="Job Location" />
                 </div>
-                <div>{data.job_company_location}</div>
+                <div className="font-dmsans">{data.job_company_location}</div>
               </div>
             </div>
             <div className="row2">
-              <div className="one-detail">
+              <div className="one-detail flex items-center">
                 <div className="job-logos">
                   <img src={homeIcon} alt="Job Type" />
                 </div>
-                <div>{data.job_type}</div>
+                <div className="font-dmsans">{data.job_type}</div>
               </div>
-              <div className="second-detail">
+              <div className="second-detail flex items-center">
                 <div className="job-logos">
                   <img src={twoPeopleIcon} alt="Job Duration" />
                 </div>
-                <div>{data.job_duration}</div>
+                <div className="font-dmsans">{data.job_duration}</div>
               </div>
             </div>
           </div>
-          <div className="skills">
+          <div className="skills font-dmsans">
             {data.job_tags.map((tag, index) => (
               <span key={index}>{tag}</span>
             ))}

@@ -22,12 +22,14 @@
 .slick-next {
   width: 40px;
   height: 40px;
-  background-color: #1d28c5; /* Semi-transparent background */
-  border: none;
+  background-color: transparent; /* Semi-transparent background */
   border-radius: 50%;
   display: flex;
   align-items: center;
+  border: 1px solid white;
   justify-content: center;
+  margin-left: -50px;
+  margin-right: -50px;
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
@@ -46,7 +48,7 @@
 
 .slick-prev:hover,
 .slick-next:hover {
-  background-color: #C5291D; /* Darker on hover */
+  background-color: #ffffff; /* Darker on hover */
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 4px 8px #F9F5EB; /* Subtle shadow on hover */
 }

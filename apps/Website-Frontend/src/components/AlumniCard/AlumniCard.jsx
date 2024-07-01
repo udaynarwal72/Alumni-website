@@ -35,7 +35,7 @@ const AlumniCard = ({ AlumniData }) => {
 	}
 	return (
 		// <div onClick={redirectToAlumniPage}>
-				<div className=" card border ">
+				<div className=" card border rounded-lg">
 					<div className="card-header" >
 						<img
 							src={AlumniData.avatar}
@@ -44,34 +44,32 @@ const AlumniCard = ({ AlumniData }) => {
 						/>
 					</div>
 					<div className="card-name">
-						<h2 className="card-name" >
+						<h2 className="card-name font-dmsans" >
 							{AlumniData.first_name} {AlumniData.last_name}
 						</h2>
 					</div>
 					<div className="details">
 						<div className="head1">
 							<div>
-								<div className="Batch">Batch</div>
-
+								<div className="Batch font-dmsans">Joining Batch</div>
 								<div>
-									{AlumniData.joining_batch}-
-									{Number(AlumniData.joining_batch) + 4}
+									{AlumniData.joining_batch}
 								</div>
 							</div>
 							<div>
-								<div className="Batch">Location</div>
+								<div className="Batch font-dmsans">Location</div>
 								<div>{AlumniData.state}</div>
 							</div>
 						</div>
 						<div className="head1">
 							<div>
-								<div className="Batch">Company</div>
+								<div className="Batch font-dmsans">Company</div>
 								<div>{AlumniData.organisation}</div>
 							</div>
 						</div>
 						<div className="head1">
 							<div>
-								<div className="Batch">Designation</div>
+								<div className="Batch font-dmsans">Designation</div>
 								<div>{AlumniData.designation}</div>
 							</div>
 						</div>

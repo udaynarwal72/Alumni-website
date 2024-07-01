@@ -17,7 +17,7 @@ const createAnnouncement = async (req, res) => {
 }
 const getAnnouncements = async (req, res) => {
     try {
-        const announcements = await Announcement.find().populate('createdBy','username');
+        const announcements = await Announcement.find().populate('createdBy','username avatar');
         res.status(200).json({ data: announcements });
     } catch (error) {
         res.status(400).json({ message: "Error fetching announcements: " + error.message });

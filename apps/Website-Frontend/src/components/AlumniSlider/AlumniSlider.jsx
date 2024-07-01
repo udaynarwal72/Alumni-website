@@ -3,8 +3,10 @@ import Slider from 'react-slick';
 import './AlumniSlider.css';
 import AlumniCard from '../AlumniCard/AlumniCard';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const AlumniSlider = () => {
+    const navigate = useNavigate();
     const [alumni, setAlumni] = useState([]);
 
     useEffect(() => {
@@ -62,12 +64,16 @@ const AlumniSlider = () => {
         console.log("Alumni data updated:", alumni);
     }, [alumni]);
 
+    const redirectToAlumniSection = () => {
+        navigate('/alumnisection')
+    }
+
     return (
         <div className="image-slider flex w-full flex-row">
             {alumni.slice(0, 4).map((alumniItem) => (
                 <AlumniCard key={alumniItem._id} AlumniData={alumniItem} />
             ))}
-            <div className='view-all-container flex  items-center border rounded-lg justify-center m- p-4 pt-5 pb-5 bg-[#022B3A]'>
+            <div onClick={redirectToAlumniSection} className='view-all-container font-dmsans flex  items-center border rounded-lg justify-center mt-7 mb-7 p-4 pl-5 pt-5 pb-5 bg-[#022B3A]'>
                 <div className='text-white '>
                     View All
                 </div>

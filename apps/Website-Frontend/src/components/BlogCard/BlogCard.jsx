@@ -59,36 +59,23 @@ const BlogCard = ({ data }) => {
                         <span class="sr-only">Loading...</span>
                     </div>
 
-            ) : (
-            <div className="blog-card">
-                <div className="card-image">
-                    <img src={blogImage} alt={blog_title} />
-                </div>
-                <div className="card-content">
-                    {blog_tags?.map((tag, index) => (
-                        <div key={index} className="card-category">
-                            {tag}
+                ) : (
+                    <div className="blog-card">
+                        <div className="card-image">
+                            <img src={blogImage} alt={blog_title} />
                         </div>
-                    ))}
-                    <h2 className="card-title">
-                        {blog_title}
-                    </h2>
-                    <p className="card-desc">{truncateText(blog_body, 20)}</p>
-                </div>
-                <div className="card-footer">
-                    <div className="aut-image">
-                        <img src={blog_createdBy.avatar} alt={blog_createdBy.username} />
-                    </div>
-                    <div className="aut-desc">
-                        <div>
-                            <span>{blog_createdBy.username}</span>
-                            <span>{formatDate(createdAt)}</span>
+                        <div className=" m-3 font-dmsans items-center space-x-2">
+                            {blog_tags && blog_tags.map((tag, index) => (
+                                <span key={index} className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-sm">{tag}</span>
+                            ))}
+                            <h2 className="card-title font-dmsans text-left">
+                                {blog_title}
+                            </h2>
+                            <p className="card-desc font-dmsans">{truncateText(blog_body, 20)}</p>
                         </div>
                     </div>
-                </div>
-            </div>
                 )}
-        </div>
+            </div>
         </div >
     );
 };

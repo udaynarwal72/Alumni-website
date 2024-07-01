@@ -3,15 +3,15 @@ import Slider from 'react-slick';
 import TestimonialsCard from "./TestimonialsCard";
 import './TestimonialsSlider.css'; // Import your CSS file
 
-const TestimonialsSlider = () => {
+const TestimonialsSlider = ({ data }) => {
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 1000,
         pauseOnHover: true,
         arrows: false,
         centerMode: true, // Enable center mode
@@ -20,11 +20,13 @@ const TestimonialsSlider = () => {
 
     return (
         <Slider {...settings}>
-            <TestimonialsCard />
-            <TestimonialsCard />
-            <TestimonialsCard />
-            <TestimonialsCard />
-            <TestimonialsCard />
+            {
+                data.map((data, index) => {
+                    return (
+                        <TestimonialsCard data={data} />
+                    )
+                })
+            }
         </Slider>
     );
 }

@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import NavBar from "../../components/Navbar";
-import Footer from "../../components/footer";
-import "../../styles/Blogs.css";
+import Footer from "../../components/footer"; // Corrected import
 import Cookies from "js-cookie";
+import "../../styles/Blogs.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { useRecoilValue } from "recoil";
 
 const Blogs = () => {
     const { blogId } = useParams();
@@ -115,107 +114,79 @@ const Blogs = () => {
     return (
         <div>
             <NavBar />
-            <div className="Parent-blog">
-                <div className="root">
-                    <div className="content">
+            <div className="bg-gray-100 min-h-screen">
+                <div className="mx-auto p-5 bg-white max-w-4xl ">
+                    <div className="flex items-center mb-4">
+                        <div className="flex items-center font-dmsans">
+                            <img src={blogData.blog_createdBy?.avatar} alt="User profile" className="rounded-full w-12 h-12 mr-4" />
+                            <div>
+                                <span className="font-bold">~{blogData.blog_createdBy?.username}</span>
+                                <span className="ml-2">{formatDate(blogData.createdAt)}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="mb-4">
+                        <img src={blogData.blogImage} alt="Blog cover" className="w-full rounded-lg" />
+                    </div>
                         <div>
-                            <h1>{blogData.blog_title}</h1>
+                            <h1 className="text-3xl font-bold mb-4 font-dmserif">{blogData.blog_title}</h1>
                         </div>
-                        <div className="header">
-                            <div className="profile">
-                                <div className="image">
-                                    <img src={blogData.blog_createdBy?.avatar} alt="User profile" />
-                                </div>
-                                <div className="info">
-                                    <div>
-                                        <span style={{ fontWeight: "bold" }}>
-                                            @{blogData.blog_createdBy?.username}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span>{formatDate(blogData.createdAt)}</span>
-                                    </div>
-                                </div>
+                    <div className="mb-4 font-dmsans">{blogData.blog_body}</div>
+                    <div className="mb-4">
+                        <div className="flex font-dmsans flex-wrap items-center space-x-2">
+                            {blogData.blog_tags && blogData.blog_tags.map((tag, index) => (
+                                <span key={index} className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-sm">{tag}</span>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="mb-4 flex">
+                        <div className="mr-4 flex justify-start">
+                            <div className="">
+                                <FontAwesomeIcon icon={faComment} />
                             </div>
+                            <span style={{marginLeft:"-3em"}}>{blogData.comments?.length || 0}</span>
                         </div>
-                        <div className="image-big">
-                            <img src={blogData.blogImage} alt="Blog cover" />
-                        </div>
-                        <div className="para">{blogData.blog_body}</div>
-                        <div className="buttons">
-                            {blogData.blog_tags &&
-                                blogData.blog_tags.map((tag, index) => (
-                                    <div key={index}>
-                                        <button>{tag}</button>
-                                    </div>
-                                ))}
-                        </div>
-                        <div className="icons">
-                            <div className="left">
-                                <div className="comment-button">
-                                    <FontAwesomeIcon icon={faComment} />
-                                </div>
-                                <span className="number-comment">{blogData.comments?.length || 0}</span>
-                                <div className="like-button" onClick={handleLikeToggle}>
-                                    <FontAwesomeIcon icon={faThumbsUp} style={{ color: isLikedByUser ? 'blue' : 'grey' }} />
-                                </div>
-                                <span>{likeCount}</span>
+                        <div className="flex items-center">
+                            <div className="cursor-pointer mr-2" onClick={handleLikeToggle}>
+                                <FontAwesomeIcon icon={faThumbsUp} className={`text-xl ${isLikedByUser ? 'text-blue-500' : 'text-gray-500'}`} />
                             </div>
+                            <span style={{marginLeft:"-3.5em"}}>{likeCount}</span>
                         </div>
-                        <div className="comm">
-                            <div className="comments">
-                                <div className="responses">
-                                    <h1 className="responses">Responses ({blogData.comments?.length || 0})</h1>
-                                </div>
-                                <form method="POST" onSubmit={postComment}>
-                                    <div>
-                                        <input
-                                            type="text"
-                                            placeholder="What are your thoughts?"
-                                            id="res"
-                                            className="what-thought"
-                                            name="blog_comment"
-                                        />
-                                    </div>
-                                    <div className="submit-button">
+                    </div>
+                    <div className="">
+                        <div className="font-bold text-sm">Responses ({blogData.comments?.length || 0})</div>
+                        <form onSubmit={postComment} className="flex-col items-end justify-center">
+                            <input
+                                type="text"
+                                id="res"
+                                className="w-full p-2 border rounded "
+                                name="blog_comment"
+                                placeholder="Write a comment..."
+                            />
+                            <button type="submit" className="bg-[#1F7A8C] text-white mt-2 px-5 py-2 rounded-lg text-sm font-semibold">
+                                Submit
+                            </button>
+                            {commentError && <div className="text-red-500">{commentError}</div>}
+                        </form>
+                        <div>
+                            <h3 className="font-semibold text-lg mb-2">Previous comments</h3>
+                            {blogData.comments?.map((comment, index) => (
+                                <div className="border p-4 rounded mb-4" key={index}>
+                                    <div className="flex items-start mb-2">
+                                        <img src={comment.createdBy?.avatar} alt="Commenter avatar" className="rounded-full w-8 h-8 mr-4" />
                                         <div>
-                                            <button type="submit" className="subt-button">Submit</button>
+                                            <div className="flex items-center justify-between">
+                                                <span className="font-bold">{comment.createdBy?.username}</span>
+                                                <span>{formatDate(comment.createdAt)}</span>
+                                            </div>
+                                            {comment.createdBy?._id === Cookies.get("user-id") && (
+                                                <button onClick={() => removeComment(comment._id)} className="text-red-500">Remove</button>
+                                            )}
                                         </div>
                                     </div>
-                                    {commentError && <div className="error">{commentError}</div>}
-                                </form>
-                                <div>
-                                    <h3>Previous comments</h3>
+                                    <div className="comment-body">{comment.text}</div>
                                 </div>
-                                {blogData.comments?.map((comment, index) => {
-                                    const isCommentOwner = comment.createdBy?._id === Cookies.get("user-id");
-                                    return (
-                                        <div className="comment-column" key={index}>
-                                            <div className="user-comment">
-                                                <div className="comm-image">
-                                                    <img src={comment.createdBy?.avatar} alt="Commenter avatar" />
-                                                </div>
-                                                <div className="comm-desc">
-                                                    <div>
-                                                        <span>{comment.createdBy?.username}</span>
-                                                        <span>{formatDate(comment.createdAt)}</span>
-                                                    </div>
-                                                    {isCommentOwner && (
-                                                        <div>
-                                                            <button onClick={() => removeComment(comment._id)} className="remove">
-                                                                Remove
-                                                            </button>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
-                                            <div className="comment-remove">
-                                                <div className="comment-body">{comment.text}</div>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -223,6 +194,6 @@ const Blogs = () => {
             <Footer />
         </div>
     );
-}
+};
 
 export default Blogs;

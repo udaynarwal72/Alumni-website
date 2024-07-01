@@ -4,26 +4,39 @@
   padding: 2%;
 }
 
+/* Existing styles... */
+
+.job-card-parent {
+  cursor: pointer;
+}
+
+.job-card-parent .main-job-card:hover h1,
+.job-card-parent .main-job-card:hover p,
+.job-card-parent .main-job-card:hover .second .font-dmsans,
+.job-card-parent .main-job-card:hover .job-card-details .font-dmsans,
+.job-card-parent .main-job-card:hover .skills span {
+  color: black;
+}
+
+.job-card-parent .main-job-card:hover .skills span {
+  border: 1px solid black;
+}
+
 .main-job-card {
-  
-  min-height:19rem;
-  max-height: 19rem;
+  min-height: 15rem;
+  max-height: 15rem;
   border: 0.1em solid #ffffff;
   border-radius: 0.75em;
-  padding: 1em; /* Adjusted padding for a smaller card */
+  padding: 1em;
+  /* Adjusted padding for a smaller card */
   width: 100%;
-  max-width: 25em; /* Increased max-width for a wider card */
+  max-width: 25em;
+  /* Increased max-width for a wider card */
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  margin: 1em auto; /* Center the card and give some margin */
-}
-
-.main-job-card:hover {
-  color: black;
-  transform: translateY(-0.25em);
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-  background-color: #1F7A8C;
+  margin: 1em auto;
+  /* Center the card and give some margin */
 }
 
 .job-card-header {
@@ -34,22 +47,24 @@
 }
 
 .job-card-header h1 {
-  font-size: 1.5em; /* Adjusted font-size */
-  color:#ffffff;
+  font-size: 1.5em;
+  /* Adjusted font-size */
+  color: #ffffff;
   margin: 0;
 }
 
 
 .job-card-header p {
   font-size: 1em;
-  color:#ffffff;
+  color: #ffffff;
   font-weight: 600;
   margin-top: 0.5em;
 }
 
 .ux-designer {
   color: #ffffff;
-  font-size: 1.2em; /* Adjusted font-size */
+  font-size: 1.2em;
+  /* Adjusted font-size */
   margin: 0.5em 0;
   font-weight: 600;
 }
@@ -86,24 +101,30 @@
 }
 
 .skills span {
-  background:transparent;
+  background: transparent;
   border: 0.1em solid #ffffff;
   border-radius: 1.25em;
   padding: 0.25em 0.5em;
   color: #ffffff;
-  font-size: 0.8em; /* Adjusted font-size */
+  font-size: 0.8em;
+  /* Adjusted font-size */
 }
 
 .apply-link {
   display: block;
-  margin-top: 0.5em; /* Reduced margin-top for better alignment */
+  margin-top: 0.5em;
+  /* Reduced margin-top for better alignment */
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
-  font-size: 0.8em; /* Adjusted font-size */
-  overflow: hidden; /* Ensures link stays within card */
-  white-space: nowrap; /* Prevents link from wrapping */
-  text-overflow: ellipsis; /* Adds ellipsis if link exceeds width */
+  font-size: 0.8em;
+  /* Adjusted font-size */
+  overflow: hidden;
+  /* Ensures link stays within card */
+  white-space: nowrap;
+  /* Prevents link from wrapping */
+  text-overflow: ellipsis;
+  /* Adds ellipsis if link exceeds width */
 }
 
 .apply-link:hover {
@@ -143,11 +164,13 @@
   .main-job-card {
     width: 95%;
     margin: 1em auto;
-    padding: 0.75em; /* Further reduced padding for smaller screens */
+    padding: 0.75em;
+    /* Further reduced padding for smaller screens */
   }
 
   .job-card-header h1 {
-    font-size: 1em; /* Adjusted font-size */
+    font-size: 1em;
+    /* Adjusted font-size */
   }
 
   .job-card-header p {
@@ -155,7 +178,8 @@
   }
 
   .ux-designer {
-    font-size: 0.9em; /* Adjusted font-size */
+    font-size: 0.9em;
+    /* Adjusted font-size */
   }
 
   .time-posted {
@@ -164,7 +188,8 @@
 
   .skills span {
     padding: 0.25em 0.5em;
-    font-size: 0.7em; /* Adjusted font-size */
+    font-size: 0.7em;
+    /* Adjusted font-size */
   }
 
   .apply-link {

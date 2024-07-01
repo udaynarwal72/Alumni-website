@@ -15,6 +15,7 @@ import GalleryCardSlider from "../components/GalleryCard/GalleryCardSlider";
 import BlogCard from "../components/BlogCard/BlogCard";
 import BlogSlider from "../components/BlogSlider/BlogSlider";
 import TestimonialsSlider from "../components/Testimonials/TestimonialsSlider";
+import API_URL from "../helpers/ApiKey";
 
 export const userNumber = atom({
     key: 'something',
@@ -29,6 +30,7 @@ function Testapp() {
     const navigate = useNavigate();
     const [someNumber, setSomeNumber] = useRecoilState(userNumber);
     const [images, setImage] = useState([]);
+    const [testimonials, setTestimonials] = useState([]);
 
     const getAllImage = useCallback(async () => {
         try {
@@ -105,16 +107,29 @@ function Testapp() {
         navigate("/blogsection");
     };
 
+    useEffect(() => {
+        const getAllTestimonials = async () => {
+            await axios.get(`${API_URL}/api/v1/announcement/getannouncements`)
+                .then(res => {
+                    setTestimonials(res.data.data)
+                })
+                .catch(error => {
+                    console.log("Error fetching details of Testimonials", error.message);
+                })
+        }
+        getAllTestimonials();
+    }, [])
+
     return (
         <div>
             <NavBar />
             <div className="parent-container">
-                <div className="bg-[#E1E5F2] w-full border border-rounded">
+                <div className="bg-[#E1E5F2] w-full border-rounded">
                     <HeroSection images={images} />
                 </div>
                 <div className="parent-alumnislider pt-9 pb-9 w-full bg-[#E1E5F2]">
                     <div className="alumni-heading">
-                        <h1 className="text-4xl text-center text-[#022B3A] font-embdedcode font-semibold">
+                        <h1 className="text-4xl text-center text-[#022B3A] font-dmserif font-semibold">
                             Our Alumni
                         </h1>
                         <div className="w-full">
@@ -125,43 +140,43 @@ function Testapp() {
                 <div>
 
                 </div>
-                <div className="galery-section-parent pb-9 pt-9 flex flex-col items-center justify-center bg-[#1F7A8C] w-full">
-                    <h1 className="text-4xl mt-9 text-center text-white font-embdedcode font-semibold">
-                        Gallery
-                    </h1>
-                    <div className="w-full flex flex-row">
-                        <GalleryCardSlider />
-                    </div>
-                </div>
-                <div className="parent-blogandanouncement w-full bg-gradient-to-b p-5 from-[#E1E5F2] to-[#E1E5F2]">
-                    <div className="blog-parent p-9">
+                <div className="parent-blogandanouncement w-full  bg-[#1F7A8C]">
+                    <div className="blog-parent pt-9 pb-9">
                         <div className="blog-heading">
-                            <h1 className="text-4xl text-center text-[#022B3A] font-embdedcode font-semibold">
+                            <h1 className="text-4xl text-center text-white font-dmserif font-semibold">
                                 Blogs
                             </h1>
                             <div className="w-full flex">
                                 <BlogSlider />
                             </div>
                             <div className="text-center mt-4">
-                                <button type="button" className="text-white bg-[#1F7A8C] font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={blogSection}>View All</button>
+                                <button type="button" className="text-white bg-[#022B3A] font-medium font-dmsans rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={blogSection}>View All</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="job-section-parent bg-[#1F7A8C] pt-9 pb-9 w-full">
-                    <h1 className="text-4xl mt-9 mb-9 text-center text-white font-embdedcode font-semibold">
-                        Announcements
-                    </h1>
-                    <TestimonialsSlider/>
-                </div>
                 <div className="job-section-parent bg-[#022B3A] pt-9 pb-9 w-full">
-                    <h1 className="text-4xl mt-9 text-center text-white font-embdedcode font-semibold">
+                    <h1 className="text-4xl mt-9 text-center text-white font-dmserif font-semibold">
                         Job Section
                     </h1>
                     <JobSlider />
                 </div>
                 <div className="job-section-parent bg-[#E1E5F2] pt-9 pb-9 w-full">
-                    <h1 className="text-4xl mt-9 text-center text-[#022B3A] font-embdedcode font-semibold">
+                    <h1 className="text-4xl mt-9 mb-9 text-center text-[#022B3A] font-dmserif font-semibold">
+                        Announcements
+                    </h1>
+                    <TestimonialsSlider data={testimonials} />
+                </div>
+                <div className="galery-section-parent pb-9 pt-9 flex flex-col items-center bg-[#1F7A8C] justify-center  w-full">
+                    <h1 className="text-4xl mt-9 text-center text-white font-dmserif font-semibold">
+                        Gallery
+                    </h1>
+                    <div className="w-full flex flex-row">
+                        <GalleryCardSlider />
+                    </div>
+                </div>
+                <div className="job-section-parent bg-[#E1E5F2] pt-9 pb-9 w-full">
+                    <h1 className="text-4xl text-center text-[#022B3A] font-dmserif font-semibold">
                         Events
                     </h1>
                     <CardSlider />

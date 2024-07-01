@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router";
 import clockIcon from "../../assets/clock.svg";
 import locationIcon from "../../assets/location-blue-icon.svg";
-import "./EventCard.css";
 import retnitkaLogo from "../../assets/retnitka-logo.svg";
 
 const EventCard = ({ event }) => {
@@ -11,39 +10,30 @@ const EventCard = ({ event }) => {
     const redirectToEvent = () => {
         navigate(`/eventpage/${event._id}`)
     }
+
     return (
-        <div onClick={redirectToEvent} >
-            <div className="parent-event-card">
-                <div className="event-card">
-                    <div className="event-card-header">
-                        <div className="event-dates">
-                            <div className="date">{event_date.getDate()}</div>
-                            <div className="month">{event_date.toLocaleDateString(undefined, { month: 'long' })}</div>
-                        </div>
-                        <div className="vl">
-
-                        </div>
-                        <div className="event-card-logo ">
-                            <img src={retnitkaLogo} alt="" />
-                        </div>
+        <div onClick={redirectToEvent} className="cursor-pointer">
+            <div className="bg-white shadow-md rounded-lg overflow-hidden">
+                <div className="flex items-center bg-gray-100 p-4">
+                    <div className="flex flex-col items-center mr-4">
+                        <div className="text-2xl font-dmserif font-bold">{event_date.getDate()}</div>
+                        <div className="text-sm font-dmsans text-gray-600">{event_date.toLocaleDateString(undefined, { month: 'long' })}</div>
                     </div>
-                    <div className="event-card-title">
-                        <h1>{event.event_title}</h1>
+                    <div className="w-px h-12 bg-gray-300"></div>
+                    <div className="ml-4">
+                        {/* Uncomment and use the logo if needed */}
+                        {/* <img src={retnitkaLogo} alt="Event Logo" className="h-12 w-12" /> */}
                     </div>
-                    <div className="event-card-details">
-                        <div className="event-card-timing">
-                            <div className="event-card-icon">
-                                <img src={clockIcon} height='49px' width='48px'></img>
-                            </div>
-                            <div className="event-card-time">{event.start_time} -{event.end_time}</div>
-                        </div>
-                        <div className="event-card-location">
-                            <div className="event-card-icon">
-                                <img src={locationIcon}></img>
-                            </div>
-                            <div className="event-card-loc">{event.event_venue}</div>
-
-                        </div>
+                </div>
+                <div className="p-4 font-dmsans">
+                    <h1 className="text-xl font-bold mb-2 ">{event.event_title}</h1>
+                    <div className="flex items-center mb-2">
+                        <img src={clockIcon} alt="Clock Icon" className="h-6 w-6 mr-2" />
+                        <span>{event.start_time} - {event.end_time}</span>
+                    </div>
+                    <div className="flex items-center">
+                        <img src={locationIcon} alt="Location Icon" className="h-6 w-6 mr-2" />
+                        <span>{event.event_venue}</span>
                     </div>
                 </div>
             </div>

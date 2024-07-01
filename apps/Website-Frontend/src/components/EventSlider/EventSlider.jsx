@@ -59,8 +59,8 @@ const EventSlider = () => {
 
 
     return (
-        <div className="image-slider">
-            <Slider {...settings}>
+        <div className="image-slier">
+            <Slider className='something-else' {...settings}>
                 {eventData.map((event, index) => {
                     return (
                         <EventCard key={index} event={event} />

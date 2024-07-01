@@ -21,6 +21,8 @@ module.exports = {
         roboto: ['Roboto', 'sans-serif'], // Define Roboto font family
         montserat: ['Montserrat', 'sans-serif'], // Define Montserrat font family
         embdedcode: ['Fira Code', 'monospace'], // Define Fira Code font family
+        dmserif: ['DM Serif Display', 'serif'], // Define DM Serif Display font family
+        dmsans: ['DM Sans', 'sans-serif'], // Define DM Sans font family
       },
       gradientColorStops: {
         'alumniblue': 'rgba(148,229,245,1) 22%, rgba(71,115,214,1) 100%',
