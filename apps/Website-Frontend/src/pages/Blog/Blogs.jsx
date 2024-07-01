@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import "../../styles/Blogs.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import API_URL from "../../helpers/ApiKey";
 
 const Blogs = () => {
     const { blogId } = useParams();
@@ -19,7 +20,7 @@ const Blogs = () => {
 
     const fetchBlogData = async () => {
         try {
-            const blogResponse = await axios.get(`http://localhost:3000/api/v1/blog/single/${blogId}`);
+            const blogResponse = await axios.get(`${API_URL}/api/v1/blog/single/${blogId}`);
             if (blogResponse.data && blogResponse.data.data) {
                 const blog = blogResponse.data.data;
                 setBlogData(blog);
