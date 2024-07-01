@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const UserLogout = () => {
     useEffect(() => {
         localStorage.removeItem("token");
-        localStorage.removeItem("userid");
+        localStorage.removeItem("user_id");
         localStorage.removeItem("notification-token");
         localStorage.removeItem("first_name");
         localStorage.removeItem("isLoggedIn");
